@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT project (metadata, workteam, abstract, deliverables) >
+
+<!ELEMENT metadata (key_name, title, subtitle?, begin_date, end_date, supervisor) >
+<!ELEMENT key_name (#PCDATA) >
+<!ELEMENT title (#PCDATA) >
+<!ELEMENT subtitle (#PCDATA)>
+<!ELEMENT begin_date (#PCDATA) >
+<!ELEMENT end_date (#PCDATA) >
+
+<!ELEMENT supervisor (supervisor_name,supervisor_webpage)>
+<!ELEMENT supervisor_name (#PCDATA) >
+<!ELEMENT supervisor_webpage (#PCDATA) >
+
+<!ELEMENT workteam (element+) >
+<!ELEMENT element (name,student_number,email) >
+<!ELEMENT name (#PCDATA) >
+<!ELEMENT student_number (#PCDATA) >
+<!ELEMENT email (#PCDATA) >
+
+<!ELEMENT abstract (p+) >
+<!ELEMENT p (#PCDATA | b | i | u)* >
+<!ELEMENT b (#PCDATA) >
+<!ELEMENT i (#PCDATA) >
+<!ELEMENT u (#PCDATA) >
+
+<!ELEMENT deliverables (deliverable+) >
+<!ELEMENT deliverable (#PCDATA)>
+<!ATTLIST deliverable
+            path CDATA #REQUIRED >

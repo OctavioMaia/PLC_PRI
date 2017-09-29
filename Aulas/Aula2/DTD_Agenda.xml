@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE agenda SYSTEM "file:/C:/Users/Octavio/Documents/GitHub/PLC_PRI/Aulas/Aula2/agenda.dtd">
+<agenda>
+    <entrada id="e1" tipo="pessoal">
+        <nome>jcr</nome>
+        <telefone>12345</telefone>
+    </entrada>
+    <entrada id="e2" tipo="pessoa">
+        <nome>PRH</nome>
+        <telefone>67890</telefone>
+    </entrada>
+    <entrada id="e3" tipo="pessoa">
+        <nome>JJ</nome>
+        <telefone>312312</telefone>
+    </entrada>
+    <grupo gid="gep1">
+        <referencia refent="e2"/>
+        <referencia refent="e3"/>
+        <referencia refent="e1"/>
+        <entrada id="e4" tipo="pessoa">
+            <nome>Convidado1</nome>
+            <telefone>142543534</telefone>
+        </entrada>
+    </grupo>
+</agenda>

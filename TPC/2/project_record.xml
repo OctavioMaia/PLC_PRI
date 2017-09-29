@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE project SYSTEM "file:/C:/Users/Octavio/Documents/GitHub/PLC_PRI/TPC/2/project_record.dtd">
+<project>
+    <metadata>
+        <key_name>PRI2017::A71369::TP2</key_name>
+        <title>Project Record</title>
+        <subtitle>Relatório gerado no trabalho prático nº2 da UC de PRI do MIEI 2017/2018.</subtitle>
+        <begin_date>25 de Setembro de 2017</begin_date>
+        <end_date>26 de Setembro de 2017</end_date>
+        <supervisor>
+            <supervisor_name>José Carlos Ramalho</supervisor_name>
+            <supervisor_webpage>http://www4.di.uminho.pt/~jcr/</supervisor_webpage>
+        </supervisor>
+    </metadata>
+    <workteam>
+        <element>
+            <name>Octávio José Azevedo Maia</name>
+            <student_number>A71369</student_number>
+            <email>a71369@alunos.uminho.pt</email>
+        </element>
+    </workteam>
+    <abstract>
+        <p>
+            Foi proposta a criação de um <b>DTD</b> <i>(Document Type Definition)</i> e de um <b>XML</b> <i>(Extensible Markup Language)</i> acompanhante válido.
+        </p>
+        <p>
+            De acordo com o <b>Project Record</b> fornecido, este foi também dividido em 4 partes: meta-informação, equipa de trabalho, resumo e anexos.
+        </p>
+    </abstract>
+    <deliverables>
+        <deliverable path="project_record.dtd">Project Record (DTD)</deliverable>
+        <deliverable path="project_record.xml">Project Record (XML)</deliverable>
+    </deliverables>
+</project>
