@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT uc-aval (aval+) >
+
+<!ELEMENT aval (aluno, tpcs, proj, teste) >
+
+<!ELEMENT aluno (nome, numero, email) >
+<!ELEMENT nome (#PCDATA) >
+<!ELEMENT numero (#PCDATA) >
+<!ELEMENT email (#PCDATA) >
+
+<!ELEMENT tpcs (tpc+)>
+<!ELEMENT tpc (titulo, data, nota) >
+<!ELEMENT titulo (#PCDATA) >
+<!ELEMENT data (#PCDATA) >
+<!ELEMENT nota (#PCDATA) >
+
+<!ELEMENT proj (titulo, data, nota) >
+
+<!ELEMENT teste (data, nota) >

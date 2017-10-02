@@ -8,9 +8,10 @@
 <!ELEMENT begin_date (#PCDATA) >
 <!ELEMENT end_date (#PCDATA) >
 
-<!ELEMENT supervisor (supervisor_name,supervisor_webpage)>
+<!ELEMENT supervisor (supervisor_name)>
 <!ELEMENT supervisor_name (#PCDATA) >
-<!ELEMENT supervisor_webpage (#PCDATA) >
+<!ATTLIST supervisor_name
+            webpage CDATA #IMPLIED >
 
 <!ELEMENT workteam (element+) >
 <!ELEMENT element (name,student_number,email) >

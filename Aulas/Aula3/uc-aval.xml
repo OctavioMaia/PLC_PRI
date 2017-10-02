@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE uc-aval SYSTEM "file:/C:/Users/Octavio/Documents/GitHub/PLC_PRI/Aulas/Aula3/uc-aval.dtd">
+<uc-aval>
+    <aval>
+        <aluno>
+            <nome>Joana Miguel</nome>
+            <numero>A57127</numero>
+            <email>A57127@alunos.uminho.pt</email>
+        </aluno>
+        <tpcs>
+            <tpc>
+                <titulo>Página HTML</titulo>
+                <data>2017-09-25</data>
+                <nota>1</nota>
+            </tpc>
+            <tpc>
+                <titulo>DTD para o Project Record</titulo>
+                <data>2017-10-2017</data>
+                <nota>1</nota>
+            </tpc>
+        </tpcs>
+        <proj>
+            <titulo></titulo>
+            <data></data>
+            <nota></nota>
+        </proj>
+        <teste>
+            <data></data>
+            <nota></nota>
+        </teste>
+    </aval>
+    <aval>
+        <aluno>
+            <nome>Bruno Ferreira</nome>
+            <numero>A74155</numero>
+            <email>A74155@alunos.uminho.pt</email>
+        </aluno>
+        <tpcs>
+            <tpc>
+                <titulo>Página HTML</titulo>
+                <data>2017-09-25</data>
+                <nota>1</nota>
+            </tpc>
+        </tpcs>
+        <proj>
+            <titulo></titulo>
+            <data></data>
+            <nota></nota>
+        </proj>
+        <teste>
+            <data></data>
+            <nota></nota>
+        </teste>
+    </aval>
+</uc-aval>

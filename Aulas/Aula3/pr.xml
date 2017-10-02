@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE project SYSTEM "file:/C:/Users/Octavio/Documents/GitHub/PLC_PRI/TPC/2/project_record.dtd">
-<project>
-    <metadata>
-        <key_name>PRI2017::A71369::TP2</key_name>
+<!DOCTYPE pr SYSTEM "file:/C:/Users/Octavio/Documents/GitHub/PLC_PRI/Aulas/Aula3/pr.dtd">
+<pr>
+    <meta>
+        <id>PRI2017::A71369::TP2</id>
         <title>Project Record</title>
         <subtitle>Relatório gerado no trabalho prático nº2 da UC de PRI do MIEI 2017/2018.</subtitle>
-        <begin_date>25 de Setembro de 2017</begin_date>
-        <end_date>26 de Setembro de 2017</end_date>
-        <supervisor>
-            <supervisor_name webpage="http://www4.di.uminho.pt/~jcr/">José Carlos Ramalho</supervisor_name>
-        </supervisor>
-    </metadata>
-    <workteam>
-        <element>
+        <bdate>25 de Setembro de 2017</bdate>
+        <edate>26 de Setembro de 2017</edate>
+        <supervisor url="http://www4.di.uminho.pt/~jcr/">José Carlos Ramalho</supervisor>
+    </meta>
+    <team>
+        <student>
             <name>Octávio José Azevedo Maia</name>
-            <student_number>A71369</student_number>
+            <nr>A71369</nr>
             <email>a71369@alunos.uminho.pt</email>
-        </element>
-    </workteam>
+        </student>
+    </team>
     <abstract>
         <p>
             Neste trabalho prático nº2 foi proposta a criação de um <b>DTD</b> <i>(Document Type Definition)</i> e de um <b>XML</b> <i>(Extensible Markup Language)</i> acompanhante válido.
@@ -38,7 +36,7 @@
         </p>
     </abstract>
     <deliverables>
-        <deliverable path="project_record.dtd">Project Record (DTD)</deliverable>
-        <deliverable path="project_record.xml">Project Record (XML)</deliverable>
+        <deliverable url="pr.dtd">Project Record (DTD)</deliverable>
+        <deliverable url="pr.xml">Project Record (XML)</deliverable>
     </deliverables>
-</project>
+</pr>
