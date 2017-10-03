@@ -1,0 +1,117 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta charset="UTF-8">
+      <link rel="stylesheet" type="text/css" href="bootstrap-css/css/bootstrap.css">
+      <title>Project Record</title>
+   </head>
+   <body>
+      <div class="container">
+         <h1 align="center">Project Record</h1>
+         
+         <hr>
+         <h2 align="left">Metadata</h2>
+         <table width="100%">
+            <tr>
+               <td><b>ID: </b>PRI2017::A71369::TP3
+               </td>
+               <td><b>BEGIN DATE: </b>02-10-2017
+               </td>
+            </tr>
+            <tr>
+               <td><b>TITLE: </b>Project Record
+               </td>
+               <td><b>END DATE: </b>03-10-2017
+               </td>
+            </tr>
+            <tr>
+               <td><b>SUBTITLE: </b>Transformações através de XSL
+               </td>
+               <td><b>SUPERVISOR: </b><b>SUPERVISOR: </b><a href="http://www4.di.uminho.pt/~jcr/">José Carlos Ramalho</a></td>
+            </tr>
+         </table>
+         
+         <hr>
+         <h2 align="left">Workteam</h2>
+         <ul>
+            
+            <ul>
+               <li><b>Name: </b>Octávio José Azevedo Maia<br><b>Number: </b>A71369<br><b>Email: </b><a href="mailto:octaviojmaia@gmail.com">octaviojmaia@gmail.com</a><br></li>
+            </ul>
+            
+         </ul>
+         
+         <hr>
+         <h2 align="left">Abstract</h2>
+         <ul>
+            
+            <p>Foi proposta a criação de uma <i>stylesheet XSL</i> capaz de transformar o ficheiro <i>XML</i> numa página <i>HTML</i>. Esta deve ser semelhante ao <b>Project Record</b> exemplificado anteriormente.
+            </p>
+            
+            <p>A página foi dividida em 4 partes: meta-informação, equipa de trabalho, resumo e os
+               anexos.
+            </p>
+            
+            <p>De modo a tornar a página mais apelativa foi utilizado o estilo do <i>Bootstrap</i>, cujo CSS está disponível gratuitamente na sua <a href="http://getbootstrap.com/">webpage</a>.
+            </p>
+            
+            <p>Foi necessário ter precauções devido ao caráter opcional do atributo <i>url</i> do elemento <i>supervisor</i>. Assim sendo, foi implementado um teste através do elemento <b>&lt;xsl:if test="expression"&gt;</b>.
+            </p>
+            <pre><code>
+            &lt;xsl:if test="@url"&gt;
+                &lt;a href="{@url}"&gt;&lt;xsl:value-of select="."/&gt;&lt;/a&gt;
+            &lt;/xsl:if&gt;
+            &lt;xsl:if test="not(@url)"&gt;
+                &lt;xsl:value-of select="."/&gt;
+            &lt;/xsl:if&gt;
+        </code></pre>
+            <p>Como o código acima refere, caso exista um atributo <i>url</i> é feito o parse do mesmo, gerando assim um link externo no nome do supervisor. Caso
+               contrário apenas é mostrado o nome do supervisor.
+            </p>
+            
+            <p>Outro cuidado necessário foi a distinção entre referência interna e externa. Enquanto
+               que uma referência externa aponta para um website através de um <i>url</i>, uma referência interna aponta para um <i>bookmark</i> na própria página, por exemplo, uma secção.
+            </p>
+            
+            <p>Assim sendo, a única alteração é a adição do caractere <b>#</b> na referência interna:
+            </p>
+            <pre><code>
+            &lt;xsl:template match="xref"&gt;
+                &lt;a href="{@url}"&gt;&lt;xsl:apply-templates/&gt;&lt;/a&gt;
+            &lt;/xsl:template&gt;
+            
+            &lt;xsl:template match="iref"&gt;
+                &lt;a href="#{@url}"&gt;&lt;xsl:apply-templates/&gt;&lt;/a&gt;
+            &lt;/xsl:template&gt;
+        </code></pre>
+            <p>Em conclusão, através de um ficheiro <i>XML</i> e de uma <i>stylesheet XSL</i> é possível gerar vários ficheiros de output, exemplificados na imagem seguinte.
+            </p>
+            <img src="https://ciclosw.files.wordpress.com/2014/09/xslt.png" align="top">
+            
+         </ul>
+         
+         <hr>
+         <h2 align="left">Deliverables</h2>
+         <ul>
+            
+            <ul>
+               <li><a href="pr.dtd">Project Record (DTD)</a></li>
+            </ul>
+            
+            <ul>
+               <li><a href="tp3.xml">Project Record (XML)</a></li>
+            </ul>
+            
+            <ul>
+               <li><a href="pr.xsl">Project Record (XSL)</a></li>
+            </ul>
+            
+            <ul>
+               <li><a href="tp3.html">Project Record (HTML)</a></li>
+            </ul>
+            
+         </ul>
+         
+      </div>
+   </body>
+</html>
