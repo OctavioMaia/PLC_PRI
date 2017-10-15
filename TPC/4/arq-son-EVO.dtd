@@ -1,0 +1,54 @@
+<?xml encoding="UTF-8"?>
+
+<!ELEMENT arq (doc)+>
+<!ATTLIST arq
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT doc (#PCDATA|file|duracao|inst|local|musico|obs|prov|tit)*>
+<!ATTLIST doc
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT duracao (#PCDATA)>
+<!ATTLIST duracao
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT inst (#PCDATA)>
+<!ATTLIST inst
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT local (#PCDATA)>
+<!ATTLIST local
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT musico (#PCDATA|from|prof)*>
+<!ATTLIST musico
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT obs (#PCDATA|file|intxt)*>
+<!ATTLIST obs
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT prov (#PCDATA)>
+<!ATTLIST prov
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT tit (#PCDATA)>
+<!ATTLIST tit
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT from (#PCDATA)>
+<!ATTLIST from
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT prof (#PCDATA)>
+<!ATTLIST prof
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT intxt (#PCDATA)>
+<!ATTLIST intxt
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT file (#PCDATA)>
+<!ATTLIST file
+  xmlns CDATA #FIXED ''
+  t NMTOKEN #REQUIRED>

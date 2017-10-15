@@ -1,0 +1,65 @@
+<?xml encoding="UTF-8"?>
+
+<!ELEMENT mp (hv)>
+<!ATTLIST mp
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT hv (#PCDATA|pergunta|resposta|h|meta)*>
+<!ATTLIST hv
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT h (#PCDATA|pergunta|resposta)*>
+<!ATTLIST h
+  xmlns CDATA #FIXED ''
+  data CDATA #IMPLIED
+  tipo CDATA #REQUIRED
+  tit CDATA #REQUIRED>
+
+<!ELEMENT meta (versao,(autor|data|nascimento|profissao)+)>
+<!ATTLIST meta
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT versao (#PCDATA)>
+<!ATTLIST versao
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT autor (#PCDATA)>
+<!ATTLIST autor
+  xmlns CDATA #FIXED ''
+  tipo CDATA #REQUIRED>
+
+<!ELEMENT data (#PCDATA)>
+<!ATTLIST data
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT nascimento EMPTY>
+<!ATTLIST nascimento
+  xmlns CDATA #FIXED ''
+  data CDATA #REQUIRED
+  onde CDATA #REQUIRED>
+
+<!ELEMENT profissao (#PCDATA)>
+<!ATTLIST profissao
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT pergunta (#PCDATA)>
+<!ATTLIST pergunta
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT resposta (#PCDATA|ref|destaque|expressao)*>
+<!ATTLIST resposta
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT destaque (#PCDATA|ref)*>
+<!ATTLIST destaque
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT expressao (#PCDATA)>
+<!ATTLIST expressao
+  xmlns CDATA #FIXED ''
+  significado NMTOKEN #REQUIRED>
+
+<!ELEMENT ref (#PCDATA)>
+<!ATTLIST ref
+  xmlns CDATA #FIXED ''
+  tipo CDATA #REQUIRED>

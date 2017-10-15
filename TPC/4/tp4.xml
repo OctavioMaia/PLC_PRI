@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pr SYSTEM "file:/C:/Users/Octavio/Documents/GitHub/PLC_PRI/TPC/4/pr.dtd">
+<pr>
+    <meta>
+        <id>PRI2017::A71369::TP4</id>
+        <title>Arquivo Sonoro</title>
+        <subtitle>Transformações de XML para HTML</subtitle>
+        <bdate>09-10-2017</bdate>
+        <edate>11-10-2017</edate>
+        <supervisor url="http://www4.di.uminho.pt/~jcr/">José Carlos Ramalho</supervisor>
+    </meta>
+    <team>
+        <student>
+            <name>Octávio José Azevedo Maia</name>
+            <nr>A71369</nr>
+            <email>octaviojmaia@gmail.com</email>
+        </student>
+    </team>
+    <abstract>
+        <p>Foi proposta a criação de uma <i>stylesheet XSL</i> capaz de transformar o arquivo sonoro, representado em <i>XML</i> numa página <i>HTML</i></p>
+        <p>A página foi dividida em 2 partes: índice (ocupa 30% do tamanho total da tabela) e conteúdo (ocupa 70% do tamanho total da tabela).</p>
+        <p>De modo a tornar a página mais apelativa foi utilizado <i>Bootstrap</i>, cujo CSS está disponível gratuitamente na sua <xref url="http://getbootstrap.com/">webpage</xref>.</p>
+        <p>Segundo o DTD gerado através do XML, cada entrada <b>doc</b> pode possuir os seguintes atributos:</p>
+        <code>
+            &lt;!ELEMENT doc (#PCDATA|file|duracao|inst|local|musico|obs|prov|tit)*>
+            
+            file: Ficheiros áudio em anexo.
+            duracao: Duração da música.
+            inst: Instrumentos presentes na música.
+            local: Local originário da música.
+            musico: Nome do músico.
+            obs: Observações.
+            prov: Província originária da música.
+            tit: Título da música.
+        </code>
+        <p>Foi necessário ter precauções devido ao parsing dos atributos, visto que cada entrada <b>doc</b> pode ou não ter todos os atributos definidos anteriormente. Assim sendo, foi implementado um teste através do elemento <b>&lt;xsl:if test="expression"&gt;</b>.</p>
+        <p>Por exemplo, nem todas as entradas possuem o atributo <i>inst</i>. Assim sendo foi criada a seguinte verificação:</p>
+        <code>
+            &lt;xsl:if test="inst">
+                &lt;p>&lt;b>Instrumento: &lt;/b> &lt;xsl:value-of select="inst"/>&lt;/p>
+            &lt;/xsl:if>
+        </code>
+        <p>De modo a gerar os indíces e as respetivas hiperligações foi utilizado o <i>generate-id()</i> em conjunção com a normalização dos títulos e a eliminação de entradas repetidas.</p>
+        <code>
+            &lt;xsl:apply-templates select="/arq/doc[normalize-space(prov)=$c and not(preceding::tit/normalize-space(.)=normalize-space(./tit))]" mode="tit">
+                &lt;xsl:sort select="normalize-space(tit)"/>
+            &lt;/xsl:apply-templates>
+            
+            &lt;a href="#{generate-id()}">
+                &lt;xsl:value-of select="normalize-space(tit)"/>
+            &lt;/a>    
+        </code>
+    </abstract>
+    <deliverables>
+        <deliverable url="arq-son-EVO.xml">Arquivo Sonoro (XML)</deliverable>
+        <deliverable url="arq-son-EVO.xsl">Arquivo Sonoro (XSL)</deliverable>
+        <deliverable url="arq-son-EVO.html">Arquivo Sonoro (HTML)</deliverable>
+        <deliverable url="tp4.xml">Project Record (XML)</deliverable>
+        <deliverable url="tp4.html">Project Record (HTML)</deliverable>
+    </deliverables>
+</pr>

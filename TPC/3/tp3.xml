@@ -19,8 +19,8 @@
     <abstract>
         <p>Foi proposta a criação de uma <i>stylesheet XSL</i> capaz de transformar o ficheiro <i>XML</i> numa página <i>HTML</i>. Esta deve ser semelhante ao <b>Project Record</b> exemplificado anteriormente.</p>
         <p>A página foi dividida em 4 partes: meta-informação, equipa de trabalho, resumo e os anexos.</p>
-        <p>De modo a tornar a página mais apelativa foi utilizado o estilo do <i>Bootstrap</i>, cujo CSS está disponível gratuitamente na sua <xref url="http://getbootstrap.com/">webpage</xref>.</p>
-        <p>Foi necessário ter precauções devido ao caráter opcional do atributo <i>url</i> do elemento <i>supervisor</i>. Assim sendo, foi implementado um teste através do elemento <b>&lt;xsl:if test="expression"&gt;</b>.</p>
+        <p>De modo a tornar a página mais apelativa foi utilizado <i>Bootstrap</i>, cujo CSS está disponível gratuitamente na sua <xref url="http://getbootstrap.com/">webpage</xref>.</p>
+        <p>Foi necessário ter precauções devido ao atributo opcional do atributo <i>url</i> do elemento <i>supervisor</i>. Assim sendo, foi implementado um teste através do elemento <b>&lt;xsl:if test="expression"&gt;</b>.</p>
         <code>
             &lt;xsl:if test="@url"&gt;
                 &lt;a href="{@url}"&gt;&lt;xsl:value-of select="."/&gt;&lt;/a&gt;

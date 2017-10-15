@@ -1,0 +1,124 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta charset="UTF-8">
+      <link rel="stylesheet" type="text/css" href="bootstrap-css/css/bootstrap.css">
+      <title>Project Record</title>
+   </head>
+   <body>
+      <div class="container">
+         <h1 align="center">Project Record</h1>
+         
+         <hr>
+         <h2 align="left">Metadata</h2>
+         <table width="100%">
+            <tr>
+               <td><b>ID: </b>PRI2017::A71369::TP4
+               </td>
+               <td><b>BEGIN DATE: </b>09-10-2017
+               </td>
+            </tr>
+            <tr>
+               <td><b>TITLE: </b>Arquivo Sonoro
+               </td>
+               <td><b>END DATE: </b>11-10-2017
+               </td>
+            </tr>
+            <tr>
+               <td><b>SUBTITLE: </b>Transformações de XML para HTML
+               </td>
+               <td><b>SUPERVISOR: </b><a href="http://www4.di.uminho.pt/~jcr/">José Carlos Ramalho</a></td>
+            </tr>
+         </table>
+         
+         <hr>
+         <h2 align="left">Workteam</h2>
+         <ul>
+            
+            <ul>
+               <li><b>Name: </b>Octávio José Azevedo Maia<br><b>Number: </b>A71369<br><b>Email: </b><a href="mailto:octaviojmaia@gmail.com">octaviojmaia@gmail.com</a><br></li>
+            </ul>
+            
+         </ul>
+         
+         <hr>
+         <h2 align="left">Abstract</h2>
+         <ul>
+            
+            <p>Foi proposta a criação de uma <i>stylesheet XSL</i> capaz de transformar o arquivo sonoro, representado em <i>XML</i> numa página <i>HTML</i></p>
+            
+            <p>A página foi dividida em 2 partes: índice (ocupa 30% do tamanho total da tabela) e
+               conteúdo (ocupa 70% do tamanho total da tabela).
+            </p>
+            
+            <p>De modo a tornar a página mais apelativa foi utilizado <i>Bootstrap</i>, cujo CSS está disponível gratuitamente na sua <a href="http://getbootstrap.com/">webpage</a>.
+            </p>
+            
+            <p>Segundo o DTD gerado através do XML, cada entrada <b>doc</b> pode possuir os seguintes atributos:
+            </p>
+            <pre><code>
+            &lt;!ELEMENT doc (#PCDATA|file|duracao|inst|local|musico|obs|prov|tit)*&gt;
+            
+            file: Ficheiros áudio em anexo.
+            duracao: Duração da música.
+            inst: Instrumentos presentes na música.
+            local: Local originário da música.
+            musico: Nome do músico.
+            obs: Observações.
+            prov: Província originária da música.
+            tit: Título da música.
+        </code></pre>
+            <p>Foi necessário ter precauções devido ao parsing dos atributos, visto que cada entrada
+               <b>doc</b> pode ou não ter todos os atributos definidos anteriormente. Assim sendo, foi implementado
+               um teste através do elemento <b>&lt;xsl:if test="expression"&gt;</b>.
+            </p>
+            
+            <p>Por exemplo, nem todas as entradas possuem o atributo <i>inst</i>. Assim sendo foi criada a seguinte verificação:
+            </p>
+            <pre><code>
+            &lt;xsl:if test="inst"&gt;
+                &lt;p&gt;&lt;b&gt;Instrumento: &lt;/b&gt; &lt;xsl:value-of select="inst"/&gt;&lt;/p&gt;
+            &lt;/xsl:if&gt;
+        </code></pre>
+            <p>De modo a gerar os indíces e as respetivas hiperligações foi utilizado o <i>generate-id()</i> em conjunção com a normalização dos títulos e a eliminação de entradas repetidas.
+            </p>
+            <pre><code>
+            &lt;xsl:apply-templates select="/arq/doc[normalize-space(prov)=$c and not(preceding::tit/normalize-space(.)=normalize-space(./tit))]" mode="tit"&gt;
+                &lt;xsl:sort select="normalize-space(tit)"/&gt;
+            &lt;/xsl:apply-templates&gt;
+            
+            &lt;a href="#{generate-id()}"&gt;
+                &lt;xsl:value-of select="normalize-space(tit)"/&gt;
+            &lt;/a&gt;    
+        </code></pre>
+            </ul>
+         
+         <hr>
+         <h2 align="left">Deliverables</h2>
+         <ul>
+            
+            <ul>
+               <li><a href="arq-son-EVO.xml">Arquivo Sonoro (XML)</a></li>
+            </ul>
+            
+            <ul>
+               <li><a href="arq-son-EVO.xsl">Arquivo Sonoro (XSL)</a></li>
+            </ul>
+            
+            <ul>
+               <li><a href="arq-son-EVO.html">Arquivo Sonoro (HTML)</a></li>
+            </ul>
+            
+            <ul>
+               <li><a href="tp4.xml">Project Record (XML)</a></li>
+            </ul>
+            
+            <ul>
+               <li><a href="tp4.html">Project Record (HTML)</a></li>
+            </ul>
+            
+         </ul>
+         
+      </div>
+   </body>
+</html>
