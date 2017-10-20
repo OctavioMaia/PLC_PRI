@@ -1,0 +1,99 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta charset="UTF-8">
+      <link rel="stylesheet" type="text/css" href="bootstrap-css/css/bootstrap.css">
+      <title>Project Record</title>
+   </head>
+   <body>
+      <div class="container">
+         <h1 align="center">Project Record</h1>
+         
+         <hr>
+         <h2 align="left">Metadata</h2>
+         <table width="100%">
+            <tr>
+               <td><b>ID: </b>PRI2017::A71369::TP5
+               </td>
+               <td><b>BEGIN DATE: </b>16-10-2017
+               </td>
+            </tr>
+            <tr>
+               <td><b>TITLE: </b>Arquivo de locais arqueológicos
+               </td>
+               <td><b>END DATE: </b>18-10-2017
+               </td>
+            </tr>
+            <tr>
+               <td><b>SUBTITLE: </b>Transformações de entradas em páginas HTML
+               </td>
+               <td><b>SUPERVISOR: </b><a href="http://www4.di.uminho.pt/~jcr/">José Carlos Ramalho</a></td>
+            </tr>
+         </table>
+         
+         <hr>
+         <h2 align="left">Workteam</h2>
+         <ul>
+            
+            <ul>
+               <li><b>Name: </b>Octávio José Azevedo Maia<br><b>Number: </b>A71369<br><b>Email: </b><a href="mailto:octaviojmaia@gmail.com">octaviojmaia@gmail.com</a><br></li>
+            </ul>
+            
+         </ul>
+         
+         <hr>
+         <h2 align="left">Abstract</h2>
+         <ul>
+            
+            <p>Foi proposta a criação de uma <i>stylesheet</i>, cuja função fosse a criação de diversas páginas HTML, uma para cada entrada no documento
+               XML fornecido.
+            </p>
+            
+            <p>Foi tambem proposta a criação de um servidor em <i>JavaScript</i> que corresse na máquina local (localhost) e que respondesse aos pedidos enviados.
+               Estes pedidos baseiam-se no carregamento do ficheiro HTML correspondente ao respetivo
+               URL.
+            </p>
+            
+            <p>Por exemplo, ao aceder ao URL</p>
+            <pre><code>
+            localhost:7777/1
+        </code></pre>
+            <p>é carregado o ficheiro <i>1.html</i>, localizado na diretoria <b>website</b>, utilizando para tal o seguinte código:
+            </p> 
+            <pre><code>
+            fs.readFile('website/'+number+'.html',function(err,data)
+        </code></pre>
+            <p>Caso não encontro o ficheiro é escrito uma mensagem de erro.</p>
+            
+            
+         </ul>
+         
+         <hr>
+         <h2 align="left">Deliverables</h2>
+         <ul>
+            
+            <ul>
+               <li><a href="arq.xml">Arquivo (XML)</a></li>
+            </ul>
+            
+            <ul>
+               <li><a href="arq.xsl">Arquivo (XSL)</a></li>
+            </ul>
+            
+            <ul>
+               <li><a href="servidor.js">Servidor (JavaScript)</a></li>
+            </ul>
+            
+            <ul>
+               <li><a href="tp5.xml">Project Record (XML)</a></li>
+            </ul>
+            
+            <ul>
+               <li><a href="tp5.html">Project Record (HTML)</a></li>
+            </ul>
+            
+         </ul>
+         
+      </div>
+   </body>
+</html>

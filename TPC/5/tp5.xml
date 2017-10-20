@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pr SYSTEM "file:/C:/Users/Octavio/Documents/GitHub/PLC_PRI/TPC/5/pr.dtd">
+<pr>
+    <meta>
+        <id>PRI2017::A71369::TP5</id>
+        <title>Arquivo de locais arqueológicos</title>
+        <subtitle>Transformações de entradas em páginas HTML</subtitle>
+        <bdate>16-10-2017</bdate>
+        <edate>18-10-2017</edate>
+        <supervisor url="http://www4.di.uminho.pt/~jcr/">José Carlos Ramalho</supervisor>
+    </meta>
+    <team>
+        <student>
+            <name>Octávio José Azevedo Maia</name>
+            <nr>A71369</nr>
+            <email>octaviojmaia@gmail.com</email>
+        </student>
+    </team>
+    <abstract>
+        <p>Foi proposta a criação de uma <i>stylesheet</i>, cuja função fosse a criação de diversas páginas HTML, uma para cada entrada no documento XML fornecido.</p>
+        <p>Foi tambem proposta a criação de um servidor em <i>JavaScript</i> que corresse na máquina local (localhost) e que respondesse aos pedidos enviados.
+        Estes pedidos baseiam-se no carregamento do ficheiro HTML correspondente ao respetivo URL.</p>
+        <p>Por exemplo, ao aceder ao URL</p>
+        <code>
+            localhost:7777/1
+        </code>
+        <p>é carregado o ficheiro <i>1.html</i>, localizado na diretoria <b>website</b>, utilizando para tal o seguinte código:</p> 
+        <code>
+            fs.readFile('website/'+number+'.html',function(err,data)
+        </code>
+        <p>Caso não encontro o ficheiro é escrito uma mensagem de erro.</p>
+        
+    </abstract>
+    <deliverables>
+        <deliverable url="arq.xml">Arquivo (XML)</deliverable>
+        <deliverable url="arq.xsl">Arquivo (XSL)</deliverable>
+        <deliverable url="servidor.js">Servidor (JavaScript)</deliverable>
+        <deliverable url="tp5.xml">Project Record (XML)</deliverable>
+        <deliverable url="tp5.html">Project Record (HTML)</deliverable>
+    </deliverables>
+</pr>
