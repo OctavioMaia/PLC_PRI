@@ -1,0 +1,47 @@
+//- Template para o formulario de recolha
+html
+    head
+        meta(charset='UTF-8')
+        link(rel="stylesheet", href="https://www.w3schools.com/w3css/4/w3.css")
+    body
+        div(class='w3-container w3-blue w3-round')
+            h2 Registo de um júri
+        form(action='/processaForm' method='POST' class='w3-container')
+            fieldset
+                legend Informação do Aluno
+                label Nome:
+                input(type='text' name='nome' class='w3-input w3-border')
+                br
+                label Número:
+                input(type='text' name='ident' class='w3-input w3-border')
+                br
+                label Curso:
+                input(type='text' name='curso' class='w3-input w3-border')
+                br
+                label Instituição:
+                input(type='text' name='instituicao' class='w3-input w3-border')
+                br
+            fieldset
+                legend Informação sobre a Tese
+                label Titulo:
+                input(type='text' name='titulo' class='w3-input w3-border')
+                br
+                label Data:
+                input(type='text' name='data' class='w3-input w3-border')
+                br
+                label Ficheiro:
+                input(type='file' name='ficheiro' class='w3-input w3-border')
+            fieldset
+                legend Informação sobre o Docente
+                label Nome do Docente:
+                input(type='text' name='dnome' class='w3-input w3-border')
+                br
+                label Instituição do Docente:
+                input(type='text' name='dinstituicao' class='w3-input w3-border')
+                br
+                input(type='radio' name='funcao' value='president' class='w3-radio' checked)
+                label Presidente
+                input(type='radio' name='funcao' value='vogal' class='w3-radio')
+                label Vogal
+                br
+            input(type='submit' value='Enviar' class='w3-btn w3-blue')

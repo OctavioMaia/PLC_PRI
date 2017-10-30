@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <form action="/processaForm">
+            <fieldset>
+                <legend>Dados Pessoais</legend>
+                <label for="nome">Nome: </label>
+                <input type="text" name="nome" id="nome" size="50"/>
+                <br/>
+                <label for="morada">Morada: </label>
+                <input type="text" name="morada" id="morada" size="50"/>
+                <br/>
+                <label for="data-nasc">Data nascimento: </label>
+                <input type="text" name="dataNasc" id="dataNasc" size="10"/>
+            </fieldset>
+            <fieldset>
+                <legend>Atividades</legend>
+                <label for="cinema">Cinema: </label>
+                <input type="checkbox" name="atividades" value="Cinema" id="cinema"/>
+                <label for="judo">Judo: </label>
+                <input type="checkbox" name="atividades" value="Judo" id="judo"/>
+                <label for="ciclismo">Ciclismo: </label>
+                <input type="checkbox" name="atividades" value="Ciclismo" id="ciclismo"/>
+                <label for="xadrez">Xadrez:: </label>
+                <input type="checkbox" name="atividades" value="Xadrez" id="xadrez"/>
+                <label for="corrida">Corrida: </label>
+                <input type="checkbox" name="atividades" value="Corrida" id="corrida"/>
+            </fieldset> 
+            <input type="submit" value="Enviar"/>
+        </form>
+    </body>
+</html>

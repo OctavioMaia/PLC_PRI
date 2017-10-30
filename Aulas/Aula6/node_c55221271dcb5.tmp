@@ -1,0 +1,64 @@
+var http = require('http')
+var url = require('url')
+var qs = require('querystring')
+var fs = require('fs')
+
+var myserver = http.createServer(function(req, res){
+    if(req.method === "GET") {
+        if(req.url === '/registo') {
+            
+             fs.readFile('form1.html', function(err, data){
+                 if (err) {
+                     res.writeHead(404, {'Content-Type' : 'text/html'})
+                     res.end("404 form1.html não foi encontrado!")
+                 }
+                 else{
+                     res.writeHead(200, {'Content-Type' : 'text/html'})
+                     res.write(data)
+                     res.end()
+                 }
+             })
+         }
+         else if (req.url.startsWith('/processaForm')) {
+             res.writeHead(200, {'Content-Type' : 'application/json; charset= utf-8'})
+     
+             var q = url.parse(req.url, true).query
+     
+             res.write(JSON.stringify(q))
+             res.end()
+         }
+         else {
+             res.writeHead(404, {'Content-Type' : 'text/html'})
+             res.end("404 " + req.url + "não está disponível!")
+     
+         }
+        }
+         else if(req.method === "POST") {
+             if (req.url.startsWith('/processaForm')){
+                    var requestBody =''
+                    req.on('data', function(data){
+                        requestBody += data
+                        /// Falta o if 
+                    })
+                    req.on('end', function() {
+                        var formData = qs.parse(requestBody);
+                        res.writeHead(200, {'Content-Type' : 'text/html'})
+                        res.write(JSON.stringify(formData))
+                        res.end()
+                    })
+             }
+             else {
+                res.writeHead(404, {'Content-Type' : 'text/html; charset=utf-8'})
+                res.end("404 " + req.url + "não está disponível!")
+             }
+
+         }
+         else {
+            res.writeHead(404, {'Content-Type' : 'text/html; charset=utf-8'})
+            res.end("404 " + req.method + "não suportado!")
+         
+        }
+     })
+   
+myserver.listen('5555')
+console.log('Servidor à escuta na porta 5555...')

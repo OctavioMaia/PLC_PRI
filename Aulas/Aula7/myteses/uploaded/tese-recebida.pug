@@ -1,0 +1,46 @@
+// Template para acusar a recepção de um registo
+html
+    head
+        meta(charset='UTF-8')
+        link(rel="stylesheet", href="https://www.w3schools.com/w3css/4/w3.css")
+    body
+        div(class='w3-card-4')
+            header(class='w3-container w3-blue')
+                h1 Registo recebido
+            div(class='w3-container')
+                table(class='w3-table')
+                    tr
+                        th Nome
+                        td #{nome}
+                    tr
+                        th Identificador
+                        td #{ident}
+                    tr
+                        th Curso
+                        td #{curso}
+                    tr
+                        th Instituição
+                        td #{instituicao}
+                    tr
+                        th Título
+                        td #{titulo}
+                    tr
+                        th Data
+                        td #{data}
+                    tr
+                        th Ficheiro
+                        td #{ficheiro}
+                    tr
+                        th Status
+                        td #{status}
+                    tr
+                        th Nome do Docente
+                        td #{dnome}
+                    tr
+                        th Instituição do Docente
+                        td #{dinstituicao}
+                    tr
+                        th Função
+                        td #{funcao}
+            footer(class='w3-container w3-blue')
+                h5 Gerado por server.js da App de Registo de Teses
