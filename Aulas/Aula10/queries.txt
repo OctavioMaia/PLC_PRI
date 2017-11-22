@@ -1,0 +1,26 @@
+QUERIES
+
+1- registos user "oscar"
+db.alogs.find({user:"oscar"})
+
+2- count das ops que o "oscar" fez
+db.alogs.find({user:"oscar"}).count()
+
+3- listar todos os users, sem repetidos
+db.alogs.distinct("user")
+
+4- quem consultou a obra m23
+db.alogs.find({page:/m23/},{user:true,_id:false}) 
+
+5- qts ops realizou cada user
+db.alogs.aggregate({$group: {_id:"$user",nops: {$sum:1}}})  
+
+6- top de operacao por user
+db.alogs.aggregate([{$group: {_id:"$user",nops: {$sum:1}}}, 
+{$sort: {nops: -1}}])
+
+7- top de operacoes
+db.alogs.aggregate([                                                                                                {$group: {_id: "$page", cont: {$sum: 1}}},
+	{$sort: {cont: -1}}])      
+	
+db.alogs.aggregate([ {$group: {_id: "$page", cont: {$sum: 1}}}, {$sort: {cont: -1}}, {$limit:5}])  -> limita a top 5

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="jquery-3.2.1.js"></script>
+        <script>
+            $(function(){
+                $("#butao1").click(function(){
+                    $("#p1").text("Hello world!");
+                });
+                $("#butao2").click(function(){
+                    $("#p2").html("<b>Hello world!</b>");
+                });
+                $("#butao3").click(function(){
+                    $("#campo").val("Braga");
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <p id="p1">Sou um paragrafo <b>com algum texto a bold</b>.</p>
+        <p id="p2">Olá</p>
+        <p>
+            Campo de formulario: <input type="text" id="campo" value="Guimarães"/>
+        </p>
+        <button id="butao1">Muda o texto</button>
+        <button id="butao2">Muda o HTML</button>
+        <button id="butao3">Inicializa o campo</button>
+    </body>
+</html>

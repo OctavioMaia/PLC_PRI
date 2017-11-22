@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="jquery-3.2.1.js"></script>
+        <script>
+            $(function(){
+                $("#adicionar").click(function(){
+                    $("#lista").append("<li>" + $("#texto").val() + "</li>")
+                    $("#texto").val("")   
+                })
+                $("#lista").on("click", "li", function(){
+                    $(this).remove()
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <h1>MyPara</h1>
+        <form>
+            <label for="texto">Texto: </label>
+            <textarea id="texto"></textarea>
+            <br/>
+            <input type="button" value="Adicionar" id="adicionar"></input>
+        </form>
+        <hr/>
+        <ol id="lista"></ol>
+    </body>
+</html>

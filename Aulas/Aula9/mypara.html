@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!-- jQuery: ex8.html -->
+<html>
+<head>
+    <script src="jquery-3.2.1.js"></script>
+    <script>
+        $(function(){
+            alert('Vou fazer o pedido da BD...')
+            $.getJSON("http://localhost:7777/getPara", function(data){
+                alert('Recebi a BD: ' + JSON.stringify(data))
+                $.each(data, function(ind, elem){
+                    $("#lista").append("<li id='" + elem.id + "'>" + elem.conteudo + "</li>")
+                })
+            })
+              /*  .success(function(){})
+                .error(function(err){
+                    alert("Erro: " + JSON.stringify(err))
+                })
+                .complete(function(){})*/
+
+                $("#lista > li").length + 1
+
+            $("#adicionar").click(function(){
+                $("#lista").append("<li>" + $("#texto").val() + "</li>")
+                
+                alert('Vou atualizar a BD...\n')
+                $.ajax({
+                    method: 'POST',
+                    url: 'http://localhost:7777/adPara',
+                    data: {id: "p" + ($("#lista > li").length), 
+                           tempo: new Date().toString(), 
+                           conteudo: $("#texto").val()}
+                }).done(function( msg ) {
+                        alert( msg );
+                    })
+
+                $("#texto").val("")
+            })
+            $("#lista").on("click", "li", function(){
+                $(this).remove()
+            })
+        });
+    </script>
+</head>
+<body>
+    <h1>MyPara</h1>
+    <form>
+        <label for="texto">Texto: </label>
+        <textarea id="texto"></textarea>
+        <br/>
+        <input type="button" value="Adicionar" id="adicionar"/>
+    </form>
+    <hr/>
+    <ol id="lista"></ol>
+</body>
+</html>

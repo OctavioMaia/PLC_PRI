@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="jquery-3.2.1.js"></script>
+        <script>
+            $(function(){
+                $("#butao1").click(function(){
+                    alert("Text: " + $("#p1").text());
+                });
+                $("#butao2").click(function(){
+                    alert("HTML: " + $("#p1").html());
+                });
+            })
+        </script>
+    </head>
+    <body>
+        <p id="p1">Sou um paragrafo <b>com algum texto a bold</b>.</p>
+        <button id="butao1">Mostra o texto</button>
+        <button id="butao2">Mostra o HTML</button>
+    </body>
+</html>

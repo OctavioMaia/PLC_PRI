@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pr SYSTEM "file:/C:/Users/Octavio/Documents/GitHub/PLC_PRI/TPC/7/pr.dtd">
+<pr>
+    <meta>
+        <id>PRI2017::A71369::TP7</id>
+        <title>Formulário</title>
+        <subtitle>Formulário relativo à submissão de Project Records</subtitle>
+        <bdate>31-10-2017</bdate>
+        <edate>02-11-2017</edate>
+        <supervisor url="http://www4.di.uminho.pt/~jcr/">José Carlos Ramalho</supervisor>
+    </meta>
+    <team>
+        <student>
+            <name>Octávio José Azevedo Maia</name>
+            <nr>A71369</nr>
+            <email>octaviojmaia@gmail.com</email>
+        </student>
+    </team>
+    <abstract>
+        <p>Foi proposta a criação de um formulário, sendo este utilizado numa plataforma para submissão de Project Records.</p>
+        <p>Para tal, foi criado um servidor em <i>JavaScript</i> que corre na máquina local (localhost) e processe os formulários enviados.</p>
+        <p>Ao aceder ao URL</p>
+        <code>
+            localhost:3333/envio
+        </code>
+        <p>é carregado o formulário responsável pela submissão dos Project Records.</p>
+        <p>Este formulário foi criado através do <i>pug</i>, uma ferramenta utilizada na criação de páginas web.</p>
+        <p>Após a submissão dos Project Records, todos os ficheiros anexados são copiados para a pasta <i>uploaded</i>.</p>
+    </abstract>
+    <deliverables>
+        <deliverable url="pr-server.js">Servidor (JavaScript)</deliverable>
+        <deliverable url="form-pr.pug">Formulário (PUG)</deliverable>
+        <deliverable url="pr-recebido.pug">Aviso recepção (PUG)</deliverable>
+        <deliverable url="tp7.xml">Project Record (XML)</deliverable>
+        <deliverable url="tp7.html">Project Record (HTML)</deliverable>
+    </deliverables>
+</pr>

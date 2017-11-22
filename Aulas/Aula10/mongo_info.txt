@@ -1,0 +1,1 @@
+mongo ds113906.mlab.com:13906/logs -u admin -p admin

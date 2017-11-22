@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="jquery-3.2.1.js"></script>
+        <script>
+            $(function(){
+                var flag=1;
+                $("#p1").on({
+                    mouseenter: function(){ if(flag) $(this).css("background-color", "lightgray"); },
+                    mouseleave: function(){ if (flag) $(this).css("background-color", "lightblue"); },
+                    click: function(){ 
+                        $(this).css("background-color", "yellow"); 
+                        flag=0;
+                    },
+                    dblclick: function(){flag=1;}
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <p id="p1">Sou um paragrafo e mudo de cor de fundo quando o rato me passa por cima ou quando me clicas com ele.</p>
+    </body>
+</html>

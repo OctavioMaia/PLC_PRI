@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pr SYSTEM "file:/C:/Users/Octavio/Documents/GitHub/PLC_PRI/TPC/6/pr.dtd">
+<pr>
+    <meta>
+        <id>PRI2017::A71369::TP6</id>
+        <title>Calculadora</title>
+        <subtitle>Calculadora desenvolvida em JavaScript</subtitle>
+        <bdate>23-10-2017</bdate>
+        <edate>26-10-2017</edate>
+        <supervisor url="http://www4.di.uminho.pt/~jcr/">José Carlos Ramalho</supervisor>
+    </meta>
+    <team>
+        <student>
+            <name>Octávio José Azevedo Maia</name>
+            <nr>A71369</nr>
+            <email>octaviojmaia@gmail.com</email>
+        </student>
+    </team>
+    <abstract>
+        <p>Foi proposta a criação de uma calculadora. Esta calculadora recebe como parâmetros dois operandos e a operação a realizar, através de um formulário numa página web.</p>
+        <p>Foi tambem proposta a criação de um servidor em <i>JavaScript</i> que corresse na máquina local (localhost) e que respondesse aos pedidos enviados.</p>
+        <p>Por exemplo, ao aceder ao URL</p>
+        <code>
+            localhost:4444/in
+        </code>
+        <p>é carregado o formulário responsável pelas diversas operações suportadas.</p>
+    </abstract>
+    <deliverables>
+        <deliverable url="calc.js">Calculadora (JavaScript)</deliverable>
+        <deliverable url="calc.html">Calculadora (HTML)</deliverable>
+        <deliverable url="tp6.xml">Project Record (XML)</deliverable>
+        <deliverable url="tp6.html">Project Record (HTML)</deliverable>
+    </deliverables>
+</pr>

@@ -1,0 +1,89 @@
+hmtl
+	head
+		meta(charset='UTF-8')
+		link(rel='stylesheet' href='https://w3schools.com/w3css/4/w3.css')
+	body
+		div(class='w3-container w3-blue')
+			h1 Formulário de Project Record
+		form(action='/processaForm' method='POST' enctype='multipart/form-data' class='w3-container  w3-light-grey')
+			fieldset
+				legend Metadata
+				table(width="100%" class="w3-striped")
+					tr
+						td(width="50%")
+							b
+								label Nome/Chave: 
+							input(type="text" name="chave" class="w3-input w3-border w3-round")
+						td
+							b 
+								label Data Início:
+							input(type="text" name="sdate" class="w3-input w3-border w3-round")
+					tr
+						td(width="50%")
+							b 
+								label Título: 
+							input(type="text" name="title" class="w3-input w3-border w3-round")
+						td
+							b 
+								label Data Fim: 
+							input(type="text" name="edate" class="w3-input w3-border w3-round")
+					tr
+						td(width="50%")
+							b 
+								label Sub-Título: 
+							input(type="text" name="subtitulo" class="w3-input w3-border w3-round" )
+			table(class="w3-striped" width="100%")
+				tr
+					td(width="50%")
+						fieldset
+							legend Aluno
+							b
+								label Nome:
+							input(type="text" name="anome" class="w3-input w3-border w3-round")
+							br
+							b
+								label Número:
+							input(type="text" name="anumero" class="w3-input w3-border w3-round")
+							br
+							b
+								label E-mail:
+							input(type="text" name="amail" class="w3-input w3-border w3-round")
+							br
+					td(width="50%")
+						fieldset
+							legend Supervisor
+							b
+								label Nome:
+							input(type="text" name="snome" class="w3-input w3-border w3-round")
+							br
+							b
+								label E-mail:
+							input(type="text" name="smail" class="w3-input w3-border w3-round")
+							br
+			fieldset
+				legend Resumo
+				textarea(rows="10", cols="200", wrap="physical", name="abstract")
+			table(class="w3-striped" width="100%")
+				tr
+					td(width="100%")
+						fieldset
+							legend Anexos
+							b
+								label Ficheiro 1:
+							input(type='file' name='ficheiro1' class="w3-input w3-border-0" )
+							b
+								label Ficheiro 2:
+							input(type='file' name='ficheiro2' class="w3-input w3-border-0")
+							b
+								label Ficheiro 3:
+							input(type='file' name='ficheiro3' class="w3-input w3-border-0")
+							b
+								label Ficheiro 4:
+							input(type='file' name='ficheiro4' class="w3-input w3-border-0")
+							b
+								label Ficheiro 5:
+							input(type='file' name='ficheiro5' class="w3-input w3-border-0")
+							b
+								label Ficheiro 6:
+							input(type='file' name='ficheiro6' class="w3-input w3-border-0")
+			input(type='submit' value='Enviar' class='w3-blue w3-input w3-round' width="100%")

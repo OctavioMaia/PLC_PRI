@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Exemplo 2</title>
+    </head>
+    <body>
+        <p>Clica no butao para ver de onde viest.</p>
+        <button onclick="myFunction()">De onde vim?</button>
+        <p id="demo"></p>
+        <p id="demo2"></p>
+        <script>
+            function myFunction(){
+                var x = "[ " + document.characterSet + " ]";
+                var y = "[ " + document.URL + " ]";
+                document.getElementById("demo").innerHTML = x;
+                document.getElementById("demo2").innerHTML = y;
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,26 @@
+<html>
+	<title>Calculadora</title>
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+	</head>
+	<body>
+		<fieldset>
+			<legend>Calculadora</legend>				
+			<form action="/calc" method="GET" class="w3-container">
+				<label for="op1">1º Operando: </label>
+				<input type="number" name="op1" id="op1" class="w3-input w3-border"/>
+				<label for="op2">2º Operando: </label>
+				<input type="number" name="op2" id="op2" class="w3-input w3-border"/>
+				<label for="op">Tipo de operação: </label>
+				<select name="op" id="op" class="w3-select w3-border">
+					<option value="+">Somar</option>
+					<option value="-">Subtrair</option>
+					<option value="*">Multiplicar</option>
+					<option value="/">Dividir</option>
+				</select>
+				<input type="submit" value="Executar"/>
+			</form>
+		</fieldset>
+	</body>
+</html>
