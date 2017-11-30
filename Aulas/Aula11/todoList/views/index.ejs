@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Lista de coisas a fazer...</title>
+    </head>
+    <body>
+        <h1>Lista de coisas a fazer...</h1>
+        <table>
+            <tr>
+                <th>Quem</th>
+                <th>O quê</th>
+                <th>Até quando</th>
+                <th>Registo</th>
+            </tr>
+            <% 
+            var d = new Date
+            var hora = d.toISOString()
+            for(var i=0; i<tarefas.length; i++){%>
+            <tr>
+                <td><%= tarefas[i].quem %></td>
+                <td><%= tarefas[i].desc %></td>
+                <td><%= tarefas[i].limite %></td>
+                <td><%= tarefas[i].hora %></td>
+            </tr>    
+            <% } %>
+        </table>
+
+        <form action='tarefa' method='POST'>
+            <input type='text' placeholder='Quem' name='quem'/>
+            <input type='text' placeholder='O quê' name='desc'/>
+            <input type='text' placeholder='Até quando' name='limite'/>
+            <input type='hidden' name='hora' value='<%= hora %>'/>
+            <input type='submit' value='Enviar'/>
+        </form>
+    </body>
+</html>
