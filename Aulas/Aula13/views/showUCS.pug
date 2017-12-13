@@ -1,0 +1,33 @@
+extends layout
+
+block content
+	div(class="w3-container")
+		header(class="w3-container w3-teal w3-center")
+			h1 Lista de UCs
+		div(class="w3-container")
+			table(class="w3-table-all")
+				tr
+					th Sigla
+					th Designação
+					th Curso
+					th Ano Letivo
+					th #Alunos
+				each uc in luc
+					tr 
+						td
+							a(href="/ucs/uc/" + uc.ident)= uc.ident
+						td= uc.designacao
+						td= uc.curso
+						td= uc.anoLetivo
+						td= uc.alunos.length	
+		header(class="w3-container w3-teal")
+			h4 Nova UC:
+		div(class="w3-card-4")
+			form(class="w3-container" method="POST" action="/ucs/uc")
+				input(class="w3-input" type="text" placeholder="Sigla" name="ident")
+				input(class="w3-input" type="text" placeholder="Designação" name="designacao")
+				input(class="w3-input" type="text" placeholder="Curso" name="curso")
+				input(class="w3-input" type="text" placeholder="Ano Letivo" name="anoLetivo")
+				input(type="submit" class="w3-btn w3-grey" value="Adicionar")
+		footer(class="w3-container w3-teal")
+			address Gerado por GUCS/PRI2017

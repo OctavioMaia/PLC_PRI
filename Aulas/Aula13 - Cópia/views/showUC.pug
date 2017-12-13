@@ -1,0 +1,51 @@
+extends layout
+
+block content
+    div(class='w3-container')
+        header(class='w3-container w3-teal w3-center')
+            h1= uc.designacao
+    div(class='w3-row')
+        div(class='w3-col s6 w3-padding')
+            div(class='w3-card-4')
+                header(class='w3-container w3-teal')
+                    h3 Caraterização
+                div(class='w3-container')
+                    table(class='w3-table')
+                        tr
+                            th Sigla
+                            td= uc.ident
+                        tr
+                            th Designação
+                            td= uc.designacao
+                        tr
+                            th Curso
+                            td= uc.curso
+                        tr
+                            th Ano Letivo
+                            td= uc.anoLetivo
+                        tr
+                            th #Alunos
+                            td= uc.alunos.length
+        div(class='w3-col s6 w3-padding')
+            div(class='w3-card-4')
+                header(class='w3-container w3-teal')
+                    h3 Alunos
+                div(class='w3-container')
+                    table(class='w3-table')
+                        tr
+                            th Número
+                            th Nome
+                        each a in uc.alunos
+                            tr
+                                td 
+                                    a(href='/ucs/uc/' + uc.ident + '/aluno/' + a.numero)= a.numero
+                                td= a.nome                        
+        header(class='w3-container w3-teal')
+            h4 Nova UC:
+        div(class='w3-card-4')
+            form(class='w3-container' method='POST' action='/ucs/uc' + uc.ident + '/aluno')
+                input(class='w3-input' type='text' placeholder='Numero' nome='numero')
+                input(class='w3-input' type='text' placeholder='Nome' nome='nome')
+                input(type='submit' class='w3-btn w3-teal' value='Adicionar')
+        footer(class='w3-container w3-teal')
+            adress Gerado por GUCS/PRI2017 

@@ -1,0 +1,15 @@
+{
+  "name": "form-pr",
+  "version": "1.0.0",
+  "description": "App para submissão de Project Records",
+  "main": "pr-server.js",
+  "scripts": {
+    "test": "node pr-server.js"
+  },
+  "author": "ojm",
+  "license": "ISC",
+  "dependencies": {
+    "formidable": "^1.1.1",
+    "pug": "^2.0.0-rc.4"
+  }
+}

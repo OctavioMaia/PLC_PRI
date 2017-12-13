@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  header(class='w3-container w3-teal')
+    h1 Lista das partituras disponíveis
+  div(class='w3-container')
+    table(class='w3-table-all')
+      tr
+        th Obra
+        th Tipo
+        th Voz
+        th Clave
+        th Afinação
+        th Partitura
+      each p in plist
+        tr(id='p._id')
+          td= p.obra
+          td= p.tipo
+          td= p.voz
+          td= p.clave
+          td= p.afinacao
+          td
+            a(href='/partituras/' + p.path)= p.path
+  footer('w3-container w3-teal')
+    address Gerado nas aulas de PRI2017

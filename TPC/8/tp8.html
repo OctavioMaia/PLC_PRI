@@ -1,0 +1,133 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta charset="UTF-8">
+      <link rel="stylesheet" type="text/css" href="bootstrap-css/css/bootstrap.css">
+      <title>Project Record</title>
+   </head>
+   <body>
+      <div class="container">
+         <h1 align="center">Project Record</h1>
+         
+         <hr>
+         <h2 align="left">Metadata</h2>
+         <table width="100%">
+            <tr>
+               <td><b>ID: </b>PRI2017::A71369::TP8
+               </td>
+               <td><b>BEGIN DATE: </b>01-11-2017
+               </td>
+            </tr>
+            <tr>
+               <td><b>TITLE: </b>Formulário
+               </td>
+               <td><b>END DATE: </b>05-11-2017
+               </td>
+            </tr>
+            <tr>
+               <td><b>SUBTITLE: </b>Formulário relativo à submissão de Project Records
+               </td>
+               <td><b>SUPERVISOR: </b><a href="http://www4.di.uminho.pt/~jcr/">José Carlos Ramalho</a></td>
+            </tr>
+         </table>
+         
+         <hr>
+         <h2 align="left">Workteam</h2>
+         <ul>
+            
+            <ul>
+               <li><b>Name: </b>Octávio José Azevedo Maia<br><b>Number: </b>A71369<br><b>Email: </b><a href="mailto:octaviojmaia@gmail.com">octaviojmaia@gmail.com</a><br></li>
+            </ul>
+            
+         </ul>
+         
+         <hr>
+         <h2 align="left">Abstract</h2>
+         <ul>
+            
+            <p>Foi proposta a criação de um formulário, sendo este utilizado numa plataforma para
+               submissão de Project Records.
+            </p>
+            
+            <p>Para tal, foi criado um servidor em <i>JavaScript</i> que corre na máquina local (localhost) e processe os formulários enviados.
+            </p>
+            
+            <p>Ao aceder ao URL</p>
+            <pre><code>
+            localhost:3333/envio
+        </code></pre>
+            <p>é carregado o formulário responsável pela submissão dos Project Records.</p>
+            
+            <p>Este formulário foi criado através do <i>pug</i>, uma ferramenta utilizada na criação de páginas web.
+            </p>
+            
+            <p>Após a submissão dos Project Records, todos os ficheiros anexados são copiados para
+               a pasta <i>uploaded</i>.
+            </p>
+            
+            <p>A unica diferença relativa ao TP anterior é a possibilidade da adição e remoção de
+               ficheiros. Enquanto que no TP anterior existiam 6 ficheiros fixos, neste existe 1,
+               sendo possível adicionar até 6.
+            </p>
+            
+            <p>De modo a ser possível esta interação, foi criado um script chamado <i>fileHandler.js</i> cuja função é adicionar ou remover entradas da tabela <b>files</b>. O código responsável por tal funcionalidade é o seguinte:
+            </p>
+            <pre><code>
+            $('#files').append(...)
+            
+            ...
+            
+            $(name).remove()
+        </code></pre>
+            <p>O script é carregado no <i>pug</i> responsável pelo formulário através do seguinte código:
+            </p>
+            <pre><code>
+            script
+                include jquery-3.2.1.min.js
+            script
+                include fileHandler.js
+        </code></pre>
+            <p>No <i>pug</i> responsável pela receção do formulário é feito um ciclo por cada ficheiro recebido,
+               através do seguinte código:
+            </p>
+            <pre><code>
+            each file in list
+                tr
+                    th Ficheiro:
+                    td #{file}
+        </code></pre>
+            </ul>
+         
+         <hr>
+         <h2 align="left">Deliverables</h2>
+         <ul>
+            
+            <ul>
+               <li><a href="pr-server.js">Servidor (JavaScript)</a></li>
+            </ul>
+            
+            <ul>
+               <li><a href="fileHandler.js">File Handler (JavaScript)</a></li>
+            </ul>
+            
+            <ul>
+               <li><a href="form-pr.pug">Formulário (PUG)</a></li>
+            </ul>
+            
+            <ul>
+               <li><a href="pr-recebido.pug">Aviso recepção (PUG)</a></li>
+            </ul>
+            
+            <ul>
+               <li><a href="tp8.xml">Project Record (XML)</a></li>
+            </ul>
+            
+            <ul>
+               <li><a href="tp8.html">Project Record (HTML)</a></li>
+            </ul>
+            
+         </ul>
+         
+      </div>
+   </body>
+</html>

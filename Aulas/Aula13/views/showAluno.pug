@@ -1,0 +1,49 @@
+extends layout
+
+block content
+    div(class="w3-container")
+      header(class='w3-container w3-teal w3-center')
+        h1= a.nome
+    div(class="w3-row")
+        div(class="w3-col s6 w3-padding")
+            div(class="w3-card-4")
+                header(class="w3-container w3-teal")
+                    h3 Caraterização
+                div(class="w3-container")
+                    table(class='w3-table')
+                        tr
+                            th Número
+                            td= a.numero
+                        tr
+                            th Nome
+                            td= a.nome
+                        tr
+                            th Unidade Curricular
+                            td= a.curso
+        div(class="w3-col s6 w3-padding")
+            div(class="w3-card-4")
+                header(class="w3-container w3-teal")
+                    h3 Elementos de avaliação / Resultados
+                div(class="w3-container")
+                    table(class='w3-table')
+                        tr
+                            th Designação
+                            th Nota
+                        each n in a.notas 
+                            tr
+                                td= n.ident
+                                td= n.nota
+    div(class='w3-container')
+        header(class='w3-container w3-teal')
+            h4 Nova nota:
+    div(class="w3-card-4")
+        form(class="w3-container" method="POST" action="/ucs/uc/"+a.curso+"/aluno/"+a.numero+"/nota")
+            input(class="w3-input" type="text" placeholder="Designação" name="ident")
+            input(class="w3-input" type="text" placeholder="Nota" name="nota")
+            input(class="w3-btn w3-teal" type="submit" value="Adicionar")
+    div(class="w3-container")
+        footer(class='w3-container w3-teal')
+            div(class="w3-bar")
+                a(href="/ucs" class="w3-bar-item w3-button") Lista de Cursos
+                a(class="w3-bar-item w3-button" href="/ucs/uc/"+a.curso)= a.curso
+            address Gerado por GUCs by jcr
