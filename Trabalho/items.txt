@@ -1,0 +1,29 @@
+EU  -> Item+ 
+Item ->( titulo  data  descrição  tipo  privacidade local?   Elem+)
+Elem  -> ficheiroAnexo  |  evento  | narracao | opiniao | individuos …..
+ficheiroAnexo -> foto | video | audio | pdf | …
+
+
+- Receita culinária:
+    Título, Data, Privacidade, Descrição: que pode ser um bloco de texto ou texto estruturado (ingredientes, instruções de preparação, etc);
+
+-Registo desportivo:
+    Título, Data, Privacidade, Descrição, Desporto/atividade, Duração, Foto*, Ficheiro GPX*;
+
+-Casamento (evento):
+    Título, Data, Privacidade, Descrição, Local, individuos, Nubentes;
+
+-Registo de formação:
+    Título, Data, Privacidade, Descrição, Creditação, Etc;
+
+-Ideia:
+    Título, Data, Privacidade, Descrição, individuos, Palavras-chave/classificadores;
+
+-Álbum fotográfico:
+    Título, Data, Privacidade, Descrição, Local, individuos, Foto+;
+
+-Participação num evento científico
+    Título, Data, Privacidade, Descrição, Local, individuo*, Ficheiros anexados*;
+
+- Ocorrência (algo que aconteceu fora do normal)
+    Título, Data, Privacidade, Descrição, Local, 1 ou mais individuos;
