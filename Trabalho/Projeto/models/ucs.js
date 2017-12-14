@@ -14,7 +14,7 @@ var PublicacaoSchema = new Schema({
     descricao: {type: String, required: true},
     local: {type: String},
 	notas: {"oneOf": [
-        {}
+        {casamento: CasamentoSchema}
     ]}
 })
 
