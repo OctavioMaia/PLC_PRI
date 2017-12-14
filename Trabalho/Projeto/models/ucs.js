@@ -1,8 +1,8 @@
 var mongoose = require('mongoose')
 var Schema = mongoose.Schema
 
-var EventoSchema = new Schema({
-    
+var CasamentoSchema = new Schema({
+
 
 })
 
@@ -12,8 +12,10 @@ var PublicacaoSchema = new Schema({
     titulo: {type: String, required: true},
     data: {type: String, required: true},
     descricao: {type: String, required: true},
-    local: {type: String, required: false},
-	notas: {"oneOf": []}
+    local: {type: String},
+	notas: {"oneOf": [
+        {}
+    ]}
 })
 
 var EuSchema = new Schema({
