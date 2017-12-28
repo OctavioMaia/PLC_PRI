@@ -7,10 +7,10 @@
 grammar OntoEu;
 
 
-ontologia: eu+
+ontologia: 'Diario' '{'eu+'}'
          ;
 
-eu: nome ',' idade ',' genero ',' email ',' morada ',' profissao ',' numeroTel '{' publicacao+ '}'
+eu: nome ',' idade ',' genero ',' EMAIL ',' morada ',' profissao ',' numeroTel '{' publicacao* '}'
   ;
 
 publicacao: titulo DATA descricao subtipo ';'
@@ -19,7 +19,7 @@ publicacao: titulo DATA descricao subtipo ';'
 subtipo: casamento
        | receita
        | nascimento
-       | pensamento
+       | ideia
        | eventoCientifico
        | eventoDesportivo
        ;
@@ -30,16 +30,16 @@ casamento: nome
 receita: PAL
        ;
 
-nascimento:
+nascimento: nome genero 'pai: 'nome 'mãe: 'nome
           ;
 
-pensamento:
-          ;
+ideia:
+     ;
 
 eventoCientifico:
                 ;
 
-eventoDesportivo:
+eventoDesportivo: (nome', ')* nome 'Resultado: ' PAL
                 ;
 
 
@@ -53,8 +53,6 @@ genero: 'Masculino'
       | 'Feminino'  
       ;
 
-email: 
-     ;
 
 morada: PAL
       ;
@@ -77,7 +75,7 @@ NUM: [0-9]+;
 /*
 * Adicionar 3 da mesma coisa = coisa[3] ????
 */
-DATA: [0-3][0-9]'-'[01][0-9]'-'[01][0-9][0-9][0-9];
+DATA: [0-3][0-9]'-'[01][0-9]'-'[0|2][0-9][0-9][0-9];
 
 Sep:('\r'? '\n' | '\t' | ' ')+ ->skip;
 Comment:'%%'~('\n')*'\n' ->skip;
