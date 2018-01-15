@@ -1,5 +1,5 @@
 EU  -> Item+ 
-Item ->( titulo  data  descrição  tipo  privacidade local?   Elem+)
+Item ->( titulo  data  descrição  tipo  privacidade local? Elem+)
 Elem  -> ficheiroAnexo  |  evento  | narracao | opiniao | individuos …..
 ficheiroAnexo -> foto | video | audio | pdf | …
 
@@ -10,20 +10,25 @@ ficheiroAnexo -> foto | video | audio | pdf | …
 -Registo desportivo:
     Título, Data, Privacidade, Descrição, Desporto/atividade, Duração, Foto*, Ficheiro GPX*;
 
--Casamento (evento):
-    Título, Data, Privacidade, Descrição, Local, individuos, Nubentes;
+-Evento:
+    Título, Data, Privacidade, tipoEvento, Descrição, Local, individuo*, convidado*;
 
 -Registo de formação:
     Título, Data, Privacidade, Descrição, Creditação, Etc;
 
--Ideia:
-    Título, Data, Privacidade, Descrição, individuos, Palavras-chave/classificadores;
+-Ideia/Pensamento:
+    Título, Data, Privacidade, Descrição, individuo*, Palavras-chave/classificadores;
 
--Álbum fotográfico:
-    Título, Data, Privacidade, Descrição, Local, individuos, Foto+;
+-Álbum fotográfico/videos:
+    Título, Data, Privacidade, Descrição, Local, individuo*, Foto|video+;
+
+-Coletanea de música:
+    Título, Data, Privacidade, Descrição, Local, individuo*, Foto+;
 
 -Participação num evento científico
     Título, Data, Privacidade, Descrição, Local, individuo*, Ficheiros anexados*;
 
 - Ocorrência (algo que aconteceu fora do normal)
-    Título, Data, Privacidade, Descrição, Local, 1 ou mais individuos;
+    Título, Data, Privacidade, Descrição, Local, individuo*;
+
+-  
