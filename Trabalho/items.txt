@@ -27,3 +27,6 @@ ficheiroAnexo -> foto | video | audio | pdf | …
 
 - Ocorrência (algo que aconteceu fora do normal)
     Título, Data, Privacidade, Descrição, Local, 1 ou mais individuos;
+
+
+

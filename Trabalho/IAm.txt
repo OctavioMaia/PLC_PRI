@@ -1,0 +1,13 @@
+Ontologia IAm
+
+conceitos {
+    Person, Publication, Aviation, Wings of Glory, Thought, Idea, Event
+}
+
+individuo{
+    Lara, Alfred, Wedding, Birthday
+}
+
+relacao{
+    is-a, 
+}
