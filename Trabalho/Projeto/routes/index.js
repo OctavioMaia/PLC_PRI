@@ -10,7 +10,7 @@ router.get('/profile', mid.requiresLogin, function(req, res, next) {
         if (error) {
           return next(error);
         } else {
-          return res.render('profile', { title: 'Profile', name: user.name});
+          return res.render('profile', { title: 'Profile', user});
         }
       });
 });
