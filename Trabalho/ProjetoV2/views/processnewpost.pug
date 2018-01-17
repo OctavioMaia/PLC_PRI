@@ -12,7 +12,10 @@ block content
               if (val.text!='Privacy')
                 div.form-group
                     label(for=val.text) #{val.text}:
-                    input#name.form-control(type=val.type, name=val.text)
+                    if (!val.obligatory)
+                      input#name.form-control(type=val.type, name=val.text)
+                    else
+                      input#name.form-control(type=val.type, name=val.text required)
               else
                 label(for='privacy') Privacy:
                   select(type="text", class="form-control" name="Privacy")
@@ -21,11 +24,17 @@ block content
             else
               div.form-group
                 label(for=val.text) #{val.text}
-                input#name.form-control(type=val.type, name=val.text value=name readonly)
+                if (!val.obligatory)
+                  input#name.form-control(type=val.type, name=val.text value=name readonly)
+                else
+                  input#name.form-control(type=val.type, name=val.text value=name readonly required)
         each val in extras
             div.form-group
                 label(for=val.text) #{val.text}:
-                input#name.form-control(type=val.type, name=val.text)
+                if (!val.obligatory)
+                  input#name.form-control(type=val.type, name=val.text)
+                else
+                  input#name.form-control(type=val.type, name=val.text required)
         div(class='btn-group')
           a(class='btn btn-primary disabled')
             i(class='fa fa-check-square-o' style='width:24px; height:24px')

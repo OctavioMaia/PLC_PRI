@@ -1,5 +1,5 @@
 var User       = require('../app/models/user');
-var Post, Chronicle  = require('../app/models/post');
+var Photo,SportsRegistry,PhotoAlbum,AcademicRegistry,ScientificEvent,Thought,Idea,Recipe,Birth,Wedding,AcademicWork,Chronicle = require('../app/models/post');
 
 module.exports = function(app, passport) {
 // normal routes ===============================================================
@@ -52,19 +52,28 @@ module.exports = function(app, passport) {
     
     // NEW RECIPE ==============================
     app.get('/newRecipe', function(req, res) {
-        res.render('processnewpost',{ title: 'New recipe'});
+        var reqs = [{'type':'text','text':'Type','obligatory':true},
+                    {'type':'text','text':'Location','obligatory':false},
+                    {'type':'text','text':'Privacy','obligatory':true},
+                    {'type':'text','text':'Title','obligatory':true},
+                    {'type':'date','text':'Date','obligatory':true},
+                    {'type':'text','text':'Description','obligatory':true}];
+        var extras = [{'type':'text','text':'Ingredients','obligatory':true},
+                      {'type':'text','text':'Instructions','obligatory':true}];
+        var name = 'Recipe';
+        res.render('processnewpost',{ title: 'Recipe'});
     });
 
     // NEW IDEa ==============================
     app.get('/newChronicle', function(req, res) {
-        var reqs = [{'type':'text','text':'Type'},
-                    {'type':'text','text':'Location'},
-                    {'type':'text','text':'Privacy'},
-                    {'type':'text','text':'Title'},
-                    {'type':'date','text':'Date'},
-                    {'type':'text','text':'Description'}];
-        var extras = [{'type':'text','text':'Theme'},
-                      {'type':'text','text':'Text'}];
+        var reqs = [{'type':'text','text':'Type','obligatory':true},
+                    {'type':'text','text':'Location','obligatory':false},
+                    {'type':'text','text':'Privacy','obligatory':true},
+                    {'type':'text','text':'Title','obligatory':true},
+                    {'type':'date','text':'Date','obligatory':true},
+                    {'type':'text','text':'Description','obligatory':true}];
+        var extras = [{'type':'text','text':'Theme','obligatory':true},
+                      {'type':'text','text':'Text','obligatory':true}];
         var name = 'Chronicle';
         res.render('processnewpost',{ title: 'Chronicle',name,reqs,extras});
     });
@@ -147,35 +156,55 @@ module.exports = function(app, passport) {
         }
     });
 
-      //add post
-      app.post('/processnewpost', isLoggedIn, function(req, res, next) {
-          if (req.body.Type) {
-            var nova = new Chronicle({
-                ident: req.user.id,
-                location: req.body.Location,
-                privacy: req.body.Privacy,
-                title: req.body.Title,
-                date: req.body.Date,
-                description: req.body.Description,
-                type: req.body.Type,
-                theme: req.body.Theme,
-                text: req.body.Text
-            })
+    //add post
+    app.post('/processnewpost', isLoggedIn, function(req, res, next) {
+        if (req.body.Type) {
+            var post
+            switch (req.body.Type) {
+                case 'Chronicle':
+                    console.log("chronicle")
+                    post = new Chronicle();
+                    break;
+                case 'Recipe':
+                    console.log("recipe")
+                    post = new Recipe();
+                    break;
+                default:
+                    console.log("wtf")
+                    post = undefined
+                    break;
+            }
+           
+            console.log(post)
+            //populate the previous var
+            if(post!=undefined){
+                post.ident = req.user.id,
+                post.location= req.body.Location,
+                post.privacy= req.body.Privacy,
+                post.title= req.body.Title,
+                post.date= req.body.Date,
+                post.description= req.body.Description,
+                post.type= req.body.Type,
+                post.theme= req.body.Theme,
+                post.text= req.body.Text
+            }
 
-            console.log(nova)
-            nova.save((err)=>{
+            console.log(post)
+            post.save(function(err){
                 if(!err){
-                    console.log('add post')
+                    console.log('add post');
                     return res.redirect('/newsfeed');
-                }else
-                    console.log(err)
+                }else{
+                    console.log(err);
+                    return next(err);
+                }
             });
-          } else {
+        } else {
             var err = new Error('Name and passwords are mandatory.');
             err.status = 400;
             return next(err);
-          }
-      });
+        }
+    });
 
 // =============================================================================
 // AUTHENTICATE (FIRST LOGIN) ==================================================
