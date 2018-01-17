@@ -72,13 +72,13 @@ var ChronicleSchema = new Schema({
 })
 
 var PublicationSchema = new Schema({
-    ident: {type: String, required: false},
+    ident: {type: String, required: true},
     location: {type: String, required: false},
-    privacy: {type: String, required: false},
-    title: {type: String, required: false},
-    date: {type: Date, required: false},
-    description: {type: String, required: false},
-    type: {type: String, required: false},
+    privacy: {type: String, required: true},
+    title: {type: String, required: true},
+    date: {type: Date, required: true},
+    description: {type: String, required: true},
+    type: {type: String, required: true},
     notes: {"oneOf": [  
         {wedding: WeddingSchema},
         {recipe: RecipeSchema},

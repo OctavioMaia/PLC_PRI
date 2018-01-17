@@ -61,7 +61,7 @@ module.exports = function(app, passport) {
                     {'type':'text','text':'Location'},
                     {'type':'text','text':'Privacy'},
                     {'type':'text','text':'Title'},
-                    {'type':'text','text':'Date'},
+                    {'type':'date','text':'Date'},
                     {'type':'text','text':'Description'}];
         var extras = [{'type':'text','text':'Theme'},
                       {'type':'text','text':'Text'}];
@@ -93,8 +93,6 @@ module.exports = function(app, passport) {
               return next(err);
             }
 
-            console.log(req.body)
-
             // create object with form input
             var userData = {
               name: req.body.name,
@@ -106,12 +104,7 @@ module.exports = function(app, passport) {
             };
       
             //finds the current user in order to update
-            //console.log(req.body);
             User.findOne({ '_id' : req.user.id }, function(err, user){
-                //console.log("local: " + user._id)
-                //console.log("google: " + user.google.id)
-                //console.log("fb: " + user.facebook.id)
-
                 if(user.google.id!=undefined){
                     console.log("entrei google")
                     user.google.name       = userData.name
@@ -140,55 +133,40 @@ module.exports = function(app, passport) {
                 }
       
                 user.save(function(err){
-                if(err){
-                  return next(err);
-                }
-                else{
-                  return res.redirect('/profile');
-                }
-              });
+                    if(err){
+                        return next(err);
+                    }else{
+                        return res.redirect('/profile');
+                    }
+                });
             });
-          } else {
+        }else{
             var err = new Error('Name and passwords are mandatory.');
             err.status = 400;
             return next(err);
-          }
-      });
+        }
+    });
 
       //add post
       app.post('/processnewpost', isLoggedIn, function(req, res, next) {
-          //console.log(req.body)
-          //console.log(req.user)
-          
           if (req.body.Type) {
-            var post = req.body
-            var user = req.user.id
-
-            // create object with form input
-            var postData = {
+            var nova = new Post({
                 ident: req.user.id,
                 location: req.body.Location,
                 privacy: req.body.Privacy,
                 title: req.body.Title,
                 date: req.body.Date,
                 description: req.body.Description,
-                type: req.body.Type
-            };
+                type: req.body.Type,
+                notes: []
+            })
 
-            
-
-            newPost = new Post(postData)
-            
-            console.log(newPost)
-
-            Post.insert(newPost, function(err, post){
-                if(err){
-                    console.log(err)
-                  return next(err);
-                }
-                else{
-                  return res.redirect('/profile');
-                }
+            nova.save((err)=>{
+                if(!err){
+                    console.log('add post')
+                    return res.redirect('/newsfeed');
+                }else
+                    next(err);
             });
           } else {
             var err = new Error('Name and passwords are mandatory.');
