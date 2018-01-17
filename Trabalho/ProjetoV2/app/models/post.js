@@ -76,9 +76,23 @@ var PublicationSchema = new Schema({
     location: {type: String, required: false},
     privacy: {type: String, required: false},
     title: {type: String, required: false},
-    date: {type: String, required: false},
+    date: {type: Date, required: false},
     description: {type: String, required: false},
-    type: {type: String, required: false}
+    type: {type: String, required: false},
+    notes: {"oneOf": [  
+        {wedding: WeddingSchema},
+        {recipe: RecipeSchema},
+        {birth: BirthSchema},
+        {thought: ThoughtSchema},
+        {idea: IdeaSchema},
+        {scientificEvent: ScientificEventSchema},
+        {academicRegistry: AcademicRegistrySchema},
+        {photo: PhotoSchema},
+        {photoAlbum: PhotoAlbumSchema},
+        {sportsRegistry: SportsRegistrySchema},
+        {academicRegistry: AcademicRegistrySchema},
+        {chronicle: ChronicleSchema}
+    ]}
 })
 
 // create the model for users and expose it to our app
