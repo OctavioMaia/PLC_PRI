@@ -118,13 +118,13 @@ module.exports = function(app, passport) {
             failureFlash : true // allow flash messages
         }));
 
-        // LOCALREGISTER ==============================
-        app.get('/localregister', function(req, res) {
-            res.render('localregister',{ title: 'Local Sign Up'});
+        // REGISTER ==============================
+        app.get('/register', function(req, res) {
+            res.render('register',{ title: 'Local Sign Up'});
         });
 
         // process the signup form
-        app.post('/localregister', passport.authenticate('local-signup', {
+        app.post('/register', passport.authenticate('local-signup', {
             successRedirect : '/profile', // redirect to the secure profile section
             failureRedirect : '/error', // redirect back to the register page if there is an error
             failureFlash : true // allow flash messages
