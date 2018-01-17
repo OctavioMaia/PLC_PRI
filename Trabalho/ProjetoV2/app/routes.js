@@ -1,5 +1,5 @@
 var User       = require('../app/models/user');
-var Post       = require('../app/models/post');
+var Post, Chronicle  = require('../app/models/post');
 
 module.exports = function(app, passport) {
 // normal routes ===============================================================
@@ -150,7 +150,7 @@ module.exports = function(app, passport) {
       //add post
       app.post('/processnewpost', isLoggedIn, function(req, res, next) {
           if (req.body.Type) {
-            var nova = new Post({
+            var nova = new Chronicle({
                 ident: req.user.id,
                 location: req.body.Location,
                 privacy: req.body.Privacy,
@@ -158,15 +158,17 @@ module.exports = function(app, passport) {
                 date: req.body.Date,
                 description: req.body.Description,
                 type: req.body.Type,
-                notes: []
+                theme: req.body.Theme,
+                text: req.body.Text
             })
 
+            console.log(nova)
             nova.save((err)=>{
                 if(!err){
                     console.log('add post')
                     return res.redirect('/newsfeed');
                 }else
-                    next(err);
+                    console.log(err)
             });
           } else {
             var err = new Error('Name and passwords are mandatory.');

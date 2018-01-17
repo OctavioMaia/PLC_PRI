@@ -67,6 +67,13 @@ var AcademicWorkSchema = new Schema({
 })
 
 var ChronicleSchema = new Schema({
+    ident: {type: String, required: true},
+    location: {type: String, required: false},
+    privacy: {type: String, required: true},
+    title: {type: String, required: true},
+    date: {type: Date, required: true},
+    description: {type: String, required: true},
+    type: {type: String, required: true},
     theme: {type: String, required: true},
     text: {type: String, required: true}
 })
@@ -78,22 +85,9 @@ var PublicationSchema = new Schema({
     title: {type: String, required: true},
     date: {type: Date, required: true},
     description: {type: String, required: true},
-    type: {type: String, required: true},
-    notes: {"oneOf": [  
-        {wedding: WeddingSchema},
-        {recipe: RecipeSchema},
-        {birth: BirthSchema},
-        {thought: ThoughtSchema},
-        {idea: IdeaSchema},
-        {scientificEvent: ScientificEventSchema},
-        {academicRegistry: AcademicRegistrySchema},
-        {photo: PhotoSchema},
-        {photoAlbum: PhotoAlbumSchema},
-        {sportsRegistry: SportsRegistrySchema},
-        {academicRegistry: AcademicRegistrySchema},
-        {chronicle: ChronicleSchema}
-    ]}
+    type: {type: String, required: true}
 })
 
 // create the model for users and expose it to our app
 module.exports = mongoose.model('Post', PublicationSchema, 'posts');
+module.exports = mongoose.model('Chronicle', ChronicleSchema, 'posts');
