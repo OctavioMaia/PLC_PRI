@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  .main.container.row
+    .col-md-6.col-md-offset-3
+      h1.display-4.m-b-2 Log in
+        br
+        a(href="/locallogin" class="btn btn-secondary")
+            span(class="fa fa-user") Local Log in
+        br
+        a(href="/auth/facebook" class="btn btn-primary")
+            span(class="fa fa-facebook") Facebook Log in
+        br
+        a(href="/auth/google" class="btn btn-danger")
+            span(class="fa fa-google-plus") Google+ Log in
