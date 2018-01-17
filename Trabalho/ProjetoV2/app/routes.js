@@ -1,4 +1,5 @@
 var User       = require('../app/models/user');
+var Post       = require('../app/models/post');
 
 module.exports = function(app, passport) {
 // normal routes ===============================================================
@@ -42,6 +43,30 @@ module.exports = function(app, passport) {
     // NEWSFEED ==============================
     app.get('/newsfeed', function(req, res) {
         res.render('newsfeed',{ title: 'News Feed'});
+    });
+
+    // NEWPOST ==============================
+    app.get('/newpost', isLoggedIn, function(req, res) {
+        res.render('newpost',{ title: 'New Post'});
+    });
+    
+    // NEW RECIPE ==============================
+    app.get('/newRecipe', function(req, res) {
+        res.render('processnewpost',{ title: 'New recipe'});
+    });
+
+    // NEW IDEa ==============================
+    app.get('/newChronicle', function(req, res) {
+        var reqs = [{'type':'text','text':'Type'},
+                    {'type':'text','text':'Location'},
+                    {'type':'text','text':'Privacy'},
+                    {'type':'text','text':'Title'},
+                    {'type':'text','text':'Date'},
+                    {'type':'text','text':'Description'}];
+        var extras = [{'type':'text','text':'Theme'},
+                      {'type':'text','text':'Text'}];
+        var name = 'Chronicle';
+        res.render('processnewpost',{ title: 'Chronicle',name,reqs,extras});
     });
 
     // EDITPROFILE ==============================
@@ -122,6 +147,48 @@ module.exports = function(app, passport) {
                   return res.redirect('/profile');
                 }
               });
+            });
+          } else {
+            var err = new Error('Name and passwords are mandatory.');
+            err.status = 400;
+            return next(err);
+          }
+      });
+
+      //add post
+      app.post('/processnewpost', isLoggedIn, function(req, res, next) {
+          //console.log(req.body)
+          //console.log(req.user)
+          
+          if (req.body.Type) {
+            var post = req.body
+            var user = req.user.id
+
+            // create object with form input
+            var postData = {
+                ident: req.user.id,
+                location: req.body.Location,
+                privacy: req.body.Privacy,
+                title: req.body.Title,
+                date: req.body.Date,
+                description: req.body.Description,
+                type: req.body.Type
+            };
+
+            
+
+            newPost = new Post(postData)
+            
+            console.log(newPost)
+
+            Post.insert(newPost, function(err, post){
+                if(err){
+                    console.log(err)
+                  return next(err);
+                }
+                else{
+                  return res.redirect('/profile');
+                }
             });
           } else {
             var err = new Error('Name and passwords are mandatory.');
