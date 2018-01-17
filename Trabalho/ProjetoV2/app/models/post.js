@@ -12,7 +12,7 @@ var PhotoSchema = new Schema({
     description: {type: String, required: true},
     type: {type: String, required: true},
     path: {type: String, required: true},
-    people: {type: [String], required: false}
+    people: {type: String, required: false}
 })
 
 var SportsRegistrySchema = new Schema({
@@ -24,13 +24,13 @@ var SportsRegistrySchema = new Schema({
     description: {type: String, required: true},
     type: {type: String, required: true},
     sport: {type: String, required: true},
-    duration: {type: String, required: false},
-    gpxFile: {type: String, required: true},
-    participants: {type: [String], required: true},
-    results: {type: String, required: true},
-    photo: [PhotoSchema]
+    duration: {type: String, required: true},
+    gpxFile: {type: String, required: false},
+    participants: {type: String, required: false},
+    results: {type: String, required: false},
+    //photo: [PhotoSchema]
 })
-
+/*
 var PhotoAlbumSchema = new Schema({
     ident: {type: String, required: true},
     location: {type: String, required: false},
@@ -40,8 +40,8 @@ var PhotoAlbumSchema = new Schema({
     description: {type: String, required: true},
     type: {type: String, required: true},
     album_title: {type: String, required: true},
-    album: [PhotoSchema]
-})
+    //album: [PhotoSchema]
+})*/
 
 var AcademicRegistrySchema = new Schema({
     ident: {type: String, required: true},
@@ -55,7 +55,7 @@ var AcademicRegistrySchema = new Schema({
     credits: {type: String, required: true}
 })
 
-var ScientificEventSchema = new Schema({
+var eventSchema = new Schema({
     ident: {type: String, required: true},
     location: {type: String, required: false},
     privacy: {type: String, required: true},
@@ -63,8 +63,11 @@ var ScientificEventSchema = new Schema({
     date: {type: Date, required: true},
     description: {type: String, required: true},
     type: {type: String, required: true},
-    files: {type: [String], required: true},
-    guests: {type: [String], required: true}
+    files: {type: String, required: true},
+    guests: {type: String, required: false},
+    hosts: {type: String, required: false},
+    eventType: {type: String, require: true},
+    text: {type: String, required: false}
 })
 
 var ThoughtSchema = new Schema({
@@ -75,7 +78,8 @@ var ThoughtSchema = new Schema({
     date: {type: Date, required: true},
     description: {type: String, required: true},
     type: {type: String, required: true},
-    key_words: {type: [String], required: true}
+    key_words: {type: String, required: true},
+    text: {type:String, required: true}
 })
 
 var IdeaSchema = new Schema({
@@ -86,8 +90,9 @@ var IdeaSchema = new Schema({
     date: {type: Date, required: true},
     description: {type: String, required: true},
     type: {type: String, required: true},
-    key_words: {type: [String], required: true},
-    priority: {type: String, required: true}
+    key_words: {type: String, required: true},
+    priority: {type: String, required: true},
+    text: {type:String, required: true}
 })
 
 var RecipeSchema = new Schema({
@@ -113,7 +118,7 @@ var BirthSchema = new Schema({
     type: {type: String, required: true},
     child_name: {type: String, required: true},
     child_gender: {type: String, required: true},
-    parents: {type: [String], required: true}
+    parents: {type: String, required: true}
 })
 
 var WeddingSchema = new Schema({
@@ -124,9 +129,9 @@ var WeddingSchema = new Schema({
     date: {type: Date, required: true},
     description: {type: String, required: true},
     type: {type: String, required: true},
-    couple: {type: [String], required: true},
-    guests: {type: [String], required: true},
-    menu: {type: [String], required: false}
+    couple: {type: String, required: true},
+    guests: {type: String, required: true},
+    menu: {type: String, required: false}
 })
 
 var AcademicWorkSchema = new Schema({
