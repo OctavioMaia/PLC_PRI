@@ -10,7 +10,17 @@ module.exports = function(app, passport) {
 
     // PROFILE SECTION =========================
     app.get('/profile', isLoggedIn, function(req, res) {
-        res.render('profile', { title: 'Profile', user : req.user.local});
+        if(req.user.google.id!=undefined){
+            console.log("match google")
+            user = req.user.google
+        }else if(req.user.facebook.id!=undefined){
+            console.log("match fb")
+            user = req.user.facebook
+        }else{
+            console.log("match local")
+            user = req.user.local
+        }
+        res.render('profile', { title: 'Profile', user});
     });
 
     // LOGOUT ==============================
@@ -36,7 +46,17 @@ module.exports = function(app, passport) {
 
     // EDITPROFILE ==============================
     app.get('/editprofile',isLoggedIn, function(req, res) {
-        res.render('editprofile',{ title: 'Edit Profile', req});
+        if(req.user.google.id!=undefined){
+            console.log("match google")
+            user = req.user.google
+        }else if(req.user.facebook.id!=undefined){
+            console.log("match fb")
+            user = req.user.facebook
+        }else{
+            console.log("match local")
+            user = req.user.local
+        }
+        res.render('editprofile',{ title: 'Edit Profile', user});
     });
 
     app.post('/editprofile',isLoggedIn , function(req, res, next) {
@@ -47,26 +67,54 @@ module.exports = function(app, passport) {
               err.status = 400;
               return next(err);
             }
+
+            console.log(req.body)
+
             // create object with form input
             var userData = {
               name: req.body.name,
               gender: req.body.gender,
               address: req.body.address,
+              age: req.body.age,
               profession: req.body.profession,
               cnumber: req.body.cnumber
             };
       
             //finds the current user in order to update
-            //console.log(req);
+            //console.log(req.body);
             User.findOne({ '_id' : req.user.id }, function(err, user){
-              console.log("encontrei: " + user)
-              user.local.name = userData.name
-              user.local.gender = userData.gender
-              user.local.address = userData.address
-              user.local.profession = userData.profession
-              user.local.cnumber = userData.cnumber
+                //console.log("local: " + user._id)
+                //console.log("google: " + user.google.id)
+                //console.log("fb: " + user.facebook.id)
+
+                if(user.google.id!=undefined){
+                    console.log("entrei google")
+                    user.google.name       = userData.name
+                    user.google.email      = user.google.email
+                    user.google.age        = userData.age
+                    user.google.gender     = userData.gender
+                    user.google.address    = userData.address
+                    user.google.profession = userData.profession
+                    user.google.cnumber    = userData.cnumber
+                }else if(user.facebook.id!=undefined){
+                    console.log("entrei facebook")
+                    user.facebook.name       = userData.name
+                    user.facebook.email      = user.facebook.email
+                    user.facebook.age        = userData.age
+                    user.facebook.gender     = userData.gender
+                    user.facebook.address    = userData.address
+                    user.facebook.profession = userData.profession
+                    user.facebook.cnumber    = userData.cnumber
+                }else{
+                    console.log("entrei local")
+                    user.local.name       = userData.name
+                    user.local.gender     = userData.gender
+                    user.local.address    = userData.address
+                    user.local.profession = userData.profession
+                    user.local.cnumber    = userData.cnumber
+                }
       
-              user.save(function(err){
+                user.save(function(err){
                 if(err){
                   return next(err);
                 }
