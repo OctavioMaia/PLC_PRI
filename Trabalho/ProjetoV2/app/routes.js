@@ -1,14 +1,15 @@
 var User                = require('../app/models/user');
-var Photo               = require('../app/models/post');
-var SportsRegistry      = require('../app/models/post');
-var AcademicRegistry    = require('../app/models/post');
-var Thought             = require('../app/models/post');
-var Idea                = require('../app/models/post');
-var Recipe              = require('../app/models/post');
-var Birth               = require('../app/models/post');
-var Wedding             = require('../app/models/post');
-var AcademicWork        = require('../app/models/post');
-var Chronicle           = require('../app/models/post');
+var Photo               = require('../app/models/photo');
+var SportsRegistry      = require('../app/models/sports');
+var AcademicRegistry    = require('../app/models/academicres');
+var Thought             = require('../app/models/thought');
+var Idea                = require('../app/models/idea');
+var Recipe              = require('../app/models/recipe');
+var Birth               = require('../app/models/birth');
+var Wedding             = require('../app/models/wedding');
+var AcademicWork        = require('../app/models/academicwork');
+var Chronicle           = require('../app/models/chronicle');
+var Event               = require('../app/models/event');
 
 module.exports = function(app, passport) {
 // normal routes ===============================================================
@@ -21,14 +22,14 @@ module.exports = function(app, passport) {
     // PROFILE SECTION =========================
     app.get('/profile', function(req, res) {
         if(req.user.google.id!=undefined){
-            console.log("match google")
-            user = req.user.google
+            console.log("match google");
+            user = req.user.google;
         }else if(req.user.facebook.id!=undefined){
-            console.log("match fb")
-            user = req.user.facebook
+            console.log("match fb");
+            user = req.user.facebook;
         }else{
-            console.log("match local")
-            user = req.user.local
+            console.log("match local");
+            user = req.user.local;
         }
         res.render('profile', { title: 'Profile', user});
     });
@@ -57,8 +58,8 @@ module.exports = function(app, passport) {
                 console.log("!err")
                 res.render('myposts',{ title: 'My Posts',post});
             }else{
-                console.log("There are no posts")
-                next(err)
+                console.log("There are no posts");
+                next(err);
             }
         
         });
@@ -67,17 +68,16 @@ module.exports = function(app, passport) {
     // NEWSFEED ==============================
     app.get('/newsfeed', function(req, res) {
 		
-		console.log("Antes do find.")
+		console.log("Antes do find.");
         Idea.find({privacy: 'public'}, function(err, post) {
             if(!err){
-                console.log("!err")
+                console.log("!err");
                 res.render('newsfeed',{ title: 'News Feed',post});
             }else{
-                console.log("There are no posts")
-                next(err)
+                console.log("There are no posts");
+                next(err);
             }
          });
-		
     });
 
     // NEWPOST ==============================
@@ -173,7 +173,6 @@ module.exports = function(app, passport) {
                       {'type':'text','text':'Priority','obligatory':true},
                       {'type':'text','text':'Text','obligatory':true}];
         var name = 'Idea';
-        console.log(new Idea())
         res.render('processnewpost',{ title: 'Idea',name,reqs,extras});
     });
     
@@ -188,7 +187,6 @@ module.exports = function(app, passport) {
         var extras = [{'type':'text','text':'Ingredients','obligatory':true},
                       {'type':'text','text':'Instructions','obligatory':true}];
         var name = 'Recipe';
-        console.log(new Recipe())
         res.render('processnewpost',{ title: 'Recipe',name,reqs,extras});
     });
 
@@ -255,11 +253,11 @@ module.exports = function(app, passport) {
     // EDITPROFILE ==============================
     app.get('/editprofile',isLoggedIn, function(req, res) {
         if(req.user.google.id!=undefined)
-            user = req.user.google
+            user = req.user.google;
         else if(req.user.facebook.id!=undefined)
-            user = req.user.facebook
+            user = req.user.facebook;
         else
-            user = req.user.local
+            user = req.user.local;
         res.render('editprofile',{ title: 'Edit Profile', user});
     });
 
