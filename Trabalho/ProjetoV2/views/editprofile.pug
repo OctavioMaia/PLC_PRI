@@ -12,7 +12,7 @@ block content
           input#name.form-control(type='text', name='name' value=user.name)
         div.form-group
           label(for='age') Age:
-          input#name.form-control(type='text',  name='age' value=user.age)
+          input#name.form-control(type='number',  name='age' value=user.age min="16")
         div.form-group
           label(for='gender') Gender:
           select(type="text", class="form-control" name="gender")

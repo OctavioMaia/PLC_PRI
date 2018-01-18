@@ -274,16 +274,12 @@ module.exports = function(app, passport) {
 
     // EDITPROFILE ==============================
     app.get('/editprofile',isLoggedIn, function(req, res) {
-        if(req.user.google.id!=undefined){
-            console.log("match google")
+        if(req.user.google.id!=undefined)
             user = req.user.google
-        }else if(req.user.facebook.id!=undefined){
-            console.log("match fb")
+        else if(req.user.facebook.id!=undefined)
             user = req.user.facebook
-        }else{
-            console.log("match local")
+        else
             user = req.user.local
-        }
         res.render('editprofile',{ title: 'Edit Profile', user});
     });
 
