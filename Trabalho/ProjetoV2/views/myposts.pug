@@ -15,6 +15,9 @@ block content
           p These are my publications:
           each val in post
             h6 _____________________________________________
+              .col-lg-6.col-sm-12.left
+              form(method='GET' action='/editprofile')
+                button.btn.btn-primary(type='submit') Edit this post
             h4 #{val.title}
             p Type: #{val.type}
             p Location: #{val.location}
@@ -67,4 +70,6 @@ block content
                 p Text: #{val.text}
                 //p Files: #{val.files}
               default: p Nao sei
+
+         
             
