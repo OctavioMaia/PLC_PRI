@@ -1,9 +1,7 @@
 var User                = require('../app/models/user');
 var Photo               = require('../app/models/post');
 var SportsRegistry      = require('../app/models/post');
-var PhotoAlbum          = require('../app/models/post');
 var AcademicRegistry    = require('../app/models/post');
-var ScientificEvent     = require('../app/models/post');
 var Thought             = require('../app/models/post');
 var Idea                = require('../app/models/post');
 var Recipe              = require('../app/models/post');
@@ -117,24 +115,24 @@ module.exports = function(app, passport) {
         var extras = [{'type':'text','text':'Files','obligatory':true},
                       {'type':'text','text':'Guests','obligatory':false},
                       {'type':'text','text':'Hosts','obligatory':false},
-                      {'type':'text','text':'Event_Type','obligatory':true},
+                      {'type':'text','text':'EventType','obligatory':true},
                       {'type':'text','text':'Text','obligatory':false}];
         var name = 'Event';
         res.render('processnewpost',{ title: 'Event',name,reqs,extras});
     });
 
     // THOUGHT ============================
-    app.get('/newTougth', function(req, res) {
+    app.get('/newThought', function(req, res) {
         var reqs = [{'type':'text','text':'Type','obligatory':true},
                     {'type':'text','text':'Location','obligatory':false},
                     {'type':'text','text':'Privacy','obligatory':true},
                     {'type':'text','text':'Title','obligatory':true},
                     {'type':'date','text':'Date','obligatory':true},
                     {'type':'text','text':'Description','obligatory':true}];
-        var extras = [{'type':'text','text':'Key_Words','obligatory':true},
+        var extras = [{'type':'text','text':'Keywords','obligatory':true},
                       {'type':'text','text':'Text','obligatory':true}];
-        var name = 'Thougth';
-        res.render('processnewpost',{ title: 'Thougth',name,reqs,extras});
+        var name = 'Thought';
+        res.render('processnewpost',{ title: 'Thought',name,reqs,extras});
     });
 
     // IDEA ============================
@@ -145,7 +143,7 @@ module.exports = function(app, passport) {
                     {'type':'text','text':'Title','obligatory':true},
                     {'type':'date','text':'Date','obligatory':true},
                     {'type':'text','text':'Description','obligatory':true}];
-        var extras = [{'type':'text','text':'Key Words','obligatory':true},
+        var extras = [{'type':'text','text':'Keywords','obligatory':true},
                       {'type':'text','text':'Priority','obligatory':true},
                       {'type':'text','text':'Text','obligatory':true}];
         var name = 'Idea';
@@ -208,7 +206,7 @@ module.exports = function(app, passport) {
                     {'type':'text','text':'Description','obligatory':true}];
         var extras = [{'type':'text','text':'Course','obligatory':true},
                       {'type':'text','text':'Professor','obligatory':true},
-                      {'type':'text','text':'GpxFile','obligatory':true},
+                      {'type':'text','text':'File','obligatory':true},
                       {'type':'text','text':'Classification','obligatory':true}];
         var name = 'Academic Work';
         res.render('processnewpost',{ title: 'Academic Work',name,reqs,extras});
@@ -265,30 +263,27 @@ module.exports = function(app, passport) {
             //finds the current user in order to update
             User.findOne({ '_id' : req.user.id }, function(err, user){
                 if(user.google.id!=undefined){
-                    console.log("entrei google")
-                    user.google.name       = userData.name
-                    user.google.email      = user.google.email
-                    user.google.age        = userData.age
-                    user.google.gender     = userData.gender
-                    user.google.address    = userData.address
-                    user.google.profession = userData.profession
-                    user.google.cnumber    = userData.cnumber
+                    user.google.name       = userData.name;
+                    user.google.email      = user.google.email;
+                    user.google.age        = userData.age;
+                    user.google.gender     = userData.gender;
+                    user.google.address    = userData.address;
+                    user.google.profession = userData.profession;
+                    user.google.cnumber    = userData.cnumber;
                 }else if(user.facebook.id!=undefined){
-                    console.log("entrei facebook")
-                    user.facebook.name       = userData.name
-                    user.facebook.email      = user.facebook.email
-                    user.facebook.age        = userData.age
-                    user.facebook.gender     = userData.gender
-                    user.facebook.address    = userData.address
-                    user.facebook.profession = userData.profession
-                    user.facebook.cnumber    = userData.cnumber
+                    user.facebook.name       = userData.name;
+                    user.facebook.email      = user.facebook.email;
+                    user.facebook.age        = userData.age;
+                    user.facebook.gender     = userData.gender;
+                    user.facebook.address    = userData.address;
+                    user.facebook.profession = userData.profession;
+                    user.facebook.cnumber    = userData.cnumber;
                 }else{
-                    console.log("entrei local")
-                    user.local.name       = userData.name
-                    user.local.gender     = userData.gender
-                    user.local.address    = userData.address
-                    user.local.profession = userData.profession
-                    user.local.cnumber    = userData.cnumber
+                    user.local.name       = userData.name;
+                    user.local.gender     = userData.gender;
+                    user.local.address    = userData.address;
+                    user.local.profession = userData.profession;
+                    user.local.cnumber    = userData.cnumber;
                 }
       
                 user.save(function(err){
@@ -300,18 +295,16 @@ module.exports = function(app, passport) {
                 });
             });
         }else{
-            var err = new Error('Name and passwords are mandatory.');
-            err.status = 400;
-            return next(err);
+            var err2 = new Error('Name and passwords are mandatory.');
+            err2.status = 400;
+            return next(err2);
         }
     });
 
     //add post
     app.post('/processnewpost', isLoggedIn, function(req, res, next) {
         if (req.body.Type) {
-            var post
-            console.log("body "+req.body)
-            console.log("type "+req.body.Type)
+            var post;
             switch (req.body.Type) {
                 case 'Chronicle':
                     post = new Chronicle();
@@ -325,12 +318,33 @@ module.exports = function(app, passport) {
                 case 'Birth':
                     post = new Birth();
                     break;
-                
+                case 'Photo':
+                    post = new Photo();
+                    break;
+                case 'Sports Registry':
+                    post = new SportsRegistry();
+                    break;
+                case 'Academic Registry':
+                    post = new AcademicRegistry();
+                    break;
+                case 'Thought':
+                    post = new Thought();
+                    break;
+                case 'Wedding':
+                    post = new Wedding();
+                    break;
+                case 'Academic Work':
+                    post = new AcademicWork();
+                    break;
+            }
+
+            for (var key in req.body) {
+                console.log("debug: ("+ key +','+req.body[key]+')');
             }
 
             //populate the previous var
             if(post!=undefined){
-                post.ident = req.user.id;
+               post.ident = req.user.id;
                 post.location = req.body.Location;
                 post.privacy = req.body.Privacy;
                 post.title = req.body.Title;
@@ -352,8 +366,8 @@ module.exports = function(app, passport) {
                 post.files = req.body.Files;
                 post.guests = req.body.Guests;
                 post.hosts = req.body.Hosts;
-                post.eventType = req.body.Event_Type;
-                post.key_words = req.body.Key_Words;
+                post.eventType = req.body.EventType;
+                post.keywords = req.body.Keywords;
                 post.priority = req.body.Priority;
                 post.name = req.body.Name;
                 post.gender = req.body.Gender;
@@ -371,13 +385,14 @@ module.exports = function(app, passport) {
                     console.log('add post');
                     return res.redirect('/newsfeed');
                 }else{
-                    next(err);
+                    console.log(err);
                 }
             });
         } else {
-            var err = new Error('Name and passwords are mandatory.');
+            /*var err = new Error('Name and passwords are mandatory.');
             err.status = 400;
-            return next(err);
+            return next(err);*/
+            console.log(err);
         }
     });
 

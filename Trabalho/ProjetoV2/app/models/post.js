@@ -4,27 +4,27 @@ var Schema   = mongoose.Schema;
 
 //Schemas for publication
 var PhotoSchema = new Schema({
-    ident: {type: String, required: true},
+    ident: {type: String, required: false},
     location: {type: String, required: false},
-    privacy: {type: String, required: true},
-    title: {type: String, required: true},
-    date: {type: Date, required: true},
-    description: {type: String, required: true},
-    type: {type: String, required: true},
-    path: {type: String, required: true},
+    privacy: {type: String, required: false},
+    title: {type: String, required: false},
+    date: {type: Date, required: false},
+    description: {type: String, required: false},
+    type: {type: String, required: false},
+    path: {type: String, required: false},
     people: {type: String, required: false}
 })
 
 var SportsRegistrySchema = new Schema({
-    ident: {type: String, required: true},
+    ident: {type: String, required: false},
     location: {type: String, required: false},
-    privacy: {type: String, required: true},
-    title: {type: String, required: true},
-    date: {type: Date, required: true},
-    description: {type: String, required: true},
-    type: {type: String, required: true},
-    sport: {type: String, required: true},
-    duration: {type: String, required: true},
+    privacy: {type: String, required: false},
+    title: {type: String, required: false},
+    date: {type: Date, required: false},
+    description: {type: String, required: false},
+    type: {type: String, required: false},
+    sport: {type: String, required: false},
+    duration: {type: String, required: false},
     gpxFile: {type: String, required: false},
     participants: {type: String, required: false},
     results: {type: String, required: false},
@@ -32,142 +32,142 @@ var SportsRegistrySchema = new Schema({
 })
 /*
 var PhotoAlbumSchema = new Schema({
-    ident: {type: String, required: true},
+    ident: {type: String, required: false},
     location: {type: String, required: false},
-    privacy: {type: String, required: true},
-    title: {type: String, required: true},
-    date: {type: Date, required: true},
-    description: {type: String, required: true},
-    type: {type: String, required: true},
-    album_title: {type: String, required: true},
+    privacy: {type: String, required: false},
+    title: {type: String, required: false},
+    date: {type: Date, required: false},
+    description: {type: String, required: false},
+    type: {type: String, required: false},
+    album_title: {type: String, required: false},
     //album: [PhotoSchema]
 })*/
 
 var AcademicRegistrySchema = new Schema({
-    ident: {type: String, required: true},
+    ident: {type: String, required: false},
     location: {type: String, required: false},
-    privacy: {type: String, required: true},
-    title: {type: String, required: true},
-    date: {type: Date, required: true},
-    description: {type: String, required: true},
-    type: {type: String, required: true},
+    privacy: {type: String, required: false},
+    title: {type: String, required: false},
+    date: {type: Date, required: false},
+    description: {type: String, required: false},
+    type: {type: String, required: false},
     duration: {type: String, required:false},
-    credits: {type: String, required: true}
+    credits: {type: String, required: false}
 })
 
 var eventSchema = new Schema({
-    ident: {type: String, required: true},
+    ident: {type: String, required: false},
     location: {type: String, required: false},
-    privacy: {type: String, required: true},
-    title: {type: String, required: true},
-    date: {type: Date, required: true},
-    description: {type: String, required: true},
-    type: {type: String, required: true},
-    files: {type: String, required: true},
+    privacy: {type: String, required: false},
+    title: {type: String, required: false},
+    date: {type: Date, required: false},
+    description: {type: String, required: false},
+    type: {type: String, required: false},
+    files: {type: String, required: false},
     guests: {type: String, required: false},
     hosts: {type: String, required: false},
-    eventType: {type: String, require: true},
+    eventType: {type: String, require: false},
     text: {type: String, required: false}
 })
 
 var ThoughtSchema = new Schema({
-    ident: {type: String, required: true},
+    ident: {type: String, required: false},
     location: {type: String, required: false},
-    privacy: {type: String, required: true},
-    title: {type: String, required: true},
-    date: {type: Date, required: true},
-    description: {type: String, required: true},
-    type: {type: String, required: true},
-    key_words: {type: String, required: true},
-    text: {type:String, required: true}
+    privacy: {type: String, required: false},
+    title: {type: String, required: false},
+    date: {type: Date, required: false},
+    description: {type: String, required: false},
+    type: {type: String, required: false},
+    keywords: {type: String, required: false},
+    text: {type:String, required: false}
 })
 
 var IdeaSchema = new Schema({
-    ident: {type: String, required: true},
+    ident: {type: String, required: false},
     location: {type: String, required: false},
-    privacy: {type: String, required: true},
-    title: {type: String, required: true},
-    date: {type: Date, required: true},
-    description: {type: String, required: true},
-    type: {type: String, required: true},
-    key_words: {type: String, required: true},
-    priority: {type: String, required: true},
-    text: {type:String, required: true}
+    privacy: {type: String, required: false},
+    title: {type: String, required: false},
+    date: {type: Date, required: false},
+    description: {type: String, required: false},
+    type: {type: String, required: false},
+    keywords: {type: String, required: false},
+    priority: {type: String, required: false},
+    text: {type:String, required: false}
 })
 
 var RecipeSchema = new Schema({
-    ident: {type: String, required: true},
+    ident: {type: String, required: false},
     location: {type: String, required: false},
-    privacy: {type: String, required: true},
-    title: {type: String, required: true},
-    date: {type: Date, required: true},
-    description: {type: String, required: true},
-    type: {type: String, required: true},
-    ingredients: {type: String, required: true},
-    instructions: {type: String, required: true}
+    privacy: {type: String, required: false},
+    title: {type: String, required: false},
+    date: {type: Date, required: false},
+    description: {type: String, required: false},
+    type: {type: String, required: false},
+    ingredients: {type: String, required: false},
+    instructions: {type: String, required: false}
 })
 
 var BirthSchema = new Schema({
-    ident: {type: String, required: true},
+    ident: {type: String, required: false},
     location: {type: String, required: false},
-    privacy: {type: String, required: true},
-    title: {type: String, required: true},
-    date: {type: Date, required: true},
-    description: {type: String, required: true},
-    type: {type: String, required: true},
-    name: {type: String, required: true},
-    gender: {type: String, required: true},
-    parents: {type: String, required: true}
+    privacy: {type: String, required: false},
+    title: {type: String, required: false},
+    date: {type: Date, required: false},
+    description: {type: String, required: false},
+    type: {type: String, required: false},
+    name: {type: String, required: false},
+    gender: {type: String, required: false},
+    parents: {type: String, required: false}
 })
 
 var WeddingSchema = new Schema({
-    ident: {type: String, required: true},
+    ident: {type: String, required: false},
     location: {type: String, required: false},
-    privacy: {type: String, required: true},
-    title: {type: String, required: true},
-    date: {type: Date, required: true},
-    description: {type: String, required: true},
-    type: {type: String, required: true},
-    couple: {type: String, required: true},
-    guests: {type: String, required: true},
+    privacy: {type: String, required: false},
+    title: {type: String, required: false},
+    date: {type: Date, required: false},
+    description: {type: String, required: false},
+    type: {type: String, required: false},
+    couple: {type: String, required: false},
+    guests: {type: String, required: false},
     menu: {type: String, required: false}
 })
 
 var AcademicWorkSchema = new Schema({
-    ident: {type: String, required: true},
+    ident: {type: String, required: false},
     location: {type: String, required: false},
-    privacy: {type: String, required: true},
-    title: {type: String, required: true},
-    date: {type: Date, required: true},
-    description: {type: String, required: true},
-    type: {type: String, required: true},
+    privacy: {type: String, required: false},
+    title: {type: String, required: false},
+    date: {type: Date, required: false},
+    description: {type: String, required: false},
+    type: {type: String, required: false},
     course: {type: String, required: false},
-    professor: {type: String, required: true},
-    gpxFile: {type: String, required: true},
-    classification: {type: String, required: true}
+    professor: {type: String, required: false},
+    file: {type: String, required: false},
+    classification: {type: String, required: false}
 })
 
 var ChronicleSchema = new Schema({
-    ident: {type: String, required: true},
+    ident: {type: String, required: false},
     location: {type: String, required: false},
-    privacy: {type: String, required: true},
-    title: {type: String, required: true},
-    date: {type: Date, required: true},
-    description: {type: String, required: true},
-    type: {type: String, required: true},
-    theme: {type: String, required: true},
-    text: {type: String, required: true}
+    privacy: {type: String, required: false},
+    title: {type: String, required: false},
+    date: {type: Date, required: false},
+    description: {type: String, required: false},
+    type: {type: String, required: false},
+    theme: {type: String, required: false},
+    text: {type: String, required: false}
 })
 
 /*
 var PublicationSchema = new Schema({
-    ident: {type: String, required: true},
+    ident: {type: String, required: false},
     location: {type: String, required: false},
-    privacy: {type: String, required: true},
-    title: {type: String, required: true},
-    date: {type: Date, required: true},
-    description: {type: String, required: true},
-    type: {type: String, required: true}
+    privacy: {type: String, required: false},
+    title: {type: String, required: false},
+    date: {type: Date, required: false},
+    description: {type: String, required: false},
+    type: {type: String, required: false}
 })
 */
 
