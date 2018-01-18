@@ -6,17 +6,17 @@ nav.navbar.navbar-fixed-top.navbar-dark.bg-inverse
         i.icn-logo.material-icons supervisor_account
         | DigitalMe
       .nav-items.clearfix
-        a.nav-item.nav-link(href='about') About
-        a.nav-item.nav-link(href='contact') Contact
-        a.nav-item.nav-link(href='newsfeed') Newsfeed
-        a.nav-item.nav-link(href='newpost') new post
+        a.nav-item.nav-link(href='/about') About
+        a.nav-item.nav-link(href='/contact') Contact
+        a.nav-item.nav-link(href='/newsfeed') Newsfeed
+        a.nav-item.nav-link(href='/newpost') new post
         div(class="container")
           div(class="dropdown")
             a.btn.btn-light.pull-md-right(style = "padding: 3px;" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown")
               img.avatar.img-circle.hidden-xs-down(style = "max-width:30px; max-height: 30px;" src="../images/avatar.png")
             ul(class="dropdown-menu")
               ul
-                a(href="profile") My Profile
+                a(href="/profile") My Profile
               ul
-                a(href="myposts") My Posts  
+                a(href="/myposts") My Posts  
           a.nav-item.nav-link.btn.btn-light.pull-md-right(href='logout') Logout

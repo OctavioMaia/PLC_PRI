@@ -53,10 +53,26 @@ module.exports = function(router, passport) {
 
     // User Posts ==============================
     router.get('/myposts', function(req, res) {
+        var filter = 'all'
         Idea.find({'ident' : req.user.id}, function(err, post) {
             if(!err){
-                res.render('myposts',{ title: 'My Posts',post});
+                res.render('myposts',{ title: 'My Posts',post,filter});
             }else{
+                next(err);
+            }
+        
+        });
+    });
+
+    router.get('/myposts/:filter', function(req, res) {
+        
+        var filter = req.params.filter
+        Idea.find({'ident' : req.user.id}, function(err, post) {
+            if(!err){
+                console.log("!err")
+                res.render('myposts',{ title: 'My Posts',post,filter});
+            }else{
+                console.log("There are no posts");
                 next(err);
             }
         
@@ -65,17 +81,33 @@ module.exports = function(router, passport) {
 
     // NEWSFEED ==============================
     router.get('/newsfeed', function(req, res) {
+        var filter = 'all'
         var posts = ''
 		console.log("Antes do find.");
         Idea.find({privacy: 'public'}, function(err, post) {
             if(!err){
                 posts = post.concat(posts)
                 console.log(posts)
-                res.render('newsfeed',{ title: 'News Feed', posts});
+                res.render('newsfeed',{ title: 'News Feed', posts,filter});
             }else{
                 console.log("There are no posts");
                 next(err);
             }
+        });
+    });
+
+    router.get('/newsfeed/:filter', function(req, res) {
+        var posts = ''
+        var filter = req.params.filter
+        Idea.find({privacy: 'public'}, function(err, post) {
+            if(!err){
+                posts = post.concat(posts)
+                res.render('newsfeed',{ title: 'News Feed',posts,filter});
+            }else{
+                console.log("There are no posts");
+                next(err);
+            }
+        
         });
     });
 

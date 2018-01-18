@@ -9,13 +9,30 @@ block content
       .col-lg-3.col-sm-12.left
         div
           nav
-            p Hot
-            p Trending
-            p Fresh
+            form(method='GET' action='/newsfeed')
+              button.btn.btn-primary(type='submit') All
+            form(method='GET' action='/newsfeed/Chronicle')
+              button.btn.btn-primary(type='submit') Chronicles
+            form(method='GET' action='/newsfeed/Idea')
+              button.btn.btn-primary(type='submit') Ideas
+            form(method='GET' action='/newsfeed/Thought')
+              button.btn.btn-primary(type='submit') Thoughts
+            form(method='GET' action='/newsfeed/Recipe')
+              button.btn.btn-primary(type='submit') Recipe
+            form(method='GET' action='/newsfeed/SportsRegistry')
+              button.btn.btn-primary(type='submit') Sports
+            form(method='GET' action='/newsfeed/AcademicWork')
+              button.btn.btn-primary(type='submit') Academic Works
+            form(method='GET' action='/newsfeed/AcademicRegistry')
+              button.btn.btn-primary(type='submit') Academic Registry
+            form(method='GET' action='/newsfeed/Event')
+              button.btn.btn-primary(type='submit') Events
+            form(method='GET' action='/newsfeed/Photo')
+              button.btn.btn-primary(type='submit') Photos
       .col-lg-6.col-sm-12.right
         article
           each val in posts
-            if(val!='')
+            if(val!=''&& (filter == 'all' || filter == val.type))
               h6 _______________________________________________________
               h4 #{val.title} by #{val.author}
               p Type: #{val.type}
