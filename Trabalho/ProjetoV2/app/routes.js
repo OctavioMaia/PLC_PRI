@@ -11,16 +11,17 @@ var AcademicWork        = require('../app/models/academicwork');
 var Chronicle           = require('../app/models/chronicle');
 var Event               = require('../app/models/event');
 
-module.exports = function(app, passport) {
-// normal routes ===============================================================
+var express = require('express');
+var router = express.Router();
 
+module.exports = function(router, passport) {
     // show the home page (will also have our login links)
-    app.get('/', function(req, res) {
+    router.get('/', function(req, res) {
         res.render('index', { title: 'Home'});
     });
 
     // PROFILE SECTION =========================
-    app.get('/profile', function(req, res) {
+    router.get('/profile', function(req, res) {
         if(req.user.google.id!=undefined){
             console.log("match google");
             user = req.user.google;
@@ -35,23 +36,23 @@ module.exports = function(app, passport) {
     });
 
     // LOGOUT ==============================
-    app.get('/logout', function(req, res) {
+    router.get('/logout', function(req, res) {
         req.logout();
         res.redirect('/');
     });
 
     // ABOUT ==============================
-    app.get('/about', function(req, res) {
+    router.get('/about', function(req, res) {
         res.render('about',{ title: 'About'});
     });
 
     // CONTACT ==============================
-    app.get('/contact', function(req, res) {
+    router.get('/contact', function(req, res) {
         res.render('contact',{ title: 'Contact'});
     });
 
     // User Posts ==============================
-    app.get('/myPosts', function(req, res) {
+    router.get('/myPosts', function(req, res) {
         console.log("Before find")
         Idea.find({'ident' : req.user.id}, function(err, post) {
             if(!err){
@@ -66,7 +67,7 @@ module.exports = function(app, passport) {
     });
 
     // NEWSFEED ==============================
-    app.get('/newsfeed', function(req, res) {
+    router.get('/newsfeed', function(req, res) {
         var posts = ''
 		console.log("Antes do find.");
         Idea.find({privacy: 'public'}, function(err, post) {
@@ -82,12 +83,12 @@ module.exports = function(app, passport) {
     });
 
     // NEWPOST ==============================
-    app.get('/newpost', isLoggedIn, function(req, res) {
+    router.get('/newpost', isLoggedIn, function(req, res) {
         res.render('newpost',{ title: 'New Post'});
     });
     
     // PHOTO ============================
-    app.get('/newPhoto', function(req, res) {
+    router.get('/newPhoto', function(req, res) {
         var reqs = [{'type':'text','text':'Type','obligatory':true},
                     {'type':'text','text':'Location','obligatory':false},
                     {'type':'text','text':'Privacy','obligatory':true},
@@ -101,7 +102,7 @@ module.exports = function(app, passport) {
     });
 
     // SPORTS REGISTRY ============================
-    app.get('/newSportsRegistry', function(req, res) {
+    router.get('/newSportsRegistry', function(req, res) {
         var reqs = [{'type':'text','text':'Type','obligatory':true},
                     {'type':'text','text':'Location','obligatory':false},
                     {'type':'text','text':'Privacy','obligatory':true},
@@ -118,7 +119,7 @@ module.exports = function(app, passport) {
     });
 
     // ACADEMIC REGISTRY ============================
-    app.get('/newAcademicRegistry', function(req, res) {
+    router.get('/newAcademicRegistry', function(req, res) {
         var reqs = [{'type':'text','text':'Type','obligatory':true},
                     {'type':'text','text':'Location','obligatory':false},
                     {'type':'text','text':'Privacy','obligatory':true},
@@ -132,7 +133,7 @@ module.exports = function(app, passport) {
     });
 
     // EVENT ============================
-    app.get('/newEvent', function(req, res) {
+    router.get('/newEvent', function(req, res) {
         var reqs = [{'type':'text','text':'Type','obligatory':true},
                     {'type':'text','text':'Location','obligatory':false},
                     {'type':'text','text':'Privacy','obligatory':true},
@@ -149,7 +150,7 @@ module.exports = function(app, passport) {
     });
 
     // THOUGHT ============================
-    app.get('/newThought', function(req, res) {
+    router.get('/newThought', function(req, res) {
         var reqs = [{'type':'text','text':'Type','obligatory':true},
                     {'type':'text','text':'Location','obligatory':false},
                     {'type':'text','text':'Privacy','obligatory':true},
@@ -163,7 +164,7 @@ module.exports = function(app, passport) {
     });
 
     // IDEA ============================
-    app.get('/newIdea', function(req, res) {
+    router.get('/newIdea', function(req, res) {
         var reqs = [{'type':'text','text':'Type','obligatory':true},
                     {'type':'text','text':'Location','obligatory':false},
                     {'type':'text','text':'Privacy','obligatory':true},
@@ -178,7 +179,7 @@ module.exports = function(app, passport) {
     });
     
     // NEW RECIPE ==============================
-    app.get('/newRecipe', function(req, res) {
+    router.get('/newRecipe', function(req, res) {
         var reqs = [{'type':'text','text':'Type','obligatory':true},
                     {'type':'text','text':'Location','obligatory':false},
                     {'type':'text','text':'Privacy','obligatory':true},
@@ -192,7 +193,7 @@ module.exports = function(app, passport) {
     });
 
     // NEW BIRTH ============================
-    app.get('/newBirth', function(req, res) {
+    router.get('/newBirth', function(req, res) {
         var reqs = [{'type':'text','text':'Type','obligatory':true},
                     {'type':'text','text':'Location','obligatory':false},
                     {'type':'text','text':'Privacy','obligatory':true},
@@ -207,7 +208,7 @@ module.exports = function(app, passport) {
     });
 
     // NEW WEDDING ============================
-    app.get('/newWedding', function(req, res) {
+    router.get('/newWedding', function(req, res) {
         var reqs = [{'type':'text','text':'Type','obligatory':true},
                     {'type':'text','text':'Location','obligatory':false},
                     {'type':'text','text':'Privacy','obligatory':true},
@@ -222,7 +223,7 @@ module.exports = function(app, passport) {
     });
 
     // NEW ACADEMIC WORK ============================
-    app.get('/newAcademicWork', function(req, res) {
+    router.get('/newAcademicWork', function(req, res) {
         var reqs = [{'type':'text','text':'Type','obligatory':true},
                     {'type':'text','text':'Location','obligatory':false},
                     {'type':'text','text':'Privacy','obligatory':true},
@@ -238,7 +239,7 @@ module.exports = function(app, passport) {
     });
 
     // NEW CHRONICLE ==============================
-    app.get('/newChronicle', function(req, res) {
+    router.get('/newChronicle', function(req, res) {
         var reqs = [{'type':'text','text':'Type','obligatory':true},
                     {'type':'text','text':'Location','obligatory':false},
                     {'type':'text','text':'Privacy','obligatory':true},
@@ -252,7 +253,7 @@ module.exports = function(app, passport) {
     });
 
     // EDITPROFILE ==============================
-    app.get('/editprofile',isLoggedIn, function(req, res) {
+    router.get('/editprofile',isLoggedIn, function(req, res) {
         if(req.user.google.id!=undefined)
             user = req.user.google;
         else if(req.user.facebook.id!=undefined)
@@ -262,7 +263,7 @@ module.exports = function(app, passport) {
         res.render('editprofile',{ title: 'Edit Profile', user});
     });
 
-    app.post('/editprofile',isLoggedIn , function(req, res, next) {
+    router.post('/editprofile',isLoggedIn , function(req, res, next) {
         if (req.body.name) {
             // confirm that user typed same password twice
             if (req.body.password !== req.body.confirmPassword) {
@@ -323,7 +324,7 @@ module.exports = function(app, passport) {
     });
 
     //add post
-    app.post('/processnewpost', isLoggedIn, function(req, res, next) {
+    router.post('/processnewpost', isLoggedIn, function(req, res, next) {
         if (req.body.Type) {
             var post;
             var name;
@@ -393,6 +394,7 @@ module.exports = function(app, passport) {
                 post.participants = req.body.Participants;
                 post.results = req.body.Results;
                 post.credits = req.body.Credits;
+                post.file = req.body.File;
                 post.files = req.body.Files;
                 post.guests = req.body.Guests;
                 post.hosts = req.body.Hosts;
@@ -431,17 +433,17 @@ module.exports = function(app, passport) {
     // locally --------------------------------
         // LOGIN ===============================
         // show the login form
-        app.get('/login', function(req, res) {
+        router.get('/login', function(req, res) {
             res.render('login', { message: req.flash('loginMessage')});
         });
 
         // show the locallogin form
-        app.get('/locallogin', function(req, res) {
+        router.get('/locallogin', function(req, res) {
             res.render('locallogin', { message: req.flash('loginMessage')});
         });
 
         // process the locallogin form
-        app.post('/locallogin', passport.authenticate('local-login', {
+        router.post('/locallogin', passport.authenticate('local-login', {
             successRedirect : '/profile', // redirect to the secure profile section
             failureRedirect : '/error', // redirect back to the login page if there is an error
             failureFlash : true // allow flash messages
@@ -449,24 +451,24 @@ module.exports = function(app, passport) {
 
         // REGISTER =================================
         // show the register form
-        app.get('/register', function(req, res) {
+        router.get('/register', function(req, res) {
             res.render('register', { title: 'Sign Up', message: req.flash('registerMessage')});
         });
 
         // process the signup form
-        app.post('/register', passport.authenticate('local-signup', {
+        router.post('/register', passport.authenticate('local-signup', {
             successRedirect : '/profile', // redirect to the secure profile section
             failureRedirect : '/error', // redirect back to the register page if there is an error
             failureFlash : true // allow flash messages
         }));
 
         // REGISTER ==============================
-        app.get('/register', function(req, res) {
+        router.get('/register', function(req, res) {
             res.render('register',{ title: 'Local Sign Up'});
         });
 
         // process the signup form
-        app.post('/register', passport.authenticate('local-signup', {
+        router.post('/register', passport.authenticate('local-signup', {
             successRedirect : '/profile', // redirect to the secure profile section
             failureRedirect : '/error', // redirect back to the register page if there is an error
             failureFlash : true // allow flash messages
@@ -475,10 +477,10 @@ module.exports = function(app, passport) {
     // facebook -------------------------------
 
         // send to facebook to do the authentication
-        app.get('/auth/facebook', passport.authenticate('facebook', { scope : ['public_profile', 'email'] }));
+        router.get('/auth/facebook', passport.authenticate('facebook', { scope : ['public_profile', 'email'] }));
 
         // handle the callback after facebook has authenticated the user
-        app.get('/auth/facebook/callback',
+        router.get('/auth/facebook/callback',
             passport.authenticate('facebook', {
                 successRedirect : '/profile',
                 failureRedirect : '/'
@@ -487,10 +489,10 @@ module.exports = function(app, passport) {
     // google ---------------------------------
 
         // send to google to do the authentication
-        app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
+        router.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
 
         // the callback after google has authenticated the user
-        app.get('/auth/google/callback',
+        router.get('/auth/google/callback',
             passport.authenticate('google', {
                 successRedirect : '/profile',
                 failureRedirect : '/'
