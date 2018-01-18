@@ -53,13 +53,10 @@ module.exports = function(router, passport) {
 
     // User Posts ==============================
     router.get('/myposts', function(req, res) {
-        console.log("Before find")
         Idea.find({'ident' : req.user.id}, function(err, post) {
             if(!err){
-                console.log("!err")
                 res.render('myposts',{ title: 'My Posts',post});
             }else{
-                console.log("There are no posts");
                 next(err);
             }
         
@@ -411,13 +408,10 @@ module.exports = function(router, passport) {
                 post.classification = req.body.Classification;
             }
 
-            console.log("after changes:\n" +post);
             post.save(function(err){
                 if(!err){
-                    console.log('add post');
                     return res.redirect('/newsfeed');
                 }else{
-                    console.log(err);
                     next(err);
                 }
             });
@@ -426,8 +420,16 @@ module.exports = function(router, passport) {
         }
     });
 
-    router.post('/editpost',isLoggedIn , function(req, res, next) {
-        console.log(req);
+    router.post('/editpost/:id',isLoggedIn , function(req, res, next) {
+        console.log("post id:" + req.params.id);
+        Idea.findOne({'_id' : req.params.id}, function(err, post) {
+            if(!err){
+                console.log(post);
+                res.render('editpost', { 'Title': 'Edit your post', post});
+            }else{
+                console.log(err);
+            }
+        });
     });
 
 // =============================================================================
