@@ -115,8 +115,8 @@ var BirthSchema = new Schema({
     date: {type: Date, required: true},
     description: {type: String, required: true},
     type: {type: String, required: true},
-    child_name: {type: String, required: true},
-    child_gender: {type: String, required: true},
+    name: {type: String, required: true},
+    gender: {type: String, required: true},
     parents: {type: String, required: true}
 })
 

@@ -85,7 +85,7 @@ module.exports = function(app, passport) {
                     {'type':'text','text':'Description','obligatory':true}];
         var extras = [{'type':'text','text':'Sport','obligatory':true},
                       {'type':'text','text':'Duration','obligatory':true},
-                      {'type':'text','text':'gpxFile','obligatory':false},
+                      {'type':'text','text':'GpxFile','obligatory':false},
                       {'type':'text','text':'Participants','obligatory':false},
                       {'type':'text','text':'Results','obligatory':false},];
         var name = 'Sports Registry';
@@ -117,24 +117,24 @@ module.exports = function(app, passport) {
         var extras = [{'type':'text','text':'Files','obligatory':true},
                       {'type':'text','text':'Guests','obligatory':false},
                       {'type':'text','text':'Hosts','obligatory':false},
-                      {'type':'text','text':'Event Type','obligatory':true},
+                      {'type':'text','text':'Event_Type','obligatory':true},
                       {'type':'text','text':'Text','obligatory':false}];
         var name = 'Event';
         res.render('processnewpost',{ title: 'Event',name,reqs,extras});
     });
 
     // THOUGHT ============================
-    app.get('/newTought', function(req, res) {
+    app.get('/newTougth', function(req, res) {
         var reqs = [{'type':'text','text':'Type','obligatory':true},
                     {'type':'text','text':'Location','obligatory':false},
                     {'type':'text','text':'Privacy','obligatory':true},
                     {'type':'text','text':'Title','obligatory':true},
                     {'type':'date','text':'Date','obligatory':true},
                     {'type':'text','text':'Description','obligatory':true}];
-        var extras = [{'type':'text','text':'Key Words','obligatory':true},
+        var extras = [{'type':'text','text':'Key_Words','obligatory':true},
                       {'type':'text','text':'Text','obligatory':true}];
-        var name = 'Thought';
-        res.render('processnewpost',{ title: 'Thought',name,reqs,extras});
+        var name = 'Thougth';
+        res.render('processnewpost',{ title: 'Thougth',name,reqs,extras});
     });
 
     // IDEA ============================
@@ -176,8 +176,8 @@ module.exports = function(app, passport) {
                     {'type':'text','text':'Title','obligatory':true},
                     {'type':'date','text':'Date','obligatory':true},
                     {'type':'text','text':'Description','obligatory':true}];
-        var extras = [{'type':'text','text':'Child Name','obligatory':true},
-                      {'type':'text','text':'Child Gender','obligatory':true},
+        var extras = [{'type':'text','text':'Name','obligatory':true},
+                      {'type':'text','text':'Gender','obligatory':true},
                       {'type':'text','text':'Parents','obligatory':true}];
         var name = 'Birth';
         res.render('processnewpost',{ title: 'New Birth',name,reqs,extras});
@@ -208,7 +208,7 @@ module.exports = function(app, passport) {
                     {'type':'text','text':'Description','obligatory':true}];
         var extras = [{'type':'text','text':'Course','obligatory':true},
                       {'type':'text','text':'Professor','obligatory':true},
-                      {'type':'text','text':'Ficheiro','obligatory':true},
+                      {'type':'text','text':'GpxFile','obligatory':true},
                       {'type':'text','text':'Classification','obligatory':true}];
         var name = 'Academic Work';
         res.render('processnewpost',{ title: 'Academic Work',name,reqs,extras});
@@ -341,6 +341,28 @@ module.exports = function(app, passport) {
                 post.text = req.body.Text;
                 post.ingredients = req.body.Ingredients;
                 post.instructions = req.body.Instructions;
+                post.path = req.body.Path;
+                post.people = req.body.People;
+                post.sport = req.body.Sport;
+                post.duration = req.body.Duration;
+                post.gpxFile = req.body.GpxFile;
+                post.participants = req.body.Participants;
+                post.results = req.body.Results;
+                post.credits = req.body.Credits;
+                post.files = req.body.Files;
+                post.guests = req.body.Guests;
+                post.hosts = req.body.Hosts;
+                post.eventType = req.body.Event_Type;
+                post.key_words = req.body.Key_Words;
+                post.priority = req.body.Priority;
+                post.name = req.body.Name;
+                post.gender = req.body.Gender;
+                post.parents = req.body.Parents;
+                post.couple = req.body.Couple;
+                post.menu = req.body.Menu;
+                post.course = req.body.Course;
+                post.professor = req.body.Professor;
+                post.classification = req.body.Classification;
             }
 
             console.log("after changes:\n" +post);
