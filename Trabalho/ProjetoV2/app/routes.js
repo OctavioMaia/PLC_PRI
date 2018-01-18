@@ -49,6 +49,19 @@ module.exports = function(app, passport) {
         res.render('contact',{ title: 'Contact'});
     });
 
+    app.get('/myposts', function(req, res) {
+        Idea.find({'ident' : req.user.id}, function(err, post) {
+            if(!err){
+                console.log("!err")
+                res.render('myposts',{ title: 'My Posts',post});
+            }else{
+                console.log("There are no posts")
+                next(err)
+            }
+        
+        });
+    });
+
     // NEWSFEED ==============================
     app.get('/newsfeed', function(req, res) {
 		
