@@ -420,8 +420,8 @@ module.exports = function(router, passport) {
         }
     });
 
-    router.post('/editpost/:id',isLoggedIn , function(req, res, next) {
-        console.log("post id:" + req.params.id);
+    router.get('/editpost/:id',isLoggedIn , function(req, res, next) {
+        //console.log("post id:" + req.params.id);
         Idea.findOne({'_id' : req.params.id}, function(err, post) {
             if(!err){
                 console.log(post);
@@ -430,6 +430,21 @@ module.exports = function(router, passport) {
                 console.log(err);
             }
         });
+    });
+
+    router.post('/editpost/:id',isLoggedIn , function(req, res, next) {
+        console.log("post_id: "+req.params.id)
+        console.log("new_body: "+ req.body)
+
+        Idea.findByIdAndUpdate(req.params.id, req.body, function(err, post) {
+            if(!err){
+                console.log(post);
+                return res.redirect('/myposts');
+            }else{
+                console.log(err);
+            }
+        });
+        
     });
 
 // =============================================================================

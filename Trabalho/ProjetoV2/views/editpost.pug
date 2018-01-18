@@ -7,7 +7,7 @@ block content
 
       h6 #{post}
       
-      form(method='POST' action='/editprofile')
+      form(method='POST' action='/editpost/' + post._id)
         div.form-group
           label(for='title') Title:
           input#name.form-control(type='text', name='title' value=post.title)
@@ -20,6 +20,12 @@ block content
         div.form-group
           label(for='description') Description:
           input#name.form-control(type='text', name='description' value=post.description)
+        div.form-group
+          label(for='privacy') Privacy:
+            select(type="text", class="form-control" name='privacy' required)
+              option(value="") Please select a privacy setting
+              option(value="private") Private
+              option(value="public") Public
         case post.type
           when 'Chronicle'
             div.form-group

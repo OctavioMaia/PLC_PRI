@@ -26,35 +26,35 @@ block content
               when 'Chronicle'  
                 p Theme: #{val.theme}
                 p Text: #{val.text}
-                form(method='POST' action='/editpost/' + val.id)
+                form(method='GET' action='/editpost/' + val.id)
                   button.btn.btn-primary(type='submit' href=("/editpost/" + val.id)) Edit this post
               when 'Recipe'
                 p Ingredients: #{val.ingredients}
                 p Instructions: #{val.instructions}
-                form(method='POST' action='/editpost/' + val.id)
+                form(method='GET' action='/editpost/' + val.id)
                   button.btn.btn-primary(type='submit' href=("/editpost/" + val.id)) Edit this post
               when 'Wedding'
                 p Couple: #{val.couple}
                 p Guest List: #{val.guests}
                 p Menu: #{val.menu}
-                form(method='POST' action='/editpost/' + val.id)
+                form(method='GET' action='/editpost/' + val.id)
                   button.btn.btn-primary(type='submit' href=("/editpost/" + val.id)) Edit this post
               when 'Birth'
                 p Name: #{val.name}
                 p Gender: #{val.gender}
                 p Parents: #{val.parents}
-                form(method='POST' action='/editpost/' + val.id)
+                form(method='GET' action='/editpost/' + val.id)
                   button.btn.btn-primary(type='submit' href=("/editpost/" + val.id)) Edit this post
               when 'Idea'
                 p Keywords: #{val.keywords}
                 p Priority: #{val.priority}
                 p Text: #{val.text}
-                form(method='POST' action='/editpost/' + val.id)
+                form(method='GET' action='/editpost/' + val.id)
                   button.btn.btn-primary(type='submit' href=("/editpost/" + val.id)) Edit this post
               when 'Thought'
                 p Keywords: #{val.keywords}
                 p Text: #{val.text}
-                form(method='POST' action='/editpost/' + val.id)
+                form(method='GET' action='/editpost/' + val.id)
                   button.btn.btn-primary(type='submit' href=("/editpost/" + val.id)) Edit this post
               when 'Sports Registry'
                 p Sport: #{val.sport}
@@ -62,12 +62,12 @@ block content
                 p Participants: #{val.participants}
                 p Results: #{val.results}
                 //p GPX: #{val.gpxfile}
-                form(method='POST' action='/editpost/' + val.id)
+                form(method='GET' action='/editpost/' + val.id)
                   button.btn.btn-primary(type='submit' href=("/editpost/" + val.id)) Edit this post
               when 'Photo'
                 p People: #{val.people}
                 //p Path: #{val.path}
-                form(method='POST' action='/editpost/' + val.id)
+                form(method='GET' action='/editpost/' + val.id)
                   button.btn.btn-primary(type='submit' href=("/editpost/" + val.id)) Edit this post
               //when 'PhotoAlbum'
               when 'Academic Work'
@@ -75,12 +75,12 @@ block content
                 p Professor: #{val.professor}
                 p Classification: #{val.classification}
                 //p File: #{val.files}
-                form(method='POST' action='/editpost/' + val.id)
+                form(method='GET' action='/editpost/' + val.id)
                   button.btn.btn-primary(type='submit' href=("/editpost/" + val.id)) Edit this post
               when 'Academic Registry'
                 p Duration: #{val.duration}
                 p Credits: #{val.credits}
-                form(method='POST' action='/editpost/' + val.id)
+                form(method='GET' action='/editpost/' + val.id)
                   button.btn.btn-primary(type='submit' href=("/editpost/" + val.id)) Edit this post
               when 'Event'
                 p Event Type: #{val.eventType}
@@ -88,5 +88,5 @@ block content
                 p Guests: #{val.guests}
                 p Text: #{val.text}
                 //p Files: #{val.files} 
-                form(method='POST' action='/editpost/' + val.id)
+                form(method='GET' action='/editpost/' + val.id)
                   button.btn.btn-primary(type='submit' href=("/editpost/" + val.id)) Edit this post

@@ -15,8 +15,8 @@ block content
           input#name.form-control(type='number',  name='age' value=user.age min="16")
         div.form-group
           label(for='gender') Gender:
-          select(type="text", class="form-control" name="gender")
-            option(selected disabled) Please select a gender
+          select(type="text", class="form-control" name="gender" required)
+            option(value="") Please select a gender
             option(value="Male") Male
             option(value="Female") Female
         div.form-group
