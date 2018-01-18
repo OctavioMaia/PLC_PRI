@@ -51,6 +51,52 @@ module.exports = function(app, passport) {
 
     // NEWSFEED ==============================
     app.get('/newsfeed', function(req, res) {
+		/*
+        var posts = {}
+        console.log("Antes do find.")
+        Chronicle.find({privacy : "public"}, function(err, post) {
+            posts[post._id] = post;
+         });
+        Recipe.find({privacy : "public"}, function(err, post) {
+            posts[post._id] = post;
+         });
+        Wedding.find({privacy : "public"}, function(err, post) {
+            posts[post._id] = post;
+         });
+        Birth.find({privacy : "public"}, function(err, post) {
+            posts[post._id] = post;
+         });
+        Thought.find({privacy : "public"}, function(err, post) {
+            posts[post._id] = post;
+         });
+        Idea.find({privacy : "public"}, function(err, post) {
+            posts[post._id] = post;
+         });
+        Photo.find({privacy : "public"}, function(err, post) {
+            posts[post._id] = post;
+         });
+        PhotoAlbum.find({privacy : "public"}, function(err, post) {
+            posts[post._id] = post;
+         });
+        ScientificEvent.find({privacy : "public"}, function(err, post) {
+            posts[post._id] = post;
+         });
+        SportsRegistry.find({privacy : "public"}, function(err, post) {
+            posts[post._id] = post;
+         });
+        AcademicRegistry.find({privacy : "public"}, function(err, post) {
+            posts[post._id] = post;
+         });
+        AcademicWork.find({privacy : "public"}, function(err, post) {
+            posts[post._id] = post;
+         });
+         //sort by date ???
+         posts.sort(function(p1,p2){
+            return sort_p1.date_before_p2.date ? -1 : sort_p1.date_after_p2.date ? 1 : 0;
+          });
+          console.log(posts[0])
+         //res.render('newsfeed',{ title: 'News Feed', posts});
+         */
         res.render('newsfeed',{ title: 'News Feed'});
     });
 
