@@ -49,7 +49,9 @@ module.exports = function(app, passport) {
         res.render('contact',{ title: 'Contact'});
     });
 
-    app.get('/myposts', function(req, res) {
+    // User Posts ==============================
+    app.get('/myPosts', function(req, res) {
+        console.log("Before find")
         Idea.find({'ident' : req.user.id}, function(err, post) {
             if(!err){
                 console.log("!err")
