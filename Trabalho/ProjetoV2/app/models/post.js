@@ -105,7 +105,6 @@ var RecipeSchema = new Schema({
     type: {type: String, required: true},
     ingredients: {type: String, required: true},
     instructions: {type: String, required: true}
-
 })
 
 var BirthSchema = new Schema({
@@ -176,9 +175,9 @@ var PublicationSchema = new Schema({
 //module.exports = mongoose.model('Post', PublicationSchema, 'posts');
 module.exports = mongoose.model('Photo', PhotoSchema, 'posts');
 module.exports = mongoose.model('SportsRegistry', SportsRegistrySchema, 'posts');
-module.exports = mongoose.model('PhotoAlbum', PhotoAlbumSchema, 'posts');
+//module.exports = mongoose.model('PhotoAlbum', PhotoAlbumSchema, 'posts');
 module.exports = mongoose.model('AcademicRegistry', AcademicRegistrySchema, 'posts');
-module.exports = mongoose.model('ScientificEvent', ScientificEventSchema, 'posts');
+//module.exports = mongoose.model('ScientificEvent', ScientificEventSchema, 'posts');
 module.exports = mongoose.model('Thought', ThoughtSchema, 'posts');
 module.exports = mongoose.model('Idea', IdeaSchema, 'posts');
 module.exports = mongoose.model('Recipe', RecipeSchema, 'posts');
