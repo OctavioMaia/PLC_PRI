@@ -432,13 +432,11 @@ module.exports = function(app, passport) {
                     return res.redirect('/newsfeed');
                 }else{
                     console.log(err);
+                    next(err);
                 }
             });
         } else {
-            /*var err = new Error('Name and passwords are mandatory.');
-            err.status = 400;
-            return next(err);*/
-            console.log(err);
+            return next(err);
         }
     });
 
