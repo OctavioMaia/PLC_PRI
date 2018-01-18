@@ -13,7 +13,7 @@ var AcademicWorkSchema = new Schema({
     type: {type: String, required: true},
     course: {type: String, required: false},
     professor: {type: String, required: true},
-    gpxFile: {type: String, required: true},
+    file: {type: String, required: true},
     classification: {type: String, required: true}
 })
 

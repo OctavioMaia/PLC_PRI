@@ -11,7 +11,7 @@ var IdeaSchema = new Schema({
     date: {type: Date, required: true},
     description: {type: String, required: true},
     type: {type: String, required: true},
-    key_words: {type: String, required: true},
+    keywords: {type: String, required: true},
     priority: {type: String, required: true},
     text: {type:String, required: true}
 })
