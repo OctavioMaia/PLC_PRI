@@ -19,7 +19,7 @@ module.exports = function(app, passport) {
     });
 
     // PROFILE SECTION =========================
-    app.get('/profile', isLoggedIn, function(req, res) {
+    app.get('/profile', function(req, res) {
         if(req.user.google.id!=undefined){
             console.log("match google")
             user = req.user.google

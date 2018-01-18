@@ -71,6 +71,11 @@ a:hover {
 .btn-light:hover {
 	background: rgba(255,255,255, .2);	
 }
+
+.navbar-nav .open .dropdown-menu {
+    background-color:rgba(255,255,255, .2);
+}
+
 .active,
 .btn {
 	transition: .4s;
