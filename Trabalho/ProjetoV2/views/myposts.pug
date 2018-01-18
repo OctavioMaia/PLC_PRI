@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  .main.container
+    .row
+      .col-md-8.col-md-offset-2
+        h3.display-4.m-b-2 My Posts
+    .row
+      .col-lg-3.col-sm-12.left
+        div
+          nav
+            p Something
+      .col-lg-6.col-sm-12.right
+        article
+          each val in post
+            h5 #{val}
+            p This is my publications
