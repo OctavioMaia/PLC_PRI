@@ -40,10 +40,31 @@ block content
                 p Priority: #{val.priority}
                 p Text: #{val.text}
               when 'Thought'
+                p Keywords: #{val.keywords}
+                p Text: #{val.text}
               when 'SportsRegistry'
+                p Sport: #{val.sport}
+                p Duration: #{val.duration}
+                p Participants: #{val.participants}
+                p Results: #{val.results}
+                //p GPX: #{val.gpxfile}
               when 'Photo'
-              when 'PhotoAlbum'
-              when 'AcademicRegistry'
+                p People: #{val.people}
+                //p Path: #{val.path}
+              //when 'PhotoAlbum'
               when 'AcademicWork'
+                p Course: #{val.course}
+                p Professor: #{val.professor}
+                p Classification: #{val.classification}
+                //p File: #{val.files}
+              when 'AcademicRegistry'
+                p Duration: #{val.duration}
+                p Credits: #{val.credits}
+              when 'AcademicRegistry'
+                p Event Type: #{val.eventType}
+                p Hosts: #{val.hosts}
+                p Guests: #{val.guests}
+                p Text: #{val.text}
+                //p Files: #{val.files}
               default: p Nao sei
             

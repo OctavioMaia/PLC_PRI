@@ -68,7 +68,7 @@ module.exports = function(app, passport) {
     app.get('/newsfeed', function(req, res) {
 		
 		console.log("Antes do find.")
-        Idea.find({}, function(err, post) {
+        Idea.find({privacy: 'public'}, function(err, post) {
             if(!err){
                 console.log("!err")
                 res.render('newsfeed',{ title: 'News Feed',post});
