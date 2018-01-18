@@ -67,17 +67,18 @@ module.exports = function(app, passport) {
 
     // NEWSFEED ==============================
     app.get('/newsfeed', function(req, res) {
-		
+        var posts = ''
 		console.log("Antes do find.");
         Idea.find({privacy: 'public'}, function(err, post) {
             if(!err){
-                console.log("!err");
-                res.render('newsfeed',{ title: 'News Feed',post});
+                posts = post.concat(posts)
+                console.log(posts)
+                res.render('newsfeed',{ title: 'News Feed', posts});
             }else{
                 console.log("There are no posts");
                 next(err);
             }
-         });
+        });
     });
 
     // NEWPOST ==============================
@@ -325,6 +326,7 @@ module.exports = function(app, passport) {
     app.post('/processnewpost', isLoggedIn, function(req, res, next) {
         if (req.body.Type) {
             var post;
+            var name;
             switch (req.body.Type) {
                 case 'Chronicle':
                     post = new Chronicle();
@@ -362,9 +364,17 @@ module.exports = function(app, passport) {
                 console.log("debug: ("+ key +','+req.body[key]+')');
             }
 
+            if(req.user.google.id!=undefined)
+                name = req.user.google.name;
+            else if(req.user.facebook.id!=undefined)
+                name = req.user.facebook.name;
+            else
+                name = req.user.local.name;
+
             //populate the previous var
             if(post!=undefined){
-               post.ident = req.user.id;
+                post.author = name;
+                post.ident = req.user.id;
                 post.location = req.body.Location;
                 post.privacy = req.body.Privacy;
                 post.title = req.body.Title;

@@ -14,59 +14,58 @@ block content
             p Fresh
       .col-lg-6.col-sm-12.right
         article
-          p This is a publication
-          each val in post
-            h6 _______________________________________________________
-            h4 #{val.title}
-            p Type: #{val.type}
-            p Location: #{val.location}
-            p Date: #{val.date}
-            p Description: #{val.description}
-            case val.type
-              when 'Chronicle'  
-                p Theme: #{val.theme}
-                p Post by: #{ident.name}   
-                p #{val.text}
-              when 'Recipe'
-                p Ingredients: #{val.ingredients}
-                p Instructions#{val.instructions}
-              when 'Wedding'
-                p Couple: #{val.couple}
-                p Guest List: #{val.guests}
-                p Menu: #{val.menu}
-              when 'Birth'
-                p Name: #{val.name}
-                p Gender: #{val.gender}
-                p Parents: #{val.parents}
-              when 'Idea'
-                p Keywords: #{val.keywords}
-                p Priority: #{val.priority}
-                p Text: #{val.text}
-                
-              when 'Thought'
-                p Keywords: #{val.keywords}
-                p Text: #{val.text}
-              when 'SportsRegistry'
-                p Sport: #{val.sport}
-                p Duration: #{val.duration}
-                //p GpxFile: #{val.gpxfile}
-                p Participants: #{val.participants}
-                p Results: #{val.results}
-              when 'Photo'
-                p Path: #{val.path}
-                p People: #{val.people}
-              when 'AcademicRegistry'
-                p Duration: #{val.duration}
-                p Credits: #{val.credits}
-              when 'AcademicWork'
-                p Course: #{val.course}
-                p Professor: #{val.professor}
-                p File: #{val.file}
-                p Classification: #{val.classification}
-              when 'Event'
-                p Files: #{val.files}
-                p Guests: #{val.guests}
-                p Hosts: #{val.hosts}
-                p Event Type: #{val.eventType}
-                p Text: #{val.text}
-              default: p Nao sei
+          each val in posts
+            if(val!='')
+              h6 _______________________________________________________
+              h4 #{val.title} by #{val.author}
+              p Type: #{val.type}
+              p Location: #{val.location}
+              p Date: #{val.date}
+              p Description: #{val.description}
+              case val.type
+                when 'Chronicle'  
+                  p Theme: #{val.theme}
+                  p Post by: #{ident.name}   
+                  p #{val.text}
+                when 'Recipe'
+                  p Ingredients: #{val.ingredients}
+                  p Instructions#{val.instructions}
+                when 'Wedding'
+                  p Couple: #{val.couple}
+                  p Guest List: #{val.guests}
+                  p Menu: #{val.menu}
+                when 'Birth'
+                  p Name: #{val.name}
+                  p Gender: #{val.gender}
+                  p Parents: #{val.parents}
+                when 'Idea'
+                  p Keywords: #{val.keywords}
+                  p Priority: #{val.priority}
+                  p Text: #{val.text}
+                when 'Thought'
+                  p Keywords: #{val.keywords}
+                  p Text: #{val.text}
+                when 'SportsRegistry'
+                  p Sport: #{val.sport}
+                  p Duration: #{val.duration}
+                  //p GpxFile: #{val.gpxfile}
+                  p Participants: #{val.participants}
+                  p Results: #{val.results}
+                when 'Photo'
+                  p Path: #{val.path}
+                  p People: #{val.people}
+                when 'AcademicRegistry'
+                  p Duration: #{val.duration}
+                  p Credits: #{val.credits}
+                when 'AcademicWork'
+                  p Course: #{val.course}
+                  p Professor: #{val.professor}
+                  p File: #{val.file}
+                  p Classification: #{val.classification}
+                when 'Event'
+                  p Files: #{val.files}
+                  p Guests: #{val.guests}
+                  p Hosts: #{val.hosts}
+                  p Event Type: #{val.eventType}
+                  p Text: #{val.text}
+                default: p Nao sei
