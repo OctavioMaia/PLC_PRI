@@ -1,0 +1,49 @@
+extends layout
+
+block content
+  .main.container
+    .row
+      .col-md-8.col-md-offset-2
+        h3.display-4.m-b-2 My Posts
+    .row
+      .col-lg-3.col-sm-12.left
+        div
+          nav
+            p Sidebar
+      .col-lg-6.col-sm-12.right
+        article
+          p These are my publications:
+          each val in post
+            h6 _____________________________________________
+            h4 #{val.title}
+            p Type: #{val.type}
+            p Location: #{val.location}
+            p Date: #{val.date}
+            p Description: #{val.description}
+            case val.type
+              when 'Chronicle'  
+                p Theme: #{val.theme}
+                p #{val.text}
+              when 'Recipe'
+                p Ingredients: #{val.ingredients}
+                p Instructions#{val.instructions}
+              when 'Wedding'
+                p Couple: #{val.couple}
+                p Guest List: #{val.guests}
+                p Menu: #{val.menu}
+              when 'Birth'
+                p Name: #{val.name}
+                p Gender: #{val.gender}
+                p Parents: #{val.parents}
+              when 'Idea'
+                p Keywords: #{val.keywords}
+                p Priority: #{val.priority}
+                p Text: #{val.text}
+              when 'Thought'
+              when 'SportsRegistry'
+              when 'Photo'
+              when 'PhotoAlbum'
+              when 'AcademicRegistry'
+              when 'AcademicWork'
+              default: p Nao sei
+            
