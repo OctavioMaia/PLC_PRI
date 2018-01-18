@@ -4,6 +4,7 @@ var Schema   = mongoose.Schema;
 
 //Schemas for publication
 var ChronicleSchema = new Schema({
+    author: {type: String, required: true},
     ident: {type: String, required: true},
     location: {type: String, required: false},
     privacy: {type: String, required: true},
