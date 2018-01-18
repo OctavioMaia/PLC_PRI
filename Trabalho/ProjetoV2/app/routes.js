@@ -426,6 +426,65 @@ module.exports = function(router, passport) {
         }
     });
 
+    router.post('/editpost',isLoggedIn , function(req, res, next) {
+        if (req.body) {
+            
+            var post = req.body.post
+
+            //populate the previous var
+            if(post!=undefined){
+                post.author = name;
+                post.ident = req.user.id;
+                post.location = req.body.Location;
+                post.privacy = req.body.Privacy;
+                post.title = req.body.Title;
+                post.date = req.body.Date;
+                post.description = req.body.Description;
+                post.type = req.body.Type;
+                post.theme = req.body.Theme;
+                post.text = req.body.Text;
+                post.ingredients = req.body.Ingredients;
+                post.instructions = req.body.Instructions;
+                post.path = req.body.Path;
+                post.people = req.body.People;
+                post.sport = req.body.Sport;
+                post.duration = req.body.Duration;
+                post.gpxFile = req.body.GpxFile;
+                post.participants = req.body.Participants;
+                post.results = req.body.Results;
+                post.credits = req.body.Credits;
+                post.file = req.body.File;
+                post.files = req.body.Files;
+                post.guests = req.body.Guests;
+                post.hosts = req.body.Hosts;
+                post.eventType = req.body.EventType;
+                post.keywords = req.body.Keywords;
+                post.priority = req.body.Priority;
+                post.name = req.body.Name;
+                post.gender = req.body.Gender;
+                post.parents = req.body.Parents;
+                post.couple = req.body.Couple;
+                post.menu = req.body.Menu;
+                post.course = req.body.Course;
+                post.professor = req.body.Professor;
+                post.classification = req.body.Classification;
+            }
+
+            console.log("after changes:\n" +post);
+            post.save(function(err){
+                if(!err){
+                    console.log('add post');
+                    return res.redirect('/newsfeed');
+                }else{
+                    console.log(err);
+                    next(err);
+                }
+            });
+        } else {
+            return next(err);
+        }
+    });
+
 // =============================================================================
 // AUTHENTICATE (FIRST LOGIN) ==================================================
 // =============================================================================

@@ -1,0 +1,43 @@
+extends layout
+
+block content
+  .main.container.row
+    .col-md-6.col-md-offset-3
+      h1.display-4.m-b-2 Edit your post
+
+      // register form
+      form(method='POST' action='/editpost')
+        each val in reqs
+            if (val.text!='Type')
+              if (val.text!='Privacy')
+                div.form-group
+                    label(for=val.text) #{val.text}:
+                    if (!val.obligatory)
+                      input#name.form-control(type=val.type, name=val.text)
+                    else
+                      input#name.form-control(type=val.type, name=val.text required)
+              else
+                label(for='privacy') Privacy:
+                  select(type="text", class="form-control" name="Privacy")
+                    option(value="private") Private
+                    option(value="public") Public
+            else
+              div.form-group
+                label(for=val.text) #{val.text}
+                if (!val.obligatory)
+                  input#name.form-control(type=val.type, name=val.text value=name readonly)
+                else
+                  input#name.form-control(type=val.type, name=val.text value=name readonly required)
+        each val in extras
+            div.form-group
+                label(for=val.text) #{val.text}:
+                if (!val.obligatory)
+                  input#name.form-control(type=val.type, name=val.text)
+                else
+                  input#name.form-control(type=val.type, name=val.text required)
+        div(class='btn-group')
+          a(class='btn btn-primary disabled')
+            i(class='fa fa-check-square-o' style='width:24px; height:24px')
+          button.btn.btn-primary(type='submit' class='btn-block btn-primary') Confirm changes
+        form(method='GET' action='/myposts')
+            button.btn.btn-secondary(type='submit' class='btn-block btn-danger') Discard changes
