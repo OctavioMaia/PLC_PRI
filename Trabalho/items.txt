@@ -17,7 +17,7 @@ Resultados, Duração, Foto*, Ficheiro GPX*;
 -Registo de formação:
     Título, Data, Privacidade, Descrição, Creditação, Duração, Etc;
 
--Participação num evento científico ????? Diferenciamos eventos ?????
+-Participação num evento (cientifico, cultural, etc)
     Título, Data, Privacidade, Descrição, Local, individuo*, Ficheiros anexados*;
 
 -Cultural

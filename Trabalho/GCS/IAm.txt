@@ -1,9 +1,10 @@
-Ontologia IAm
+﻿Ontologia IAm
 
 conceitos {
     Person[name: String, age: String, gender: String, email: String, address: String, profession: String, phoneNumber: String],
     Publication[title: String, location: String, privacy: String, date: String, description: String],
     PhotoAlbum[albumTitle:String], Photo[path: String, location: String], AcademicRegistry:[duration: String, credits: String],
+    PhotoAlbum[albumTitle:String], Photo[path: String, location: String], AcademicRegistry[duration: String, credits: String],
     Event[eventType: String, hosts: String, guests: String], Wedding[couple: String, guests: String, menu: String],
     Birth[childName: String, childGender: String, parents: String], Thought[keywords: String],
     Idea[keywords: String, priority: String], Recipe[ingredients: String, instructions: String],
@@ -16,15 +17,15 @@ individuos{
     person_01, person_02, pub_01
 }
 
-relacao{
+relacoes{
     is-a, has, owns, iof, pof, published
 }
 
 triplos{
-    person_01 = iof => Person[name = "Lara", age="25", gender="female", email="L4ra@pmail.com", address="", profession="actress", phoneNumber= "9111111112"],
-    person_02 = iof => Person[name = "Alberto", age="44", gender="male", email="b3rto@pmail.com", address="Rua dos Bertos", profession="pasteleiro", phoneNumber= "92847617623"],
+    person_01 = iof => Person[name = "Lara", age="25", gender="female", email="L4ra@pmail.com", address="Rua", profession="actress", phoneNumber= "9111111112"];
+    person_02 = iof => Person[name = "Alberto", age="44", gender="male", email="b3rto@pmail.com", address="Rua dos Bertos", profession="pasteleiro", phoneNumber= "92847617623"];
 
-    person_02 = published => pub_01
-    pub_01 = iof => Birth[childName= "Lara", childGender= "female", parents="Alberto e Celeste"]
-    Birth = is-a => Publication[title= "Nascimento da minha filha.", locations= "Hospital de Gião", privacy= "public", date= "21-05-1972", description= "Nasceu às 12h35min."]
+    person_02 = published => pub_01;
+    pub_01 = iof => Birth[childName= "Lara", childGender= "female", parents="Alberto e Celeste"];
+    Birth = is-a => Publication[title= "Nascimento da minha filha.", locations= "Hospital de Gião", privacy= "public", date= "21-05-1972", description= "Nasceu às 12h35min."];
 }
