@@ -3,7 +3,6 @@
 conceitos {
     Person[name: String, age: String, gender: String, email: String, address: String, profession: String, phoneNumber: String],
     Publication[title: String, location: String, privacy: String, date: String, description: String],
-    PhotoAlbum[albumTitle:String], Photo[path: String, location: String], AcademicRegistry:[duration: String, credits: String],
     PhotoAlbum[albumTitle:String], Photo[path: String, location: String], AcademicRegistry[duration: String, credits: String],
     Event[eventType: String, hosts: String, guests: String], Wedding[couple: String, guests: String, menu: String],
     Birth[childName: String, childGender: String, parents: String], Thought[keywords: String],
