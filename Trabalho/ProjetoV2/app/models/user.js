@@ -13,7 +13,8 @@ var userSchema = new Schema({
         gender       : {type: String, required:false},
         address      : {type: String, required:false},
         profession   : {type: String, required:false},
-        cnumber      : {type: String, required:false}
+        cnumber      : {type: String, required:false},
+        type         : {type: String, required:true}
     },
     facebook         : {
         id           : {type: String, required:false},
@@ -24,7 +25,8 @@ var userSchema = new Schema({
         gender       : {type: String, required:false},
         address      : {type: String, required:false},
         profession   : {type: String, required:false},
-        cnumber      : {type: String, required:false}
+        cnumber      : {type: String, required:false},
+        type         : {type: String, required:true}
     },
     google           : {
         id           : {type: String, required:false},
@@ -35,9 +37,9 @@ var userSchema = new Schema({
         gender       : {type: String, required:false},
         address      : {type: String, required:false},
         profession   : {type: String, required:false},
-        cnumber      : {type: String, required:false}
+        cnumber      : {type: String, required:false},
+        type         : {type: String, required:true}
     }
-
 });
 
 // generating a hash

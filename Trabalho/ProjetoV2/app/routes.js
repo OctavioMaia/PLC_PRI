@@ -11,8 +11,8 @@ var AcademicWork        = require('../app/models/academicwork');
 var Chronicle           = require('../app/models/chronicle');
 var Event               = require('../app/models/event');
 
-var express = require('express');
-var router = express.Router();
+var express             = require('express');
+var router              = express.Router();
 
 module.exports = function(router, passport) {
     // show the home page (will also have our login links)
@@ -52,30 +52,30 @@ module.exports = function(router, passport) {
     });
 
     // User Posts ==============================
-    router.get('/myposts', function(req, res) {
+    router.get('/myposts', function(req, res,next) {
         var filter = 'all'
-        Idea.find({'ident' : req.user.id}, function(err, post) {
-            if(!err){
+        Idea.find({'ident' : req.user.id}, function(err, post,next) {
+            if(post.length!=0){
                 res.render('myposts',{ title: 'My Posts',post,filter});
             }else{
-                next(err);
+                var err = new Error('There are no posts.');
+                err.status = 400;
+                return next(err);
             }
-        
         });
     });
 
-    router.get('/myposts/:filter', function(req, res) {
-        
+    router.get('/myposts/:filter', function(req, res,next) {
         var filter = req.params.filter
         Idea.find({'ident' : req.user.id}, function(err, post) {
             if(!err){
                 console.log("!err")
                 res.render('myposts',{ title: 'My Posts',post,filter});
             }else{
-                console.log("There are no posts");
-                next(err);
+                var err = new Error('There are no posts.');
+                err.status = 400;
+                return next(err);
             }
-        
         });
     });
 
@@ -308,7 +308,8 @@ module.exports = function(router, passport) {
               address: req.body.address,
               age: req.body.age,
               profession: req.body.profession,
-              cnumber: req.body.cnumber
+              cnumber: req.body.cnumber,
+              type: req.body.type
             };
       
             //finds the current user in order to update
@@ -321,6 +322,7 @@ module.exports = function(router, passport) {
                     user.google.address    = userData.address;
                     user.google.profession = userData.profession;
                     user.google.cnumber    = userData.cnumber;
+                    user.google.type       = userData.type;
                 }else if(user.facebook.id!=undefined){
                     user.facebook.name       = userData.name;
                     user.facebook.email      = user.facebook.email;
@@ -329,12 +331,14 @@ module.exports = function(router, passport) {
                     user.facebook.address    = userData.address;
                     user.facebook.profession = userData.profession;
                     user.facebook.cnumber    = userData.cnumber;
+                    user.facebook.type       = userData.type;
                 }else{
                     user.local.name       = userData.name;
                     user.local.gender     = userData.gender;
                     user.local.address    = userData.address;
                     user.local.profession = userData.profession;
                     user.local.cnumber    = userData.cnumber;
+                    user.local.type       = userData.type;
                 }
       
                 user.save(function(err){
