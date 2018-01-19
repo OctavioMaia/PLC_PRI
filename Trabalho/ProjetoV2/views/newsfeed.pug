@@ -22,7 +22,7 @@ block content
             form(method='GET' action='/newsfeed/SportsRegistry')
               button.btn.btn-primary(type='submit') Sports
             form(method='GET' action='/newsfeed/AcademicWork')
-              button.btn.btn-primary(type='submit') Academic Works
+              button.btn.btn-primary(type='submit') Academic Work
             form(method='GET' action='/newsfeed/AcademicRegistry')
               button.btn.btn-primary(type='submit') Academic Registry
             form(method='GET' action='/newsfeed/Event')
@@ -34,7 +34,9 @@ block content
           each val in posts
             if(val!=''&& (filter == 'all' || filter == val.type))
               h6 _______________________________________________________
-              h4 #{val.title} by #{val.author}
+              p
+                span(style="font-size:40px;") #{val.title} 
+                span(style="font-size:15px;") by #{val.author}
               p Type: #{val.type}
               p Location: #{val.location}
               p Date: #{val.date}
@@ -45,7 +47,7 @@ block content
                   p Text: #{val.text}
                 when 'Recipe'
                   p Ingredients: #{val.ingredients}
-                  p Instructions#{val.instructions}
+                  p Instructions: #{val.instructions}
                 when 'Wedding'
                   p Couple: #{val.couple}
                   p Guest List: #{val.guests}

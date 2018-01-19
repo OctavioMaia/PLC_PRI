@@ -32,7 +32,7 @@ block content
       .col-lg-6.col-sm-12.right
         article
           p These are my publications:
-            each val in post
+            each val in posts
               if (filter == "all"|| filter == val.type)
                 h6 _____________________________________________
                   .col-lg-6.col-sm-12.left
@@ -76,7 +76,7 @@ block content
                     p Text: #{val.text}
                     form(method='GET' action='/editpost/' + val.id)
                       button.btn.btn-primary(type='submit' href=("/editpost/" + val.id)) Edit this post
-                  when 'Sports Registry'
+                  when 'SportsRegistry'
                     p Sport: #{val.sport}
                     p Duration: #{val.duration}
                     p Participants: #{val.participants}
@@ -90,14 +90,14 @@ block content
                     form(method='GET' action='/editpost/' + val.id)
                       button.btn.btn-primary(type='submit' href=("/editpost/" + val.id)) Edit this post
                   //when 'PhotoAlbum'
-                  when 'Academic Work'
+                  when 'AcademicWork'
                     p Course: #{val.course}
                     p Professor: #{val.professor}
                     p Classification: #{val.classification}
                     //p File: #{val.files}
                     form(method='GET' action='/editpost/' + val.id)
                       button.btn.btn-primary(type='submit' href=("/editpost/" + val.id)) Edit this post
-                  when 'Academic Registry'
+                  when 'AcademicRegistry'
                     p Duration: #{val.duration}
                     p Credits: #{val.credits}
                     form(method='GET' action='/editpost/' + val.id)

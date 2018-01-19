@@ -10,6 +10,7 @@ var Wedding             = require('../app/models/wedding');
 var AcademicWork        = require('../app/models/academicwork');
 var Chronicle           = require('../app/models/chronicle');
 var Event               = require('../app/models/event');
+var Post                = require('../app/models/posts')
 
 var express             = require('express');
 var router              = express.Router();
@@ -54,62 +55,73 @@ module.exports = function(router, passport) {
     // User Posts ==============================
     router.get('/myposts', function(req, res,next) {
         var filter = 'all'
-        Idea.find({'ident' : req.user.id}, function(err, post,next) {
-            if(post.length!=0){
-                res.render('myposts',{ title: 'My Posts',post,filter});
+        var posts 
+        Post.find({ident : req.user.id}).lean().exec(function(err, doc) {
+            if(!err){
+                posts = doc
+                console.log(posts)
             }else{
+                console.log("err2")
                 /*var err = new Error('There are no posts.');
                 err.status = 400;
                 next(err);*/
-                console.log("no posts")
             }
+            res.render('myposts',{ title: 'My Posts',posts,filter});
         });
     });
 
     router.get('/myposts/:filter', function(req, res,next) {
         var filter = req.params.filter
-        Idea.find({'ident' : req.user.id}, function(err, post,next) {
+        var posts 
+        Post.find({ident: req.user.id}).lean().exec(function(err, doc) {
             if(!err){
-                console.log("!err")
-                res.render('myposts',{ title: 'My Posts',post,filter});
+                posts = doc
+                console.log(posts)
             }else{
+                console.log("err2")
                 /*var err = new Error('There are no posts.');
                 err.status = 400;
                 next(err);*/
-                console.log("no posts")
             }
+            res.render('myposts',{ title: 'My Posts',posts,filter});
         });
     });
 
     // NEWSFEED ==============================
     router.get('/newsfeed', function(req, res) {
         var filter = 'all'
-        var posts = ''
+        var posts 
 		console.log("Antes do find.");
-        Idea.find({privacy: 'public'}, function(err, post) {
+        Post.find().lean().exec(function(err, doc) {
             if(!err){
-                posts = post.concat(posts)
+                posts = doc
                 console.log(posts)
-                res.render('newsfeed',{ title: 'News Feed', posts,filter});
             }else{
-                console.log("There are no posts");
-                next(err);
+                console.log("err2")
+                /*var err = new Error('There are no posts.');
+                err.status = 400;
+                next(err);*/
             }
+            res.render('newsfeed',{ title: 'News Feed', posts,filter});
         });
     });
 
-    router.get('/newsfeed/:filter', function(req, res) {
-        var posts = ''
+    router.get('/newsfeed/:filter', function(req, res,next) {
         var filter = req.params.filter
-        Idea.find({privacy: 'public'}, function(err, post) {
+        console.log(filter)
+        var posts 
+		console.log("Antes do find.");
+        Post.find({type:filter}).lean().exec(function(err, doc) {
             if(!err){
-                posts = post.concat(posts)
-                res.render('newsfeed',{ title: 'News Feed',posts,filter});
+                posts = doc
+                console.log(doc)
+                res.render('newsfeed',{ title: 'News Feed', posts,filter});
             }else{
-                console.log("There are no posts");
-                next(err);
+                console.log("err2")
+                /*var err = new Error('There are no posts.');
+                err.status = 400;
+                next(err);*/
             }
-        
         });
     });
 
@@ -145,7 +157,7 @@ module.exports = function(router, passport) {
                       {'type':'text','text':'GpxFile','obligatory':false},
                       {'type':'text','text':'Participants','obligatory':false},
                       {'type':'text','text':'Results','obligatory':false},];
-        var name = 'Sports Registry';
+        var name = 'SportsRegistry';
         res.render('processnewpost',{ title: 'Sports Registry',name,reqs,extras});
     });
 
@@ -159,7 +171,7 @@ module.exports = function(router, passport) {
                     {'type':'text','text':'Description','obligatory':true}];
         var extras = [{'type':'text','text':'Duration','obligatory':false},
                       {'type':'text','text':'Credits','obligatory':true}];
-        var name = 'Academic Registry';
+        var name = 'AcademicRegistry';
         res.render('processnewpost',{ title: 'Academic Registry',name,reqs,extras});
     });
 
@@ -265,7 +277,7 @@ module.exports = function(router, passport) {
                       {'type':'text','text':'Professor','obligatory':true},
                       {'type':'text','text':'File','obligatory':true},
                       {'type':'text','text':'Classification','obligatory':true}];
-        var name = 'Academic Work';
+        var name = 'AcademicWork';
         res.render('processnewpost',{ title: 'Academic Work',name,reqs,extras});
     });
 
@@ -379,10 +391,10 @@ module.exports = function(router, passport) {
                 case 'Photo':
                     post = new Photo();
                     break;
-                case 'Sports Registry':
+                case 'SportsRegistry':
                     post = new SportsRegistry();
                     break;
-                case 'Academic Registry':
+                case 'AcademicRegistry':
                     post = new AcademicRegistry();
                     break;
                 case 'Thought':
@@ -391,7 +403,7 @@ module.exports = function(router, passport) {
                 case 'Wedding':
                     post = new Wedding();
                     break;
-                case 'Academic Work':
+                case 'AcademicWork':
                     post = new AcademicWork();
                     break;
             }
@@ -446,15 +458,13 @@ module.exports = function(router, passport) {
                 post.classification = req.body.Classification;
             }
 
-            post.save(function(err){
-                if(!err){
-                    return res.redirect('/newsfeed');
-                }else{
-                    next(err);
+            Post.collection.insert(post, function (err, docs) {
+                if (err) {
+                    console.log("err")
+                } else {
+                    console.log("insert")
                 }
             });
-        } else {
-            return next(err);
         }
     });
 
