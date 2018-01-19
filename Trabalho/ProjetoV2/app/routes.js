@@ -58,23 +58,25 @@ module.exports = function(router, passport) {
             if(post.length!=0){
                 res.render('myposts',{ title: 'My Posts',post,filter});
             }else{
-                var err = new Error('There are no posts.');
+                /*var err = new Error('There are no posts.');
                 err.status = 400;
-                return next(err);
+                next(err);*/
+                console.log("no posts")
             }
         });
     });
 
     router.get('/myposts/:filter', function(req, res,next) {
         var filter = req.params.filter
-        Idea.find({'ident' : req.user.id}, function(err, post) {
+        Idea.find({'ident' : req.user.id}, function(err, post,next) {
             if(!err){
                 console.log("!err")
                 res.render('myposts',{ title: 'My Posts',post,filter});
             }else{
-                var err = new Error('There are no posts.');
+                /*var err = new Error('There are no posts.');
                 err.status = 400;
-                return next(err);
+                next(err);*/
+                console.log("no posts")
             }
         });
     });
