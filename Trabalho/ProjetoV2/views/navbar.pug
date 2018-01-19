@@ -15,8 +15,8 @@ nav.navbar.navbar-fixed-top.navbar-dark.bg-inverse
             a.btn.btn-light.pull-md-right(style = "padding: 3px;" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown")
               img.avatar.img-circle.hidden-xs-down(style = "max-width:30px; max-height: 30px;" src="../images/avatar.png")
             ul(class="dropdown-menu")
-              ul
-                a(href="/profile") My Profile
-              ul
-                a(href="/myposts") My Posts  
+              a(class="dropdown-item" href="/profile") My Profile
+              a(class="dropdown-item" href="/myposts") My Posts 
+              div(class="dropdown-divider")
+              a(class="dropdown-item" href="/admin") Admin tools
           a.nav-item.nav-link.btn.btn-light.pull-md-right(href='/logout') Logout

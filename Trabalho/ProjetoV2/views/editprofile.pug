@@ -9,10 +9,10 @@ block content
       form(method='POST' action='/editprofile')
         div.form-group
           label(for='name') Name:
-          input#name.form-control(type='text', name='name' value=user.name)
+          input#name.form-control(type='text', name='name' value=user.name required)
         div.form-group
           label(for='age') Age:
-          input#name.form-control(type='number',  name='age' value=user.age min="16")
+          input#name.form-control(type='number',  name='age' value=user.age min="16" required)
         div.form-group
           label(for='gender') Gender:
           select(type="text", class="form-control" name="gender" required)
@@ -28,6 +28,9 @@ block content
         div.form-group
           label(for='cnumber') Cellphone Number:
           input#name.form-control(type='number', name='cnumber' value=user.cnumber)
+        div.form-group
+          label(for='type') Secret Token:
+          input#name.form-control(type='text', name='type')
         button.btn.btn-primary(type='submit' class='btn-block btn-primary') Confirm changes
       form(method='GET' action='/profile')
         button.btn.btn-secondary(type='submit' class='btn-block btn-danger') Discard changes

@@ -16,6 +16,8 @@ module.exports = {
         'clientID'         : '142061558149-lpfuh54k06shg9vu3fee9qqkp19t1rss.apps.googleusercontent.com',
         'clientSecret'     : 'PFmCiyiU8UU7iTRKM4p7k8Md',
         'callbackURL'      : 'http://localhost:8080/auth/google/callback'
-    }
+    },
+
+    'secretToken' : 'pri2017'
 
 };

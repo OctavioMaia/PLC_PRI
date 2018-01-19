@@ -14,6 +14,8 @@ var Post                = require('../app/models/posts')
 
 var express             = require('express');
 var router              = express.Router();
+var configDB            = require('../config/auth.js');
+var fs                  = require('fs');
 
 module.exports = function(router, passport) {
     // show the home page (will also have our login links)
@@ -22,7 +24,7 @@ module.exports = function(router, passport) {
     });
 
     // PROFILE SECTION =========================
-    router.get('/profile', function(req, res) {
+    router.get('/profile',isLoggedIn, function(req, res) {
         if(req.user.google.id!=undefined){
             console.log("match google");
             user = req.user.google;
@@ -52,8 +54,18 @@ module.exports = function(router, passport) {
         res.render('contact',{ title: 'Contact'});
     });
 
+    // ADMIN ==============================
+    router.get('/admin', isAdmin,function(req, res) {
+        res.render('admin',{ title: 'Admin panel'});
+    });
+
+    // ADMIN ==============================
+    router.get('/success', function(req, res) {
+        res.render('success',{ title: 'Success!'});
+    });
+
     // User Posts ==============================
-    router.get('/myposts', function(req, res,next) {
+    router.get('/myposts',isLoggedIn, function(req, res,next) {
         var filter = 'all'
         var posts 
         Post.find({ident : req.user.id}).lean().exec(function(err, doc) {
@@ -323,9 +335,13 @@ module.exports = function(router, passport) {
               age: req.body.age,
               profession: req.body.profession,
               cnumber: req.body.cnumber,
-              type: req.body.type
             };
-      
+
+            if(req.body.type==configDB.secretToken) 
+                userData.type = 'admin'
+            else
+                userData.type = 'user'
+
             //finds the current user in order to update
             User.findOne({ '_id' : req.user.id }, function(err, user){
                 if(user.google.id!=undefined){
@@ -495,6 +511,43 @@ module.exports = function(router, passport) {
         
     });
 
+    //admin tools
+    router.post('/admin',isAdmin , function(req, res, next) {
+        var db = req.body.collection
+        var info
+        if(db=='posts'){
+            Post.find({}).lean().exec(function(err, doc) {
+                if(!err){
+                    fs.writeFile('./json/posts.json', JSON.stringify(doc), function(err) {
+                        if(err) {
+                            return console.log(err);
+                        }else{
+                            var message = "Posts have been exported with success!"
+                            res.render('success', { 'Title': 'Success!', message});
+                        }
+                    }); 
+                }else{
+                    console.log("err3")
+                }
+            });
+        }else{
+            User.find({}).lean().exec(function(err, doc) {
+                if(!err){
+                    fs.writeFile('./json/users.json', JSON.stringify(doc), function(err) {
+                        if(err) {
+                            return console.log(err);
+                        }else{
+                            var message = "Users have been exported with success!"
+                            res.render('success', { 'Title': 'Success!', message});
+                        }
+                    }); 
+                }else{
+                    console.log("err4")
+                }
+            });
+        }
+    });
+
 // =============================================================================
 // AUTHENTICATE (FIRST LOGIN) ==================================================
 // =============================================================================
@@ -574,4 +627,29 @@ function isLoggedIn(req, res, next) {
         return next();
 
     res.redirect('/');
+}
+
+function isAdmin(req, res, next) {
+    if (req.isAuthenticated()){
+        var user
+        if(req.user.google.id!=undefined){
+            console.log("match google");
+            user = req.user.google;
+        }else if(req.user.facebook.id!=undefined){
+            console.log("match fb");
+            user = req.user.facebook;
+        }else{
+            console.log("match local");
+            user = req.user.local;
+        }
+        if(user.type=='admin'){
+            return next();
+        }else{
+            var message = "You must be an admin to access this function!"
+            res.render('error', { 'Title': 'Error', message});
+        }
+    }else{
+        var message = "You must be logged in to access this function!"
+        res.render('error', { 'Title': 'Error', message});
+    }
 }
