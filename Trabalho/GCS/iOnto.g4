@@ -298,7 +298,6 @@ txtpal returns[String texto, String atrib, String tipo]
                                                                          "\"/> \n </DataPropertyDomain> \n <DataPropertyRange> \n <DataProperty IRI=\"#" + $atrib+ "\"/> \n <Datatype abbreviatedIRI=\"xsd:" 
                                                                          +data.get($atrib) +  "\"/> \n</DataPropertyRange>");
                                                                          
-                                                                         cont_html.add("<p><b>"+$atrib+":  </b>" + $tipo.replace("\"","")+"\n </p>");
                                                                          
                                                                          if($texto.startsWith("Pagela")){                                                                            
                                                                                   if(map.containsKey(pal1)){
@@ -349,8 +348,6 @@ txtpal returns[String texto, String atrib, String tipo]
                                                                            "\"/> \n </DataPropertyDomain> \n <DataPropertyRange> \n <DataProperty IRI=\"#" + $atrib+ "\"/> \n <Datatype abbreviatedIRI=\"xsd:" 
                                                                            +data.get($atrib) +  "\"/> \n</DataPropertyRange>");
                                                                            
-                                                                           cont_html.add("<p><b>"+$atrib+":  </b>" +$tipo.replace("\"","")+"\n </p>");
-                                                                           
                                                                            if($texto.startsWith("Pagela")){
                                                                                                            if(map.containsKey(pal1)){
                                                                                                                                      map.get(pal1).add("<p><b>"+$atrib+":  </b>" + $tipo.replace("\"","")+"\n </p>");
@@ -399,8 +396,6 @@ txtpal returns[String texto, String atrib, String tipo]
                                                                         "\"/> \n </DataPropertyDomain> \n <DataPropertyRange> \n <DataProperty IRI=\"#" + $atrib+ "\"/> \n <Datatype abbreviatedIRI=\"xsd:" 
                                                                         +data.get($atrib) +  "\"/> \n</DataPropertyRange>");
                                                                         
-                                                                        cont_html.add("<p><b>"+$atrib+":  </b>" + $tipo.replace("\"","")+"\n </p>");
-                                                                        
                                                                         if($texto.startsWith("Pagela")){
                                                                                                         if(map.containsKey(pal1)){
                                                                                                                                   map.get(pal1).add("<p><b>"+$atrib+":  </b>" + $tipo.replace("\"","")+"\n </p>");
@@ -446,9 +441,7 @@ txtpal returns[String texto, String atrib, String tipo]
                                                                            
                                                                            atribCon_owl.add("<DataPropertyDomain> \n <DataProperty IRI=\"#" + $atrib + "\"/>" + "\n <Class IRI=\"#" + $texto +
                                                                            "\"/> \n </DataPropertyDomain> \n <DataPropertyRange> \n <DataProperty IRI=\"#" + $atrib+ "\"/> \n <Datatype abbreviatedIRI=\"xsd:" 
-                                                                           +data.get($atrib) +  "\"/> \n</DataPropertyRange>");
-                                                                           
-                                                                           cont_html.add("<p><b>"+$atrib+":  </b>" + $tipo.replace("\"","")+"\n </p>");
+                                                                           +data.get($atrib) +  "\"/> \n</DataPropertyRange>");     
                                                                            
                                                                            if($texto.startsWith("Pagela")){
                                                                                                            if(map.containsKey(pal1)){
