@@ -10,20 +10,29 @@ conceitos {
 	Idea[keywords: String, priority: String], Recipe[ingredients: String, instructions: String],
 	AcademicWork[course: String, professor: String, classication: String],
 	SportsRegistry[sport: String, duration: String, results: String],
-	Chronicle[theme: String, text: String]
+	Chronicle[theme: String, text: String],
 }
 
 individuos {
-	person_1,person_2,person_3,
+	person_1,person_2,person_3,person_4,
 }
 
-relacoes{
-	 is-a, has, owns, iof, pof, published
+ relacoes{
+	 is-a, has, owns, iof, pof, published,
 }
 
 triplos {
-person_1= iof => Person["email"="octavio_maia@hotmail.com","name"="Octávio Maia","token"="EAAKZCA6XraZBQBAFpX5REeD7d8sZAarXW3PVMgcnZAx3sbdSaMqNmBURr2tLx2yoee8x4LNAwVkwblAvkQPYi1xmGumMyJivQodXmK5fPpx3zbZAYSC8dOpCZBknBHUDtbJjvOehZBBl6xhvjQVSxZA37XKWvlNYyYO22mpiw6seVwZDZD","id"="1756521317725637"];
-person_2= iof => Person["email"="alfredomiguel2@hotmail.com","name"="Alfredo Gomes","token"="EAAKZCA6XraZBQBADobPIbhREt0191vGuHdfCkYFUohgeaZCEDO1xOmXUUUq5MEZC0ETh2JuiXQ1oTEYEjZAoTeWwMEHZCiPI3FJz7Iq2zyKbrbZAmzUDgBsqabpgFZAvdVXDiRX4UovpYFrlnbW1q2DEgiMF9AjPwgsbfYYZClBTj9gZDZD","id"="1731050193612250","address"="Rua Alfredo Gomes de Azevedo, nº 71","age"="18","cnumber"="910780613","gender"="Male","profession"="estudante"];
-person_3= iof => Person["email"="jonex205@gmail.com","name"="João Vieira","token"="EAAKZCA6XraZBQBAF3qdu28WgH6Sya5pRPByZBdB9ac9SZCsDoPtjlRaWgYRIrgEdVlf5YZAIRDsvxUsAzTQri4ghE2qmNIVQZCXt6NHnmfy8ZB8acSDQ3b1gZBJLyvK9WgEUsV6qUTEhZAGM4YZBligSQzcDZAXnEzsiYM2h1wvsQcsU3UNBt8kmFZBt","id"="1794254870606922"];
+person_1= iof => Person[email="octavio_maia@hotmail.com",name="OctÃ¡vio Maia",id="1756521317725637",address="a",age="18",cnumber="919935792",gender="Male",profession="b",type="admin"];
 
-}
+
+person_2= iof => Person[type="user",email="octaviojmaia@gmail.com",name="Octavio Maia",id="107600219698699965725"];
+
+
+person_3= iof => Person[type="user",email="tabinhu95@gmail.com",name="OctÃ¡vio Maia",id="109768494313485757406"];
+
+
+person_4= iof => Person[type="admin",email="alfredomiguel2@hotmail.com",name="Alfredo Gomes",id="1731050193612250",address="",age="18",cnumber="",gender="Male",profession=""];
+
+
+
+}.

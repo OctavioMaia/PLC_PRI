@@ -32,16 +32,16 @@ jsFile
                             "\n\tIdea[keywords: String, priority: String], Recipe[ingredients: String, instructions: String],"+
                             "\n\tAcademicWork[course: String, professor: String, classication: String],"+
                             "\n\tSportsRegistry[sport: String, duration: String, results: String],"+
-                            "\n\tChronicle[theme: String, text: String]"+
+                            "\n\tChronicle[theme: String, text: String],"+
                             "\n}\n");
                    
         ind.add("\n}\n");
         ontologia.addAll(ind);
         rel.add("\n relacoes{\n"+
-                    "\t is-a, has, owns, iof, pof, published"+
+                    "\t is-a, has, owns, iof, pof, published,"+
                         "\n}\n");
         ontologia.addAll(rel);
-        triples.add("\n}\n");
+        triples.add("\n}.\n");
         ontologia.addAll(triples);
                             
        //Imprimir ontologia para ficheiro
@@ -63,32 +63,34 @@ jsFile
     : {ind.add("\nindividuos {\n\t");
        triples.add("\ntriplos {\n");}
        
-      ( '{' objectId ',' TXT ':' fields '}' {ind.add("person_"+idPerson + ","); idPerson++;})+ 
+     '[' ( '{' TXT ':' TXT ',' TXT ':' fields ('},'|'}') {ind.add("person_"+idPerson + ","); idPerson++;} )+ ']'
        ;
 
-objectId : TXT ':' 'ObjectId' '(' TXT ')'
-         ;
 
 fields returns[String tipo, String atrib] 
 @after{
-       triples.add("];\n");
+       triples.add("];\n\n\n");
        } 
 
     
     : '{' {triples.add("person_" + idPerson + "= iof => Person[");}
-                            TXT{$tipo=$TXT.text;} ':' TXT{$atrib=$TXT.text;
-                                                          if($tipo!="token"){
-                                                                             triples.add($tipo+ "=" +$atrib);
-                                                                             }
-                                                          }
-                                         
+                            TXT{$tipo=$TXT.text.replace("\"","");} 
+                            ':' TXT{$atrib=$TXT.text;
+                                   triples.add($tipo+ "=" +$atrib);
+                                   }                                        
       
       
-      (',' TXT{$tipo=$TXT.text;} ':' TXT{$atrib=$TXT.text;
-                                         triples.add("," +$tipo+ "=" +$atrib);})+ '},' v
+      (',' TXT{$tipo=$TXT.text.replace("\"","");} 
+       ':' TXT{$atrib=$TXT.text;
+               System.out.println($tipo);
+     if(!$tipo.equals("token")){
+             triples.add("," +$tipo+ "=" +$atrib);
+                      }
+            })+ '},' v
        ;
 
-v: TXT ': 0'
+
+v: TXT ':0'
  ;
 
 PAL: [a-zA-Z] [-a-zA-Z_0-9]*;
