@@ -18,6 +18,11 @@ grammar jsToOnto;
          List<String> triples = new ArrayList <>();
          
          int idPerson = 1;
+         int idPost = 1;
+         int idPerson_trip = 1;
+         int idPost_trip = 1;
+         //Type: User or Post
+         String type = "";
          }
 
 jsFile 
@@ -57,13 +62,26 @@ jsFile
          System.out.println("Erro ontologia");
        }
       
-      System.out.println(ontologia);
+      //System.out.println(ontologia);
       } 
     
     : {ind.add("\nindividuos {\n\t");
        triples.add("\ntriplos {\n");}
        
-     '[' ( '{' TXT ':' TXT ',' TXT ':' fields ('},'|'}') {ind.add("person_"+idPerson + ","); idPerson++;} )+ ']'
+     '[' ( '{' TXT ':' TXT ',' (TXT ':')? {System.out.println($TXT.text);
+                                           if(($TXT.text.replace("\"","").equals("facebook")) || ($TXT.text.replace("\"","").equals("google")) || ($TXT.text.replace("\"","").equals("local"))){
+                                                                  type = "User";
+                                                                  }
+                                         else {type="Post";}
+                                         System.out.println(type);}
+                                         
+                                         
+                                         
+                                          fields ('},'|'}') {
+                                                             if(type.equals("User")){
+                                                                                    ind.add("person_"+idPerson + ","); idPerson++;}
+                                                             else {ind.add("post_"+idPost+ ","); idPost++;}
+                                                             } )+ ']'
        ;
 
 
@@ -73,7 +91,10 @@ fields returns[String tipo, String atrib]
        } 
 
     
-    : '{' {triples.add("person_" + idPerson + "= iof => Person[");}
+    : '{'? {
+            if(type.equals("User")){
+                                 triples.add("person_" + idPerson_trip + "= iof => Person["); idPerson_trip++;}
+           else {triples.add("post_" + idPost_trip + "= iof => Publication["); idPost_trip++;}}
                             TXT{$tipo=$TXT.text.replace("\"","");} 
                             ':' TXT{$atrib=$TXT.text;
                                    triples.add($tipo+ "=" +$atrib);
@@ -82,11 +103,10 @@ fields returns[String tipo, String atrib]
       
       (',' TXT{$tipo=$TXT.text.replace("\"","");} 
        ':' TXT{$atrib=$TXT.text;
-               System.out.println($tipo);
      if(!$tipo.equals("token")){
              triples.add("," +$tipo+ "=" +$atrib);
                       }
-            })+ '},' v
+            })+ ('},' v)?
        ;
 
 
