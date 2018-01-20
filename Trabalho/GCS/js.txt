@@ -1,3 +1,4 @@
+[
 {
         "_id" : ObjectId("5a61e659db0c6d04a8f1ebc9"),
         "facebook" : {
@@ -33,3 +34,4 @@
         },
         "__v" : 0
 }
+]
