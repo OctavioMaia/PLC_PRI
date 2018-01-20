@@ -1,0 +1,89 @@
+extends layout
+
+block content
+  .main.container
+    .row
+      .col-md-8.col-md-offset-2
+        h3.display-4.m-b-2 NewsFeed
+    .row
+      .col-lg-3.col-sm-12.left
+        div
+          nav
+            form(method='GET' action='/newsfeed')
+              button.btn.btn-primary(type='submit') All
+            form(method='GET' action='/newsfeed/Chronicle')
+              button.btn.btn-primary(type='submit') Chronicles
+            form(method='GET' action='/newsfeed/Idea')
+              button.btn.btn-primary(type='submit') Ideas
+            form(method='GET' action='/newsfeed/Thought')
+              button.btn.btn-primary(type='submit') Thoughts
+            form(method='GET' action='/newsfeed/Recipe')
+              button.btn.btn-primary(type='submit') Recipe
+            form(method='GET' action='/newsfeed/SportsRegistry')
+              button.btn.btn-primary(type='submit') Sports
+            form(method='GET' action='/newsfeed/AcademicWork')
+              button.btn.btn-primary(type='submit') Academic Work
+            form(method='GET' action='/newsfeed/AcademicRegistry')
+              button.btn.btn-primary(type='submit') Academic Registry
+            form(method='GET' action='/newsfeed/Event')
+              button.btn.btn-primary(type='submit') Events
+            form(method='GET' action='/newsfeed/Photo')
+              button.btn.btn-primary(type='submit') Photos
+      .col-lg-6.col-sm-12.right
+        article
+          each val in posts
+            if(val!=''&& (filter == 'all' || filter == val.type))
+              h6 _______________________________________________________
+              p
+                span(style="font-size:40px;") #{val.title} 
+                span(style="font-size:15px;") by #{val.author}
+              p Type: #{val.type}
+              p Location: #{val.location}
+              p Date: #{val.date}
+              p Description: #{val.description}
+              case val.type
+                when 'Chronicle'  
+                  p Theme: #{val.theme}
+                  p Text: #{val.text}
+                when 'Recipe'
+                  p Ingredients: #{val.ingredients}
+                  p Instructions: #{val.instructions}
+                when 'Wedding'
+                  p Couple: #{val.couple}
+                  p Guest List: #{val.guests}
+                  p Menu: #{val.menu}
+                when 'Birth'
+                  p Name: #{val.name}
+                  p Gender: #{val.gender}
+                  p Parents: #{val.parents}
+                when 'Idea'
+                  p Keywords: #{val.keywords}
+                  p Priority: #{val.priority}
+                  p Text: #{val.text}
+                when 'Thought'
+                  p Keywords: #{val.keywords}
+                  p Text: #{val.text}
+                when 'SportsRegistry'
+                  p Sport: #{val.sport}
+                  p Duration: #{val.duration}
+                  //p GpxFile: #{val.gpxfile}
+                  p Participants: #{val.participants}
+                  p Results: #{val.results}
+                when 'Photo'
+                  p Path: #{val.path}
+                  p People: #{val.people}
+                when 'AcademicRegistry'
+                  p Duration: #{val.duration}
+                  p Credits: #{val.credits}
+                when 'AcademicWork'
+                  p Course: #{val.course}
+                  p Professor: #{val.professor}
+                  p File: #{val.file}
+                  p Classification: #{val.classification}
+                when 'Event'
+                  p Files: #{val.files}
+                  p Guests: #{val.guests}
+                  p Hosts: #{val.hosts}
+                  p Event Type: #{val.eventType}
+                  p Text: #{val.text}
+                default: p Nao sei

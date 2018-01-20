@@ -1,0 +1,34 @@
+extends layout
+
+block content
+  .main.container.clearfix
+    .row
+      .col-md-8.col-md-offset-2
+        h1.display-4.m-b-2
+          img.avatar.img-circle.hidden-xs-down(src='/images/avatar.png', alt='avatar') 
+          | #{user.name}
+          br
+          h5.display-8 Name: #{user.name}
+          if user.gender
+            br
+            h5.display-8 Gender: #{user.gender}
+          if user.age
+            br
+            h5.display-8 Age: #{user.age}
+          if user.email
+            br
+            h5.display-8 Email: #{user.email}
+          if user.address
+            br
+            h5.display-8 Address: #{user.address}
+          if user.profession
+            br
+            h5.display-8 Profession: #{user.profession}
+          if user.cnumber
+            br
+            h5.display-8 Cellphone number: #{user.cnumber}
+          if user.type=='admin'
+            br
+            h5.display-8 Type: #{user.type}
+      form(method='GET' action='/profile/editprofile')
+        button.btn.btn-primary(type='submit') Edit your profile

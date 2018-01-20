@@ -1,0 +1,35 @@
+Ontologia IAm
+
+conceitos {
+
+	Person[name: String, age: String, gender: String, email: String, address: String, profession: String, phoneNumber: String],
+	Publication[title: String, location: String, privacy: String, date: String, description: String],
+	PhotoAlbum[albumTitle:String], Photo[path: String, location: String], AcademicRegistry[duration: String, credits: String],
+	Event[eventType: String, hosts: String, guests: String], Wedding[couple: String, guests: String, menu: String],
+	Birth[childName: String, childGender: String, parents: String], Thought[keywords: String],
+	Idea[keywords: String, priority: String], Recipe[ingredients: String, instructions: String],
+	AcademicWork[course: String, professor: String, classication: String],
+	SportsRegistry[sport: String, duration: String, results: String],
+	Chronicle[theme: String, text: String],
+}
+
+individuos {
+	person_1,person_2,person_3,
+}
+
+ relacoes{
+	 is-a, has, owns, iof, pof, published,
+}
+
+triplos {
+person_1= iof => Person[email="octavio_maia@hotmail.com",name="Octávio Maia",id="1756521317725637"];
+
+
+person_2= iof => Person[email="alfredomiguel2@hotmail.com",name="Alfredo Gomes",id="1731050193612250",address="Rua Alfredo Gomes de Azevedo, nº 71",age="18",cnumber="910780613",gender="Male",profession="estudante"];
+
+
+person_3= iof => Person[email="jonex205@gmail.com",name="João Vieira",id="1794254870606922"];
+
+
+
+}.

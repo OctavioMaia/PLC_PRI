@@ -1,0 +1,1 @@
+digraph IAm {"person_1" -> "Person" [ label = "iof" ];"person_2" -> "Person" [ label = "iof" ];"person_3" -> "Person" [ label = "iof" ];"person_4" -> "Person" [ label = "iof" ];}

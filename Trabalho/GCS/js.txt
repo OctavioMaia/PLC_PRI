@@ -1,0 +1,37 @@
+[
+{
+        "_id" : ObjectId("5a61e659db0c6d04a8f1ebc9"),
+        "facebook" : {
+                "email" : "octavio_maia@hotmail.com",
+                "name" : "Octávio Maia",
+                "token" : "EAAKZCA6XraZBQBAFpX5REeD7d8sZAarXW3PVMgcnZAx3sbdSaMqNmBURr2tLx2yoee8x4LNAwVkwblAvkQPYi1xmGumMyJivQodXmK5fPpx3zbZAYSC8dOpCZBknBHUDtbJjvOehZBBl6xhvjQVSxZA37XKWvlNYyYO22mpiw6seVwZDZD",
+                "id" : "1756521317725637"
+        },
+        "__v" : 0
+}
+{
+        "_id" : ObjectId("5a620edbf6e36e1f6c418d64"),
+        "facebook" : {
+                "email" : "alfredomiguel2@hotmail.com",
+                "name" : "Alfredo Gomes",
+                "token" : "EAAKZCA6XraZBQBADobPIbhREt0191vGuHdfCkYFUohgeaZCEDO1xOmXUUUq5MEZC0ETh2JuiXQ1oTEYEjZAoTeWwMEHZCiPI3FJz7Iq2zyKbrbZAmzUDgBsqabpgFZAvdVXDiRX4UovpYFrlnbW1q2DEgiMF9AjPwgsbfYYZClBTj9gZDZD",
+                "id" : "1731050193612250",
+                "address" : "Rua Alfredo Gomes de Azevedo, nº 71",
+                "age" : "18",
+                "cnumber" : "910780613",
+                "gender" : "Male",
+                "profession" : "estudante"
+        },
+        "__v" : 0
+}
+{
+        "_id" : ObjectId("5a621128eb96c019c055d378"),
+        "facebook" : {
+                "email" : "jonex205@gmail.com",
+                "name" : "João Vieira",
+                "token" : "EAAKZCA6XraZBQBAF3qdu28WgH6Sya5pRPByZBdB9ac9SZCsDoPtjlRaWgYRIrgEdVlf5YZAIRDsvxUsAzTQri4ghE2qmNIVQZCXt6NHnmfy8ZB8acSDQ3b1gZBJLyvK9WgEUsV6qUTEhZAGM4YZBligSQzcDZAXnEzsiYM2h1wvsQcsU3UNBt8kmFZBt",
+                "id" : "1794254870606922"
+        },
+        "__v" : 0
+}
+]

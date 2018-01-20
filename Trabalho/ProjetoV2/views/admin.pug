@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  .main.container
+    .row
+      .col-md-8.col-md-offset-2
+        h1.display-4.m-b-2 Admin tools
+
+        form(method='POST' action='/admin/confirm')
+            div.form-group
+            label(for='collection') Collection to export:
+            select(type="text", class="form-control" name="collection" required)
+              option(value="" required) Please select a collection
+              option(value="users") Users
+              option(value="posts") Posts
+            br
+            button.btn.btn-primary(type='submit' class='btn-block btn-primary') Confirm changes
+        form(method='GET' action='/admin/discard')
+            button.btn.btn-secondary(type='submit' class='btn-block btn-danger') Discard changes

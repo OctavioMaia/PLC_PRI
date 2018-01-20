@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  .main.container
+    .row
+      .col-md-6.col-md-offset-3
+        h1.display-4.m-b-2 Log In
+        form(method='POST' action='/locallogin')
+          div.form-group
+            label(for='email') Email
+            input.form-control(type='text' id='email' placeholder='email' name='email')
+          div.form-group
+            label(for='password') Password
+            input.form-control(type='password' id='password' placeholder='password' name='password')
+          div(class='btn-group')
+            a(class='btn btn-primary disabled')
+              i(class='fa fa-check-square-o' style='width:38px; height:24px')
+            button.btn.btn-primary(type='submit' style='width:23em;') Log in      

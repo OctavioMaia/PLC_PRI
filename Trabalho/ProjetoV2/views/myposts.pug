@@ -1,0 +1,111 @@
+extends layout
+
+block content
+  .main.container
+    .row
+      .col-md-8.col-md-offset-2
+        h3.display-4.m-b-2 My Posts
+    .row
+      .col-lg-3.col-sm-12.left
+        div
+          nav
+            form(method='GET' action='/posts/myposts')
+              button.btn.btn-primary(type='submit') All
+            form(method='GET' action='/posts/myposts/Chronicle')
+              button.btn.btn-primary(type='submit') Chronicles
+            form(method='GET' action='/posts/myposts/Idea')
+              button.btn.btn-primary(type='submit') Ideas
+            form(method='GET' action='/posts/myposts/Thought')
+              button.btn.btn-primary(type='submit') Thoughts
+            form(method='GET' action='/posts/myposts/Recipe')
+              button.btn.btn-primary(type='submit') Recipe
+            form(method='GET' action='/posts/myposts/SportsRegistry')
+              button.btn.btn-primary(type='submit') Sports
+            form(method='GET' action='/posts/myposts/AcademicWork')
+              button.btn.btn-primary(type='submit') Academic Work
+            form(method='GET' action='/posts/myposts/AcademicRegistry')
+              button.btn.btn-primary(type='submit') Academic Registry
+            form(method='GET' action='/posts/myposts/Event')
+              button.btn.btn-primary(type='submit') Events
+            form(method='GET' action='/posts/myposts/Photo')
+              button.btn.btn-primary(type='submit') Photos 
+      .col-lg-6.col-sm-12.right
+        article
+          p These are my publications:
+            each val in posts
+              if (filter == "all"|| filter == val.type)
+                h6 _____________________________________________
+                  .col-lg-6.col-sm-12.left
+                h4 #{val.title}
+                p Type: #{val.type}
+                p Location: #{val.location}
+                p Date: #{val.date}
+                p Description: #{val.description}
+                case val.type
+                  when 'Chronicle'  
+                    p Theme: #{val.theme}
+                    p Text: #{val.text}
+                    form(method='GET' action='/posts/editpost/' + val._id)
+                      button.btn.btn-primary(type='submit' href=("/posts/editpost/" + val._id)) Edit this post
+                  when 'Recipe'
+                    p Ingredients: #{val.ingredients}
+                    p Instructions: #{val.instructions}
+                    form(method='GET' action='/posts/editpost/' + val._id)
+                      button.btn.btn-primary(type='submit' href=("/posts/editpost/" + val._id)) Edit this post
+                  when 'Wedding'
+                    p Couple: #{val.couple}
+                    p Guest List: #{val.guests}
+                    p Menu: #{val.menu}
+                    form(method='GET' action='/posts/editpost/' + val._id)
+                      button.btn.btn-primary(type='submit' href=("/posts/editpost/" + val._id)) Edit this post
+                  when 'Birth'
+                    p Name: #{val.name}
+                    p Gender: #{val.gender}
+                    p Parents: #{val.parents}
+                    form(method='GET' action='/posts/editpost/' + val._id)
+                      button.btn.btn-primary(type='submit' href=("/posts/editpost/" + val._id)) Edit this post
+                  when 'Idea'
+                    p Keywords: #{val.keywords}
+                    p Priority: #{val.priority}
+                    p Text: #{val.text}
+                    form(method='GET' action='/posts/editpost/' + val._id)
+                      button.btn.btn-primary(type='submit' href=("/posts/editpost/" + val._id)) Edit this post
+                  when 'Thought'
+                    p Keywords: #{val.keywords}
+                    p Text: #{val.text}
+                    form(method='GET' action='/posts/editpost/' + val._id)
+                      button.btn.btn-primary(type='submit' href=("/posts/editpost/" + val._id)) Edit this post
+                  when 'SportsRegistry'
+                    p Sport: #{val.sport}
+                    p Duration: #{val.duration}
+                    p Participants: #{val.participants}
+                    p Results: #{val.results}
+                    //p GPX: #{val.gpxfile}
+                    form(method='GET' action='/posts/editpost/' + val._id)
+                      button.btn.btn-primary(type='submit' href=("/posts/editpost/" + val._id)) Edit this post
+                  when 'Photo'
+                    p People: #{val.people}
+                    //p Path: #{val.path}
+                    form(method='GET' action='/posts/editpost/' + val._id)
+                      button.btn.btn-primary(type='submit' href=("/posts/editpost/" + val._id)) Edit this post
+                  //when 'PhotoAlbum'
+                  when 'AcademicWork'
+                    p Course: #{val.course}
+                    p Professor: #{val.professor}
+                    p Classification: #{val.classification}
+                    //p File: #{val.files}
+                    form(method='GET' action='/posts/editpost/' + val._id)
+                      button.btn.btn-primary(type='submit' href=("/posts/editpost/" + val._id)) Edit this post
+                  when 'AcademicRegistry'
+                    p Duration: #{val.duration}
+                    p Credits: #{val.credits}
+                    form(method='GET' action='/posts/editpost/' + val._id)
+                      button.btn.btn-primary(type='submit' href=("/posts/editpost/" + val._id)) Edit this post
+                  when 'Event'
+                    p Event Type: #{val.eventType}
+                    p Hosts: #{val.hosts}
+                    p Guests: #{val.guests}
+                    p Text: #{val.text}
+                    //p Files: #{val.files} 
+                    form(method='GET' action='/posts/editpost/' + val._id)
+                      button.btn.btn-primary(type='submit' href=("/posts/editpost/" + val._id)) Edit this post
