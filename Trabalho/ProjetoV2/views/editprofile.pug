@@ -6,7 +6,7 @@ block content
       h1.display-4.m-b-2 Edit your profile
 
       // register form
-      form(method='POST' action='/editprofile')
+      form(method='POST' action='/profile/editprofile')
         div.form-group
           label(for='name') Name:
           input#name.form-control(type='text', name='name' value=user.name required)

@@ -49,19 +49,14 @@ module.exports = function(passport) {
                 if (err)
                     return done(err);
 
-                // if no user is found, return the message
                 if (!user)
-                    return done(null, false, req.flash('loginMessage', 'No user found.'));
-
+                    return done(null, false);
                 if (!user.validPassword(password))
-                    return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.'));
-
-                // all is well, return user
+                    return done(null, false);
                 else
                     return done(null, user);
             });
         });
-
     }));
 
     // =========================================================================
@@ -76,8 +71,6 @@ module.exports = function(passport) {
     function(req, email, password, done) {
         if (email)
             email = email.toLowerCase(); // Use lower-case e-mails to avoid case-sensitive e-mail matching
-
-        console.log(req)
 
         // asynchronous
         process.nextTick(function() {
@@ -98,7 +91,7 @@ module.exports = function(passport) {
                         newUser.local.password = newUser.generateHash(password);
                         newUser.local.name     = req.body.name;
                         newUser.local.age      = req.body.age;
-                        newUser.local.type     = 'user'
+                        newUser.local.type     = 'user';
 
                         newUser.save(function(err) {
                             if (err)
@@ -107,13 +100,12 @@ module.exports = function(passport) {
                             return done(null, newUser);
                         });
                     }
-
                 });
             } else {
-                // user is logged in 
+                // user is already logged in 
+                console.log("already logged in")
                 return done(null, req.user);
             }
-
         });
     }));
 
@@ -127,26 +119,22 @@ module.exports = function(passport) {
 
         // asynchronous
         process.nextTick(function() {
-
             // check if the user is already logged in
             if (!req.user) {
-
                 User.findOne({ 'facebook.id' : profile.id }, function(err, user) {
                     if (err)
                         return done(err);
                     if (user) {
-                                    
-                        console.log("already registred")
+                        //already registred
                         return done(null, user);
                     }else {
                         // if there is no user, create them
                         var newUser            = new User();
-
                         newUser.facebook.id    = profile.id;
                         newUser.facebook.token = token;
                         newUser.facebook.name  = profile.name.givenName + ' ' + profile.name.familyName;
                         newUser.facebook.email = (profile.emails[0].value || '').toLowerCase();
-                        newUser.facebook.type  = 'user'
+                        newUser.facebook.type  = 'user';
 
                         newUser.save(function(err) {
                             if (err)
@@ -157,7 +145,8 @@ module.exports = function(passport) {
                     }
                 });
             }else{
-                // user is logged in 
+                // user is already logged in 
+                console.log("already logged in")
                 return done(null, req.user);
             }
         });
@@ -181,11 +170,28 @@ module.exports = function(passport) {
 
             // check if the user is already logged in
             if (!req.user) {
-
                 User.findOne({ 'google.id' : profile.id }, function(err, user) {
                     if (err)
                         return done(err);
-                    else{
+                    
+                    if (user) {
+                        // if there is a user id already but no token (user was linked at one point and then removed)
+                        if (!user.google.token) {
+                            console.log("exist but not same token")
+                            user.google.token = token;
+                            user.google.name  = profile.displayName;
+                            user.google.email = (profile.emails[0].value || '').toLowerCase(); // pull the first email
+                            user.google.type  = profile.type;
+                            user.save(function(err) {
+                            if (err)
+                                return done(err);
+                                    
+                                return done(null, user);
+                            });
+                        }
+                        return done(null, user);
+                    } else {
+                        console.log("newUser")
                         var newUser          = new User();
 
                         newUser.google.id    = profile.id;
@@ -193,20 +199,19 @@ module.exports = function(passport) {
                         newUser.google.name  = profile.displayName;
                         newUser.google.email = (profile.emails[0].value || '').toLowerCase(); // pull the first email
                         newUser.google.type  = 'user'
-
                         newUser.save(function(err) {
                             if (err)
-                                return done(err);
-                                
+                               return done(err);
+                                    
                             return done(null, newUser);
                         });
                     }
                 });
             }else{
+                // user is logged in
                 console.log("already logged in")
+                return done(null, req.user);
             }
         });
-
     }));
-
 };

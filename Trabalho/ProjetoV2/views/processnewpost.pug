@@ -6,7 +6,7 @@ block content
       h1.display-4.m-b-2 #{name}
       
       // register form (depois meter minlength=6 nas passwords)
-      form(method='POST' action='/processnewpost')
+      form(method='POST' action='/posts/processnewpost')
         each val in reqs
             if (val.text!='Type')
               if (val.text!='Privacy')

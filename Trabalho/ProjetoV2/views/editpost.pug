@@ -4,19 +4,17 @@ block content
   .main.container.row
     .col-md-6.col-md-offset-3
       h1.display-4.m-b-2 Edit your post
-
-      h6 #{post}
       
-      form(method='POST' action='/editpost/' + post._id)
+      form(method='POST' action='/posts/editpost/' + post._id)
+        div.form-group
+          label(for='type') Type:
+          input#name.form-control(type='text', name='type' value=post.type readonly)
         div.form-group
           label(for='title') Title:
           input#name.form-control(type='text', name='title' value=post.title)
         div.form-group
           label(for='location') Location:
           input#name.form-control(type='text', name='location' value=post.location)
-        div.form-group
-          label(for='date') Date:
-          input#name.form-control(type='date', name='date' value=post.date)
         div.form-group
           label(for='description') Description:
           input#name.form-control(type='text', name='description' value=post.description)
@@ -39,7 +37,7 @@ block content
               label(for='ingredients') Ingredients:
               input#name.form-control(type='text', name='ingredients' value=post.ingredients)
             div.form-group
-              label(for='instructions') Text:
+              label(for='instructions') Instructions:
               input#name.form-control(type='text', name='instructions' value=post.instructions)
           when 'Wedding'
             div.form-group
@@ -75,7 +73,7 @@ block content
             div.form-group
               label(for='text') Text:
               input#name.form-control(type='text', name='text' value=post.text)
-          when 'Sports Registry'
+          when 'SportsRegistry'
             div.form-group
               label(for='sport') Sport:
               input#name.form-control(type='text', name='sport' value=post.sport)
@@ -92,7 +90,7 @@ block content
             div.form-group
               label(for='people') People:
               input#name.form-control(type='text', name='people' value=post.people)
-          when 'Academic Work'
+          when 'AcademicWork'
             div.form-group
               label(for='course') Course:
               input#name.form-control(type='text', name='course' value=post.course)
@@ -102,7 +100,7 @@ block content
             div.form-group
               label(for='classification') Classification:
               input#name.form-control(type='text', name='classification' value=post.classification)
-          when 'Academic Registry'
+          when 'AcademicRegistry'
             div.form-group
               label(for='duration') Duration:
               input#name.form-control(type='text', name='duration' value=post.duration)
@@ -123,5 +121,5 @@ block content
               label(for='text') Text:
               input#name.form-control(type='text', name='text' value=post.text)
         button.btn.btn-primary(type='submit' class='btn-block btn-primary') Confirm changes
-      form(method='GET' action='/myposts')
+      form(method='GET' action='/posts/myposts')
         button.btn.btn-secondary(type='submit' class='btn-block btn-danger') Discard changes

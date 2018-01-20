@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var flash    = require('connect-flash');
 var path     = require('path');
-
+var passport     = require('passport');
 var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
@@ -16,7 +16,6 @@ var configDB = require('./config/database.js');
 // configuration ===============================================================
 mongoose.connect(configDB.url, {useMongoClient: true}); // connect to our database
 mongoose.Promise = global.Promise
-require('./config/passport')(passport); // pass passport for configuration
 
 // set up our express application
 app.use(morgan('dev')); // log every request to the console
@@ -41,7 +40,20 @@ app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
 // routes ======================================================================
-require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
+passport    = require('./config/passport')(passport); // pass passport for configuration
+var index   = require('./app/index.js');
+var feed    = require('./app/feed.js');
+var auth    = require('./app/auth.js');
+var posts   = require('./app/posts.js');
+var profile = require('./app/profile.js');
+var admin   = require('./app/admin.js');
+
+app.use('/',  index);
+app.use('/newsfeed',  feed);
+app.use('/auth',  auth);
+app.use('/posts',  posts);
+app.use('/profile',  profile);
+app.use('/admin',  admin);
 
 //error handling
 app.use(function(req, res, next) {
@@ -63,3 +75,5 @@ app.use(function(err, req, res, next) {
 // launch ======================================================================
 app.listen(port);
 console.log('Server listening on port ' + port);
+
+module.exports = app;
