@@ -23,11 +23,33 @@ router.get('/locallogin', function(req, res) {
 });
 
 // process the locallogin form
+/*
 router.post('/locallogin', passport.authenticate('local-login', {
     successRedirect: '/profile', // redirect to the secure profile section
-    failureRedirect: '/error', // redirect back to the login page if there is an error
+    failureRedirect: res.render('error'), // redirect back to the login page if there is an error
     failureFlash: true // allow flash messages
 }));
+*/
+router.post('/locallogin', function(req, res, next) {
+    passport.authenticate('local-login', function(err, user, info) {
+        if (err) { 
+            return next(err) 
+        }
+        if (!user) {
+            var err = new Error('User not found.');
+            err.status = 400;
+            return next(err);
+        }
+        req.logIn(user, function(err) {
+            if (err) { 
+                var err = new Error('Wrong login information.');
+                err.status = 400;
+                return next(err);
+            }
+            return res.redirect('/profile');
+        });
+    })(req, res, next);
+});
 
 // REGISTER =================================
 // show the register form

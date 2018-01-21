@@ -6,16 +6,13 @@ var router              = express.Router();
 
 // PROFILE SECTION =========================
 router.get('/', isLoggedIn,function(req, res, next) {
-    if (req.user.google.id != undefined) {
-        console.log("match google");
+    if (req.user.google.id != undefined)
         user = req.user.google;
-    } else if (req.user.facebook.id != undefined) {
-        console.log("match fb");
+    else if (req.user.facebook.id != undefined) 
         user = req.user.facebook;
-    } else {
-        console.log("match local");
+    else
         user = req.user.local;
-    }
+    
     res.render('profile', {
         title: 'Profile',
         user
@@ -24,16 +21,20 @@ router.get('/', isLoggedIn,function(req, res, next) {
 
 // EDITPROFILE ==============================
 router.get('/editprofile', isLoggedIn, function(req, res) {
+    var type
     if (req.user.google.id != undefined)
         user = req.user.google;
     else if (req.user.facebook.id != undefined)
         user = req.user.facebook;
-    else
+    else{
         user = req.user.local;
+        type = 'local'
+    }
     
     res.render('editprofile', {
         title: 'Edit Profile',
-        user
+        user,
+        type
     });
 });
 
@@ -83,6 +84,7 @@ router.post('/editprofile', isLoggedIn, function(req, res, next) {
                 user.facebook.type = userData.type;
             } else {
                 user.local.name = userData.name;
+                if(user.local.password != user.generateHash(req.body.password)) user.local.password = user.generateHash(req.body.password);
                 user.local.gender = userData.gender;
                 user.local.address = userData.address;
                 user.local.profession = userData.profession;
@@ -92,6 +94,8 @@ router.post('/editprofile', isLoggedIn, function(req, res, next) {
 
             user.save(function(err) {
                 if (err) {
+                    var err = new Error(err);
+                    err.status = 400;
                     return next(err);
                 } else {
                     return res.redirect('/profile');
