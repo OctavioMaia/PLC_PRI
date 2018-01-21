@@ -72,6 +72,15 @@ a:hover {
 	background: rgba(255,255,255, .2);	
 }
 
+.btn-logout {
+	color: rgba(255,255,255, .75);
+	background: rgba(255,255,255, .12);
+}
+
+.btn-logout:hover {
+	background-color: #c23321;	
+}
+
 .navbar-nav .open .dropdown-menu {
     background-color:rgba(255,255,255, .2);
 }

@@ -4,25 +4,22 @@ var express             = require('express');
 var router              = express.Router();
 
 // NEWSFEED ==============================
-router.get('/', function(req, res) {
+router.get('/', function(req, res,next) {
     var filter = 'all'
     var posts
-    console.log("Antes do find.");
     Post.find().lean().exec(function(err, doc) {
-        if (!err) {
+        if (!err && doc.length!=0) {
             posts = doc
-            console.log(posts)
+            res.render('newsfeed', {
+                title: 'News Feed',
+                posts,
+                filter
+            });
         } else {
-            console.log("err2")
-            /*var err = new Error('There are no posts.');
+            var err = new Error('There are no posts.');
             err.status = 400;
-            next(err);*/
+            next(err);
         }
-        res.render('newsfeed', {
-            title: 'News Feed',
-            posts,
-            filter
-        });
     });
 });
 

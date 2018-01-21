@@ -46,7 +46,9 @@ router.post('/confirm', isAdmin, function(req, res, next) {
                     }
                 });
             } else {
-                console.log("err3")
+                var err = new Error('Could not find the posts collection, this shouldnt happen.');
+                err.status = 404;
+                return next(err);
             }
         });
     } else {
@@ -66,7 +68,9 @@ router.post('/confirm', isAdmin, function(req, res, next) {
                     }
                 });
             } else {
-                console.log("err4")
+                var err = new Error('Could not find the users collection, this shouldnt happen.');
+                err.status = 404;
+                return next(err);
             }
         });
     }
@@ -75,19 +79,16 @@ router.post('/confirm', isAdmin, function(req, res, next) {
 function isAdmin(req, res, next) {
     if (req.isAuthenticated()) {
         var user
-        if (req.user.google.id != undefined) {
-            console.log("match google");
+        if (req.user.google.id != undefined) 
             user = req.user.google;
-        } else if (req.user.facebook.id != undefined) {
-            console.log("match fb");
+        else if (req.user.facebook.id != undefined) 
             user = req.user.facebook;
-        } else {
-            console.log("match local");
+        else 
             user = req.user.local;
-        }
-        if (user.type == 'admin') {
+        
+        if (user.type == 'admin') 
             return next();
-        } else {
+        else {
             var message = "You must be an admin to access this function!"
             res.render('error', {
                 'Title': 'Error',

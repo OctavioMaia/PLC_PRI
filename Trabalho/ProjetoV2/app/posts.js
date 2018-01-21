@@ -291,6 +291,10 @@ router.post('/processnewpost', isLoggedIn, function(req, res, next) {
                 });
             }
         });
+    }else{
+        var err = new Error('Unknown type ' + req.body.Type);
+        err.status = 404;
+        next(err);
     }
 });
 
@@ -300,19 +304,18 @@ router.get('/myposts', isLoggedIn, function(req, res, next) {
     var posts
 
     Post.find({ident: req.user.id}).lean().exec(function(err, doc) {
-        if (!err) {
+        if (!err && JSON.stringify(doc)!='[]') {
             posts = doc
+            res.render('myposts', {
+                title: 'My Posts',
+                posts,
+                filter
+            });
         } else {
-            console.log("err2")
-            /*var err = new Error('There are no posts.');
+            var err = new Error('You have no posts.');
             err.status = 400;
-            next(err);*/
+            next(err);
         }
-        res.render('myposts', {
-            title: 'My Posts',
-            posts,
-            filter
-        });
     });
 });
 
@@ -320,20 +323,19 @@ router.get('/myposts', isLoggedIn, function(req, res, next) {
 router.get('/myposts/:filter', isLoggedIn,function(req, res, next) {
     var filter = req.params.filter
     var posts
-    Post.find({ident: req.user.id}).lean().exec(function(err, doc) {
-        if (!err) {
+    Post.find({ident: req.user.id,type:filter}).lean().exec(function(err, doc) {
+        if (!err && JSON.stringify(doc)!='[]') {
             posts = doc
+            res.render('myposts', {
+                title: 'My Posts',
+                posts,
+                filter
+            });
         } else {
-            console.log("err2")
-            /*var err = new Error('There are no posts.');
+            var err = new Error('There are no posts in this category.');
             err.status = 400;
-            next(err);*/
+            next(err);
         }
-        res.render('myposts', {
-            title: 'My Posts',
-            posts,
-            filter
-        });
     });
 });
 
@@ -347,15 +349,20 @@ router.get('/editpost/:id', isLoggedIn, function(req, res, next) {
                 post
             });
         } else {
-            console.log("erro1"+err);
+            var err = new Error('Could not find the posts collection, this shouldnt happen.');
+            err.status = 404;
+            next(err);
         }
     });
 });
 
 router.post('/editpost/:id', isLoggedIn, function(req, res, next) {
+    //find the original post
     Post.findOne({_id: req.params.id}).lean().exec(function(err, out) {
         if (err) {
-            return next(err);
+            var err = new Error('Could not find the post you wish to edit.');
+            err.status = 404;
+            next(err);
         } else {
             var post;
             switch (req.body.type) {
@@ -462,9 +469,10 @@ router.post('/editpost/:id', isLoggedIn, function(req, res, next) {
                             });
                         }
                     });
-                }
-                else {
-                    console.log(err)
+                }else{
+                    var err = new Error('Failed to remove the post.');
+                    err.status = 404;
+                    next(err);
                 }
             });
         }
