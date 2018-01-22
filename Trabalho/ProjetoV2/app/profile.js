@@ -3,20 +3,57 @@ var configDB            = require('../config/auth.js');
 var express             = require('express');
 var fileUpload          = require('express-fileupload');
 var passport            = require('passport');
+var fs                  = require('fs');
 var router              = express.Router();
+
+//for file handling
+router.use(fileUpload());
+
+router.post('/upload', function(req, res) {
+    if (!req.files)
+        return res.status(400).send('No files were uploaded.');
+    
+    let sampleFile = req.files.sampleFile;
+    if (req.user.google.id != undefined)
+        user = req.user;
+    else if (req.user.facebook.id != undefined)
+        user = req.user;
+    else
+        user = req.user;
+
+    sampleFile.mv('./public/uploads/' + user._id + '.jpg', function(err) {
+        if (err)
+            return next(err);
+        else{
+            res.redirect('/profile');
+        }
+    });
+});
 
 // PROFILE SECTION =========================
 router.get('/', isLoggedIn,function(req, res, next) {
-    if (req.user.google.id != undefined)
+    if (req.user.google.id != undefined){
+        id = req.user._id;
         user = req.user.google;
-    else if (req.user.facebook.id != undefined) 
+    }else if (req.user.facebook.id != undefined){
+        id = req.user._id;
         user = req.user.facebook;
-    else
+    }else{
+        id = req.user._id;
         user = req.user.local;
-    
+    }
+
+    avatar = ''
+    console.log("ID: "+id)
+    if (fs.existsSync('./public/uploads/' + id + '.jpg')) {
+        avatar = '../uploads/' + id + '.jpg'
+        console.log("existe imagem")
+    }
+
     res.render('profile', {
         title: 'Profile',
-        user
+        user,
+        avatar
     }); 
 });
 

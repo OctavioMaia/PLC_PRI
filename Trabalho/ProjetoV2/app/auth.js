@@ -23,13 +23,6 @@ router.get('/locallogin', function(req, res) {
 });
 
 // process the locallogin form
-/*
-router.post('/locallogin', passport.authenticate('local-login', {
-    successRedirect: '/profile', // redirect to the secure profile section
-    failureRedirect: res.render('error'), // redirect back to the login page if there is an error
-    failureFlash: true // allow flash messages
-}));
-*/
 router.post('/locallogin', function(req, res, next) {
     passport.authenticate('local-login', function(err, user, info) {
         if (err) { 

@@ -313,7 +313,7 @@ body{margin-top:20px;}
 .profile-info-name,
 .profile-info-value {
 	display: table-cell;
-	border-top: 1px dotted #D5E4F1
+	border-top: 1px dotted #D5E4F1;
 }
 
 .profile-info-name {
@@ -323,7 +323,7 @@ body{margin-top:20px;}
 	color: #667E99;
 	background-color: transparent;
 	width: 110px;
-	vertical-align: middle
+	vertical-align: middle;
 }
 
 .profile-info-value {
