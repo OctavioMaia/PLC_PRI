@@ -5,11 +5,6 @@
  */
 
 
-// JSON pode começar com '{' ou '['
-// podes criar um não terminal que só para isto
-// nt : '{' jsFile '}'
-//    | '[' jsFile ']'
-
 grammar jsToOnto;
 
 @header{
@@ -74,7 +69,7 @@ jsFile
     : {ind.add("\nindividuos {\n\t");
        triples.add("\ntriplos {\n");}
 
-     '[' ( '{' TXT ':' 'ObjectId(' TXT '),' (TXT ':')? {System.out.println($TXT.text);
+     '[' ( '{' TXT ':' TXT ',' (TXT ':')? {System.out.println($TXT.text);
                                            if(($TXT.text.replace("\"","").equals("facebook")) || ($TXT.text.replace("\"","").equals("google")) || ($TXT.text.replace("\"","").equals("local"))){
                                                                   type = "User";
                                                                   }
@@ -117,7 +112,7 @@ fields returns[String tipo, String atrib]
        ;
 
 
-v: TXT ': 0'
+v: TXT ':0'
  ;
 
 PAL: [a-zA-Z] [-a-zA-Z_0-9]*;
