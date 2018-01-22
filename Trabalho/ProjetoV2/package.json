@@ -5,6 +5,7 @@
     "start": "node server.js"
   },
   "dependencies": {
+    "angular-socialshare": "^2.3.11",
     "bcrypt-nodejs": "latest",
     "body-parser": "~1.15.2",
     "connect-flash": "~0.1.1",

@@ -7,7 +7,8 @@ head
   link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css', crossorigin='anonymous')
   link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
   link(rel='stylesheet', href='/stylesheets/index.css')
-  link(rel='stylesheet', href='http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css')
+  link(rel="stylesheet" href="/stylesheets/social-share-kit.css" type="text/css")
+  script(type="text/javascript" src="social-share-kit.js")
 
   body
     include navbar
@@ -102,17 +103,15 @@ head
                     p Event Type: #{val.eventType}
                     p Text: #{val.text}
                   default: p Nao sei
-                div.btn-group.btn-group-justified
-                    button.btn.btn-primary
-                      i.fa.fa-thumbs-up
-                      |  Like this!
-                    button.btn.btn-primary
-                      i.fa.fa-comments
-                      |  Comment
-                    button.btn.btn-primary
-                      i.fa.fa-share
-                      |  Share
-              //- .social-footer
+              .social-footer
+                .ssk-group
+                  a.ssk.ssk-facebook(href='')
+                  a.ssk.ssk-twitter(href='')
+                  a.ssk.ssk-google-plus(href='')
+                  a.ssk.ssk-pinterest(href='')
+                  a.ssk.ssk-linkedin(href='')
+
+
               //-   .social-comment
               //-     a.pull-left(href="")
               //-       img(alt="image" src="http://webapplayers.com/inspinia_admin-v2.5/img/a1.jpg")
@@ -145,5 +144,5 @@ head
               //-     .media-body
               //-       textarea.form-control(placeholder="Write comment...")
     p.foot.text-xs-center DigitalMe - PRI 2017/2018
-    script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js')
-    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js', crossorigin='anonymous')
+  script(type='text/javascript').
+    SocialShareKit.init();
