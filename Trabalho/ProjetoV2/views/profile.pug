@@ -1,34 +1,78 @@
 extends layout
 
 block content
-  .main.container.clearfix
+  .main.container
     .row
-      .col-md-8.col-md-offset-2
-        h1.display-4.m-b-2
-          img.avatar.img-circle.hidden-xs-down(src='/images/avatar.png', alt='avatar') 
-          | #{user.name}
-          br
-          h5.display-8 Name: #{user.name}
-          if user.gender
+      .tabbable
+        .tab-content.no-border.padding-24
+          #home.tab-pane.in.active
+            .row
+              .col-xs-12.col-sm-3.center
+                br
+                br
+                img.social-avatar(style="max-width:240px; max-height: 240px;"  src='../images/avatar.png')
+                br
+                br
+                .col-sm-offset-2
+                  form(method='GET' action='/profile/editavatar')
+                  button.btn.btn-primary.btn-block(type='submit') Change avatar
+                .space.space-4
+              .col-xs-12.col-sm-9
+                h4.blue
+                  span.middle #{user.name}
+                  span.label.label-purple.arrowed-in-right
+                    i.ace-icon.fa.fa-circle.smaller-80.align-middle
+                    | 									online
+                .profile-user-info
+                  .profile-info-row
+                    .profile-info-name  Email 
+                    .profile-info-value
+                      span #{user.email}
+                  .profile-info-row
+                    .profile-info-name  Location 
+                    .profile-info-value
+                      i.fa.fa-map-marker.light-orange.bigger-110
+                      span #{user.address}
+                  .profile-info-row
+                    .profile-info-name  Age 
+                    .profile-info-value
+                      span #{user.age}
+                  .profile-info-row
+                    .profile-info-name  Gender 
+                    .profile-info-value
+                      span #{user.gender}
+                  .profile-info-row
+                    .profile-info-name  Profession
+                    .profile-info-value
+                      span #{user.profession}
+                  .profile-info-row
+                    .profile-info-name  Cellphone
+                    .profile-info-value
+                      span #{user.cnumber}
+                  .profile-info-row
+                    .profile-info-name  Type 
+                    .profile-info-value
+                      span #{user.type}
+                br
+                form(method='GET' action='/profile/editprofile')
+                  button.btn.btn-primary.btn-block(type='submit') Edit your profile
+            .space-20
             br
-            h5.display-8 Gender: #{user.gender}
-          if user.age
             br
-            h5.display-8 Age: #{user.age}
-          if user.email
-            br
-            h5.display-8 Email: #{user.email}
-          if user.address
-            br
-            h5.display-8 Address: #{user.address}
-          if user.profession
-            br
-            h5.display-8 Profession: #{user.profession}
-          if user.cnumber
-            br
-            h5.display-8 Cellphone number: #{user.cnumber}
-          if user.type=='admin'
-            br
-            h5.display-8 Type: #{user.type}
-      form(method='GET' action='/profile/editprofile')
-        button.btn.btn-primary(type='submit') Edit your profile
+            .row
+              .col-xs-20.col-sm-10
+                .widget-box.transparent
+                  .widget-header.widget-header-small
+                    h4.widget-title.smaller
+                      i.ace-icon.fa.fa-check-square-o.bigger-110
+                      | 										Little About Me
+                  .widget-body
+                    .widget-main
+                      p
+                        | My job is mostly lorem ipsuming and dolor sit ameting as long as consectetur adipiscing elit.
+                      p
+                        | Sometimes quisque commodo massa gets in the way and sed ipsum porttitor facilisis.
+                      p
+                        | The best thing about my job is that vestibulum id ligula porta felis euismod and nullam quis risus eget urna mollis ornare.
+                      p
+                        | Thanks for visiting my profile.
