@@ -1,6 +1,7 @@
 var User                = require('../app/models/user');
 var configDB            = require('../config/auth.js');
 var express             = require('express');
+var fileUpload          = require('express-fileupload');
 var passport            = require('passport');
 var router              = express.Router();
 
