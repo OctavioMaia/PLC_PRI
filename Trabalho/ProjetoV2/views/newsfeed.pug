@@ -4,11 +4,12 @@ head
   meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
   meta(http-equiv='x-ua-compatible', content='ie=edge')
   title DigitalMe | #{title}
-  link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css', crossorigin='anonymous')
-  link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+  link(rel='stylesheet', href='/stylesheets/bootstrap.min.css', crossorigin='anonymous')
+  link(rel='stylesheet', href='/stylesheets/icon.css')
+  link(rel='stylesheet', href='/stylesheets/font-awesome.css')
   link(rel='stylesheet', href='/stylesheets/index.css')
-  link(rel="stylesheet" href="/stylesheets/social-share-kit.css" type="text/css")
-  script(type="text/javascript" src="social-share-kit.js")
+  link(rel='stylesheet', href='/stylesheets/social-share-kit.css')
+  script(type="text/javascript" src="/js/social-share-kit.js")
 
   body
     include navbar
@@ -108,8 +109,8 @@ head
                   a.ssk.ssk-facebook(href='')
                   a.ssk.ssk-twitter(href='')
                   a.ssk.ssk-google-plus(href='')
-                  a.ssk.ssk-pinterest(href='')
                   a.ssk.ssk-linkedin(href='')
+                  a.ssk.ssk-reddit(href='')
 
 
               //-   .social-comment

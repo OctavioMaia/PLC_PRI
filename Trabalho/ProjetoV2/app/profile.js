@@ -122,7 +122,7 @@ router.post('/editprofile', isLoggedIn, function(req, res, next) {
                 user.facebook.type = userData.type;
             } else {
                 user.local.name = userData.name;
-                if(user.local.password != user.generateHash(req.body.password)) user.local.password = user.generateHash(req.body.password);
+                if(req.body.password != '' && req.body.confirmPassword != '') user.local.password = user.generateHash(req.body.password);
                 user.local.gender = userData.gender;
                 user.local.address = userData.address;
                 user.local.profession = userData.profession;
