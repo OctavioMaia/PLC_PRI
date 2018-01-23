@@ -31,6 +31,10 @@ block content
               button.btn.btn-primary(type='submit') Photos 
             form(method='GET' action='/posts/myposts/Wedding')
               button.btn.btn-primary(type='submit') Wedding 
+            form(method='GET' action='/posts/myposts/Birth')
+              button.btn.btn-primary(type='submit') Birth 
+            form(method='GET' action='/posts/myposts/Appointment')
+              button.btn.btn-primary(type='submit') Appointment 
       .col-lg-6.col-sm-12.right
         article
           p These are my publications:
@@ -83,12 +87,11 @@ block content
                     p Duration: #{val.duration}
                     p Participants: #{val.participants}
                     p Results: #{val.results}
-                    //p GPX: #{val.gpxfile}
                     form(method='GET' action='/posts/editpost/' + val._id)
                       button.btn.btn-primary(type='submit' href=("/posts/editpost/" + val._id)) Edit this post
                   when 'Photo'
                     p People: #{val.people}
-                    //p Path: #{val.path}
+                    //p File: #{val.file}
                     form(method='GET' action='/posts/editpost/' + val._id)
                       button.btn.btn-primary(type='submit' href=("/posts/editpost/" + val._id)) Edit this post
                   //when 'PhotoAlbum'
@@ -110,5 +113,8 @@ block content
                     p Guests: #{val.guests}
                     p Text: #{val.text}
                     //p Files: #{val.files} 
+                    form(method='GET' action='/posts/editpost/' + val._id)
+                      button.btn.btn-primary(type='submit' href=("/posts/editpost/" + val._id)) Edit this post
+                  when 'Appointment'
                     form(method='GET' action='/posts/editpost/' + val._id)
                       button.btn.btn-primary(type='submit' href=("/posts/editpost/" + val._id)) Edit this post

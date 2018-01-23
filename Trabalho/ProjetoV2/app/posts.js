@@ -9,6 +9,7 @@ var Wedding             = require('../app/models/wedding');
 var AcademicWork        = require('../app/models/academicwork');
 var Chronicle           = require('../app/models/chronicle');
 var Event               = require('../app/models/event');
+var Appointment         = require('../app/models/appointment');
 var Post                = require('../app/models/posts');
 
 var express             = require('express');
@@ -29,7 +30,7 @@ router.get('/newPhoto', function(req, res) {
                 {'type':'text','text':'Title','obligatory':true},
                 {'type':'date','text':'Date','obligatory':true},
                 {'type':'text','text':'Description','obligatory':true}];
-    var extras = [{'type':'text','text':'Path','obligatory':true},
+    var extras = [{'type':'text','text':'File','obligatory':true},
                   {'type':'text','text':'People','obligatory':false}];
     var name = 'Photo';
     res.render('processnewpost',{ title: 'Photo',name,reqs,extras});
@@ -45,7 +46,6 @@ router.get('/newSportsRegistry', function(req, res) {
                 {'type':'text','text':'Description','obligatory':true}];
     var extras = [{'type':'text','text':'Sport','obligatory':true},
                   {'type':'text','text':'Duration','obligatory':true},
-                  {'type':'text','text':'GpxFile','obligatory':false},
                   {'type':'text','text':'Participants','obligatory':false},
                   {'type':'text','text':'Results','obligatory':false},];
     var name = 'SportsRegistry';
@@ -186,11 +186,25 @@ router.get('/newChronicle', function(req, res) {
     res.render('processnewpost',{ title: 'Chronicle',name,reqs,extras});
 });
 
+// NEW APPOINTMENT ==============================
+router.get('/newAppointment', function(req, res) {
+    var reqs = [{'type':'text','text':'Type','obligatory':true},
+                {'type':'text','text':'Location','obligatory':false},
+                {'type':'text','text':'Privacy','obligatory':true},
+                {'type':'text','text':'Title','obligatory':true},
+                {'type':'date','text':'Date','obligatory':true},
+                {'type':'text','text':'Description','obligatory':true}];
+    var extras = [];
+    var name = 'Appointment';
+    res.render('processnewpost',{ title: 'Appointment',name,reqs,extras});
+});
+
 //add post
 router.post('/processnewpost', isLoggedIn, function(req, res, next) {
     if (req.body.Type) {
         var post;
         var name;
+        console.log("type:" + req.body.Type);
         switch (req.body.Type) {
             case 'Chronicle':
                 post = new Chronicle();
@@ -222,6 +236,12 @@ router.post('/processnewpost', isLoggedIn, function(req, res, next) {
             case 'AcademicWork':
                 post = new AcademicWork();
                 break;
+            case 'Event':
+                post = new Event();
+                break;
+            case 'Appointment':
+                post = new Appointment();
+                break;
         }
 
         for (var key in req.body) {
@@ -249,11 +269,9 @@ router.post('/processnewpost', isLoggedIn, function(req, res, next) {
             post.text = req.body.Text;
             post.ingredients = req.body.Ingredients;
             post.instructions = req.body.Instructions;
-            post.path = req.body.Path;
             post.people = req.body.People;
             post.sport = req.body.Sport;
             post.duration = req.body.Duration;
-            post.gpxFile = req.body.GpxFile;
             post.participants = req.body.Participants;
             post.results = req.body.Results;
             post.credits = req.body.Credits;
@@ -396,6 +414,12 @@ router.post('/editpost/:id', isLoggedIn, function(req, res, next) {
                 case 'AcademicWork':
                     post = new AcademicWork();
                     break;
+                case 'Event':
+                    post = new Event();
+                    break;
+                case 'Appointment':
+                    post = new Appointment();
+                    break;
             }    
     
             if (req.user.google.id != undefined)
@@ -424,11 +448,9 @@ router.post('/editpost/:id', isLoggedIn, function(req, res, next) {
                 post.text = req.body.text;
                 post.ingredients = req.body.ingredients;
                 post.instructions = req.body.instructions;
-                post.path = req.body.iath;
                 post.people = req.body.people;
                 post.sport = req.body.sport;
                 post.duration = req.body.duration;
-                post.gpxFile = req.body.gpxFile;
                 post.participants = req.body.participants;
                 post.results = req.body.results;
                 post.credits = req.body.credits;

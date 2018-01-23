@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var Schema   = mongoose.Schema;
 
 //Schemas for publication
-var PhotoSchema = new Schema({
+var appointmentSchema = new Schema({
     author: {type: String, required: true},
     ident: {type: String, required: true},
     location: {type: String, required: false},
@@ -11,9 +11,7 @@ var PhotoSchema = new Schema({
     title: {type: String, required: true},
     date: {type: Date, required: true},
     description: {type: String, required: true},
-    type: {type: String, required: true},
-    photo: {type: String, required: true},
-    people: {type: String, required: false}
+    type: {type: String, required: true}
 })
 
-module.exports = mongoose.model('Photo', PhotoSchema, 'posts');
+module.exports = mongoose.model('Appointment', appointmentSchema, 'posts');

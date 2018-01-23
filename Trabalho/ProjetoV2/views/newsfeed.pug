@@ -38,9 +38,15 @@ head
           form(method='GET' action='/newsfeed/AcademicRegistry')
             button.btn.btn-primary(type='submit') Academic Registry
           form(method='GET' action='/newsfeed/Event')
-            button.btn.btn-primary(type='submit') Events
+            button.btn.btn-primary(type='submit') Event
           form(method='GET' action='/newsfeed/Photo')
-            button.btn.btn-primary(type='submit') Photos
+            button.btn.btn-primary(type='submit') Photo
+          form(method='GET' action='/newsfeed/Appointment')
+            button.btn.btn-primary(type='submit') Appointment
+          form(method='GET' action='/newsfeed/Wedding')
+            button.btn.btn-primary(type='submit') Wedding
+          form(method='GET' action='/newsfeed/Birth')
+            button.btn.btn-primary(type='submit') Birth
       .col-lg-9.col-sm-12.right
         each val in posts
           if(val!=''&& (filter == 'all' || filter == val.type))
@@ -83,11 +89,10 @@ head
                   when 'SportsRegistry'
                     p Sport: #{val.sport}
                     p Duration: #{val.duration}
-                    //p GpxFile: #{val.gpxfile}
                     p Participants: #{val.participants}
                     p Results: #{val.results}
                   when 'Photo'
-                    p Path: #{val.path}
+                    p File: #{val.file}
                     p People: #{val.people}
                   when 'AcademicRegistry'
                     p Duration: #{val.duration}
@@ -147,3 +152,5 @@ head
     p.foot.text-xs-center DigitalMe - PRI 2017/2018
   script(type='text/javascript').
     SocialShareKit.init();
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js')
+  script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js', crossorigin='anonymous')

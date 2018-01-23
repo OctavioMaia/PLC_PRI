@@ -14,7 +14,6 @@ var SportsRegistrySchema = new Schema({
     type: {type: String, required: true},
     sport: {type: String, required: true},
     duration: {type: String, required: true},
-    gpxFile: {type: String, required: false},
     participants: {type: String, required: false},
     results: {type: String, required: false},
     //photo: [PhotoSchema]
