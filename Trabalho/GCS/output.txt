@@ -20,19 +20,27 @@ Wedding[couple: String, guests: String, menu: String, author: String, type: Stri
 
 
 individuos {
-	post_1,post_2,
+	person_1,person_2,post_1,post_2,
 }
 
  relacoes{
-	 is-a, owns, iof, published,
+	 is-a, iof, published,
 }
 
 triplos {
-post_1= iof => Publication[instructions="a",ingredients="a",type="Recipe",description="a",date="2018-01-01T00:00:00.000Z",title="Teste",privacy="public",location="Casa do Octavio",ident="5a6622a4005ce93ab096bf0a",author="Octávio Maia"];
+user_1= iof => User[type="user",age="16",name="Octavio Maia",password="$2a$08$utDuz4giGvYSpMT//q4NYeH27btQHfHiGiksMEJ1tQgJ5.uuumDSq",email="octaviojmaia@gmail.com"];
 
 
-post_2= iof => Publication[keywords="bbb",text="bbb",type="Thought",description="bbb",title="bbbb",privacy="public",location="bbb",date="2018-01-01T00:00:00.000Z",ident="5a6622a4005ce93ab096bf0a",author="Octávio Maia"];
+user_2= iof => User[type="admin",email="alfredomiguel2@hotmail.com",name="Alfredo Gomes",token="EAAKZCA6XraZBQBAE8PQJbqf2NHnHZBE6X308cnwYK90PyPpArguNLmGW4mEe4NGnsBFZCdoZBcfn9vE3FD1XrcnLVXfFselJ9ksUjILZCYABPSQsAdfTQGm3geSNhp6PWms4ujewRTIsLozHWW0ZCMfGXtz1Az1vQcXrPiHwAlXfwZDZD",id="1731050193612250",address="",age="16",cnumber="",gender="Male",profession=""];
 
+
+post_1= iof =>Recipe[author="Octávio Maia",date="2018-01-01T00:00:00.000Z",description="a",ident="5a6622a4005ce93ab096bf0a",ingredients="a",instructions="a",location="Casa do Octavio",privacy="public",title="Teste",type="Recipe"];
+
+Recipe= is-a => Post;
+
+post_2= iof =>Thought[author="Octávio Maia",date="2018-01-01T00:00:00.000Z",description="bbb",ident="5a6622a4005ce93ab096bf0a",keywords="bbb",location="bbb",privacy="public",text="bbb",title="bbbb",type="Thought"];
+
+Thought= is-a => Post;
 
 
 }.
