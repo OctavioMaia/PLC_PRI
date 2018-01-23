@@ -16,7 +16,10 @@ grammar jsToOnto;
          List<String> ontologia = new ArrayList <>();
          List<String> ind = new ArrayList <>();
          List<String> rel = new ArrayList <>();
-         List<String> triples = new ArrayList <>();
+         List<String> triples_users = new ArrayList <>();
+         List<String> triples_posts = new ArrayList <>();
+         
+         String typePub = "";
          
          int idPerson = 1;
          int idPost = 1;
@@ -52,11 +55,12 @@ jsFile
         ind.add("\n}\n");
         ontologia.addAll(ind);
         rel.add("\n relacoes{\n"+
-                    "\t is-a, owns, iof, published,"+
+                    "\t is-a, iof, published,"+
                         "\n}\n");
         ontologia.addAll(rel);
-        triples.add("\n}.\n");
-        ontologia.addAll(triples);
+        ontologia.addAll(triples_users);
+        triples_posts.add("\n}.\n");
+        ontologia.addAll(triples_posts);
                             
        //Imprimir ontologia para ficheiro
        try{
@@ -75,14 +79,14 @@ jsFile
       } 
     
     : {ind.add("\nindividuos {\n\t");
-       triples.add("\ntriplos {\n");}
+       triples_users.add("\ntriplos {\n");}
 
-     ('{')? (TXT ':[' ( '{' TXT ':' TXT ',' (TXT ':')? {System.out.println($TXT.text);
+     ('{')? (TXT ':[' ( '{' TXT ':' TXT ',' (TXT ':')? {//System.out.println($TXT.text);
                                            if(($TXT.text.replace("\"","").equals("facebook")) || ($TXT.text.replace("\"","").equals("google")) || ($TXT.text.replace("\"","").equals("local"))){
                                                                   type = "User";
                                                                   }
                                          else {type="Post";}
-                                         System.out.println(type);
+                                         //System.out.println(type);
                                          }
                                          
                                          
@@ -96,27 +100,50 @@ jsFile
 
 
 fields returns[String tipo, String atrib] 
+@init{
+      Map<String,String> mapAtribs = new TreeMap<>();
+      }
 @after{
-       triples.add("];\n\n\n");
-       } 
+       if(type.equals("User")){
+       triples_users.add("];\n\n\n");}
+       
+       else{
+       System.out.println(mapAtribs);
+       String tipo = mapAtribs.get("type");
+       System.out.println(tipo);
+       
+       triples_posts.add("post_" + idPost_trip + "= iof =>" + tipo.replace("\"","") +"["); idPost_trip++;
+       if(!mapAtribs.isEmpty()){
+       for (Map.Entry<String, String> entry : mapAtribs.entrySet()) {
+            triples_posts.add(entry.getKey() + "=" + entry.getValue());
+            if(!entry.getKey().isEmpty()){triples_posts.add(",");}
+            } 
+       }
+       triples_posts.remove(triples_posts.size() -1);
+       triples_posts.add("];\n\n");
+       triples_posts.add(tipo.replace("\"","")+"= is-a => Post;\n\n" );
+       }}
 
     
     : '{'? {
             if(type.equals("User")){
-                                 triples.add("person_" + idPerson_trip + "= iof => Person["); idPerson_trip++;}
-           else {triples.add("post_" + idPost_trip + "= iof =>" + "tipo" +"[)"); idPost_trip++;}}
+                                 triples_users.add("user_" + idPerson_trip + "= iof => User["); idPerson_trip++;}
+           else {
+                 }}
+      
                             TXT{$tipo=$TXT.text.replace("\"","");} 
                             ':' TXT{$atrib=$TXT.text;
-                                   triples.add($tipo+ "=" +$atrib);
+                                        
+                                        if(type.equals("User")){triples_users.add($tipo+ "=" +$atrib); }
+                                        if(type.equals("Post")) { mapAtribs.put($tipo,$atrib);}
                                    }                                        
       
       
       (',' TXT{$tipo=$TXT.text.replace("\"","");} 
        ':' TXT{$atrib=$TXT.text;
-     if(!$tipo.equals("token")){
-             triples.add("," +$tipo+ "=" +$atrib);
-                      }
-            })+ ('},' v)?
+     if(type.equals("User")){triples_users.add("," +$tipo+ "=" +$atrib); }
+     if(type.equals("Post")) { mapAtribs.put($tipo,$atrib);}
+           })+ ('},' v)?
        ;
 
 
