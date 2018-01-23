@@ -5,6 +5,7 @@ var express             = require('express');
 var fs                  = require('fs');
 var passport            = require('passport');
 var router              = express.Router();
+var concat              = require('concatenate-files');
 
 // ADMIN ==============================
 router.get('/',isAdmin, function(req, res) {
@@ -51,7 +52,7 @@ router.post('/confirm', isAdmin, function(req, res, next) {
                 return next(err);
             }
         });
-    } else {
+    } if (db == 'users') {
         User.find({}).lean().exec(function(err, doc) {
             if (!err) {
                 fs.writeFile('./json/users.json', JSON.stringify(doc), function(err) {
@@ -73,6 +74,36 @@ router.post('/confirm', isAdmin, function(req, res, next) {
                 return next(err);
             }
         });
+    } else  {
+        Post.find({}).lean().exec(function(err, doc) {
+            if (!err) {
+                fs.writeFile('./json/posts.json', "\"Post\":"+JSON.stringify(doc)+"}")
+                User.find({}).lean().exec(function(err, users) {
+                    if (!err) {
+                        fs.writeFile('./json/users.json', "{\"Users\":"+JSON.stringify(users), function(err) {
+                            if (err) {
+                                return console.log(err);
+                            }
+                            else{
+                                concat(['./json/users.json', './json/posts.json'], './json/database.json', { separator: ',' }, function(err, result) {
+                                    if (err) {
+                                        return console.log(err);
+                                    } else {
+                                        var message = "Database exported with success!"
+                                        var href = '/admin'
+                                        res.render('success', {
+                                            'Title': 'Success!',
+                                            message,
+                                            href
+                                        });
+                                    }
+                                  });
+                            }
+                        })
+                    }
+                })
+            }
+});
     }
 });
 

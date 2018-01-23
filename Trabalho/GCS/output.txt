@@ -1,52 +1,37 @@
 Ontologia IAm
 
 conceitos {
-
-	Person[name: String, age: String, gender: String, email: String, address: String, profession: String, phoneNumber: String],
-	Publication[title: String, location: String, privacy: String, date: String, description: String],
-	PhotoAlbum[albumTitle:String], Photo[path: String, location: String], AcademicRegistry[duration: String, credits: String],
-	Event[eventType: String, hosts: String, guests: String], Wedding[couple: String, guests: String, menu: String],
-	Birth[childName: String, childGender: String, parents: String], Thought[keywords: String],
-	Idea[keywords: String, priority: String], Recipe[ingredients: String, instructions: String],
-	AcademicWork[course: String, professor: String, classication: String],
-	SportsRegistry[sport: String, duration: String, results: String],
-	Chronicle[theme: String, text: String],
+Person[token: String, password: String, name: String, age: String, gender: String, id: String, email: String, address: String, profession: String, type: String, cnumber: String],
+Post,
+AcademicRegistry[duration: String, credits: String,author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String],
+AcademicWork[course: String, professor: String, classication: String, file: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String],
+Appointment[author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String],
+Birth[name: String, gender: String, parents: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String],
+Chronicle[theme: String, text: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String],
+Event[eventType: String, hosts: String, guests: String, files: String, text: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String],
+Idea[keywords: String, priority: String, text: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String],
+Photo[file: String, people: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String],
+Recipe[ingredients: String, instructions: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String],
+SportsRegistry[sport: String, duration: String, results: String, participants: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String],
+Thought[keywords: String, text: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String],
+Wedding[couple: String, guests: String, menu: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String],
 }
 
+
+
 individuos {
-	person_1,person_2,person_3,person_4,person_5,post_1,post_2,post_3,post_4,
+	post_1,post_2,
 }
 
  relacoes{
-	 is-a, has, owns, iof, pof, published,
+	 is-a, owns, iof, published,
 }
 
 triplos {
-person_1= iof => Person[email="octavio_maia@hotmail.com",name="Octávio Maia",id="1756521317725637",address="a",age="18",cnumber="919935792",gender="Male",profession="b",type="admin"];
+post_1= iof => Publication[instructions="a",ingredients="a",type="Recipe",description="a",date="2018-01-01T00:00:00.000Z",title="Teste",privacy="public",location="Casa do Octavio",ident="5a6622a4005ce93ab096bf0a",author="Octávio Maia"];
 
 
-person_2= iof => Person[type="user",email="octaviojmaia@gmail.com",name="Octavio Maia",id="107600219698699965725"];
-
-
-person_3= iof => Person[type="user",email="tabinhu95@gmail.com",name="Octávio Maia",id="109768494313485757406"];
-
-
-person_4= iof => Person[type="admin",email="alfredomiguel2@hotmail.com",name="Alfredo Gomes",id="1731050193612250",address="",age="18",cnumber="",gender="Male",profession=""];
-
-
-person_5= iof => Person[type="user",age="20",name="Alberto",password="$2a$08$WdoOatoFpONBI3ASWUe5iOs2ssK01smHZZIGpEnVVru4AFfjgdSLu",email="alberto@gmail.com"];
-
-
-post_1= iof => Publication[classification="a",professor="s",course="a",file="s",type="AcademicWork",description="s",date="2018-01-01T00:00:00.000Z",title="a",privacy="public",location="Casa do Octavio",ident="5a622e1831c9a3277cf2c8be",author="Octávio Maia"];
-
-
-post_2= iof => Publication[text="a",theme="aa",type="Chronicle",description="a",date="2018-01-01T00:00:00.000Z",title="a",privacy="private",location="Casa do Octavio",ident="5a622e1831c9a3277cf2c8be",author="Octávio Maia"];
-
-
-post_3= iof => Publication[text="Muito bom",theme="Filme",type="Chronicle",description="Filmes",date="2018-01-01T00:00:00.000Z",title="Inception",privacy="private",location="Trofa",ident="5a6291323e69dc0988c3d7f8",author="Alfredo Gomes"];
-
-
-post_4= iof => Publication[text="Muito bom",theme="Filme",type="Chronicle",description="Filmes",date="2018-01-01T00:00:00.000Z",title="Inception",privacy="private",location="Trofa",ident="5a6291323e69dc0988c3d7f8",author="Alfredo Gomes"];
+post_2= iof => Publication[keywords="bbb",text="bbb",type="Thought",description="bbb",title="bbbb",privacy="public",location="bbb",date="2018-01-01T00:00:00.000Z",ident="5a6622a4005ce93ab096bf0a",author="Octávio Maia"];
 
 
 
