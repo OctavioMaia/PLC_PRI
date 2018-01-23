@@ -14,14 +14,7 @@ router.post('/upload', function(req, res) {
         return res.status(400).send('No files were uploaded.');
     
     let sampleFile = req.files.sampleFile;
-    if (req.user.google.id != undefined)
-        user = req.user;
-    else if (req.user.facebook.id != undefined)
-        user = req.user;
-    else
-        user = req.user;
-
-    sampleFile.mv('./public/uploads/' + user._id + '.jpg', function(err) {
+    sampleFile.mv('./public/uploads/' + req.user._id + '.jpg', function(err) {
         if (err)
             return next(err);
         else{
@@ -44,7 +37,6 @@ router.get('/', isLoggedIn,function(req, res, next) {
     }
 
     avatar = ''
-    console.log("ID: "+id)
     if (fs.existsSync('./public/uploads/' + id + '.jpg')) {
         avatar = '../uploads/' + id + '.jpg'
         console.log("existe imagem")

@@ -18,9 +18,8 @@ block content
                 br
                 .col-sm-offset-2
                   form#uploadForm(ref='uploadForm' action='/profile/upload' method='post' enctype='multipart/form-data')
-                    span(class="glyphicon glyphicon-folder-open" aria-hidden="true")
+                    span(class="fa fa-folder-open" aria-hidden="true")
                       input(type='file' name='sampleFile' accept=".jpg,.png,.JPG,.PNG")
-                    //input(type='submit' value='Upload!')
                     button.btn.btn-primary.btn-block(type='submit') Upload!
                   //- form(method='GET' action='/profile/editavatar')
                   //- button.btn.btn-primary.btn-block(type='submit') Change avatar
