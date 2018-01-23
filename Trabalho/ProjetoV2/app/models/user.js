@@ -14,6 +14,7 @@ var userSchema = new Schema({
         address      : {type: String, required:false},
         profession   : {type: String, required:false},
         cnumber      : {type: String, required:false},
+        aboutme      : {type: String, required:false},
         type         : {type: String, required:false}
     },
     facebook         : {
@@ -26,6 +27,7 @@ var userSchema = new Schema({
         address      : {type: String, required:false},
         profession   : {type: String, required:false},
         cnumber      : {type: String, required:false},
+        aboutme      : {type: String, required:false},
         type         : {type: String, required:false}
     },
     google           : {
@@ -38,6 +40,7 @@ var userSchema = new Schema({
         address      : {type: String, required:false},
         profession   : {type: String, required:false},
         cnumber      : {type: String, required:false},
+        aboutme      : {type: String, required:false},
         type         : {type: String, required:false}
     }
 });

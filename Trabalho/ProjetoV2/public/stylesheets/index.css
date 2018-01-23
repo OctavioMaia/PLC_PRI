@@ -1654,3 +1654,7 @@ body{margin-top:20px;}
 .grey {
 	color: #777!important
 }
+
+input[type='file'] {
+	color: transparent;
+}

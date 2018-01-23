@@ -4,6 +4,7 @@ var express             = require('express');
 var fileUpload          = require('express-fileupload');
 var passport            = require('passport');
 var fs                  = require('fs');
+var path                = require("path");
 var router              = express.Router();
 
 //for file handling
@@ -39,7 +40,6 @@ router.get('/', isLoggedIn,function(req, res, next) {
     avatar = ''
     if (fs.existsSync('./public/uploads/' + id + '.jpg')) {
         avatar = '../uploads/' + id + '.jpg'
-        console.log("existe imagem")
     }
 
     res.render('profile', {
@@ -47,6 +47,44 @@ router.get('/', isLoggedIn,function(req, res, next) {
         user,
         avatar
     }); 
+});
+
+// PUBLIC PROFILE SECTION =========================
+router.get('/public/:id',function(req, res, next) {
+    console.log("params: "+ req.params)
+    console.log("ID TO VISIT: "+ req.params.id);
+
+    User.findOne({'_id': req.params.id}, function(err, result) {
+        if(!err){
+            if (result.google.id != undefined){
+                user = result.google;
+            }else if (result.facebook.id != undefined){
+                user = result.facebook;
+            }else{
+                user = result.local;
+            }
+
+            avatar = ''
+            console.log(path.resolve(__dirname))
+            console.log("normal"+path.join(__dirname, '../public/images/'+ req.params.id + '.jpg'))
+            console.log("json"+JSON.stringify(path.join(__dirname, '../public/images/'+ req.params.id + '.jpg')))
+
+            if (fs.existsSync('./public/uploads/' + req.params.id + '.jpg')){
+                console.log("existe")
+                avatar = '../../uploads/'+ req.params.id + '.jpg'
+            }else{
+                avatar = 'https://i.imgur.com/uYq21Ou.png'
+            }
+            
+            res.render('publicprofile', {
+                title: 'Profile',
+                user,
+                avatar
+            }); 
+        }else{
+            console.log(err)
+        }
+    });
 });
 
 // EDITPROFILE ==============================
@@ -85,6 +123,7 @@ router.post('/editprofile', isLoggedIn, function(req, res, next) {
             age: req.body.age,
             profession: req.body.profession,
             cnumber: req.body.cnumber,
+            aboutme: req.body.aboutme
         };
 
         if (req.body.type == configDB.secretToken)
@@ -102,6 +141,7 @@ router.post('/editprofile', isLoggedIn, function(req, res, next) {
                 user.google.address = userData.address;
                 user.google.profession = userData.profession;
                 user.google.cnumber = userData.cnumber;
+                user.google.aboutme = userData.aboutme;
                 user.google.type = userData.type;
             } else if (user.facebook.id != undefined) {
                 user.facebook.name = userData.name;
@@ -111,6 +151,7 @@ router.post('/editprofile', isLoggedIn, function(req, res, next) {
                 user.facebook.address = userData.address;
                 user.facebook.profession = userData.profession;
                 user.facebook.cnumber = userData.cnumber;
+                user.facebook.aboutme = userData.aboutme;
                 user.facebook.type = userData.type;
             } else {
                 user.local.name = userData.name;
@@ -119,6 +160,7 @@ router.post('/editprofile', isLoggedIn, function(req, res, next) {
                 user.local.address = userData.address;
                 user.local.profession = userData.profession;
                 user.local.cnumber = userData.cnumber;
+                user.local.aboutme = userData.aboutme;
                 user.local.type = userData.type;
             }
 
@@ -138,6 +180,7 @@ router.post('/editprofile', isLoggedIn, function(req, res, next) {
         return next(err);
     }
 });
+
 
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated())

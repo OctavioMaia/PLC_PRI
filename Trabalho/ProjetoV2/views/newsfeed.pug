@@ -44,7 +44,7 @@ head
                 a.pull-left(href="")
                   img(alt="image" src='../uploads/' + val.ident + '.jpg')
                 .media-body
-                  a(href="#")
+                  a(href=("/profile/public/")+val.ident)
                     | #{val.author}
                   small.text-muted #{val.pubdate}
               .social-body

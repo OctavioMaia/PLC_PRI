@@ -14,22 +14,10 @@ block content
                   img.social-avatar(style='width: 100%' src='https://i.imgur.com/uYq21Ou.png')
                 else
                   img(style='width: 100%' src=avatar)
-                br
-                br
-                .col-sm-offset-2
-                  form#uploadForm(ref='uploadForm' action='/profile/upload' method='post' enctype='multipart/form-data')
-                    span(class="fa fa-folder-open" aria-hidden="true")
-                      input(type='file' name='sampleFile' accept=".jpg,.png,.JPG,.PNG" )
-                    button.btn.btn-primary.btn-block(type='submit') Upload!
-                  //- form(method='GET' action='/profile/editavatar')
-                  //- button.btn.btn-primary.btn-block(type='submit') Change avatar
                 .space.space-4
               .col-xs-12.col-sm-9
                 h4.blue
                   span.middle #{user.name}
-                  span.label.label-purple.arrowed-in-right
-                    i.ace-icon.fa.fa-circle.smaller-80.align-middle
-                    | 									online
                 .profile-user-info
                   .profile-info-row
                     .profile-info-name  Email 
@@ -69,9 +57,6 @@ block content
                       i.fa.fa-flag.white
                     .profile-info-value
                       span #{user.type}
-                br
-                form(method='GET' action='/profile/editprofile')
-                  button.btn.btn-primary.btn-block(type='submit') Edit your profile
             .space-20
             br
             br

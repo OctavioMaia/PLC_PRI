@@ -37,6 +37,9 @@ block content
         div.form-group
           label(for='type') Secret Token:
           input#name.form-control(type='text', name='type')
+        div.form-group
+          label(for='type') About me:
+          textarea(style="background-color: white;color:black;" rows="4" cols="50" name="aboutme")
         button.btn.btn-primary(type='submit' class='btn-block btn-primary') Confirm changes
       form(method='GET' action='/profile')
         button.btn.btn-secondary(type='submit' class='btn-block btn-danger') Discard changes
