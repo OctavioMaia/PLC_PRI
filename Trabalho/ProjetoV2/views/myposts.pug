@@ -1,120 +1,105 @@
-extends layout
+doctype html(lang='en')
+head
+  meta(charset='utf-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+  meta(http-equiv='x-ua-compatible', content='ie=edge')
+  title DigitalMe | #{title}
+  link(rel='stylesheet', href='/stylesheets/bootstrap.min.css', crossorigin='anonymous')
+  link(rel='stylesheet', href='/stylesheets/icon.css')
+  link(rel='stylesheet', href='/stylesheets/font-awesome.css')
+  link(rel='stylesheet', href='/stylesheets/index.css')
+  link(rel='stylesheet', href='/stylesheets/social-share-kit.css')
+  script(type="text/javascript" src="/js/social-share-kit.js")
 
-block content
-  .main.container
-    .row
-      .col-md-8.col-md-offset-2
-        h3.display-4.m-b-2 My Posts
-    .row
-      .col-lg-3.col-sm-12.left
-        div
-          nav
-            form(method='GET' action='/posts/myposts')
-              button.btn.btn-primary(type='submit') All
-            form(method='GET' action='/posts/myposts/Chronicle')
-              button.btn.btn-primary(type='submit') Chronicles
-            form(method='GET' action='/posts/myposts/Idea')
-              button.btn.btn-primary(type='submit') Ideas
-            form(method='GET' action='/posts/myposts/Thought')
-              button.btn.btn-primary(type='submit') Thoughts
-            form(method='GET' action='/posts/myposts/Recipe')
-              button.btn.btn-primary(type='submit') Recipe
-            form(method='GET' action='/posts/myposts/SportsRegistry')
-              button.btn.btn-primary(type='submit') Sports
-            form(method='GET' action='/posts/myposts/AcademicWork')
-              button.btn.btn-primary(type='submit') Academic Work
-            form(method='GET' action='/posts/myposts/AcademicRegistry')
-              button.btn.btn-primary(type='submit') Academic Registry
-            form(method='GET' action='/posts/myposts/Event')
-              button.btn.btn-primary(type='submit') Events
-            form(method='GET' action='/posts/myposts/Photo')
-              button.btn.btn-primary(type='submit') Photos 
-            form(method='GET' action='/posts/myposts/Wedding')
-              button.btn.btn-primary(type='submit') Wedding 
-            form(method='GET' action='/posts/myposts/Birth')
-              button.btn.btn-primary(type='submit') Birth 
-            form(method='GET' action='/posts/myposts/Appointment')
-              button.btn.btn-primary(type='submit') Appointment 
-      .col-lg-6.col-sm-12.right
-        article
-          p These are my publications:
-            each val in posts
-              if (filter == "all"|| filter == val.type)
-                h6 _____________________________________________
-                  .col-lg-6.col-sm-12.left
-                h4 #{val.title}
+  body
+    include navbar
+    block content
+    .main.container
+      .row
+        .col-md-8.col-md-offset-2
+          h3.display-4.m-b-2 My Posts
+      .row
+      .col-lg-2.col-sm-12.left
+        div(class="btn-group-vertical pull-right")
+          a(href="/posts/myposts" class="btn btn-light") All
+          a(href="/posts/myposts/Chronicle" class="btn btn-light") Chronicles
+          a(href="/posts/myposts/Idea" class="btn btn-light") Ideas
+          a(href="/posts/myposts/Thought" class="btn btn-light") Thoughts
+          a(href="/posts/myposts/Recipe" class="btn btn-light") Recipe
+          a(href="/posts/myposts/SportsRegistry" class="btn btn-light") Sport Registries
+          a(href="/posts/myposts/AcademicWork" class="btn btn-light") Academic Works
+          a(href="/posts/myposts/AcademicRegistry" class="btn btn-light") Academic Registries
+          a(href="/posts/myposts/Event" class="btn btn-light") Events
+          a(href="/posts/myposts/Photo" class="btn btn-light") Photos
+          a(href="/posts/myposts/Appointment" class="btn btn-light") Appointments
+          a(href="/posts/myposts/Wedding" class="btn btn-light") Weddings
+          a(href="/posts/myposts/Birth" class="btn btn-light") Births
+      .col-lg-9.col-sm-12.right
+        each val in posts
+          if (filter == "all"|| filter == val.type)
+            .social-feed-box
+              .social-avatar
+                p
+                  span Title: #{val.title} 
+                  a(href=("/posts/editpost/" + val._id) class="btn btn-light pull-right") Edit Post
+                a.pull-left(href="")
+                  img(alt="image" src='../uploads/' + val.ident + '.jpg')
+                .media-body
+                  a(href="#")
+                    | #{val.author}
+                  small.text-muted #{val.pubdate}
+              .social-body
                 p Type: #{val.type}
-                p Privacy: #{val.privacy}
                 p Location: #{val.location}
-                p Date: #{val.date}
                 p Description: #{val.description}
+                if (val.date) 
+                  p Date: #{val.date}
                 case val.type
                   when 'Chronicle'  
                     p Theme: #{val.theme}
                     p Text: #{val.text}
-                    form(method='GET' action='/posts/editpost/' + val._id)
-                      button.btn.btn-primary(type='submit' href=("/posts/editpost/" + val._id)) Edit this post
                   when 'Recipe'
                     p Ingredients: #{val.ingredients}
                     p Instructions: #{val.instructions}
-                    form(method='GET' action='/posts/editpost/' + val._id)
-                      button.btn.btn-primary(type='submit' href=("/posts/editpost/" + val._id)) Edit this post
                   when 'Wedding'
                     p Couple: #{val.couple}
                     p Guest List: #{val.guests}
                     p Menu: #{val.menu}
-                    form(method='GET' action='/posts/editpost/' + val._id)
-                      button.btn.btn-primary(type='submit' href=("/posts/editpost/" + val._id)) Edit this post
                   when 'Birth'
                     p Name: #{val.name}
                     p Gender: #{val.gender}
                     p Parents: #{val.parents}
-                    form(method='GET' action='/posts/editpost/' + val._id)
-                      button.btn.btn-primary(type='submit' href=("/posts/editpost/" + val._id)) Edit this post
                   when 'Idea'
                     p Keywords: #{val.keywords}
                     p Priority: #{val.priority}
                     p Text: #{val.text}
-                    form(method='GET' action='/posts/editpost/' + val._id)
-                      button.btn.btn-primary(type='submit' href=("/posts/editpost/" + val._id)) Edit this post
                   when 'Thought'
                     p Keywords: #{val.keywords}
                     p Text: #{val.text}
-                    form(method='GET' action='/posts/editpost/' + val._id)
-                      button.btn.btn-primary(type='submit' href=("/posts/editpost/" + val._id)) Edit this post
                   when 'SportsRegistry'
                     p Sport: #{val.sport}
                     p Duration: #{val.duration}
                     p Participants: #{val.participants}
                     p Results: #{val.results}
-                    form(method='GET' action='/posts/editpost/' + val._id)
-                      button.btn.btn-primary(type='submit' href=("/posts/editpost/" + val._id)) Edit this post
                   when 'Photo'
+                    p File: #{val.file}
                     p People: #{val.people}
-                    //p File: #{val.file}
-                    form(method='GET' action='/posts/editpost/' + val._id)
-                      button.btn.btn-primary(type='submit' href=("/posts/editpost/" + val._id)) Edit this post
-                  //when 'PhotoAlbum'
-                  when 'AcademicWork'
-                    p Course: #{val.course}
-                    p Professor: #{val.professor}
-                    p Classification: #{val.classification}
-                    //p File: #{val.files}
-                    form(method='GET' action='/posts/editpost/' + val._id)
-                      button.btn.btn-primary(type='submit' href=("/posts/editpost/" + val._id)) Edit this post
                   when 'AcademicRegistry'
                     p Duration: #{val.duration}
                     p Credits: #{val.credits}
-                    form(method='GET' action='/posts/editpost/' + val._id)
-                      button.btn.btn-primary(type='submit' href=("/posts/editpost/" + val._id)) Edit this post
+                  when 'AcademicWork'
+                    p Course: #{val.course}
+                    p Professor: #{val.professor}
+                    p File: #{val.file}
+                    p Classification: #{val.classification}
                   when 'Event'
-                    p Event Type: #{val.eventType}
-                    p Hosts: #{val.hosts}
+                    p Files: #{val.files}
                     p Guests: #{val.guests}
+                    p Hosts: #{val.hosts}
+                    p Event Type: #{val.eventType}
                     p Text: #{val.text}
-                    //p Files: #{val.files} 
-                    form(method='GET' action='/posts/editpost/' + val._id)
-                      button.btn.btn-primary(type='submit' href=("/posts/editpost/" + val._id)) Edit this post
-                  when 'Appointment'
-                    form(method='GET' action='/posts/editpost/' + val._id)
-                      button.btn.btn-primary(type='submit' href=("/posts/editpost/" + val._id)) Edit this post
+    p.foot.text-xs-center DigitalMe - PRI 2017/2018
+  script(type='text/javascript').
+    SocialShareKit.init();
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js')
+  script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js', crossorigin='anonymous')

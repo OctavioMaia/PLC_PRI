@@ -28,7 +28,7 @@ router.get('/newPhoto', function(req, res) {
                 {'type':'text','text':'Location','obligatory':false},
                 {'type':'text','text':'Privacy','obligatory':true},
                 {'type':'text','text':'Title','obligatory':true},
-                {'type':'date','text':'Date','obligatory':true},
+                {'type':'date','text':'Date','obligatory':false},
                 {'type':'text','text':'Description','obligatory':true}];
     var extras = [{'type':'text','text':'File','obligatory':true},
                   {'type':'text','text':'People','obligatory':false}];
@@ -42,7 +42,7 @@ router.get('/newSportsRegistry', function(req, res) {
                 {'type':'text','text':'Location','obligatory':false},
                 {'type':'text','text':'Privacy','obligatory':true},
                 {'type':'text','text':'Title','obligatory':true},
-                {'type':'date','text':'Date','obligatory':true},
+                {'type':'date','text':'Date','obligatory':false},
                 {'type':'text','text':'Description','obligatory':true}];
     var extras = [{'type':'text','text':'Sport','obligatory':true},
                   {'type':'text','text':'Duration','obligatory':true},
@@ -89,7 +89,7 @@ router.get('/newThought', function(req, res) {
                 {'type':'text','text':'Location','obligatory':false},
                 {'type':'text','text':'Privacy','obligatory':true},
                 {'type':'text','text':'Title','obligatory':true},
-                {'type':'date','text':'Date','obligatory':true},
+                {'type':'date','text':'Date','obligatory':false},
                 {'type':'text','text':'Description','obligatory':true}];
     var extras = [{'type':'text','text':'Keywords','obligatory':true},
                   {'type':'text','text':'Text','obligatory':true}];
@@ -103,7 +103,7 @@ router.get('/newIdea', function(req, res) {
                 {'type':'text','text':'Location','obligatory':false},
                 {'type':'text','text':'Privacy','obligatory':true},
                 {'type':'text','text':'Title','obligatory':true},
-                {'type':'date','text':'Date','obligatory':true},
+                {'type':'date','text':'Date','obligatory':false},
                 {'type':'text','text':'Description','obligatory':true}];
     var extras = [{'type':'text','text':'Keywords','obligatory':true},
                   {'type':'text','text':'Priority','obligatory':true},
@@ -118,7 +118,7 @@ router.get('/newRecipe', function(req, res) {
                 {'type':'text','text':'Location','obligatory':false},
                 {'type':'text','text':'Privacy','obligatory':true},
                 {'type':'text','text':'Title','obligatory':true},
-                {'type':'date','text':'Date','obligatory':true},
+                {'type':'date','text':'Date','obligatory':false},
                 {'type':'text','text':'Description','obligatory':true}];
     var extras = [{'type':'text','text':'Ingredients','obligatory':true},
                   {'type':'text','text':'Instructions','obligatory':true}];
@@ -178,7 +178,7 @@ router.get('/newChronicle', function(req, res) {
                 {'type':'text','text':'Location','obligatory':false},
                 {'type':'text','text':'Privacy','obligatory':true},
                 {'type':'text','text':'Title','obligatory':true},
-                {'type':'date','text':'Date','obligatory':true},
+                {'type':'date','text':'Date','obligatory':false},
                 {'type':'text','text':'Description','obligatory':true}];
     var extras = [{'type':'text','text':'Theme','obligatory':true},
                   {'type':'text','text':'Text','obligatory':true}];
@@ -358,10 +358,8 @@ router.get('/myposts/:filter', isLoggedIn,function(req, res, next) {
 });
 
 router.get('/editpost/:id', isLoggedIn, function(req, res, next) {
-    console.log("ID:"+req.params.id)
     Post.findOne({'_id': req.params.id}).lean().exec(function(err, post) {
         if (!err) {
-            console.log("post"+post)
             res.render('editpost', {
                 'Title': 'Edit your post',
                 post
@@ -428,15 +426,14 @@ router.post('/editpost/:id', isLoggedIn, function(req, res, next) {
                 name = req.user.facebook.name;
             else
                 name = req.user.local.name;
-
-
+                
             //populate the previous var
             if (post != undefined) {
                 //needed for backup
                 post._id = req.params.id
                 post.author = name;
                 post.ident = req.user.id;
-                post.date = out.date;
+                post.pubdate = out.pubdate;
                 
                 //new values
                 post.location = req.body.location;
@@ -446,6 +443,7 @@ router.post('/editpost/:id', isLoggedIn, function(req, res, next) {
                 post.type = req.body.type;
                 post.theme = req.body.theme;
                 post.text = req.body.text;
+                post.date = req.body.date;
                 post.ingredients = req.body.ingredients;
                 post.instructions = req.body.instructions;
                 post.people = req.body.people;

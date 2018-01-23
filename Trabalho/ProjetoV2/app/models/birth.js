@@ -10,6 +10,7 @@ var BirthSchema = new Schema({
     privacy: {type: String, required: true},
     title: {type: String, required: true},
     date: {type: Date, required: true},
+    pubdate: {type: Date, default: Date.now},
     description: {type: String, required: true},
     type: {type: String, required: true},
     name: {type: String, required: true},

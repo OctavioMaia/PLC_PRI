@@ -10,11 +10,17 @@ block content
           label(for='type') Type:
           input#name.form-control(type='text', name='type' value=post.type readonly)
         div.form-group
+          label(for='type') Publication Date:
+          input#name.form-control(type='date', name='pubdate' value=post.pubdate readonly)
+        div.form-group
           label(for='title') Title:
           input#name.form-control(type='text', name='title' value=post.title)
         div.form-group
           label(for='location') Location:
           input#name.form-control(type='text', name='location' value=post.location)
+        div.form-group
+          label(for='type') Date:
+          input#name.form-control(type='date', name='date' value=post.date)
         div.form-group
           label(for='description') Description:
           input#name.form-control(type='text', name='description' value=post.description)

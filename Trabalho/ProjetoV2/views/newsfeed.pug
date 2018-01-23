@@ -14,39 +14,26 @@ head
   body
     include navbar
     block content
-    .main.container-fluid
+    .main.container
       .row
         .col-md-8.col-md-offset-2
           h3.display-4.m-b-2 NewsFeed
       .row
-      .col-lg-3.col-sm-12.left
-        div(class="btn-group-vertical")
-          form(method='GET' action='/newsfeed')
-            button.btn.btn-primary(type='submit' formaction='/newsfeed') All
-          form(method='GET' action='/newsfeed/Chronicle')
-            button.btn.btn-primary(type='submit') Chronicles
-          form(method='GET' action='/newsfeed/Idea')
-            button.btn.btn-primary(type='submit') Ideas
-          form(method='GET' action='/newsfeed/Thought')
-            button.btn.btn-primary(type='submit') Thoughts
-          form(method='GET' action='/newsfeed/Recipe')
-            button.btn.btn-primary(type='submit') Recipe
-          form(method='GET' action='/newsfeed/SportsRegistry')
-            button.btn.btn-primary(type='submit') Sports
-          form(method='GET' action='/newsfeed/AcademicWork')
-            button.btn.btn-primary(type='submit') Academic Work
-          form(method='GET' action='/newsfeed/AcademicRegistry')
-            button.btn.btn-primary(type='submit') Academic Registry
-          form(method='GET' action='/newsfeed/Event')
-            button.btn.btn-primary(type='submit') Event
-          form(method='GET' action='/newsfeed/Photo')
-            button.btn.btn-primary(type='submit') Photo
-          form(method='GET' action='/newsfeed/Appointment')
-            button.btn.btn-primary(type='submit') Appointment
-          form(method='GET' action='/newsfeed/Wedding')
-            button.btn.btn-primary(type='submit') Wedding
-          form(method='GET' action='/newsfeed/Birth')
-            button.btn.btn-primary(type='submit') Birth
+      .col-lg-2.col-sm-12.left
+        div(class="btn-group-vertical pull-right")
+          a(href="/newsfeed" class="btn btn-light") All
+          a(href="/newsfeed/Chronicle" class="btn btn-light") Chronicles
+          a(href="/newsfeed/Idea" class="btn btn-light") Ideas
+          a(href="/newsfeed/Thought" class="btn btn-light") Thoughts
+          a(href="/newsfeed/Recipe" class="btn btn-light") Recipe
+          a(href="/newsfeed/SportsRegistry" class="btn btn-light") Sport Registries
+          a(href="/newsfeed/AcademicWork" class="btn btn-light") Academic Works
+          a(href="/newsfeed/AcademicRegistry" class="btn btn-light") Academic Registries
+          a(href="/newsfeed/Event" class="btn btn-light") Events
+          a(href="/newsfeed/Photo" class="btn btn-light") Photos
+          a(href="/newsfeed/Appointment" class="btn btn-light") Appointments
+          a(href="/newsfeed/Wedding" class="btn btn-light") Weddings
+          a(href="/newsfeed/Birth" class="btn btn-light") Births
       .col-lg-9.col-sm-12.right
         each val in posts
           if(val!=''&& (filter == 'all' || filter == val.type))
@@ -59,11 +46,13 @@ head
                 .media-body
                   a(href="#")
                     | #{val.author}
-                  small.text-muted #{val.date}
+                  small.text-muted #{val.pubdate}
               .social-body
                 p Type: #{val.type}
                 p Location: #{val.location}
                 p Description: #{val.description}
+                if (val.date) 
+                  p Date: #{val.date}
                 case val.type
                   when 'Chronicle'  
                     p Theme: #{val.theme}
@@ -115,9 +104,9 @@ head
                   a.ssk.ssk-twitter(href='')
                   a.ssk.ssk-google-plus(href='')
                   a.ssk.ssk-linkedin(href='')
-                  a.ssk.ssk-reddit(href='')
-
-
+                  a.ssk.ssk-reddit2(href='')
+                  a.ssk.ssk-email(href='')
+                  a.ssk.ssk-github(href='')
               //-   .social-comment
               //-     a.pull-left(href="")
               //-       img(alt="image" src="http://webapplayers.com/inspinia_admin-v2.5/img/a1.jpg")
