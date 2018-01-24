@@ -1,22 +1,87 @@
 var User                = require('../app/models/user');
 var configDB            = require('../config/auth.js');
 var express             = require('express');
+var fileUpload          = require('express-fileupload');
 var passport            = require('passport');
+var fs                  = require('fs');
+var path                = require("path");
 var router              = express.Router();
+
+//for file handling
+router.use(fileUpload());
+
+router.post('/upload', function(req, res) {
+    if (!req.files)
+        return res.status(400).send('No files were uploaded.');
+    
+    let sampleFile = req.files.sampleFile;
+    sampleFile.mv('./public/uploads/' + req.user._id + '.jpg', function(err) {
+        if (err)
+            return next(err);
+        else{
+            res.redirect('/profile');
+        }
+    });
+});
 
 // PROFILE SECTION =========================
 router.get('/', isLoggedIn,function(req, res, next) {
-    if (req.user.google.id != undefined)
+    if (req.user.google.id != undefined){
+        id = req.user._id;
         user = req.user.google;
-    else if (req.user.facebook.id != undefined) 
+    }else if (req.user.facebook.id != undefined){
+        id = req.user._id;
         user = req.user.facebook;
-    else
+    }else{
+        id = req.user._id;
         user = req.user.local;
-    
+    }
+
+    avatar = ''
+    if (fs.existsSync('./public/uploads/' + id + '.jpg')) {
+        avatar = '../uploads/' + id + '.jpg'
+    }
+
     res.render('profile', {
         title: 'Profile',
-        user
+        user,
+        avatar
     }); 
+});
+
+// PUBLIC PROFILE SECTION =========================
+router.get('/public/:id',function(req, res, next) {
+    User.findOne({'_id': req.params.id}, function(err, result) {
+        if(!err){
+            if (result.google.id != undefined){
+                user = result.google;
+            }else if (result.facebook.id != undefined){
+                user = result.facebook;
+            }else{
+                user = result.local;
+            }
+
+            avatar = ''
+            console.log(path.resolve(__dirname))
+            console.log("normal"+path.join(__dirname, '../public/images/'+ req.params.id + '.jpg'))
+            console.log("json"+JSON.stringify(path.join(__dirname, '../public/images/'+ req.params.id + '.jpg')))
+
+            if (fs.existsSync('./public/uploads/' + req.params.id + '.jpg')){
+                console.log("existe")
+                avatar = '../../uploads/'+ req.params.id + '.jpg'
+            }else{
+                avatar = 'https://i.imgur.com/uYq21Ou.png'
+            }
+            
+            res.render('publicprofile', {
+                title: 'Profile',
+                user,
+                avatar
+            }); 
+        }else{
+            console.log(err)
+        }
+    });
 });
 
 // EDITPROFILE ==============================
@@ -55,6 +120,7 @@ router.post('/editprofile', isLoggedIn, function(req, res, next) {
             age: req.body.age,
             profession: req.body.profession,
             cnumber: req.body.cnumber,
+            aboutme: req.body.aboutme
         };
 
         if (req.body.type == configDB.secretToken)
@@ -72,6 +138,7 @@ router.post('/editprofile', isLoggedIn, function(req, res, next) {
                 user.google.address = userData.address;
                 user.google.profession = userData.profession;
                 user.google.cnumber = userData.cnumber;
+                user.google.aboutme = userData.aboutme;
                 user.google.type = userData.type;
             } else if (user.facebook.id != undefined) {
                 user.facebook.name = userData.name;
@@ -81,14 +148,16 @@ router.post('/editprofile', isLoggedIn, function(req, res, next) {
                 user.facebook.address = userData.address;
                 user.facebook.profession = userData.profession;
                 user.facebook.cnumber = userData.cnumber;
+                user.facebook.aboutme = userData.aboutme;
                 user.facebook.type = userData.type;
             } else {
                 user.local.name = userData.name;
-                if(user.local.password != user.generateHash(req.body.password)) user.local.password = user.generateHash(req.body.password);
+                if(req.body.password != '' && req.body.confirmPassword != '') user.local.password = user.generateHash(req.body.password);
                 user.local.gender = userData.gender;
                 user.local.address = userData.address;
                 user.local.profession = userData.profession;
                 user.local.cnumber = userData.cnumber;
+                user.local.aboutme = userData.aboutme;
                 user.local.type = userData.type;
             }
 
@@ -108,6 +177,7 @@ router.post('/editprofile', isLoggedIn, function(req, res, next) {
         return next(err);
     }
 });
+
 
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated())

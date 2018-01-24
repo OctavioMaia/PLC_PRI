@@ -9,11 +9,13 @@ var PhotoSchema = new Schema({
     location: {type: String, required: false},
     privacy: {type: String, required: true},
     title: {type: String, required: true},
-    date: {type: Date, required: true},
+    date: {type: Date, required: false},
+    pubdate: {type: Date, default: Date.now},
     description: {type: String, required: true},
     type: {type: String, required: true},
-    path: {type: String, required: true},
-    people: {type: String, required: false}
+    photo: {type: String, required: true},
+    people: {type: String, required: false},
+    comments: {type:[String], require:false}
 })
 
 module.exports = mongoose.model('Photo', PhotoSchema, 'posts');

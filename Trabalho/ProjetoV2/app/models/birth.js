@@ -10,11 +10,13 @@ var BirthSchema = new Schema({
     privacy: {type: String, required: true},
     title: {type: String, required: true},
     date: {type: Date, required: true},
+    pubdate: {type: Date, default: Date.now},
     description: {type: String, required: true},
     type: {type: String, required: true},
     name: {type: String, required: true},
     gender: {type: String, required: true},
-    parents: {type: String, required: true}
+    parents: {type: String, required: true},
+    comments: {type:[String], require:false}
 })
 
 module.exports = mongoose.model('Birth', BirthSchema, 'posts');

@@ -7,12 +7,18 @@ block content
         h1.display-4.m-b-2 Log In
         form(method='POST' action='/auth/locallogin')
           div.form-group
-            label(for='email') Email
-            input.form-control(type='text' id='email' placeholder='email' name='email')
+            label(for="email" class="cols-sm-2 control-label") Email:
+            div(class="cols-sm-10")
+              div(class="input-group")
+                span(class="input-group-addon")
+                  i(class="fa fa-envelope fa" aria-hidden="true")
+                input(type="email" class="form-control" name="email" id="email"  placeholder="example@mail.com")
           div.form-group
-            label(for='password') Password
-            input.form-control(type='password' id='password' placeholder='password' name='password')
-          div(class='btn-group')
-            a(class='btn btn-primary disabled')
-              i(class='fa fa-check-square-o' style='width:38px; height:24px')
-            button.btn.btn-primary(type='submit' style='width:23em;') Log in      
+            label(for="password" class="cols-sm-2 control-label") Password:
+              div(class="cols-sm-10")
+                div(class="input-group")
+                  span(class="input-group-addon")
+                    i(class="fa fa-lock fa-lg" aria-hidden="true")
+                  input(type="password" class="form-control" name="password" id="password")
+          div.form-group
+            button.btn.btn-primary(type='submit' style='width:100%;') Login

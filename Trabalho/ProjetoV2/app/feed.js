@@ -7,7 +7,7 @@ var router              = express.Router();
 router.get('/', function(req, res,next) {
     var filter = 'all'
     var posts
-    Post.find().lean().exec(function(err, doc) {
+    Post.find({privacy: 'public'}).sort({pubdate: 'descending'}).lean().exec(function(err, doc) {
         if (!err && doc.length!=0) {
             posts = doc
             res.render('newsfeed', {
@@ -28,7 +28,7 @@ router.get('/:filter', function(req, res, next) {
     console.log(filter)
     var posts
     console.log("Antes do find.");
-    Post.find({type: filter}).lean().exec(function(err, doc) {
+    Post.find({privacy: 'public', type: filter}).sort({pubdate: 'descending'}).lean().exec(function(err, doc) {
         if (!err && doc.length!=0) {
             posts = doc
             console.log(doc)
