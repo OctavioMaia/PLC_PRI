@@ -21,7 +21,7 @@ block content
                     option(value="public") Public
             else
               div.form-group
-                label(for=val.text) #{val.text}
+                label(for=val.text) #{val.text}:
                 if (!val.obligatory)
                   input#name.form-control(type=val.type, name=val.text value=name readonly)
                 else
@@ -34,6 +34,11 @@ block content
                   option(value="low") Low
                   option(value="medium") Medium
                   option(value="high") High
+            else if val.text=='Gender'
+              label(for='gender') Gender:
+                select(type="text", class="form-control" name="Gender")
+                  option(value="Male") Male
+                  option(value="Female") Female
             else
               label(for=val.text) #{val.text}:
               if (!val.obligatory)

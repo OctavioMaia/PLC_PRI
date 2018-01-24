@@ -10,17 +10,14 @@ block content
           label(for='type') Type:
           input#name.form-control(type='text', name='type' value=post.type readonly)
         div.form-group
-          label(for='type') Publication Date:
-          input#name.form-control(type='date', name='pubdate' value=post.pubdate readonly)
+          label(for='type') Date:
+          input#name.form-control(type='date', name='pubdate' value=post.date)
         div.form-group
           label(for='title') Title:
           input#name.form-control(type='text', name='title' value=post.title)
         div.form-group
           label(for='location') Location:
           input#name.form-control(type='text', name='location' value=post.location)
-        div.form-group
-          label(for='type') Date:
-          input#name.form-control(type='date', name='date' value=post.date)
         div.form-group
           label(for='description') Description:
           input#name.form-control(type='text', name='description' value=post.description)
@@ -59,9 +56,11 @@ block content
             div.form-group
               label(for='name') Name:
               input#name.form-control(type='text', name='name' value=post.name)
-            div.form-group
+            div.form-group 
               label(for='gender') Gender:
-              input#name.form-control(type='text', name='gender' value=post.gender)
+                select(type="text", class="form-control" name="gender")
+                  option(value="Male") Male
+                  option(value="Female") Female
             div.form-group
               label(for='parents') Parents:
               input#name.form-control(type='text', name='parents' value=post.parents)
