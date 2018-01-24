@@ -8,36 +8,30 @@ block content
           #home.tab-pane.in.active
             .row
               .col-xs-12.col-sm-3.center
-                br
-                br
                 if avatar==''
                   img.social-avatar(style='width: 100%' src='https://i.imgur.com/uYq21Ou.png')
                 else
                   img(style='width: 100%' src=avatar)
                 br
                 br
-                .col-sm-offset-2
-                  form#uploadForm(ref='uploadForm' action='/profile/upload' method='post' enctype='multipart/form-data')
-                    span(class="fa fa-folder-open" aria-hidden="true")
-                      input(type='file' name='sampleFile' accept=".jpg,.png,.JPG,.PNG" )
-                    button.btn.btn-primary.btn-block(type='submit') Upload!
-                  //- form(method='GET' action='/profile/editavatar')
-                  //- button.btn.btn-primary.btn-block(type='submit') Change avatar
-                .space.space-4
-              .col-xs-12.col-sm-9
+                form#uploadForm(ref='uploadForm' action='/profile/upload' method='post' enctype='multipart/form-data')
+                  span(class="fa fa-folder-open" aria-hidden="true")
+                    input(type='file' name='sampleFile' accept=".jpg,.png,.JPG,.PNG" )
+                  button.btn.btn-primary.btn-block(type='submit') Upload!
+              .col-xs-12.col-sm-8.center
                 h4.blue
                   span.middle #{user.name}
-                  span.label.label-purple.arrowed-in-right
-                    i.ace-icon.fa.fa-circle.smaller-80.align-middle
+                  span.label.arrowed-in-right
+                    i.ace-icon.fa.fa-circle.smaller-80
                     | 									online
                 .profile-user-info
                   .profile-info-row
-                    .profile-info-name  Email 
+                    .profile-info-name Email 
                       i.fa.fa-envelope.white
                     .profile-info-value
                       span #{user.email}
                   .profile-info-row
-                    .profile-info-name  Age 
+                    .profile-info-name Age 
                       i.fa.fa-calendar.white
                     .profile-info-value
                       span #{user.age}
@@ -47,25 +41,25 @@ block content
                     .profile-info-value
                       span #{user.address}
                   .profile-info-row
-                    .profile-info-name  Gender
-                      if user.gender == 'Male'
-                        i.fa.fa-male.white
-                      else if user.gender == 'Female'
+                    .profile-info-name Gender 
+                      if user.gender == 'Female'
                         i.fa.fa-female.white
+                      else
+                        i.fa.fa-male.white
                     .profile-info-value
                       span #{user.gender}
                   .profile-info-row
-                    .profile-info-name  Profession
+                    .profile-info-name Ocupation 
                       i.fa.fa-cogs.white
                     .profile-info-value
                       span #{user.profession}
                   .profile-info-row
-                    .profile-info-name Cellphone
+                    .profile-info-name Cellphone 
                       i.fa.fa-phone.white
                     .profile-info-value
                       span #{user.cnumber}
                   .profile-info-row
-                    .profile-info-name  Type 
+                    .profile-info-name Type 
                       i.fa.fa-flag.white
                     .profile-info-value
                       span #{user.type}

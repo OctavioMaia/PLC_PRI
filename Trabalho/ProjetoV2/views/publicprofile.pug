@@ -20,12 +20,12 @@ block content
                   span.middle #{user.name}
                 .profile-user-info
                   .profile-info-row
-                    .profile-info-name  Email 
+                    .profile-info-name Email 
                       i.fa.fa-envelope.white
                     .profile-info-value
                       span #{user.email}
                   .profile-info-row
-                    .profile-info-name  Age 
+                    .profile-info-name Age 
                       i.fa.fa-calendar.white
                     .profile-info-value
                       span #{user.age}
@@ -35,25 +35,25 @@ block content
                     .profile-info-value
                       span #{user.address}
                   .profile-info-row
-                    .profile-info-name  Gender
-                      if user.gender == 'Male'
-                        i.fa.fa-male.white
-                      else if user.gender == 'Female'
+                    .profile-info-name Gender 
+                      if user.gender == 'Female'
                         i.fa.fa-female.white
+                      else
+                        i.fa.fa-male.white
                     .profile-info-value
                       span #{user.gender}
                   .profile-info-row
-                    .profile-info-name  Profession
+                    .profile-info-name Ocupation 
                       i.fa.fa-cogs.white
                     .profile-info-value
                       span #{user.profession}
                   .profile-info-row
-                    .profile-info-name Cellphone
+                    .profile-info-name Cellphone 
                       i.fa.fa-phone.white
                     .profile-info-value
                       span #{user.cnumber}
                   .profile-info-row
-                    .profile-info-name  Type 
+                    .profile-info-name Type 
                       i.fa.fa-flag.white
                     .profile-info-value
                       span #{user.type}

@@ -34,21 +34,19 @@ head
           a(href="/newsfeed/SportsRegistry" class="btn btn-light") Sport Registries
           a(href="/newsfeed/Thought" class="btn btn-light") Thoughts
           a(href="/newsfeed/Wedding" class="btn btn-light") Weddings
-          
       .col-lg-9.col-sm-12.right
         each val in posts
           if(val!=''&& (filter == 'all' || filter == val.type))
             .social-feed-box
               .social-avatar
-                h4 Title: #{val.title} 
+                h4 #{val.type}: #{val.title} 
                 a.pull-left(href="")
                   img(alt="image" src='../uploads/' + val.ident + '.jpg')
                 .media-body
                   a(href=("/profile/public/")+val.ident)
                     | #{val.author}
-                  small.text-muted #{val.pubdate}
+                  small.text-muted #{(val.pubdate).toString().substring(0, 24)}
               .social-body
-                h6 Type: #{val.type}
                 h6 Location: #{val.location}
                 h6 Description: #{val.description}
                 if (val.date) 
@@ -96,7 +94,7 @@ head
                     h6 Guests: #{val.guests}
                     h6 Hosts: #{val.hosts}
                     h6 Event Type: #{val.eventType}
-                     Text: #{val.text}
+                    h6 Text: #{val.text}
                   default: h6 Nao sei
               .social-footer
                 .ssk-group
