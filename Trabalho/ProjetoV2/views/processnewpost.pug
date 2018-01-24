@@ -4,8 +4,6 @@ block content
   .main.container.row
     .col-md-6.col-md-offset-3
       h1.display-4.m-b-2 #{name}
-      
-      // register form (depois meter minlength=6 nas passwords)
       form(method='POST' action='/posts/processnewpost')
         each val in reqs
             if (val.text!='Type')

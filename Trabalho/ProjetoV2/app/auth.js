@@ -1,6 +1,7 @@
-var express             = require('express');
-var passport            = require('passport');
-var router              = express.Router();
+var User      = require('../app/models/user');
+var express   = require('express');
+var passport  = require('passport');
+var router    = express.Router();
 
 // =============================================================================
 // AUTHENTICATE (FIRST LOGIN) ==================================================
@@ -55,7 +56,7 @@ router.get('/register', function(req, res) {
 
 // process the signup form
 router.post('/register', passport.authenticate('local-signup', {
-    successRedirect: '/profile', // redirect to the secure profile section
+    successRedirect: '/verifyemail', // redirect to the secure profile section
     failureRedirect: '/error', // redirect back to the register page if there is an error
     failureFlash: true // allow flash messages
 }));
@@ -113,6 +114,33 @@ router.get('/logout', isLoggedIn,function(req, res, next) {
             }
         });
     }
+});
+
+// LOCAL CONFIRMATION =========================
+router.get('/confirm/:token', function(req, res) {
+    User.findOne({_id: req.params.token}, function(err, user) {
+        if (!user) {
+            console.log("no user with that _id")
+        }else{
+            user.local.confirmed = 'true'
+            user.save(function(err) {
+                if (err) {
+                    var err = new Error(err);
+                    err.status = 400;
+                    return next(err);
+                } else {
+                    req.session.destroy();
+                    var message = "Account confimed with success, you may now login!"
+                    var href = '/auth/locallogin'
+                    res.render('success', {
+                        'Title': 'Success!',
+                        message,
+                        href
+                    });
+                }
+            });
+        }
+    });
 });
 
 // route middleware to ensure user is logged in

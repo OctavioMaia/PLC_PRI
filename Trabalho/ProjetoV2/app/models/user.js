@@ -15,6 +15,7 @@ var userSchema = new Schema({
         profession   : {type: String, required:false},
         cnumber      : {type: String, required:false},
         aboutme      : {type: String, required:false},
+        confirmed    : {type: String, required:false},
         type         : {type: String, required:false}
     },
     facebook         : {
