@@ -321,7 +321,7 @@ router.get('/myposts', isLoggedIn, function(req, res, next) {
     var filter = 'all'
     var posts
 
-    Post.find({ident: req.user.id}).lean().exec(function(err, doc) {
+    Post.find({ident: req.user.id}).sort({pubdate: 'descending'}).lean().exec(function(err, doc) {
         if (!err && JSON.stringify(doc)!='[]') {
             posts = doc
             res.render('myposts', {
@@ -341,7 +341,7 @@ router.get('/myposts', isLoggedIn, function(req, res, next) {
 router.get('/myposts/:filter', isLoggedIn,function(req, res, next) {
     var filter = req.params.filter
     var posts
-    Post.find({ident: req.user.id,type:filter}).lean().exec(function(err, doc) {
+    Post.find({ident: req.user.id,type:filter}).sort({pubdate: 'descending'}).lean().exec(function(err, doc) {
         if (!err && JSON.stringify(doc)!='[]') {
             posts = doc
             res.render('myposts', {
