@@ -71,7 +71,10 @@ block content
               input#name.form-control(type='text', name='keywords' value=post.keywords)
             div.form-group
               label(for='priority') Priority:
-              input#name.form-control(type='text', name='priority' value=post.priority)
+                select(type="text", class="form-control" name="priority")
+                  option(value="low") Low
+                  option(value="medium") Medium
+                  option(value="high") High
             div.form-group
               label(for='text') Text:
               input#name.form-control(type='text', name='text' value=post.text)
