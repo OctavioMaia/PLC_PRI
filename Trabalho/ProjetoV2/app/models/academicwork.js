@@ -16,7 +16,8 @@ var AcademicWorkSchema = new Schema({
     course: {type: String, required: false},
     professor: {type: String, required: true},
     file: {type: String, required: true},
-    classification: {type: String, required: true}
+    classification: {type: String, required: true},
+    comments: {type:[String], require:false}
 })
 
 module.exports = mongoose.model('AcademicWork', AcademicWorkSchema, 'posts');

@@ -17,7 +17,8 @@ var eventSchema = new Schema({
     guests: {type: String, required: false},
     hosts: {type: String, required: false},
     eventType: {type: String, require: true},
-    text: {type: String, required: false}
+    text: {type: String, required: false},
+    comments: {type:[String], require:false}
 })
 
 module.exports = mongoose.model('Event', eventSchema, 'posts');

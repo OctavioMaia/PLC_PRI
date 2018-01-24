@@ -14,7 +14,8 @@ var PhotoSchema = new Schema({
     description: {type: String, required: true},
     type: {type: String, required: true},
     photo: {type: String, required: true},
-    people: {type: String, required: false}
+    people: {type: String, required: false},
+    comments: {type:[String], require:false}
 })
 
 module.exports = mongoose.model('Photo', PhotoSchema, 'posts');

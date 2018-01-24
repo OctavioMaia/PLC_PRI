@@ -16,7 +16,8 @@ var SportsRegistrySchema = new Schema({
     sport: {type: String, required: true},
     duration: {type: String, required: true},
     participants: {type: String, required: false},
-    results: {type: String, required: false}
+    results: {type: String, required: false},
+    comments: {type:[String], require:false}
 })
 
 module.exports = mongoose.model('SportsRegistry', SportsRegistrySchema, 'posts');

@@ -15,7 +15,8 @@ var IdeaSchema = new Schema({
     type: {type: String, required: true},
     keywords: {type: String, required: true},
     priority: {type: String, required: true},
-    text: {type:String, required: true}
+    text: {type:String, required: true},
+    comments: {type:[String], require:false}
 })
 
 module.exports = mongoose.model('Idea', IdeaSchema, 'posts');

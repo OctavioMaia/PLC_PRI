@@ -14,7 +14,8 @@ var ChronicleSchema = new Schema({
     description: {type: String, required: true},
     type: {type: String, required: true},
     theme: {type: String, required: true},
-    text: {type: String, required: true}
+    text: {type: String, required: true},
+    comments: {type:[String], require:false}
 })
 
 //export

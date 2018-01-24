@@ -12,7 +12,8 @@ var appointmentSchema = new Schema({
     date: {type: Date, required: true},
     pubdate: {type: Date, default: Date.now},
     description: {type: String, required: true},
-    type: {type: String, required: true}
+    type: {type: String, required: true},
+    comments: {type:[String], require:false}
 })
 
 module.exports = mongoose.model('Appointment', appointmentSchema, 'posts');

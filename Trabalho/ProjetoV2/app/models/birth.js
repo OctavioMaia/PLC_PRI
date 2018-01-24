@@ -15,7 +15,8 @@ var BirthSchema = new Schema({
     type: {type: String, required: true},
     name: {type: String, required: true},
     gender: {type: String, required: true},
-    parents: {type: String, required: true}
+    parents: {type: String, required: true},
+    comments: {type:[String], require:false}
 })
 
 module.exports = mongoose.model('Birth', BirthSchema, 'posts');

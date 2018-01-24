@@ -467,6 +467,7 @@ router.post('/editpost/:id', isLoggedIn, function(req, res, next) {
                 post.course = req.body.course;
                 post.professor = req.body.professor;
                 post.classification = req.body.classification;
+                post.comments = out.comments;
             }
 
             Post.remove({_id:req.params.id}, function(err) {
@@ -491,6 +492,134 @@ router.post('/editpost/:id', isLoggedIn, function(req, res, next) {
                     });
                 }else{
                     var err = new Error('Failed to remove the post.');
+                    err.status = 404;
+                    next(err);
+                }
+            });
+        }
+    });
+});
+
+
+router.post('/addcomment/:id', isLoggedIn, function(req, res, next) {
+    console.log("entrei addcomment")
+    console.log("PARAMS: " + JSON.stringify(req.params))
+    console.log("POST_ID: "+ req.params.id)
+    
+    //find the original post
+    Post.findOne({_id: req.params.id}).lean().exec(function(err, out) {
+        if (err) {
+            var err = new Error('Could not find the post you wish to edit.');
+            err.status = 404;
+            next(err);
+        } else {
+            console.log("before:"+out)
+            var post;
+            switch (out.type) {
+                case 'Chronicle':
+                    post = new Chronicle();
+                    break;
+                case 'Recipe':
+                    post = new Recipe();
+                    break;
+                case 'Idea':
+                    post = new Idea();
+                    break;
+                case 'Birth':
+                    post = new Birth();
+                    break;
+                case 'Photo':
+                    post = new Photo();
+                    break;
+                case 'SportsRegistry':
+                    post = new SportsRegistry();
+                    break;
+                case 'AcademicRegistry':
+                    post = new AcademicRegistry();
+                    break;
+                case 'Thought':
+                    post = new Thought();
+                    break;
+                case 'Wedding':
+                    post = new Wedding();
+                    break;
+                case 'AcademicWork':
+                    post = new AcademicWork();
+                    break;
+                case 'Event':
+                    post = new Event();
+                    break;
+                case 'Appointment':
+                    post = new Appointment();
+                    break;
+            }    
+
+            if (req.user.google.id != undefined)
+                name = req.user.google.name;
+            else if (req.user.facebook.id != undefined)
+                name = req.user.facebook.name;
+            else
+                name = req.user.local.name;
+    
+            //populate the previous var
+            if (post != undefined) {
+                //needed for backup
+                post._id = out._id
+                post.author = out.author;
+                post.ident = out.ident;
+                post.pubdate = out.pubdate;
+                
+                //new values
+                post.location = out.location;
+                post.privacy = out.privacy;
+                post.title = out.title;
+                post.description = out.description;
+                post.type = out.type;
+                post.theme = out.theme;
+                post.text = out.text;
+                post.date = out.date;
+                post.ingredients = out.ingredients;
+                post.instructions = out.instructions;
+                post.people = out.people;
+                post.sport = out.sport;
+                post.duration = out.duration;
+                post.participants = out.participants;
+                post.results = out.results;
+                post.credits = out.credits;
+                post.file = out.file;
+                post.files = out.files;
+                post.guests = out.guests;
+                post.hosts = out.hosts;
+                post.eventType = out.eventType;
+                post.keywords = out.keywords;
+                post.priority = out.priority;
+                post.name = out.name;
+                post.gender = out.gender;
+                post.parents = out.parents;
+                post.couple = out.couple;
+                post.menu = out.menu;
+                post.course = out.course;
+                post.professor = out.professor;
+                post.classification = out.classification;
+                post.comments = out.comments.concat(name + ': ' +req.body.comment);
+            }
+
+            Post.remove({_id:req.params.id}, function(err) {
+                if (!err) {
+                    console.log("removed")
+                    Post.collection.insert(post, function(err, docs) {
+                        if (err) {
+                            var message = "Failed to add comment."
+                            res.render('error', {
+                                'Title': 'Error!',
+                                message
+                            });
+                        } else {
+                            res.redirect('/newsfeed')
+                        }
+                    });
+                }else{
+                    var err = new Error('Failed to add comment.');
                     err.status = 404;
                     next(err);
                 }

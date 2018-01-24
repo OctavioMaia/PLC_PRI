@@ -14,7 +14,8 @@ var RecipeSchema = new Schema({
     description: {type: String, required: true},
     type: {type: String, required: true},
     ingredients: {type: String, required: true},
-    instructions: {type: String, required: true}
+    instructions: {type: String, required: true},
+    comments: {type:[String], require:false}
 })
 
 module.exports = mongoose.model('Recipe', RecipeSchema, 'posts');

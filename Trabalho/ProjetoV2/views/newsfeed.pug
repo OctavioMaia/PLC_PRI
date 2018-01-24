@@ -40,8 +40,7 @@ head
           if(val!=''&& (filter == 'all' || filter == val.type))
             .social-feed-box
               .social-avatar
-                p
-                  span Title: #{val.title} 
+                h4 Title: #{val.title} 
                 a.pull-left(href="")
                   img(alt="image" src='../uploads/' + val.ident + '.jpg')
                 .media-body
@@ -49,65 +48,81 @@ head
                     | #{val.author}
                   small.text-muted #{val.pubdate}
               .social-body
-                p Type: #{val.type}
-                p Location: #{val.location}
-                p Description: #{val.description}
+                h6 Type: #{val.type}
+                h6 Location: #{val.location}
+                h6 Description: #{val.description}
                 if (val.date) 
-                  p Date: #{val.date}
+                  h6 Date: #{val.date}
                 case val.type
                   when 'Chronicle'  
-                    p Theme: #{val.theme}
-                    p Text: #{val.text}
+                    h6 Theme: #{val.theme}
+                    h6 Text: #{val.text}
                   when 'Recipe'
-                    p Ingredients: #{val.ingredients}
-                    p Instructions: #{val.instructions}
+                    h6 Ingredients: #{val.ingredients}
+                    h6 Instructions: #{val.instructions}
                   when 'Wedding'
-                    p Couple: #{val.couple}
-                    p Guest List: #{val.guests}
-                    p Menu: #{val.menu}
+                    h6 Couple: #{val.couple}
+                    h6 Guest List: #{val.guests}
+                    h6 Menu: #{val.menu}
                   when 'Birth'
-                    p Name: #{val.name}
-                    p Gender: #{val.gender}
-                    p Parents: #{val.parents}
+                    h6 Name: #{val.name}
+                    h6 Gender: #{val.gender}
+                    h6 Parents: #{val.parents}
                   when 'Idea'
-                    p Keywords: #{val.keywords}
-                    p Priority: #{val.priority}
-                    p Text: #{val.text}
+                    h6 Keywords: #{val.keywords}
+                    h6 Priority: #{val.priority}
+                    h6 Text: #{val.text}
                   when 'Thought'
-                    p Keywords: #{val.keywords}
-                    p Text: #{val.text}
+                    h6 Keywords: #{val.keywords}
+                    h6 Text: #{val.text}
                   when 'SportsRegistry'
-                    p Sport: #{val.sport}
-                    p Duration: #{val.duration}
-                    p Participants: #{val.participants}
-                    p Results: #{val.results}
+                    h6 Sport: #{val.sport}
+                    h6 Duration: #{val.duration}
+                    h6 Participants: #{val.participants}
+                    h6 Results: #{val.results}
                   when 'Photo'
-                    p File: #{val.file}
-                    p People: #{val.people}
+                    h6 File: #{val.file}
+                    h6 People: #{val.people}
                   when 'AcademicRegistry'
-                    p Duration: #{val.duration}
-                    p Credits: #{val.credits}
+                    h6 Duration: #{val.duration}
+                    h6 Credits: #{val.credits}
                   when 'AcademicWork'
-                    p Course: #{val.course}
-                    p Professor: #{val.professor}
-                    p File: #{val.file}
-                    p Classification: #{val.classification}
+                    h6 Course: #{val.course}
+                    h6 Professor: #{val.professor}
+                    h6 File: #{val.file}
+                    h6 Classification: #{val.classification}
                   when 'Event'
-                    p Files: #{val.files}
-                    p Guests: #{val.guests}
-                    p Hosts: #{val.hosts}
-                    p Event Type: #{val.eventType}
-                    p Text: #{val.text}
-                  default: p Nao sei
+                    h6 Files: #{val.files}
+                    h6 Guests: #{val.guests}
+                    h6 Hosts: #{val.hosts}
+                    h6 Event Type: #{val.eventType}
+                     Text: #{val.text}
+                  default: h6 Nao sei
               .social-footer
                 .ssk-group
-                  a.ssk.ssk-facebook(href='')
-                  a.ssk.ssk-twitter(href='')
-                  a.ssk.ssk-google-plus(href='')
-                  a.ssk.ssk-linkedin(href='')
-                  a.ssk.ssk-reddit2(href='')
-                  a.ssk.ssk-email(href='')
-                  a.ssk.ssk-github(href='')
+                  h4 Share this post
+                    br
+                    br
+                    div(class="pull-center")
+                      a.ssk.ssk-facebook(href='')
+                      a.ssk.ssk-twitter(href='')
+                      a.ssk.ssk-google-plus(href='')
+                      a.ssk.ssk-linkedin(href='')
+                      a.ssk.ssk-reddit2(href='')
+                      a.ssk.ssk-email(href='')
+                      a.ssk.ssk-github(href='')
+              .social-footer
+                h4 Comments:
+                .media-body
+                  each comment in val.comments
+                    h6 #{comment}
+                  .social-comment
+                    a.pull-left
+                      img(alt="image" src="https://i.imgur.com/uYq21Ou.png")
+                    .media-body
+                      form(method='POST' action='/posts/addcomment/' + val._id)
+                        input#name.form-control(type='text', name='comment' required)
+                        button.btn.btn-block.btn-light(type='submit') Add comment
               //-   .social-comment
               //-     a.pull-left(href="")
               //-       img(alt="image" src="http://webapplayers.com/inspinia_admin-v2.5/img/a1.jpg")

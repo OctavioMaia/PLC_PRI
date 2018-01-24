@@ -15,7 +15,8 @@ var WeddingSchema = new Schema({
     type: {type: String, required: true},
     couple: {type: String, required: true},
     guests: {type: String, required: true},
-    menu: {type: String, required: false}
+    menu: {type: String, required: false},
+    comments: {type:[String], require:false}
 })
 
 module.exports = mongoose.model('Wedding', WeddingSchema, 'posts');

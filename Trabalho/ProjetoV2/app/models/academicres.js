@@ -14,7 +14,8 @@ var AcademicRegistrySchema = new Schema({
     description: {type: String, required: true},
     type: {type: String, required: true},
     duration: {type: String, required:false},
-    credits: {type: String, required: true}
+    credits: {type: String, required: true},
+    comments: {type:[String], require:false}
 })
 
 module.exports = mongoose.model('AcademicRegistry', AcademicRegistrySchema, 'posts');

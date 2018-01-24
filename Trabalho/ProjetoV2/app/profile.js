@@ -51,9 +51,6 @@ router.get('/', isLoggedIn,function(req, res, next) {
 
 // PUBLIC PROFILE SECTION =========================
 router.get('/public/:id',function(req, res, next) {
-    console.log("params: "+ req.params)
-    console.log("ID TO VISIT: "+ req.params.id);
-
     User.findOne({'_id': req.params.id}, function(err, result) {
         if(!err){
             if (result.google.id != undefined){

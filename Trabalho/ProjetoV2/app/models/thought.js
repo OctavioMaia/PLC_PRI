@@ -14,7 +14,8 @@ var ThoughtSchema = new Schema({
     description: {type: String, required: true},
     type: {type: String, required: true},
     keywords: {type: String, required: true},
-    text: {type:String, required: true}
+    text: {type:String, required: true},
+    comments: {type:[String], require:false}
 })
 
 module.exports = mongoose.model('Thought', ThoughtSchema, 'posts');
