@@ -10,12 +10,14 @@ var AcademicWorkSchema = new Schema({
     privacy: {type: String, required: true},
     title: {type: String, required: true},
     date: {type: Date, required: true},
+    pubdate: {type: Date, default: Date.now},
     description: {type: String, required: true},
     type: {type: String, required: true},
     course: {type: String, required: false},
     professor: {type: String, required: true},
     file: {type: String, required: true},
-    classification: {type: String, required: true}
+    classification: {type: String, required: true},
+    comments: {type:[String], require:false}
 })
 
 module.exports = mongoose.model('AcademicWork', AcademicWorkSchema, 'posts');

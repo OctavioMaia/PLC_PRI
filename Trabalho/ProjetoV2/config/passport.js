@@ -9,6 +9,10 @@ var User       = require('../app/models/user');
 // load the auth variables
 var configAuth = require('./auth'); // use this one for testing
 
+//nodemailer
+var nodemailer = require('nodemailer');
+var nodemailerSendgrid = require('nodemailer-sendgrid');
+
 module.exports = function(passport) {
 
     // =========================================================================
@@ -53,6 +57,8 @@ module.exports = function(passport) {
                     return done(null, false);
                 if (!user.validPassword(password))
                     return done(null, false);
+                if (user.local.confirmed!='true')
+                    return done(null, false);
                 else
                     return done(null, user);
             });
@@ -86,18 +92,36 @@ module.exports = function(passport) {
                         return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
                     } else {
                         // create the user
-                        var newUser            = new User();
-                        newUser.local.email    = email;
-                        newUser.local.password = newUser.generateHash(password);
-                        newUser.local.name     = req.body.name;
-                        newUser.local.age      = req.body.age;
-                        newUser.local.type     = 'user';
+                        var newUser             = new User();
+                        newUser.local.email     = email;
+                        newUser.local.password  = newUser.generateHash(password);
+                        newUser.local.name      = req.body.name;
+                        newUser.local.age       = req.body.age;
+                        newUser.local.type      = 'user';
+                        newUser.local.confirmed = 'false'
 
                         newUser.save(function(err) {
                             if (err)
                                 return done(err);
-
-                            return done(null, newUser);
+                            else{
+                                //confirmation email
+                                var transport = nodemailer.createTransport(
+                                    nodemailerSendgrid({
+                                        apiKey: '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'
+                                    })
+                                );
+                                var mailOptions = {
+                                    to: email,
+                                    from: 'registration@digitalme.com',
+                                    subject: 'Welcome to DigitalMe!',
+                                    text: 'You are receiving this because you have registred at DigitalMe.\n\n' +
+                                    'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
+                                    'http://' + req.headers.host + '/auth/confirm/' + newUser._id + '\n\n' +
+                                    'If you did not request this, please ignore this email.\n'
+                                };
+                                transport.sendMail(mailOptions);                     
+                                return done(null, newUser);
+                            }
                         });
                     }
                 });

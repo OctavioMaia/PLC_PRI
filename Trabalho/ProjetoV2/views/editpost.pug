@@ -10,6 +10,9 @@ block content
           label(for='type') Type:
           input#name.form-control(type='text', name='type' value=post.type readonly)
         div.form-group
+          label(for='type') Date:
+          input#name.form-control(type='date', name='pubdate' value=post.date)
+        div.form-group
           label(for='title') Title:
           input#name.form-control(type='text', name='title' value=post.title)
         div.form-group
@@ -53,9 +56,11 @@ block content
             div.form-group
               label(for='name') Name:
               input#name.form-control(type='text', name='name' value=post.name)
-            div.form-group
+            div.form-group 
               label(for='gender') Gender:
-              input#name.form-control(type='text', name='gender' value=post.gender)
+                select(type="text", class="form-control" name="gender")
+                  option(value="Male") Male
+                  option(value="Female") Female
             div.form-group
               label(for='parents') Parents:
               input#name.form-control(type='text', name='parents' value=post.parents)
@@ -65,7 +70,13 @@ block content
               input#name.form-control(type='text', name='keywords' value=post.keywords)
             div.form-group
               label(for='priority') Priority:
-              input#name.form-control(type='text', name='priority' value=post.priority)
+                select(type="text", class="form-control" name="priority")
+                  option(value="low") Low
+                  option(value="medium") Medium
+                  option(value="high") High
+            div.form-group
+              label(for='text') Text:
+              input#name.form-control(type='text', name='text' value=post.text)
           when 'Thought'
             div.form-group
               label(for='keywords') Keywords:

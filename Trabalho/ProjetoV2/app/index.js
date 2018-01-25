@@ -28,4 +28,9 @@ router.get('/contact', function(req, res) {
     });
 });
 
+// VERIFY ==============================
+router.get('/verifyemail', function(req, res) {
+    res.render('verifyemail');
+});
+
 module.exports = router;

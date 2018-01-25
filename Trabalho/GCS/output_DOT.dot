@@ -1,1 +1,1 @@
-digraph IAm {"person_1" -> "Person" [ label = "iof" ];"person_2" -> "Person" [ label = "iof" ];"person_3" -> "Person" [ label = "iof" ];"person_4" -> "Person" [ label = "iof" ];}
+digraph IAm {"person_1" -> "Person" [ label = "iof" ];"person_2" -> "Person" [ label = "iof" ];"person_3" -> "Person" [ label = "iof" ];"person_4" -> "Person" [ label = "iof" ];"person_5" -> "Person" [ label = "iof" ];"post_1" -> "Publication" [ label = "iof" ];"post_2" -> "Publication" [ label = "iof" ];"post_3" -> "Publication" [ label = "iof" ];"post_4" -> "Publication" [ label = "iof" ];}

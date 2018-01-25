@@ -9,11 +9,13 @@ var RecipeSchema = new Schema({
     location: {type: String, required: false},
     privacy: {type: String, required: true},
     title: {type: String, required: true},
-    date: {type: Date, required: true},
+    date: {type: Date, required: false},
+    pubdate: {type: Date, default: Date.now},
     description: {type: String, required: true},
     type: {type: String, required: true},
     ingredients: {type: String, required: true},
-    instructions: {type: String, required: true}
+    instructions: {type: String, required: true},
+    comments: {type:[String], require:false}
 })
 
 module.exports = mongoose.model('Recipe', RecipeSchema, 'posts');
