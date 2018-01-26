@@ -19,6 +19,9 @@ grammar jsToOnto;
          List<String> triples_users = new ArrayList <>();
          List<String> triples_posts = new ArrayList <>();
          
+         Map<String,String> idAuthor = new TreeMap<>();
+        
+         
          String typePub = "";
          
          int idPerson = 1;
@@ -37,18 +40,18 @@ jsFile
                         "\nconceitos {"+
 	"\nPerson[token: String, password: String, name: String, age: String, gender: String, id: String, email: String, address: String, profession: String, type: String, cnumber: String],\n"+
 	"Post,\n"+
-	"AcademicRegistry[duration: String, credits: String,author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String],\n"+
-	"AcademicWork[course: String, professor: String, classication: String, file: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String],\n"+
-	"Appointment[author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String],\n"+
-	"Birth[name: String, gender: String, parents: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String],\n"+
-	"Chronicle[theme: String, text: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String],\n"+
-	"Event[eventType: String, hosts: String, guests: String, files: String, text: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String],\n"+
-	"Idea[keywords: String, priority: String, text: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String],\n"+
-	"Photo[file: String, people: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String],\n"+ 
-	"Recipe[ingredients: String, instructions: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String],\n"+
-	"SportsRegistry[sport: String, duration: String, results: String, participants: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String],\n"+
-	"Thought[keywords: String, text: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String],\n"+
-	"Wedding[couple: String, guests: String, menu: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String],\n"+
+	"AcademicRegistry[duration: String, credits: String,author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String],\n"+
+	"AcademicWork[course: String, professor: String, classication: String, file: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String],\n"+
+	"Appointment[author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String],\n"+
+	"Birth[name: String, gender: String, parents: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String],\n"+
+	"Chronicle[theme: String, text: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String],\n"+
+	"Event[eventType: String, hosts: String, guests: String, files: String, text: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String],\n"+
+	"Idea[keywords: String, priority: String, text: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String],\n"+
+	"Photo[file: String, people: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String],\n"+ 
+	"Recipe[ingredients: String, instructions: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String],\n"+
+	"SportsRegistry[sport: String, duration: String, results: String, participants: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String],\n"+
+	"Thought[keywords: String, text: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String],\n"+
+	"Wedding[couple: String, guests: String, menu: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String],\n"+
         "}\n\n\n"
 );
                    
@@ -127,25 +130,43 @@ fields returns[String tipo, String atrib]
     
     : '{'? {
             if(type.equals("User")){
-                                 triples_users.add("user_" + idPerson_trip + "= iof => User["); idPerson_trip++;}
-           else {
-                 }}
+                                 triples_users.add("user_" + idPerson_trip + "= iof => User["); idPerson_trip++;}}
       
                             TXT{$tipo=$TXT.text.replace("\"","");} 
                             ':' TXT{$atrib=$TXT.text;
                                         
-                                        if(type.equals("User")){triples_users.add($tipo+ "=" +$atrib); }
+                                        if(type.equals("User")){triples_users.add($tipo+ "=" +$atrib);
+                                                                
+                                                                }
                                         if(type.equals("Post")) { mapAtribs.put($tipo,$atrib);}
                                    }                                        
       
       
-      (',' TXT{$tipo=$TXT.text.replace("\"","");} 
-       ':' TXT{$atrib=$TXT.text;
-     if(type.equals("User")){triples_users.add("," +$tipo+ "=" +$atrib); }
-     if(type.equals("Post")) { mapAtribs.put($tipo,$atrib);}
-           })+ ('},' v)?
+      (',' 
+        inst[mapAtribs]{$fields.atrib= $inst.atrib;} )+ ('},' v)?
        ;
 
+inst [ Map<String,String> mapAtribs]
+    returns[String tipo, String atrib, String id, String Author]
+
+    : TXT{$tipo=$TXT.text.replace("\"","");} ':' TXT{$atrib=$TXT.text;
+     if(type.equals("User")){triples_users.add("," +$tipo+ "=" +$atrib); 
+                             if($tipo.equals("id")){$id=$atrib;
+                                                    String person = "user_" + (idPerson-1);
+                                                    
+                                                    idAuthor.put($id, person);System.out.println(idAuthor);}}
+                             
+                             //idAuthor.put($id,$Author);
+
+                                                               
+     if(type.equals("Post")) { mapAtribs.put($tipo,$atrib);
+                            if($tipo.equals("ident")){
+                                    if(idAuthor.containsKey($atrib)){
+                                        System.out.println("Encontrei");}}
+}}
+           
+    | TXT ':[' (TXT (',' TXT)*)?   ']'
+    ;
 
 v: TXT ':0'
  ;
