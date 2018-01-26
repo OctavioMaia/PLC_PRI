@@ -18,6 +18,8 @@ grammar jsToOnto;
          List<String> rel = new ArrayList <>();
          List<String> triples_users = new ArrayList <>();
          List<String> triples_posts = new ArrayList <>();
+         List<String> triples_published = new ArrayList <>();
+         
          
          Map<String,String> idAuthor = new TreeMap<>();
         
@@ -34,11 +36,11 @@ grammar jsToOnto;
 
 
 
-jsFile 
+jsFile returns[String _id]
 @after{
        ontologia.add("Ontologia IAm\n"+
                         "\nconceitos {"+
-	"\nPerson[token: String, password: String, name: String, age: String, gender: String, id: String, email: String, address: String, profession: String, type: String, cnumber: String],\n"+
+	"\nUser[token: String, password: String, name: String, age: String, gender: String, id: String, email: String, address: String, profession: String, type: String, cnumber: String],\n"+
 	"Post,\n"+
 	"AcademicRegistry[duration: String, credits: String,author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String],\n"+
 	"AcademicWork[course: String, professor: String, classication: String, file: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String],\n"+
@@ -84,11 +86,18 @@ jsFile
     : {ind.add("\nindividuos {\n\t");
        triples_users.add("\ntriplos {\n");}
 
-     ('{')? (TXT ':[' ( '{' TXT ':' TXT ',' (TXT ':')? {//System.out.println($TXT.text);
+     ('{')? (TXT ':[' ( '{' TXT ':' TXT {$_id=$TXT.text.replace("\"","");
+                                          } 
+                        ',' (TXT ':')? {//System.out.println($TXT.text);
                                            if(($TXT.text.replace("\"","").equals("facebook")) || ($TXT.text.replace("\"","").equals("google")) || ($TXT.text.replace("\"","").equals("local"))){
                                                                   type = "User";
                                                                   }
                                          else {type="Post";}
+                                         if(type.equals("User")){
+                                          String person = "user_" + (idPerson);
+                                          idAuthor.put($_id, person);
+                                          //System.out.println(idAuthor);
+                                          }
                                          //System.out.println(type);
                                          }
                                          
@@ -96,7 +105,7 @@ jsFile
                                          
                                           fields ('},'|'}') {
                                                              if(type.equals("User")){
-                                                                                    ind.add("person_"+idPerson + ","); idPerson++;}
+                                                                                    ind.add("user_"+idPerson + ","); idPerson++;}
                                                              else {ind.add("post_"+idPost+ ","); idPost++;}
                                                              } )+ ']' (',')? )+ '}'
        ;
@@ -111,9 +120,9 @@ fields returns[String tipo, String atrib]
        triples_users.add("];\n\n\n");}
        
        else{
-       System.out.println(mapAtribs);
+       //System.out.println(mapAtribs);
        String tipo = mapAtribs.get("type");
-       System.out.println(tipo);
+       //System.out.println(tipo);
        
        triples_posts.add("post_" + idPost_trip + "= iof =>" + tipo.replace("\"","") +"["); idPost_trip++;
        if(!mapAtribs.isEmpty()){
@@ -123,7 +132,7 @@ fields returns[String tipo, String atrib]
             } 
        }
        triples_posts.remove(triples_posts.size() -1);
-       triples_posts.add("];\n\n");
+       triples_posts.add("];\n");
        triples_posts.add(tipo.replace("\"","")+"= is-a => Post;\n\n" );
        }}
 
@@ -150,19 +159,16 @@ inst [ Map<String,String> mapAtribs]
     returns[String tipo, String atrib, String id, String Author]
 
     : TXT{$tipo=$TXT.text.replace("\"","");} ':' TXT{$atrib=$TXT.text;
-     if(type.equals("User")){triples_users.add("," +$tipo+ "=" +$atrib); 
-                             if($tipo.equals("id")){$id=$atrib;
-                                                    String person = "user_" + (idPerson-1);
-                                                    
-                                                    idAuthor.put($id, person);System.out.println(idAuthor);}}
-                             
-                             //idAuthor.put($id,$Author);
+     if(type.equals("User")){triples_users.add("," +$tipo+ "=" +$atrib);}
 
                                                                
      if(type.equals("Post")) { mapAtribs.put($tipo,$atrib);
                             if($tipo.equals("ident")){
-                                    if(idAuthor.containsKey($atrib)){
-                                        System.out.println("Encontrei");}}
+                                    if(idAuthor.containsKey($atrib.replace("\"",""))){
+                                            //System.out.println($atrib);
+                                            //System.out.println(idAuthor.get($atrib.replace("\"","")));
+                                            triples_posts.add(idAuthor.get($atrib.replace("\"","")) + "= published =>post_" + idPost+  ";\n");
+                                       }}
 }}
            
     | TXT ':[' (TXT (',' TXT)*)?   ']'
