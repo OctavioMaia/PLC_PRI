@@ -1,36 +1,51 @@
-extends layout
-
-block content
-  .main.container.text-xs-center
-    img(src='https://i.imgur.com/N6viMyf.png' style='display: inline-block;' class='img-fluid')
-    br
-    br
-    h6 Welcome to DigitalMe, a place where you can share your thoughts, ideas and experiences.
-    br 
-    h6 You will be running in no time! Just select your option below.
-    br
-    div(class='btn-group')
-      a(class='btn btn-primary disabled')
-        i(class='fa fa-facebook' style='width:16px; height:24px')
-      a(class='btn btn-primary' href='/auth/facebook' style='width:12em') Sign in with Facebook
-    br
-    br
-    div(class='btn-group')
-      a(class='btn btn-danger disabled')
-        i(class='fa fa-google-plus' style='width:16px; height:24px')
-      a(class='btn btn-danger' href='/auth/google' style='width:12em;') Sign in with Google+
-    br
-    br
-    div(class='btn-group')
-      a(class='btn btn-info  disabled')
-        i(class='fa fa-pencil-square' style='width:16px; height:24px')
-      a(class='btn btn-info ' href='/auth/locallogin' style='width:12em;') Sign in with credentials
-    br
-    br
-    h6 __________________________________________________________
-    br
-    div(class='btn-group')
-      a(class='btn btn-info  disabled')
-        i(class='fa fa-pencil-square' style='width:16px; height:24px')
-      a(class='btn btn-info ' href='/auth/register' style='width:12em;') Sign up with credentials
-  
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    meta(http-equiv='x-ua-compatible', content='ie=edge')
+    title DigitalMe | #{title}
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css', crossorigin='anonymous')
+    link(rel='stylesheet', href='/stylesheets/icon.css')
+    link(rel='stylesheet', href='/stylesheets/font-awesome.css')
+    link(rel='stylesheet', href='/stylesheets/full-slider.css')
+  body
+    include navbar
+    header(class='img-responsive')
+      #carouselExampleIndicators.carousel.slide(data-ride='carousel')
+        ol.carousel-indicators
+          li.active(data-target='#carouselExampleIndicators', data-slide-to='0')
+          li(data-target='#carouselExampleIndicators', data-slide-to='1')
+          li(data-target='#carouselExampleIndicators', data-slide-to='2')
+          li(data-target='#carouselExampleIndicators', data-slide-to='3')
+          li(data-target='#carouselExampleIndicators', data-slide-to='4')
+          li(data-target='#carouselExampleIndicators', data-slide-to='5')
+          li(data-target='#carouselExampleIndicators', data-slide-to='6')
+          li(data-target='#carouselExampleIndicators', data-slide-to='7')
+        .carousel-inner(role='listbox')
+          // Slide One - Set the background image for this slide in the line below
+          .carousel-item.active(style="background-image: url('http://www.sunshineandski.com/wp-content/uploads/2015/03/running-21.jpg')")
+            .carousel-caption.d-none.d-md-block
+          .carousel-item(style="background-image: url('http://weknowyourdreams.com/images/cooking/cooking-05.jpg')")
+            .carousel-caption.d-none.d-md-block
+          .carousel-item(style="background-image: url('https://generationcirca.files.wordpress.com/2013/04/img_2995.jpg')")
+            .carousel-caption.d-none.d-md-block
+          .carousel-item(style="background-image: url('http://tascofamilychiro.com/wp-content/uploads/2016/08/B2B-Appointment-Setting-Services.jpg')")
+            .carousel-caption.d-none.d-md-block
+          .carousel-item(style="background-image: url('https://www.bitsonline.com/wp-content/uploads/2017/12/wedding-2.jpg')")
+            .carousel-caption.d-none.d-md-block
+          .carousel-item(style="background-image: url('https://www.rd.com/wp-content/uploads/2016/12/07-truths-giving-birth-525571539-IvanJekic.jpg')")
+            .carousel-caption.d-none.d-md-block
+          .carousel-item(style="background-image: url('http://www.sabusinessindex.co.za/wp-content/uploads/2016/06/Ideas.jpg')")
+            .carousel-caption.d-none.d-md-block
+          .carousel-item(style="background-image: url('https://iso.500px.com/wp-content/uploads/2016/10/stock-photo-159358357.jpg')")
+            .carousel-caption.d-none.d-md-block
+        a.carousel-control-prev(href='#carouselExampleIndicators', role='button', data-slide='prev')
+          span.carousel-control-prev-icon(aria-hidden='true')
+          span.sr-only Previous
+        a.carousel-control-next(href='#carouselExampleIndicators', role='button', data-slide='next')
+          span.carousel-control-next-icon(aria-hidden='true')
+          span.sr-only Next
+    block content
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js', crossorigin='anonymous')
