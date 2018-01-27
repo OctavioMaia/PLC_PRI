@@ -47,4 +47,9 @@ router.get('/verifyemail', function(req, res) {
     res.render('verifyemail');
 });
 
+// TAKEN ==============================
+router.get('/emailtaken', function(req, res) {
+    res.render('emailtaken');
+});
+
 module.exports = router;

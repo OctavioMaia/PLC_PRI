@@ -12,14 +12,14 @@ var router    = express.Router();
 // show the login form
 router.get('/login', function(req, res) {
     res.render('login', {
-        message: req.flash('loginMessage')
+        title: 'Login'
     });
 });
 
 // show the locallogin form
 router.get('/locallogin', function(req, res) {
     res.render('locallogin', {
-        message: req.flash('loginMessage')
+        title: 'Login'
     });
 });
 
@@ -49,16 +49,14 @@ router.post('/locallogin', function(req, res, next) {
 // show the register form
 router.get('/register', function(req, res) {
     res.render('register', {
-        title: 'Sign Up',
-        message: req.flash('registerMessage')
+        title: 'Sign Up'
     });
 });
 
 // process the signup form
 router.post('/register', passport.authenticate('local-signup', {
     successRedirect: '/verifyemail', // redirect to the secure profile section
-    failureRedirect: '/error', // redirect back to the register page if there is an error
-    failureFlash: true // allow flash messages
+    failureRedirect: '/emailtaken' // redirect back to the register page if there is an error
 }));
 
 // REGISTER ==============================

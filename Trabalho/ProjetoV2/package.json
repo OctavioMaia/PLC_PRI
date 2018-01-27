@@ -1,5 +1,5 @@
 {
-  "name": "node-authentication",
+  "name": "digitalme",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
@@ -8,7 +8,6 @@
     "bcrypt-nodejs": "latest",
     "body-parser": "~1.15.2",
     "concatenate-files": "^0.1.1",
-    "connect-flash": "~0.1.1",
     "cookie-parser": "~1.4.3",
     "express": "~4.14.0",
     "express-fileupload": "^0.3.0",
