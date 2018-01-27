@@ -72,6 +72,15 @@ a:hover {
 	background: rgba(255,255,255, .2);	
 }
 
+.btn-login {
+	color: rgba(255,255,255, .75);
+	background: rgba(255,255,255, .12);
+}
+  
+.btn-login:hover {
+	background-color: #21c229;	
+}
+
 .btn-logout {
 	color: rgba(255,255,255, .75);
 	background: rgba(255,255,255, .12);
@@ -1657,4 +1666,10 @@ body{margin-top:20px;}
 
 input[type='file'] {
 	color: transparent;
+}
+
+.faqHeader {
+	color: #fff;
+	font-size: 27px;
+	margin: 20px;
 }

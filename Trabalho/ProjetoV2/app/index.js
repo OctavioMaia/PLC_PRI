@@ -8,6 +8,13 @@ router.get('/', function(req, res) {
     });
 });
 
+// LOGIN ==============================
+router.get('/login', function(req, res) {
+    res.render('login', {
+        title: 'Login'
+    });
+});
+
 // LOGOUT ==============================
 router.get('/logout', function(req, res) {
     req.logout();
@@ -25,6 +32,13 @@ router.get('/about', function(req, res) {
 router.get('/contact', function(req, res) {
     res.render('contact', {
         title: 'Contact'
+    });
+});
+
+// HELP ==============================
+router.get('/help', function(req, res) {
+    res.render('help', {
+        title: 'Help'
     });
 });
 
