@@ -1668,3 +1668,8 @@ input[type='file'] {
 	color: transparent;
 }
 
+.faqHeader {
+	color: #fff;
+	font-size: 27px;
+	margin: 20px;
+}
