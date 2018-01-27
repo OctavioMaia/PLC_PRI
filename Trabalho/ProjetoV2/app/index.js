@@ -44,6 +44,7 @@ router.get('/help', function(req, res) {
 
 // VERIFY ==============================
 router.get('/verifyemail', function(req, res) {
+    req.session.destroy();
     res.render('verifyemail');
 });
 
