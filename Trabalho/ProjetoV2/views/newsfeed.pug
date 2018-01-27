@@ -30,7 +30,7 @@ head
           a(href="/newsfeed/Event" class="btn btn-light") Events
           a(href="/newsfeed/Idea" class="btn btn-light") Ideas
           a(href="/newsfeed/Photo" class="btn btn-light") Photos
-          a(href="/newsfeed/Recipe" class="btn btn-light") Recipe
+          a(href="/newsfeed/Recipe" class="btn btn-light") Recipes
           a(href="/newsfeed/SportsRegistry" class="btn btn-light") Sport Registries
           a(href="/newsfeed/Thought" class="btn btn-light") Thoughts
           a(href="/newsfeed/Wedding" class="btn btn-light") Weddings
@@ -50,51 +50,83 @@ head
                 h6 Location: #{val.location}
                 h6 Description: #{val.description}
                 if (val.date) 
-                  h6 Date: #{val.date}
+                  h6 Date: #{(val.date).toString().substring(0, 15)}
                 case val.type
                   when 'Chronicle'  
-                    h6 Theme: #{val.theme}
-                    h6 Text: #{val.text}
+                    if (val.theme!='') 
+                      h6 Theme: #{val.theme}
+                    if (val.text!='') 
+                      h6 Text: #{val.text}
                   when 'Recipe'
-                    h6 Ingredients: #{val.ingredients}
-                    h6 Instructions: #{val.instructions}
+                    if (val.ingredients!='') 
+                      h6 Ingredients: #{val.ingredients}
+                    if (val.instructions!='') 
+                      h6 Instructions: #{val.instructions}
                   when 'Wedding'
-                    h6 Couple: #{val.couple}
-                    h6 Guest List: #{val.guests}
-                    h6 Menu: #{val.menu}
+                    if (val.couple!='') 
+                      h6 Couple: #{val.couple}
+                    if (val.guests!='') 
+                      h6 Guest List: #{val.guests}
+                    if (val.menu!='') 
+                      h6 Menu: #{val.menu}
                   when 'Birth'
-                    h6 Name: #{val.name}
-                    h6 Gender: #{val.gender}
-                    h6 Parents: #{val.parents}
+                    if (val.name!='') 
+                      h6 Name: #{val.name}
+                    if (val.gender!='') 
+                      h6 Gender: #{val.gender}
+                    if (val.parents!='') 
+                      h6 Parents: #{val.parents}
                   when 'Idea'
-                    h6 Keywords: #{val.keywords}
-                    h6 Priority: #{val.priority}
-                    h6 Text: #{val.text}
+                    if (val.keywords!='') 
+                      h6 Keywords: #{val.keywords}
+                    if (val.priority!='') 
+                      h6 Priority: #{val.priority}
+                    if (val.text!='') 
+                      h6 Text: #{val.text}
                   when 'Thought'
-                    h6 Keywords: #{val.keywords}
-                    h6 Text: #{val.text}
+                    if (val.keywords!='') 
+                      h6 Keywords: #{val.keywords}
+                    if (val.text!='') 
+                      h6 Text: #{val.text}
                   when 'SportsRegistry'
-                    h6 Sport: #{val.sport}
-                    h6 Duration: #{val.duration}
-                    h6 Participants: #{val.participants}
-                    h6 Results: #{val.results}
+                    if (val.sport!='') 
+                      h6 Sport: #{val.sport}
+                    if (val.duration!='') 
+                      h6 Duration: #{val.duration}
+                    if (val.participants!='') 
+                      h6 Participants: #{val.participants}
+                    if (val.results!='') 
+                      h6 Results: #{val.results}
                   when 'Photo'
-                    h6 File: #{val.file}
-                    h6 People: #{val.people}
+                    if (val.file!='') 
+                      img(src=val.file style='display: inline-block;' class='img-fluid')
+                    if (val.people!='') 
+                      h6 People: #{val.people}
                   when 'AcademicRegistry'
-                    h6 Duration: #{val.duration}
-                    h6 Credits: #{val.credits}
+                    if (val.duration!='') 
+                      h6 Duration: #{val.duration}
+                    if (val.credits!='') 
+                      h6 Credits: #{val.credits}
                   when 'AcademicWork'
-                    h6 Course: #{val.course}
-                    h6 Professor: #{val.professor}
-                    h6 File: #{val.file}
-                    h6 Classification: #{val.classification}
+                    if (val.course!='') 
+                      h6 Course: #{val.course}
+                    if (val.professor!='') 
+                      h6 Professor: #{val.professor}
+                    if (val.file!='') 
+                      h6 File: #{val.file}
+                    if (val.classification!='') 
+                      h6 Classification: #{val.classification}
                   when 'Event'
-                    h6 Files: #{val.files}
-                    h6 Guests: #{val.guests}
-                    h6 Hosts: #{val.hosts}
-                    h6 Event Type: #{val.eventType}
-                    h6 Text: #{val.text}
+                    if (val.files!='') 
+                      h6 Files: #{val.files}
+                    if (val.guests!='') 
+                      h6 Guests: #{val.guests}
+                    if (val.hosts!='') 
+                      h6 Hosts: #{val.hosts}
+                    if (val.eventType!='') 
+                      h6 Event Type: #{val.eventType}
+                    if (val.text!='') 
+                      h6 Text: #{val.text}
                   default: h6 Nao sei
               .social-footer
                 .ssk-group

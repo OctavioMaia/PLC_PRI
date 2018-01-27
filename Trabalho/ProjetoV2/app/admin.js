@@ -33,8 +33,6 @@ router.get('/discard',function(req, res) {
 //admin POST EXPORT
 router.post('/export', isAdmin, function(req, res, next) {
     var db = req.body.collection
-    var info
-    console.log("COLLECTION: ")
     if (db == 'posts') {
         Post.find({}).select('-_id').lean().exec(function(err, doc) {
             if (!err) {
@@ -114,6 +112,42 @@ router.post('/export', isAdmin, function(req, res, next) {
     }
 });
 
+//admin POST drop
+router.post('/drop', isAdmin, function(req, res, next) {
+    var db = req.body.collection
+    if (db == 'posts') {
+        Post.collection.drop();
+        var message = "Posts have been deleted with success!"
+        var href = '/admin'
+        res.render('success', {
+            'Title': 'Success!',
+            message,
+            href
+        });
+    } else if (db == 'users') {
+        User.collection.drop();
+        req.session.destroy();
+        var message = "Users have been deleted with success!"
+        var href = '/'
+        res.render('success', {
+            'Title': 'Success!',
+            message,
+            href
+        });
+    } else if (db == 'both'){
+        User.collection.drop();
+        Post.collection.drop();
+        req.session.destroy();
+        var message = "Both posts and users have been deleted with success!"
+        var href = '/'
+        res.render('success', {
+            'Title': 'Success!',
+            message,
+            href
+        });
+    }
+});
+
 
 //admin POST IMPORT USERS
 router.post('/importUsers', isAdmin, function(req, res, next) {
@@ -168,14 +202,14 @@ function isAdmin(req, res, next) {
         if (user.type == 'admin') 
             return next();
         else {
-            var message = "You must be an admin to access this function!"
+            var message = "You must be an admin to access this page."
             res.render('error', {
                 'Title': 'Error',
                 message
             });
         }
     } else {
-        var message = "You must be logged in to access this function!"
+        var message = "You must be logged in to access this page."
         res.render('error', {
             'Title': 'Error',
             message

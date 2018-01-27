@@ -215,7 +215,6 @@ module.exports = function(passport) {
                         }
                         return done(null, user);
                     } else {
-                        console.log("newUser")
                         var newUser          = new User();
 
                         newUser.google.id    = profile.id;

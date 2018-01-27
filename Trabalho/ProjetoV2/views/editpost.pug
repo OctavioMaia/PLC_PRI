@@ -11,8 +11,8 @@ block content
             label(for='type') Type:
             input#name.form-control(type='text', name='type' value=post.type readonly)
           div.form-group
-            label(for='type') Date:
-            input#name.form-control(type='date', name='pubdate' value=post.date)
+            label(for='date') Date:
+            input#name.form-control(type='date', name='date' value=post.date required)
           div.form-group
             label(for='title') Title:
             input#name.form-control(type='text', name='title' value=post.title)
@@ -99,6 +99,9 @@ block content
                 label(for='results') Results:
                 input#name.form-control(type='text', name='results' value=post.results)
             when 'Photo'
+              div.form-group
+                label(for='file') File:
+                input#name.form-control(type='text', name='file' value=post.file)
               div.form-group
                 label(for='people') People:
                 input#name.form-control(type='text', name='people' value=post.people)

@@ -15,7 +15,18 @@ block content
               option(value="posts") Posts
               option(value="both") Both
             br
-            button.btn.btn-primary(type='submit' class='btn-block btn-primary') Confirm
+            button.btn.btn-primary(type='submit' class='btn-block btn-primary') Export
+        form(method='POST' action='/admin/drop')
+          div.form-group
+            label(for='collection') Collection to drop:
+            select(type="text", class="form-control" name="collection")
+              option(value="" required) Please select a collection
+              option(value="users") Users
+              option(value="posts") Posts
+              option(value="both") Both
+            br
+            button.btn.btn-primary(type='submit' class='btn-block btn-primary') Drop
+          br
         form#uploadForm(ref='uploadForm' action='/admin/importUsers' method='post' enctype='multipart/form-data')
           label Import users: 
           br

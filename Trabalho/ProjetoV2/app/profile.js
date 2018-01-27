@@ -52,7 +52,7 @@ router.get('/', isLoggedIn,function(req, res, next) {
 // PUBLIC PROFILE SECTION =========================
 router.get('/public/:id',function(req, res, next) {
     User.findOne({'_id': req.params.id}, function(err, result) {
-        if(!err){
+        if(!err && result!=null){
             if (result.google.id != undefined){
                 user = result.google;
             }else if (result.facebook.id != undefined){
@@ -62,12 +62,8 @@ router.get('/public/:id',function(req, res, next) {
             }
 
             avatar = ''
-            console.log(path.resolve(__dirname))
-            console.log("normal"+path.join(__dirname, '../public/images/'+ req.params.id + '.jpg'))
-            console.log("json"+JSON.stringify(path.join(__dirname, '../public/images/'+ req.params.id + '.jpg')))
 
             if (fs.existsSync('./public/uploads/' + req.params.id + '.jpg')){
-                console.log("existe")
                 avatar = '../../uploads/'+ req.params.id + '.jpg'
             }else{
                 avatar = 'https://i.imgur.com/uYq21Ou.png'
@@ -79,7 +75,9 @@ router.get('/public/:id',function(req, res, next) {
                 avatar
             }); 
         }else{
-            console.log(err)
+            var err = new Error('Profile not found.');
+            err.status = 400;
+            return next(err);
         }
     });
 });

@@ -25,13 +25,10 @@ router.get('/', function(req, res,next) {
 
 router.get('/:filter', function(req, res, next) {
     var filter = req.params.filter
-    console.log(filter)
     var posts
-    console.log("Antes do find.");
     Post.find({privacy: 'public', type: filter}).sort({pubdate: 'descending'}).lean().exec(function(err, doc) {
         if (!err && doc.length!=0) {
             posts = doc
-            console.log(doc)
             res.render('newsfeed', {
                 title: 'News Feed',
                 posts,

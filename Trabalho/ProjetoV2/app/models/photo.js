@@ -13,7 +13,7 @@ var PhotoSchema = new Schema({
     pubdate: {type: Date, default: Date.now},
     description: {type: String, required: true},
     type: {type: String, required: true},
-    photo: {type: String, required: true},
+    file: {type: String, required: true},
     people: {type: String, required: false},
     comments: {type:[String], require:false}
 })

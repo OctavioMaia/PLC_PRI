@@ -74,7 +74,7 @@ router.get('/newEvent', function(req, res) {
                 {'type':'text','text':'Title','obligatory':true},
                 {'type':'date','text':'Date','obligatory':true},
                 {'type':'text','text':'Description','obligatory':true}];
-    var extras = [{'type':'text','text':'Files','obligatory':false},
+    var extras = [{'type':'file','text':'Files','obligatory':false},
                   {'type':'text','text':'Guests','obligatory':false},
                   {'type':'text','text':'Hosts','obligatory':false},
                   {'type':'text','text':'EventType','obligatory':true},
@@ -166,7 +166,7 @@ router.get('/newAcademicWork', function(req, res) {
                 {'type':'text','text':'Description','obligatory':true}];
     var extras = [{'type':'text','text':'Course','obligatory':true},
                   {'type':'text','text':'Professor','obligatory':true},
-                  {'type':'text','text':'File','obligatory':true},
+                  {'type':'file','text':'File','obligatory':true},
                   {'type':'text','text':'Classification','obligatory':true}];
     var name = 'AcademicWork';
     res.render('processnewpost',{ title: 'Academic Work',name,reqs,extras});
@@ -204,7 +204,6 @@ router.post('/processnewpost', isLoggedIn, function(req, res, next) {
     if (req.body.Type) {
         var post;
         var name;
-        console.log("type:" + req.body.Type);
         switch (req.body.Type) {
             case 'Chronicle':
                 post = new Chronicle();
@@ -244,16 +243,13 @@ router.post('/processnewpost', isLoggedIn, function(req, res, next) {
                 break;
         }
 
-        for (var key in req.body) {
-            console.log("debug: (" + key + ',' + req.body[key] + ')');
-        }
-
         if (req.user.google.id != undefined)
             name = req.user.google.name;
         else if (req.user.facebook.id != undefined)
             name = req.user.facebook.name;
         else
             name = req.user.local.name;
+
 
         //populate the previous var
         if (post != undefined) {
@@ -427,6 +423,7 @@ router.post('/editpost/:id', isLoggedIn, function(req, res, next) {
             else
                 name = req.user.local.name;
                 
+
             //populate the previous var
             if (post != undefined) {
                 //needed for backup
@@ -472,7 +469,6 @@ router.post('/editpost/:id', isLoggedIn, function(req, res, next) {
 
             Post.remove({_id:req.params.id}, function(err) {
                 if (!err) {
-                    console.log("removed")
                     Post.collection.insert(post, function(err, docs) {
                         if (err) {
                             var message = "Failed to edit " + post.type
@@ -502,10 +498,6 @@ router.post('/editpost/:id', isLoggedIn, function(req, res, next) {
 
 
 router.post('/addcomment/:id', isLoggedIn, function(req, res, next) {
-    console.log("entrei addcomment")
-    console.log("PARAMS: " + JSON.stringify(req.params))
-    console.log("POST_ID: "+ req.params.id)
-    
     //find the original post
     Post.findOne({_id: req.params.id}).lean().exec(function(err, out) {
         if (err) {
@@ -513,7 +505,6 @@ router.post('/addcomment/:id', isLoggedIn, function(req, res, next) {
             err.status = 404;
             next(err);
         } else {
-            console.log("before:"+out)
             var post;
             switch (out.type) {
                 case 'Chronicle':
@@ -606,7 +597,6 @@ router.post('/addcomment/:id', isLoggedIn, function(req, res, next) {
 
             Post.remove({_id:req.params.id}, function(err) {
                 if (!err) {
-                    console.log("removed")
                     Post.collection.insert(post, function(err, docs) {
                         if (err) {
                             var message = "Failed to add comment."
@@ -627,124 +617,6 @@ router.post('/addcomment/:id', isLoggedIn, function(req, res, next) {
         }
     });
 });
-
-/*
-router.post('/editpost/:id', isLoggedIn, function(req, res, next) {
-    console.log("body"+req.body)
-    console.log("ID"+req.params.id)
-
-    /*
-    Post.find({_id: req.params.id}).remove(function(err, post) {
-        if (!err) {
-            Post.collection.insert(req.body), function(err2, post2){
-                if(!err2){
-                    console.log("maybe inseriu");
-                }else{
-                    console.log("erro2"+err);
-                }
-            }
-        } else {
-            console.log("erro"+err);
-        }
-    });*/
-
-    /*
-    Post.findByIdAndUpdate(req.params.id, req.body).exec(function(err, post) {
-        if (!err) {
-            console.log("found this"+post);
-            return res.redirect('/posts/myposts');
-        } else {
-            console.log("erro2"+err);
-        }
-    });
-    */
-
-    /*
-    var newData = req.body
-    Post.findOne({_id: req.params.id}).exec(function(err, post) {
-        console.log("post:"+post)
-        if(!err)
-            Post.update(post.toObject(), newData, function(err2, post2) {
-                if (!err2) {
-                    console.log("new vals"+post2);
-                    return res.redirect('/posts/myposts');
-                } else {
-                    console.log("erro2"+err2);
-                }
-            });
-        else
-            console.log("err3:+err")
-    });*/
-
-    /*
-    var newData = req.body
-    Post.findOne({_id: req.params.id}).lean().exec(function(err, post) {
-        console.log("antes:"+JSON.stringify(post))
-        post=newData
-        console.log("depois:"+JSON.stringify(post))
-        post.save(function(err) {
-            if (err) {
-                return next(err);
-            } else {
-                console.log("new data:" + post)
-            }
-        });
-    });
-    */
-
-    /*
-    var newData = req.body
-    Post.findOne({_id: req.params.id}).lean().exec(function(err, post) {
-        if (err) {
-            return next(err);
-        } else {
-            for (var id in post){
-                if(req.body[id]!=undefined){
-                    var old = id
-                    var upd = req.body[id];
-                    console.log(old,JSON.stringify(upd))
-                    Post.update({_id: req.params.id, old:upd},function(err, post) {
-                        if (err) {
-                            return next(err);
-                        } else {
-                            console.log("new data:" + post)
-                        }
-                    })
-                }
-            }
-        }
-    });
-    
-    /*
-    Post.findOne({_id: req.params.id}).lean().exec(function(err, post) {
-        if (err) {
-            return next(err);
-        } else {
-            for (var id in post){
-                var old
-                var upd
-                if(req.body[id]!='_id'){
-                    if(req.body[id]!=undefined){
-                        old = post[id]
-                        upd = req.body[id];
-                    }else{
-                        upd = post[id]
-                    }
-                    console.log(id + ': ' + upd)
-                }
-            }
-        }
-    });
-
-    Post.update({_id: req.params.id, author: 'teste'},function(err, post) {
-        if (err) {
-            return next(err);
-        } else {
-            console.log("new data: " + post)
-        }
-    })
-});
-*/
 
 // route middleware to ensure user is logged in
 function isLoggedIn(req, res, next) {
