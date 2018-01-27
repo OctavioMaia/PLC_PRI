@@ -1,20 +1,20 @@
 Ontologia IAm
 
 conceitos {
-User[token: String, password: String, name: String, age: String, gender: String, id: String, email: String, address: String, profession: String, type: String, cnumber: String],
+User[loginType: String, token: String, password: String, name: String, age: String, gender: String, id: String, email: String, address: String, profession: String, type: String, cnumber: String, confirmed: String, aboutme: String],
 Post,
-AcademicRegistry[duration: String, credits: String,author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String],
-AcademicWork[course: String, professor: String, classication: String, file: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String],
-Appointment[author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String],
-Birth[name: String, gender: String, parents: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String],
-Chronicle[theme: String, text: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String],
-Event[eventType: String, hosts: String, guests: String, files: String, text: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String],
-Idea[keywords: String, priority: String, text: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String],
-Photo[file: String, people: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String],
-Recipe[ingredients: String, instructions: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String],
-SportsRegistry[sport: String, duration: String, results: String, participants: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String],
-Thought[keywords: String, text: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String],
-Wedding[couple: String, guests: String, menu: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String],
+AcademicRegistry[duration: String, credits: String,author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String,comments: String],
+AcademicWork[course: String, professor: String, classication: String, file: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String,comments: String],
+Appointment[author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String,comments: String],
+Birth[name: String, gender: String, parents: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String,comments: String],
+Chronicle[theme: String, text: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String,comments: String],
+Event[eventType: String, hosts: String, guests: String, files: String, text: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String,comments: String],
+Idea[keywords: String, priority: String, text: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String,comments: String],
+Photo[file: String, people: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String,comments: String],
+Recipe[ingredients: String, instructions: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String,comments: String],
+SportsRegistry[sport: String, duration: String, results: String, participants: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String,comments: String],
+Thought[keywords: String, text: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String,comments: String],
+Wedding[couple: String, guests: String, menu: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String,comments: String],
 }
 
 
@@ -28,43 +28,43 @@ individuos {
 }
 
 triplos {
-user_1= iof => User[confirmed="true",type="user",age="16",name="Octavio Maia",password="$2a$08$lZoFgkTww7CZmHecOdeJMeQ6yQkqB9FqEPOKPlFnNXX1Wvk7N0Q4i",email="octaviojmaia@gmail.com"];
+user_1= iof => User[loginType ="local",confirmed="true",type="user",age="16",name="Octavio Maia",password="$2a$08$lZoFgkTww7CZmHecOdeJMeQ6yQkqB9FqEPOKPlFnNXX1Wvk7N0Q4i",email="octaviojmaia@gmail.com"];
 
 
-user_2= iof => User[type="user",email="nunorogeriocm@gmail.com",name="Nuno Machado",token="ya29.GlxMBfp4B6FASchNUDvGVFgbgVL2RuXitbVoEWU8rOaqkd15cmxaBOBt6bculCL7cB_hnzbHP3mi9_m2GHo7pVkT_s2_J3yzIZuY_YLOlDRwM8h5d70mdJPeXshdHg",id="114440185746535622814"];
+user_2= iof => User[loginType ="google",type="user",email="nunorogeriocm@gmail.com",name="Nuno Machado",token="ya29.GlxMBfp4B6FASchNUDvGVFgbgVL2RuXitbVoEWU8rOaqkd15cmxaBOBt6bculCL7cB_hnzbHP3mi9_m2GHo7pVkT_s2_J3yzIZuY_YLOlDRwM8h5d70mdJPeXshdHg",id="114440185746535622814"];
 
 
-user_3= iof => User[type="user",email="octaviojmaia@gmail.com",name="Octavio Maia",token="ya29.GlxMBaIhdD03qE1cUNamNQ2ilvaJN-B_tcVQFa9r4oYYAwgcBK-8fNh9Nna8GiI0Mqt5ZGNQxb3keMRy2_K7Wj3Jw3nuPPg7Iss1B5QnQie1tEaIRBhwwVzC8fJMag",id="107600219698699965725"];
+user_3= iof => User[loginType ="google",type="user",email="octaviojmaia@gmail.com",name="Octavio Maia",token="ya29.GlxMBaIhdD03qE1cUNamNQ2ilvaJN-B_tcVQFa9r4oYYAwgcBK-8fNh9Nna8GiI0Mqt5ZGNQxb3keMRy2_K7Wj3Jw3nuPPg7Iss1B5QnQie1tEaIRBhwwVzC8fJMag",id="107600219698699965725"];
 
 
-user_4= iof => User[type="user",email="octavio_maia@hotmail.com",name="Octávio Maia",token="EAAKZCA6XraZBQBAMFJli0P0jFj0SOYZCOZA04UX2iTnclxSOGnJYYtHGkzyIpuhWysxDLjND4LhEj91VWWAGZCni5qN3DY58eZApmWs9nqUpoVTxHL1bDd9IBMrnOc9njNpEq5HPGfcZBZBYMht0X7Nv12ve3S9Op0f16VAtwTHFjAZDZD",id="1756521317725637"];
+user_4= iof => User[loginType ="facebook",type="user",email="octavio_maia@hotmail.com",name="Octávio Maia",token="EAAKZCA6XraZBQBAMFJli0P0jFj0SOYZCOZA04UX2iTnclxSOGnJYYtHGkzyIpuhWysxDLjND4LhEj91VWWAGZCni5qN3DY58eZApmWs9nqUpoVTxHL1bDd9IBMrnOc9njNpEq5HPGfcZBZBYMht0X7Nv12ve3S9Op0f16VAtwTHFjAZDZD",id="1756521317725637"];
 
 
-user_5= iof => User[confirmed="true",type="user",age="22",name="Madalena Castro",password="$2a$08$Z7qh4w0iJeAD.LmbZDGp7.de7JBUL2u..ROVvvTuB0uLF2RUqODmO",email="madalenaa.castro@gmail.com"];
+user_5= iof => User[loginType ="local",confirmed="true",type="user",age="22",name="Madalena Castro",password="$2a$08$Z7qh4w0iJeAD.LmbZDGp7.de7JBUL2u..ROVvvTuB0uLF2RUqODmO",email="madalenaa.castro@gmail.com"];
 
 
-user_6= iof => User[type="user",email="marcosandresfreitas@gmail.com",name="Marcos Freitas",token="ya29.GltMBS8CvV-kgRfND_D-S7TVOsTpcJkPEwPUBK02zmSEmihjSRJn2_w0Ll2sqOqwIQwICNIHUIs_ekHIPHtO8nU5NSuV3mtTz9YTZxaz93-uF3Qw7SPrgry0tRtU",id="103848414872991971999",aboutme="Oi",address="Vila do Conde ",age="22",cnumber="919420666",gender="Male",profession="Student"];
+user_6= iof => User[loginType ="google",type="user",email="marcosandresfreitas@gmail.com",name="Marcos Freitas",token="ya29.GltMBS8CvV-kgRfND_D-S7TVOsTpcJkPEwPUBK02zmSEmihjSRJn2_w0Ll2sqOqwIQwICNIHUIs_ekHIPHtO8nU5NSuV3mtTz9YTZxaz93-uF3Qw7SPrgry0tRtU",id="103848414872991971999",aboutme="Oi",address="Vila do Conde ",age="22",cnumber="919420666",gender="Male",profession="Student"];
 
 
-user_7= iof => User[type="user",email="tabinhu95@gmail.com",name="Octávio Maia",token="ya29.GlxMBRs_BjpsbFQKgK7r0ZvBTjcw3BtQSlOdnceIkBxc1ef6NXH_3PE7yR9csm9yK-nObd-etn_xH10VmSONyVWX5hjFkNE8f-NmxF5F1eLbNCsb4X1hZvvpzH3ejA",id="109768494313485757406"];
+user_7= iof => User[loginType ="google",type="user",email="tabinhu95@gmail.com",name="Octávio Maia",token="ya29.GlxMBRs_BjpsbFQKgK7r0ZvBTjcw3BtQSlOdnceIkBxc1ef6NXH_3PE7yR9csm9yK-nObd-etn_xH10VmSONyVWX5hjFkNE8f-NmxF5F1eLbNCsb4X1hZvvpzH3ejA",id="109768494313485757406"];
 
 
-user_8= iof => User[confirmed="true",type="admin",age="16",name="Teste",password="$2a$08$vN2bpoY2Fujlwe2XrMGEVOOVDCdMKadtg6XZaGHRhI5Ckn5Ew7tny",email="tabinhu95@gmail.com",aboutme="Ahsbdbsb",address="",cnumber="",gender="Male",profession=""];
+user_8= iof => User[loginType ="local",confirmed="true",type="admin",age="16",name="Teste",password="$2a$08$vN2bpoY2Fujlwe2XrMGEVOOVDCdMKadtg6XZaGHRhI5Ckn5Ew7tny",email="tabinhu95@gmail.com",aboutme="Ahsbdbsb",address="",cnumber="",gender="Male",profession=""];
 
 
-user_9= iof => User[type="admin",email="alfredomiguel2@hotmail.com",name="Alfredo Gomes",token="EAAKZCA6XraZBQBAFY5rY13rbFkUyH0QDB1LZBoqYf4WsmnaZAfnM2v6oDPzcf3WSoSBlGx5QSGvhvXjUY5G0v0d7n2FAC0qI7vl57SAgiBVpuNU8ZC7yyiqGttmfMW6ss6Ixx610RJxKIRuCUiEAHs3IrPVc9WvwSanQIIMko1wZDZD",id="1731050193612250",aboutme="",address="",age="18",cnumber="",gender="Male",profession=""];
+user_9= iof => User[loginType ="facebook",type="admin",email="alfredomiguel2@hotmail.com",name="Alfredo Gomes",token="EAAKZCA6XraZBQBAFY5rY13rbFkUyH0QDB1LZBoqYf4WsmnaZAfnM2v6oDPzcf3WSoSBlGx5QSGvhvXjUY5G0v0d7n2FAC0qI7vl57SAgiBVpuNU8ZC7yyiqGttmfMW6ss6Ixx610RJxKIRuCUiEAHs3IrPVc9WvwSanQIIMko1wZDZD",id="1731050193612250",aboutme="",address="",age="18",cnumber="",gender="Male",profession=""];
 
 
-user_6= published =>post_1;
-post_1= iof =>Idea[author="Marcos Freitas",date="2018-01-24T00:00:00.000Z",description="Idea",ident="5a691d11032ca50014d5b815",keywords="Microwave",location="Vila do Conde",priority="high",privacy="public",pubdate="2018-01-24T23:59:29.741Z",text="A reverse microwave, with the ability to instantly cool down something",title="Million dollar idea",type="Idea"];
+loginType ="facebook",loginType ="facebook",loginType ="facebook",user_6= published =>post_1;
+post_1= iof =>Idea[author="Marcos Freitas",comments="Octávio Maia: Very nice",date="2018-01-24T00:00:00.000Z",description="Idea",ident="5a691d11032ca50014d5b815",keywords="Microwave",location="Vila do Conde",priority="high",privacy="public",pubdate="2018-01-24T23:59:29.741Z",text="A reverse microwave, with the ability to instantly cool down something",title="Million dollar idea",type="Idea"];
 Idea= is-a => Post;
 
 user_7= published =>post_2;
-post_2= iof =>SportsRegistry[author="Octávio Maia",date="2018-01-01T00:00:00.000Z",description="adasd",duration="dasdas",ident="5a691e18032ca50014d5b817",location="Casa do Octavio",participants="asddas",privacy="public",pubdate="2018-01-25T18:36:00.433Z",results="asdas",sport="asdas",title="adasasd",type="SportsRegistry"];
+post_2= iof =>SportsRegistry[author="Octávio Maia",comments="",date="2018-01-01T00:00:00.000Z",description="adasd",duration="dasdas",ident="5a691e18032ca50014d5b817",location="Casa do Octavio",participants="asddas",privacy="public",pubdate="2018-01-25T18:36:00.433Z",results="asdas",sport="asdas",title="adasasd",type="SportsRegistry"];
 SportsRegistry= is-a => Post;
 
 user_4= published =>post_3;
-post_3= iof =>Birth[author="Octávio Maia",date="2018-01-19T00:00:00.000Z",description="desc",gender="Male",ident="5a6913f45b382c30e8fccc31",location="Casa do Alfredo",name="dasdas",parents="dasdas",privacy="public",pubdate="2018-01-24T23:20:57.285Z",title="dasdas",type="Birth"];
+post_3= iof =>Birth[author="Octávio Maia",comments="Octávio Maia: dasdas,Madalena Castro: ola gatos ,Octávio Maia: ola madalena,Madalena Castro: isto esta top ,Octávio Maia: mediocre,Alfredo Gomes: Gatas?",date="2018-01-19T00:00:00.000Z",description="desc",gender="Male",ident="5a6913f45b382c30e8fccc31",location="Casa do Alfredo",name="dasdas",parents="dasdas",privacy="public",pubdate="2018-01-24T23:20:57.285Z",title="dasdas",type="Birth"];
 Birth= is-a => Post;
 
 
