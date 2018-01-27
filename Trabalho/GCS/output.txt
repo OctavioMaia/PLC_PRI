@@ -55,7 +55,7 @@ user_8= iof => User[loginType ="local",confirmed="true",type="admin",age="16",na
 user_9= iof => User[loginType ="facebook",type="admin",email="alfredomiguel2@hotmail.com",name="Alfredo Gomes",token="EAAKZCA6XraZBQBAFY5rY13rbFkUyH0QDB1LZBoqYf4WsmnaZAfnM2v6oDPzcf3WSoSBlGx5QSGvhvXjUY5G0v0d7n2FAC0qI7vl57SAgiBVpuNU8ZC7yyiqGttmfMW6ss6Ixx610RJxKIRuCUiEAHs3IrPVc9WvwSanQIIMko1wZDZD",id="1731050193612250",aboutme="",address="",age="18",cnumber="",gender="Male",profession=""];
 
 
-loginType ="facebook",loginType ="facebook",loginType ="facebook",user_6= published =>post_1;
+user_6= published =>post_1;
 post_1= iof =>Idea[author="Marcos Freitas",comments="Octávio Maia: Very nice",date="2018-01-24T00:00:00.000Z",description="Idea",ident="5a691d11032ca50014d5b815",keywords="Microwave",location="Vila do Conde",priority="high",privacy="public",pubdate="2018-01-24T23:59:29.741Z",text="A reverse microwave, with the ability to instantly cool down something",title="Million dollar idea",type="Idea"];
 Idea= is-a => Post;
 

@@ -27,7 +27,9 @@ grammar iOnto;
          List<String> triplos_owl = new ArrayList <>();
          List<String> atribCon_owl = new ArrayList <>();
          
+         int usertype = -1;
          List<String> info = new ArrayList <>();
+         List<String> userinfo = new ArrayList <>();
          List<String> users = new ArrayList <>();
          List<String> posts = new ArrayList <>();
          
@@ -309,13 +311,22 @@ relacao returns [String rel]
 txtpal returns[String texto, String atrib, String tipo]
 @after{
        
-       info.add("}");
        if($texto.equals("User")){
+            if(usertype == 0) info.add(",\"Local\":{");
+            if(usertype == 1) info.add(",\"Facebook\":{");
+            if(usertype == 2) info.add(",\"Google\":{");
+
+            //System.out.println(usertype);
+            info.addAll(userinfo);
+            info.add("}");
+            info.add(",\"__v\":0}");
             if(users.size()>1)
                 users.add(",");
             users.addAll(info);
-            }
+            
+       }
        else{
+            info.add("}");
             if(($atrib != null && !$atrib.isEmpty()) &&($texto.equals("Recipe")||$texto.equals("Thought")||$texto.equals("Idea")||$texto.equals("Wedding")||
                 $texto.equals("Birth")||$texto.equals("SportsRegistry")||$texto.equals("AcademicWork")||$texto.equals("AcademicRegistry")||$texto.equals("Appointment")||
                 $texto.equals("Event")||$texto.equals("Chronicle")||$texto.equals("Photo"))){
@@ -326,8 +337,10 @@ txtpal returns[String texto, String atrib, String tipo]
             }
          }
        info.removeAll(info);
+       userinfo.removeAll(userinfo);
+       
        }
-    : PAL {$texto = $PAL.text;} ('['+PAL {$atrib=$PAL.text; info.add("\""+$PAL.text+"\" :");} '=' TXT{$tipo = $TXT.text;
+    : PAL {$texto = $PAL.text;} ('['+PAL {$atrib=$PAL.text;} '=' TXT{$tipo = $TXT.text;
                                     if(!conAtribs.containsKey($texto)){System.out.println($texto+ " nao tem atributos");}
                                     else{
                                          List<String> str = conAtribs.get($texto);
@@ -342,12 +355,30 @@ txtpal returns[String texto, String atrib, String tipo]
                                         atribCon_owl.add("<DataPropertyDomain> \n <DataProperty IRI=\"#" + $atrib + "\"/>" + "\n <Class IRI=\"#" + $texto + 
                                         "\"/> \n </DataPropertyDomain> \n <DataPropertyRange> \n <DataProperty IRI=\"#" + $atrib+ "\"/> \n <Datatype abbreviatedIRI=\"xsd:" 
                                         +data.get($atrib) +  "\"/> \n</DataPropertyRange>");
-                                        
-                                        info.add($TXT.text);
+                                       
+                                       if($atrib.equals("loginType")){
+                                            
+                                            if($TXT.text.equals("\"local\"")){ usertype=0;}
+                                            if($TXT.text.equals("\"facebook\"")){ usertype=1;}
+                                            if($TXT.text.equals("\"google\"")){ usertype=2;}
+                                            
+                                                                       }
+                                       else{
+                                            if(!$atrib.equals("id")&&$texto.equals("User")){
+                                                        if(userinfo.size()>1) userinfo.add(",");
+                                                        userinfo.add("\"_id\":");
+                                                        userinfo.add($TXT.text);                
+                                                                        }
+                                            else{
+                                                        if(info.size()>1) info.add(",");
+                                                        info.add("\""+$atrib+"\":");
+                                                        info.add($TXT.text);
+                                                    }
+                                        }
                                         }
 
 
-                                ( ',' +PAL {$atrib=$PAL.text; info.add(",\""+$PAL.text+"\":");} '=' TXT{$tipo = $TXT.text;
+                                ( ',' +PAL {$atrib=$PAL.text;} '=' TXT{$tipo = $TXT.text;
                             if(!conAtribs.containsKey($texto)){System.out.println($texto+ " nao tem atributos");}
                             else{
                                  List<String> str = conAtribs.get($texto);
@@ -363,7 +394,23 @@ txtpal returns[String texto, String atrib, String tipo]
                                 "\"/> \n </DataPropertyDomain> \n <DataPropertyRange> \n <DataProperty IRI=\"#" + $atrib+ "\"/> \n <Datatype abbreviatedIRI=\"xsd:" 
                                 +data.get($atrib) +  "\"/> \n</DataPropertyRange>");
                                 
-                                info.add($TXT.text);
+                                if($atrib.equals("loginType")){
+                                    if($TXT.text.equals("\"local\"")) {usertype = 0;}
+                                    if($TXT.text.equals("\"facebook\"")) {usertype = 1;}
+                                    if($TXT.text.equals("\"google\"")) {usertype = 2;}
+                                                               }
+                                else{
+                                    if(!$atrib.equals("id")&&$texto.equals("User")){
+                                                        if(userinfo.size()>1) userinfo.add(",");
+                                                        userinfo.add("\"_id\":");
+                                                        userinfo.add($TXT.text);                
+                                                                        }
+                                            else{
+                                                        if(info.size()>1) info.add(",");
+                                                        info.add("\""+$atrib+"\":");
+                                                        info.add($TXT.text);
+                                                    }
+                                }
                                     })* ']')?
        ;
 
