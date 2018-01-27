@@ -17,11 +17,11 @@ var conn = mongoose.connection;
 mongoose.Promise = global.Promise
 
 //cant connect to mLab
-conn.on('error', console.error.bind(console, 'connection error to mLab'));  
+conn.on('error', console.error.bind(console, 'Cannot connect to mLab'));  
     
 //connection successfull
 conn.once('open', function() {
-    console.log("connected to mLab")  
+    console.log("Connected to mLab")  
     // required for passport
     app.use(session({
         secret: 'pri2017', // session secret
@@ -29,25 +29,24 @@ conn.once('open', function() {
         saveUninitialized: true
     }));
 
-    // atribute a userID to use in the templates
+    // atribute currentuser for login in PUG
     app.use(function (req, res, next) {
         res.locals.currentUser = req.session.passport;
         next();
     });
 
-    // set up our express application
-    app.use(morgan('dev')); // log every request to the console
-    app.use(cookieParser()); // read cookies (needed for auth)
-    app.use(bodyParser.json()); // get information from html forms
+    // express setup
+    app.use(morgan('dev')); // dev logging
+    app.use(cookieParser()); // cookies for auth
+    app.use(bodyParser.json()); // parsing html forms
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(express.static(path.join(__dirname, 'public')));
+    app.use(passport.initialize());
+    app.use(passport.session()); // persistent login sessions
 
     // view engine setup
     app.set('views', path.join(__dirname, 'views'));
     app.set('view engine', 'pug');
-
-    app.use(passport.initialize());
-    app.use(passport.session()); // persistent login sessions
 
     // routes ======================================================================
     passport    = require('./config/passport')(passport); // pass passport for configuration
@@ -72,8 +71,6 @@ conn.once('open', function() {
         next(err);
     });
 
-    // error handler
-    // define as the last app.use callback
     app.use(function(err, req, res, next) {
         res.status(err.status || 500);
         res.render('error', {
@@ -82,7 +79,7 @@ conn.once('open', function() {
         });
     });
 
-    // launch ======================================================================
+    // launch 
     app.listen(port);
     console.log('Server listening on port ' + port);
 

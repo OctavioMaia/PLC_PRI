@@ -15,6 +15,7 @@ var RecipeSchema = new Schema({
     type: {type: String, required: true},
     ingredients: {type: String, required: true},
     instructions: {type: String, required: true},
+    file: {type: String, required: false},
     comments: {type:[String], require:false}
 })
 

@@ -121,7 +121,8 @@ router.get('/newRecipe', function(req, res) {
                 {'type':'date','text':'Date','obligatory':false},
                 {'type':'text','text':'Description','obligatory':true}];
     var extras = [{'type':'text','text':'Ingredients','obligatory':true},
-                  {'type':'text','text':'Instructions','obligatory':true}];
+                  {'type':'text','text':'Instructions','obligatory':true},
+                  {'type':'text','text':'File','obligatory':false}];
     var name = 'Recipe';
     res.render('processnewpost',{ title: 'Recipe',name,reqs,extras});
 });

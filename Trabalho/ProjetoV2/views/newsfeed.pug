@@ -3,7 +3,7 @@ head
   meta(charset='utf-8')
   meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
   meta(http-equiv='x-ua-compatible', content='ie=edge')
-  title DigitalMe | #{title}
+  title DigitalMe | News Feed
   link(rel='stylesheet', href='/stylesheets/bootstrap.min.css', crossorigin='anonymous')
   link(rel='stylesheet', href='/stylesheets/icon.css')
   link(rel='stylesheet', href='/stylesheets/font-awesome.css')
@@ -62,6 +62,8 @@ head
                       h6 Ingredients: #{val.ingredients}
                     if (val.instructions!='') 
                       h6 Instructions: #{val.instructions}
+                    if (val.file!='') 
+                      img(src=val.file style='display: inline-block;' class='img-fluid')
                   when 'Wedding'
                     if (val.couple!='') 
                       h6 Couple: #{val.couple}
@@ -98,10 +100,10 @@ head
                     if (val.results!='') 
                       h6 Results: #{val.results}
                   when 'Photo'
-                    if (val.file!='') 
-                      img(src=val.file style='display: inline-block;' class='img-fluid')
                     if (val.people!='') 
                       h6 People: #{val.people}
+                    if (val.file!='') 
+                      img(src=val.file style='display: inline-block;' class='img-fluid')
                   when 'AcademicRegistry'
                     if (val.duration!='') 
                       h6 Duration: #{val.duration}
@@ -127,7 +129,6 @@ head
                       h6 Event Type: #{val.eventType}
                     if (val.text!='') 
                       h6 Text: #{val.text}
-                  default: h6 Nao sei
               .social-footer
                 .ssk-group
                   h4 Share this post
