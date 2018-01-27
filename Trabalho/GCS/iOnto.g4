@@ -27,8 +27,16 @@ grammar iOnto;
          List<String> triplos_owl = new ArrayList <>();
          List<String> atribCon_owl = new ArrayList <>();
          
+         int usertype = -1;
+         List<String> info = new ArrayList <>();
+         List<String> userinfo = new ArrayList <>();
+         List<String> users = new ArrayList <>();
+         List<String> posts = new ArrayList <>();
+         
          List<String> dot = new ArrayList <>();
          List<String> owl = new ArrayList <>();
+         List<String> json = new ArrayList <>();
+         
          
          Map<String,List<String>> map = new TreeMap<>();
          Map<String,List<String>> map_pes = new TreeMap<>();
@@ -89,6 +97,46 @@ ontologia
        }catch(Exception e){
          System.out.println("Erro DOT");
        }
+      
+      json.add("{ \"Users\":");
+      json.addAll(users);
+      json.add(", \"Post\":");
+      json.addAll(posts);
+      json.add("}");
+       //JSON
+       try{
+         FileWriter writer = new FileWriter("C:/Users/"+System.getProperty("user.name")+"/Documents/GitHub/PLC_PRI/Trabalho/GCS/db.json");
+         for(String str: json) {
+             writer.write(str);
+         }
+         writer.flush();
+         writer.close();
+         System.out.println("Gravei JSON");
+       }catch(Exception e){
+         System.out.println("Erro JSON");
+       }
+       try{
+         FileWriter writer = new FileWriter("C:/Users/"+System.getProperty("user.name")+"/Documents/GitHub/PLC_PRI/Trabalho/GCS/users.json");
+         for(String str: users) {
+             writer.write(str);
+         }
+         writer.flush();
+         writer.close();
+         System.out.println("Gravei Users");
+       }catch(Exception e){
+         System.out.println("Erro Users");
+       }
+       try{
+         FileWriter writer = new FileWriter("C:/Users/"+System.getProperty("user.name")+"/Documents/GitHub/PLC_PRI/Trabalho/GCS/posts.json");
+         for(String str: posts) {
+             writer.write(str);
+         }
+         writer.flush();
+         writer.close();
+         System.out.println("Gravei Posts");
+       }catch(Exception e){
+         System.out.println("Erro Posts");
+       }
        }
           : 'Ontologia ' PAL {dot.add("digraph "+$PAL.text+ " {");} conceitos individuos? relacoes triplos '.'{dot.add("}"); }
           ;
@@ -124,12 +172,12 @@ atribs [String conceito] returns [String atrib, String tipo]
             
          ;
 
-individuos: 'individuos' '{'(txtpal{if(!ind.contains($txtpal.texto)){
-                                                                    ind.add($txtpal.texto);
-                                                                    ind_owl.add("<Declaration> \n <NamedIndividual IRI=\"#" + $txtpal.texto+ "\"/>" + "\n</Declaration>");
+individuos: 'individuos' '{'(PAL{if(!ind.contains($PAL.text)){
+                                                                    ind.add($PAL.text);
+                                                                    ind_owl.add("<Declaration> \n <NamedIndividual IRI=\"#" + $PAL.text+ "\"/>" + "\n</Declaration>");
                                                                     }
                                    else
-                                        System.out.println("Foi inserido um individuo previamente adicionado: "+$txtpal.text);
+                                        System.out.println("Foi inserido um individuo previamente adicionado: "+$PAL.text);
                                    }
             
             ',' )+'}'
@@ -146,10 +194,15 @@ relacoes : 'relacoes' '{' (PAL{if(!rel.contains($PAL.text)){
            ',' )+'}' 
          ;
 
-triplos : 'triplos' '{' (frase ';')+ '}'
+triplos 
+@after{
+        users.add("]");
+        posts.add("]");
+        }
+    : 'triplos'{users.add("[");posts.add("[");} '{' (frase ';')+ '}'
         ;
           
-frase :   ligacao (';' ligacao)*
+frase :   ligacao (';' ligacao )*
       ;
 
 ligacao 
@@ -160,7 +213,7 @@ ligacao
         if(!(con.contains(pal2) || ind.contains(pal2) )) System.out.println("Palavra não definida: "+pal2);
         
         // Erros de estrutura. 
-        if (rel1.equals("is-a")){    
+        if (rel1.equals("is-a")){
             if(con.contains(pal1)){
                if(!con.contains(pal2)){
                   if(ind.contains(pal2)){
@@ -241,8 +294,12 @@ ligacao
           triplos_owl.add("<ObjectPropertyDomain> \n <ObjectProperty IRI=\"#" + rel1 + "\"/>" + "\n <Class IRI=\"#" + pal1 + "\"/>" + "\n</ObjectPropertyDomain>");
           triplos_owl.add("<ObjectPropertyRange> \n <ObjectProperty IRI=\"#" + rel1 + "\"/>" + "\n <Class IRI=\"#" + pal2 + "\"/>" + "\n</ObjectPropertyRange>");          
           }
+       
+       if(rel1.equals("iof") && pal2.equals("User")){
+            
+            }
        }        
-    : txtpal{pal1 = $txtpal.texto;} '=' relacao {rel1 = $relacao.rel;} '=>' txtpal {pal2 = $txtpal.texto;}
+    : txtpal{pal1 = $txtpal.texto;info.add("{");} '=' relacao {rel1 = $relacao.rel;} '=>' txtpal {pal2 = $txtpal.texto;info.add("{");}
         ;
 
 relacao returns [String rel] 
@@ -251,104 +308,110 @@ relacao returns [String rel]
              else $rel = $PAL.text;}
         ;
 
-txtpal returns[String texto, String atrib, String tipo]   
-    
+txtpal returns[String texto, String atrib, String tipo]
+@after{
+       
+       if($texto.equals("User")){
+            if(usertype == 0) info.add(",\"Local\":{");
+            if(usertype == 1) info.add(",\"Facebook\":{");
+            if(usertype == 2) info.add(",\"Google\":{");
+
+            //System.out.println(usertype);
+            info.addAll(userinfo);
+            info.add("}");
+            info.add(",\"__v\":0}");
+            if(users.size()>1)
+                users.add(",");
+            users.addAll(info);
+            
+       }
+       else{
+            info.add("}");
+            if(($atrib != null && !$atrib.isEmpty()) &&($texto.equals("Recipe")||$texto.equals("Thought")||$texto.equals("Idea")||$texto.equals("Wedding")||
+                $texto.equals("Birth")||$texto.equals("SportsRegistry")||$texto.equals("AcademicWork")||$texto.equals("AcademicRegistry")||$texto.equals("Appointment")||
+                $texto.equals("Event")||$texto.equals("Chronicle")||$texto.equals("Photo"))){
+                if(posts.size()>1)
+                    posts.add(",");
+                posts.addAll(info);
+                
+            }
+         }
+       info.removeAll(info);
+       userinfo.removeAll(userinfo);
+       
+       }
     : PAL {$texto = $PAL.text;} ('['+PAL {$atrib=$PAL.text;} '=' TXT{$tipo = $TXT.text;
-                                                                     if(!conAtribs.containsKey($texto)){System.out.println($texto+ " nao tem atributos");}
-                                                                     else{
-                                                                          List<String> str = conAtribs.get($texto);
-                                                                          if(!str.contains($atrib)){
-                                                                                                    System.out.println("Nome do atributo errado: " +$atrib+ "\tNo indivíduo: " +pal1);
-                                                                                                    }
-                                                                          }
-                                                                         
-                                                                         instAtrib_owl.add("<DataPropertyAssertion> \n <DataProperty IRI=\"#" + $atrib + "\"/>" + "\n <NamedIndividual IRI=\"#" + pal1 + 
-                                                                         "\"/> \n <Literal datatypeIRI=\"&xsd;" + data.get($atrib) + "\">"+ $tipo.replace("\"","") + "</Literal> \n</DataPropertyAssertion>");
-                                                                         
-                                                                         atribCon_owl.add("<DataPropertyDomain> \n <DataProperty IRI=\"#" + $atrib + "\"/>" + "\n <Class IRI=\"#" + $texto + 
-                                                                         "\"/> \n </DataPropertyDomain> \n <DataPropertyRange> \n <DataProperty IRI=\"#" + $atrib+ "\"/> \n <Datatype abbreviatedIRI=\"xsd:" 
-                                                                         +data.get($atrib) +  "\"/> \n</DataPropertyRange>");
-                                                                         
-                                                                         
-                                                                         if($texto.startsWith("Pagela")){                                                                            
-                                                                                  if(map.containsKey(pal1)){
-                                                                                                            map.get(pal1).add("<p><b>"+$atrib+":  </b>" + $tipo.replace("\"","")+"\n </p>");
-                                                                                                            }     
-                                                                                  else{
-                                                                                       List<String> str = new ArrayList<>();
-                                                                                       str.add("<p><b>"+$atrib+":  </b>" + $tipo.replace("\"","")+"\n </p>");
-                                                                                       map.put(pal1,str);
-                                                                                       }
-                                                                                                         }
-                                                                         else if($texto.startsWith("Pessoa")){
-                                                                                                               if(map_pes.containsKey(pal1)){
-                                                                                                                                             map_pes.get(pal1).add("<p><b>"+$atrib+":  </b>" + $tipo.replace("\"","")+"\n </p>");
-                                                                                                                                             }
-                                                                                                               else{
-                                                                                                                    List<String> str = new ArrayList<>();
-                                                                                                                    str.add("<p><b>"+$atrib+":  </b>" + $tipo.replace("\"","")+"\n </p>");
-                                                                                                                    map_pes.put(pal1,str);
-                                                                                                                    }
-                                                                                                               }
-                                                                         else if($texto.startsWith("Evento")){
-                                                                                                              if(map_ev.containsKey(pal1)){
-                                                                                                                                           map_ev.get(pal1).add("<p><b>"+$atrib+":  </b>" + $tipo.replace("\"","")+"\n </p>");
-                                                                                                                                           }
-                                                                                                              else{
-                                                                                                                   List<String> str = new ArrayList<>();
-                                                                                                                   str.add("<p><b>"+$atrib+":  </b>" + $tipo.replace("\"","")+"\n </p>");
-                                                                                                                   map_ev.put(pal1,str);
-                                                                                                                   }
-                                                                                                              }
-                                                                         }
-                                                                         
-                                    
+                                    if(!conAtribs.containsKey($texto)){System.out.println($texto+ " nao tem atributos");}
+                                    else{
+                                         List<String> str = conAtribs.get($texto);
+                                         if(!str.contains($atrib)){
+                                                                   System.out.println("Nome do atributo errado: " +$atrib+ "\tNo indivíduo: " +pal1);
+                                                                   }
+                                         }
+                                         
+                                        instAtrib_owl.add("<DataPropertyAssertion> \n <DataProperty IRI=\"#" + $atrib + "\"/>" + "\n <NamedIndividual IRI=\"#" + pal1 + 
+                                        "\"/> \n <Literal datatypeIRI=\"&xsd;" + data.get($atrib) + "\">"+ $tipo.replace("\"","") + "</Literal> \n</DataPropertyAssertion>");
+
+                                        atribCon_owl.add("<DataPropertyDomain> \n <DataProperty IRI=\"#" + $atrib + "\"/>" + "\n <Class IRI=\"#" + $texto + 
+                                        "\"/> \n </DataPropertyDomain> \n <DataPropertyRange> \n <DataProperty IRI=\"#" + $atrib+ "\"/> \n <Datatype abbreviatedIRI=\"xsd:" 
+                                        +data.get($atrib) +  "\"/> \n</DataPropertyRange>");
+                                       
+                                       if($atrib.equals("loginType")){
+                                            
+                                            if($TXT.text.equals("\"local\"")){ usertype=0;}
+                                            if($TXT.text.equals("\"facebook\"")){ usertype=1;}
+                                            if($TXT.text.equals("\"google\"")){ usertype=2;}
+                                            
+                                                                       }
+                                       else{
+                                            if(!$atrib.equals("id")&&$texto.equals("User")){
+                                                        if(userinfo.size()>1) userinfo.add(",");
+                                                        userinfo.add("\"_id\":");
+                                                        userinfo.add($TXT.text);                
+                                                                        }
+                                            else{
+                                                        if(info.size()>1) info.add(",");
+                                                        info.add("\""+$atrib+"\":");
+                                                        info.add($TXT.text);
+                                                    }
+                                        }
+                                        }
+
+
                                 ( ',' +PAL {$atrib=$PAL.text;} '=' TXT{$tipo = $TXT.text;
-                                                                       if(!conAtribs.containsKey($texto)){System.out.println($texto+ " nao tem atributos");}
-                                                                       else{
-                                                                            List<String> str = conAtribs.get($texto);
-                                                                            if(!str.contains($atrib)){
-                                                                                                      System.out.println("Nome do atributo errado: " +$atrib+ "\tNo indivíduo: " +pal1);
-                                                                                                      }
-                                                                            }
-                                                                           
-                                                                           instAtrib_owl.add("<DataPropertyAssertion> \n <DataProperty IRI=\"#" + $atrib + "\"/>" + "\n <NamedIndividual IRI=\"#" + pal1 + 
-                                                                           "\"/> \n <Literal datatypeIRI=\"&xsd;" +data.get($atrib) +  "\">"+ $tipo.replace("\"","") + "</Literal> \n</DataPropertyAssertion>");
-                                                                          
-                                                                           atribCon_owl.add("<DataPropertyDomain> \n <DataProperty IRI=\"#" + $atrib + "\"/>" + "\n <Class IRI=\"#" + $texto + 
-                                                                           "\"/> \n </DataPropertyDomain> \n <DataPropertyRange> \n <DataProperty IRI=\"#" + $atrib+ "\"/> \n <Datatype abbreviatedIRI=\"xsd:" 
-                                                                           +data.get($atrib) +  "\"/> \n</DataPropertyRange>");
-                                                                           
-                                                                           if($texto.startsWith("Pagela")){
-                                                                                                           if(map.containsKey(pal1)){
-                                                                                                                                     map.get(pal1).add("<p><b>"+$atrib+":  </b>" + $tipo.replace("\"","")+"\n </p>");
-                                                                                                                                     }
-                                                                                                           else{
-                                                                                                                List<String> str = new ArrayList<>();
-                                                                                                                str.add("<p><b>"+$atrib+":  </b>" + $tipo.replace("\"","")+"\n </p>");
-                                                                                                                map.put(pal1,str);
-                                                                                                                }
-                                                                                                           }
-                                                                           else if($texto.startsWith("Pessoa")){
-                                                                                                                if(map_pes.containsKey(pal1)){
-                                                                                                                                              map_pes.get(pal1).add("<p><b>"+$atrib+":  </b>" + $tipo.replace("\"","")+"\n </p>");
-                                                                                                                                              }
-                                                                                                                else{
-                                                                                                                     List<String> str = new ArrayList<>();
-                                                                                                                     str.add("<p><b>"+$atrib+":  </b>" + $tipo.replace("\"","")+"\n </p>");
-                                                                                                                     map_pes.put(pal1,str);
-                                                                                                                     }
-                                                                                                                }
-                                                                           else if($texto.startsWith("Evento")){
-                                                                                                                if(map_ev.containsKey(pal1)){
-                                                                                                                                             map_ev.get(pal1).add("<p><b>"+$atrib+":  </b>" + $tipo.replace("\"","")+"\n </p>");
-                                                                                                                                             }
-                                                                                                                else{
-                                                                                                                     List<String> str = new ArrayList<>();
-                                                                                                                     str.add("<p><b>"+$atrib+":  </b>" + $tipo.replace("\"","")+"\n </p>");
-                                                                                                                     map_ev.put(pal1,str);
-                                                                                                                     }
-                                                                                                                }})* ']')?
+                            if(!conAtribs.containsKey($texto)){System.out.println($texto+ " nao tem atributos");}
+                            else{
+                                 List<String> str = conAtribs.get($texto);
+                                 if(!str.contains($atrib)){
+                                                           System.out.println("Nome do atributo errado: " +$atrib+ "\tNo indivíduo: " +pal1);
+                                                           }
+                                 }
+
+                                instAtrib_owl.add("<DataPropertyAssertion> \n <DataProperty IRI=\"#" + $atrib + "\"/>" + "\n <NamedIndividual IRI=\"#" + pal1 + 
+                                "\"/> \n <Literal datatypeIRI=\"&xsd;" +data.get($atrib) +  "\">"+ $tipo.replace("\"","") + "</Literal> \n</DataPropertyAssertion>");
+
+                                atribCon_owl.add("<DataPropertyDomain> \n <DataProperty IRI=\"#" + $atrib + "\"/>" + "\n <Class IRI=\"#" + $texto + 
+                                "\"/> \n </DataPropertyDomain> \n <DataPropertyRange> \n <DataProperty IRI=\"#" + $atrib+ "\"/> \n <Datatype abbreviatedIRI=\"xsd:" 
+                                +data.get($atrib) +  "\"/> \n</DataPropertyRange>");
+                                
+                                if($atrib.equals("loginType")){
+                                    if($TXT.text.equals("\"local\"")) {usertype = 0;}
+                                    if($TXT.text.equals("\"facebook\"")) {usertype = 1;}
+                                    if($TXT.text.equals("\"google\"")) {usertype = 2;}
+                                                               }
+                                else{
+                                    if(!$atrib.equals("id")&&$texto.equals("User")){
+                                                        if(userinfo.size()>1) userinfo.add(",");
+                                                        userinfo.add("\"_id\":");
+                                                        userinfo.add($TXT.text);                
+                                                                        }
+                                            else{
+                                                        if(info.size()>1) info.add(",");
+                                                        info.add("\""+$atrib+"\":");
+                                                        info.add($TXT.text);
+                                                    }
+                                }
+                                    })* ']')?
        ;
 
 PAL: [a-zA-Z] [-a-zA-Z_0-9]*;

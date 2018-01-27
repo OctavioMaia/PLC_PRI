@@ -6,7 +6,7 @@
 	<!ENTITY rdf "http://www.w3.org/1999/02/22?rdf?syntax?ns#">
 ]>
 <Ontology><Declaration> 
- <Class IRI="#Person"/>
+ <Class IRI="#User"/>
 </Declaration><Declaration> 
  <Class IRI="#Post"/>
 </Declaration><Declaration> 
@@ -55,6 +55,12 @@
  <DataProperty IRI="#type"/>
 </Declaration><Declaration> 
  <DataProperty IRI="#cnumber"/>
+</Declaration><Declaration> 
+ <DataProperty IRI="#confirmed"/>
+</Declaration><Declaration> 
+ <DataProperty IRI="#aboutme"/>
+</Declaration><Declaration> 
+ <DataProperty IRI="#comments"/>
 </Declaration><Declaration> 
  <DataProperty IRI="#duration"/>
 </Declaration><Declaration> 
@@ -413,7 +419,7 @@
 </ClassAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#confirmed"/>
  <NamedIndividual IRI="#user_1"/> 
- <Literal datatypeIRI="&xsd;null">true</Literal> 
+ <Literal datatypeIRI="&xsd;String">true</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#type"/>
  <NamedIndividual IRI="#user_1"/> 
@@ -497,7 +503,7 @@
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#confirmed"/>
  <NamedIndividual IRI="#user_5"/> 
- <Literal datatypeIRI="&xsd;null">true</Literal> 
+ <Literal datatypeIRI="&xsd;String">true</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#type"/>
  <NamedIndividual IRI="#user_5"/> 
@@ -541,7 +547,7 @@
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#aboutme"/>
  <NamedIndividual IRI="#user_6"/> 
- <Literal datatypeIRI="&xsd;null">Oi</Literal> 
+ <Literal datatypeIRI="&xsd;String">Oi</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#address"/>
  <NamedIndividual IRI="#user_6"/> 
@@ -585,7 +591,7 @@
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#confirmed"/>
  <NamedIndividual IRI="#user_8"/> 
- <Literal datatypeIRI="&xsd;null">true</Literal> 
+ <Literal datatypeIRI="&xsd;String">true</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#type"/>
  <NamedIndividual IRI="#user_8"/> 
@@ -609,7 +615,7 @@
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#aboutme"/>
  <NamedIndividual IRI="#user_8"/> 
- <Literal datatypeIRI="&xsd;null">Ahsbdbsb</Literal> 
+ <Literal datatypeIRI="&xsd;String">Ahsbdbsb</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#address"/>
  <NamedIndividual IRI="#user_8"/> 
@@ -649,7 +655,7 @@
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#aboutme"/>
  <NamedIndividual IRI="#user_9"/> 
- <Literal datatypeIRI="&xsd;null"></Literal> 
+ <Literal datatypeIRI="&xsd;String"></Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#address"/>
  <NamedIndividual IRI="#user_9"/> 
@@ -674,6 +680,10 @@
  <DataProperty IRI="#author"/>
  <NamedIndividual IRI="#post_1"/> 
  <Literal datatypeIRI="&xsd;String">Marcos Freitas</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#comments"/>
+ <NamedIndividual IRI="#post_1"/> 
+ <Literal datatypeIRI="&xsd;String">Octávio Maia: Very nice</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#date"/>
  <NamedIndividual IRI="#post_1"/> 
@@ -722,6 +732,10 @@
  <DataProperty IRI="#author"/>
  <NamedIndividual IRI="#post_2"/> 
  <Literal datatypeIRI="&xsd;String">Octávio Maia</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#comments"/>
+ <NamedIndividual IRI="#post_2"/> 
+ <Literal datatypeIRI="&xsd;String"></Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#date"/>
  <NamedIndividual IRI="#post_2"/> 
@@ -775,6 +789,10 @@
  <NamedIndividual IRI="#post_3"/> 
  <Literal datatypeIRI="&xsd;String">Octávio Maia</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#comments"/>
+ <NamedIndividual IRI="#post_3"/> 
+ <Literal datatypeIRI="&xsd;String">Octávio Maia: dasdas,Madalena Castro: ola gatos ,Octávio Maia: ola madalena,Madalena Castro: isto esta top ,Octávio Maia: mediocre,Alfredo Gomes: Gatas?</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#date"/>
  <NamedIndividual IRI="#post_3"/> 
  <Literal datatypeIRI="&xsd;String">2018-01-19T00:00:00.000Z</Literal> 
@@ -824,7 +842,7 @@
  </DataPropertyDomain> 
  <DataPropertyRange> 
  <DataProperty IRI="#confirmed"/> 
- <Datatype abbreviatedIRI="xsd:null"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
 </DataPropertyRange><DataPropertyDomain> 
  <DataProperty IRI="#type"/>
  <Class IRI="#User"/> 
@@ -971,7 +989,7 @@
  </DataPropertyDomain> 
  <DataPropertyRange> 
  <DataProperty IRI="#confirmed"/> 
- <Datatype abbreviatedIRI="xsd:null"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
 </DataPropertyRange><DataPropertyDomain> 
  <DataProperty IRI="#type"/>
  <Class IRI="#User"/> 
@@ -1048,7 +1066,7 @@
  </DataPropertyDomain> 
  <DataPropertyRange> 
  <DataProperty IRI="#aboutme"/> 
- <Datatype abbreviatedIRI="xsd:null"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
 </DataPropertyRange><DataPropertyDomain> 
  <DataProperty IRI="#address"/>
  <Class IRI="#User"/> 
@@ -1125,7 +1143,7 @@
  </DataPropertyDomain> 
  <DataPropertyRange> 
  <DataProperty IRI="#confirmed"/> 
- <Datatype abbreviatedIRI="xsd:null"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
 </DataPropertyRange><DataPropertyDomain> 
  <DataProperty IRI="#type"/>
  <Class IRI="#User"/> 
@@ -1167,7 +1185,7 @@
  </DataPropertyDomain> 
  <DataPropertyRange> 
  <DataProperty IRI="#aboutme"/> 
- <Datatype abbreviatedIRI="xsd:null"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
 </DataPropertyRange><DataPropertyDomain> 
  <DataProperty IRI="#address"/>
  <Class IRI="#User"/> 
@@ -1237,7 +1255,7 @@
  </DataPropertyDomain> 
  <DataPropertyRange> 
  <DataProperty IRI="#aboutme"/> 
- <Datatype abbreviatedIRI="xsd:null"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
 </DataPropertyRange><DataPropertyDomain> 
  <DataProperty IRI="#address"/>
  <Class IRI="#User"/> 
@@ -1279,6 +1297,13 @@
  </DataPropertyDomain> 
  <DataPropertyRange> 
  <DataProperty IRI="#author"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#comments"/>
+ <Class IRI="#Idea"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#comments"/> 
  <Datatype abbreviatedIRI="xsd:String"/> 
 </DataPropertyRange><DataPropertyDomain> 
  <DataProperty IRI="#date"/>
@@ -1363,6 +1388,13 @@
  </DataPropertyDomain> 
  <DataPropertyRange> 
  <DataProperty IRI="#author"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#comments"/>
+ <Class IRI="#SportsRegistry"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#comments"/> 
  <Datatype abbreviatedIRI="xsd:String"/> 
 </DataPropertyRange><DataPropertyDomain> 
  <DataProperty IRI="#date"/>
@@ -1454,6 +1486,13 @@
  </DataPropertyDomain> 
  <DataPropertyRange> 
  <DataProperty IRI="#author"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#comments"/>
+ <Class IRI="#Birth"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#comments"/> 
  <Datatype abbreviatedIRI="xsd:String"/> 
 </DataPropertyRange><DataPropertyDomain> 
  <DataProperty IRI="#date"/>
