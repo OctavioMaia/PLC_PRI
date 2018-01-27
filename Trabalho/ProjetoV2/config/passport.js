@@ -98,7 +98,7 @@ module.exports = function(passport) {
                         newUser.local.name      = req.body.name;
                         newUser.local.age       = req.body.age;
                         newUser.local.type      = 'user';
-                        newUser.local.confirmed = 'true'
+                        newUser.local.confirmed = 'false'
 
                         newUser.save(function(err) {
                             if (err)
