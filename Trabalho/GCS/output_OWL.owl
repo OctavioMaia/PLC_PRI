@@ -34,6 +34,8 @@
 </Declaration><Declaration> 
  <Class IRI="#Wedding"/>
 </Declaration><Declaration> 
+ <DataProperty IRI="#_id"/>
+</Declaration><Declaration> 
  <DataProperty IRI="#loginType"/>
 </Declaration><Declaration> 
  <DataProperty IRI="#token"/>
@@ -189,8 +191,6 @@
  <DataProperty IRI="#hosts"/>
 </Declaration><Declaration> 
  <DataProperty IRI="#guests"/>
-</Declaration><Declaration> 
- <DataProperty IRI="#files"/>
 </Declaration><Declaration> 
  <DataProperty IRI="#text"/>
 </Declaration><Declaration> 
@@ -384,25 +384,44 @@
 </Declaration><Declaration> 
  <NamedIndividual IRI="#user_6"/>
 </Declaration><Declaration> 
- <NamedIndividual IRI="#user_7"/>
-</Declaration><Declaration> 
- <NamedIndividual IRI="#user_8"/>
-</Declaration><Declaration> 
- <NamedIndividual IRI="#user_9"/>
-</Declaration><Declaration> 
  <NamedIndividual IRI="#post_1"/>
 </Declaration><Declaration> 
  <NamedIndividual IRI="#post_2"/>
 </Declaration><Declaration> 
  <NamedIndividual IRI="#post_3"/>
+</Declaration><Declaration> 
+ <NamedIndividual IRI="#post_4"/>
+</Declaration><Declaration> 
+ <NamedIndividual IRI="#post_5"/>
+</Declaration><Declaration> 
+ <NamedIndividual IRI="#post_6"/>
+</Declaration><Declaration> 
+ <NamedIndividual IRI="#post_7"/>
+</Declaration><Declaration> 
+ <NamedIndividual IRI="#post_8"/>
 </Declaration><SubClassOf> 
- <Class IRI="#Idea"/>
+ <Class IRI="#Photo"/>
  <Class IRI="#Post"/>
 </SubClassOf><SubClassOf> 
  <Class IRI="#SportsRegistry"/>
  <Class IRI="#Post"/>
 </SubClassOf><SubClassOf> 
+ <Class IRI="#Appointment"/>
+ <Class IRI="#Post"/>
+</SubClassOf><SubClassOf> 
  <Class IRI="#Birth"/>
+ <Class IRI="#Post"/>
+</SubClassOf><SubClassOf> 
+ <Class IRI="#Recipe"/>
+ <Class IRI="#Post"/>
+</SubClassOf><SubClassOf> 
+ <Class IRI="#Thought"/>
+ <Class IRI="#Post"/>
+</SubClassOf><SubClassOf> 
+ <Class IRI="#Chronicle"/>
+ <Class IRI="#Post"/>
+</SubClassOf><SubClassOf> 
+ <Class IRI="#Event"/>
  <Class IRI="#Post"/>
 </SubClassOf><ClassAssertion> 
  <Class IRI="#user_1"/>
@@ -423,124 +442,242 @@
  <Class IRI="#user_6"/>
  <NamedIndividual IRI="#User"/>
 </ClassAssertion><ClassAssertion> 
- <Class IRI="#user_7"/>
- <NamedIndividual IRI="#User"/>
-</ClassAssertion><ClassAssertion> 
- <Class IRI="#user_8"/>
- <NamedIndividual IRI="#User"/>
-</ClassAssertion><ClassAssertion> 
- <Class IRI="#user_9"/>
- <NamedIndividual IRI="#User"/>
-</ClassAssertion><ClassAssertion> 
  <Class IRI="#post_1"/>
- <NamedIndividual IRI="#Idea"/>
+ <NamedIndividual IRI="#Photo"/>
 </ClassAssertion><ClassAssertion> 
  <Class IRI="#post_2"/>
  <NamedIndividual IRI="#SportsRegistry"/>
 </ClassAssertion><ClassAssertion> 
  <Class IRI="#post_3"/>
+ <NamedIndividual IRI="#Appointment"/>
+</ClassAssertion><ClassAssertion> 
+ <Class IRI="#post_4"/>
  <NamedIndividual IRI="#Birth"/>
+</ClassAssertion><ClassAssertion> 
+ <Class IRI="#post_5"/>
+ <NamedIndividual IRI="#Recipe"/>
+</ClassAssertion><ClassAssertion> 
+ <Class IRI="#post_6"/>
+ <NamedIndividual IRI="#Thought"/>
+</ClassAssertion><ClassAssertion> 
+ <Class IRI="#post_7"/>
+ <NamedIndividual IRI="#Chronicle"/>
+</ClassAssertion><ClassAssertion> 
+ <Class IRI="#post_8"/>
+ <NamedIndividual IRI="#Event"/>
 </ClassAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#_id"/>
+ <NamedIndividual IRI="#user_1"/> 
+ <Literal datatypeIRI="&xsd;String">5a6cd0dedbf7043124342e0e</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#loginType"/>
  <NamedIndividual IRI="#user_1"/> 
- <Literal datatypeIRI="&xsd;String">local</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#confirmed"/>
- <NamedIndividual IRI="#user_1"/> 
- <Literal datatypeIRI="&xsd;String">true</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#type"/>
- <NamedIndividual IRI="#user_1"/> 
- <Literal datatypeIRI="&xsd;String">user</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#age"/>
- <NamedIndividual IRI="#user_1"/> 
- <Literal datatypeIRI="&xsd;String">16</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#name"/>
- <NamedIndividual IRI="#user_1"/> 
- <Literal datatypeIRI="&xsd;String">Octavio Maia</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#password"/>
- <NamedIndividual IRI="#user_1"/> 
- <Literal datatypeIRI="&xsd;String">$2a$08$lZoFgkTww7CZmHecOdeJMeQ6yQkqB9FqEPOKPlFnNXX1Wvk7N0Q4i</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#email"/>
- <NamedIndividual IRI="#user_1"/> 
- <Literal datatypeIRI="&xsd;String">octaviojmaia@gmail.com</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#loginType"/>
- <NamedIndividual IRI="#user_2"/> 
- <Literal datatypeIRI="&xsd;String">google</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#type"/>
- <NamedIndividual IRI="#user_2"/> 
- <Literal datatypeIRI="&xsd;String">user</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#email"/>
- <NamedIndividual IRI="#user_2"/> 
- <Literal datatypeIRI="&xsd;String">nunorogeriocm@gmail.com</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#name"/>
- <NamedIndividual IRI="#user_2"/> 
- <Literal datatypeIRI="&xsd;String">Nuno Machado</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#token"/>
- <NamedIndividual IRI="#user_2"/> 
- <Literal datatypeIRI="&xsd;String">ya29.GlxMBfp4B6FASchNUDvGVFgbgVL2RuXitbVoEWU8rOaqkd15cmxaBOBt6bculCL7cB_hnzbHP3mi9_m2GHo7pVkT_s2_J3yzIZuY_YLOlDRwM8h5d70mdJPeXshdHg</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#id"/>
- <NamedIndividual IRI="#user_2"/> 
- <Literal datatypeIRI="&xsd;String">114440185746535622814</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#loginType"/>
- <NamedIndividual IRI="#user_3"/> 
- <Literal datatypeIRI="&xsd;String">google</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#type"/>
- <NamedIndividual IRI="#user_3"/> 
- <Literal datatypeIRI="&xsd;String">user</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#email"/>
- <NamedIndividual IRI="#user_3"/> 
- <Literal datatypeIRI="&xsd;String">octaviojmaia@gmail.com</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#name"/>
- <NamedIndividual IRI="#user_3"/> 
- <Literal datatypeIRI="&xsd;String">Octavio Maia</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#token"/>
- <NamedIndividual IRI="#user_3"/> 
- <Literal datatypeIRI="&xsd;String">ya29.GlxMBaIhdD03qE1cUNamNQ2ilvaJN-B_tcVQFa9r4oYYAwgcBK-8fNh9Nna8GiI0Mqt5ZGNQxb3keMRy2_K7Wj3Jw3nuPPg7Iss1B5QnQie1tEaIRBhwwVzC8fJMag</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#id"/>
- <NamedIndividual IRI="#user_3"/> 
- <Literal datatypeIRI="&xsd;String">107600219698699965725</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#loginType"/>
- <NamedIndividual IRI="#user_4"/> 
  <Literal datatypeIRI="&xsd;String">facebook</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#type"/>
- <NamedIndividual IRI="#user_4"/> 
- <Literal datatypeIRI="&xsd;String">user</Literal> 
+ <NamedIndividual IRI="#user_1"/> 
+ <Literal datatypeIRI="&xsd;String">admin</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#email"/>
- <NamedIndividual IRI="#user_4"/> 
+ <NamedIndividual IRI="#user_1"/> 
  <Literal datatypeIRI="&xsd;String">octavio_maia@hotmail.com</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#name"/>
- <NamedIndividual IRI="#user_4"/> 
+ <NamedIndividual IRI="#user_1"/> 
  <Literal datatypeIRI="&xsd;String">Octávio Maia</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#token"/>
- <NamedIndividual IRI="#user_4"/> 
- <Literal datatypeIRI="&xsd;String">EAAKZCA6XraZBQBAMFJli0P0jFj0SOYZCOZA04UX2iTnclxSOGnJYYtHGkzyIpuhWysxDLjND4LhEj91VWWAGZCni5qN3DY58eZApmWs9nqUpoVTxHL1bDd9IBMrnOc9njNpEq5HPGfcZBZBYMht0X7Nv12ve3S9Op0f16VAtwTHFjAZDZD</Literal> 
+ <NamedIndividual IRI="#user_1"/> 
+ <Literal datatypeIRI="&xsd;String">EAAKZCA6XraZBQBAFA2rueRBt5nwPoUYCbe4Y6Jzv1v2HhuLXdqlnOEYwhltlE01MSRcuPa0bpBiZBstqLhAADTg3kvieiGnxDlYwcIJA3fBJT5KdaRvhV6HJgGj2rZA7EAiCXwLHBLlx3Xe2JRB1Li4hErehftqSL4oYMvp7cwZDZD</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#id"/>
- <NamedIndividual IRI="#user_4"/> 
+ <NamedIndividual IRI="#user_1"/> 
  <Literal datatypeIRI="&xsd;String">1756521317725637</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#aboutme"/>
+ <NamedIndividual IRI="#user_1"/> 
+ <Literal datatypeIRI="&xsd;String">Currently taking my masters at University of Minho.</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#address"/>
+ <NamedIndividual IRI="#user_1"/> 
+ <Literal datatypeIRI="&xsd;String">Vila do Conde</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#age"/>
+ <NamedIndividual IRI="#user_1"/> 
+ <Literal datatypeIRI="&xsd;String">22</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#cnumber"/>
+ <NamedIndividual IRI="#user_1"/> 
+ <Literal datatypeIRI="&xsd;String">919935792</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#gender"/>
+ <NamedIndividual IRI="#user_1"/> 
+ <Literal datatypeIRI="&xsd;String">Male</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#profession"/>
+ <NamedIndividual IRI="#user_1"/> 
+ <Literal datatypeIRI="&xsd;String">Estudante</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#_id"/>
+ <NamedIndividual IRI="#user_2"/> 
+ <Literal datatypeIRI="&xsd;String">5a6cd81275778128889118ac</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#loginType"/>
+ <NamedIndividual IRI="#user_2"/> 
+ <Literal datatypeIRI="&xsd;String">local</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#confirmed"/>
+ <NamedIndividual IRI="#user_2"/> 
+ <Literal datatypeIRI="&xsd;String">true</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#type"/>
+ <NamedIndividual IRI="#user_2"/> 
+ <Literal datatypeIRI="&xsd;String">user</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#age"/>
+ <NamedIndividual IRI="#user_2"/> 
+ <Literal datatypeIRI="&xsd;String">19</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#name"/>
+ <NamedIndividual IRI="#user_2"/> 
+ <Literal datatypeIRI="&xsd;String">Mary</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#password"/>
+ <NamedIndividual IRI="#user_2"/> 
+ <Literal datatypeIRI="&xsd;String">$2a$08$BQRZ5Yf2BrGIyprHrDrXu.IG3napzLCqJR1JvAE8SnNqI0dEOKmc6</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#email"/>
+ <NamedIndividual IRI="#user_2"/> 
+ <Literal datatypeIRI="&xsd;String">maria@gmail.com</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#aboutme"/>
+ <NamedIndividual IRI="#user_2"/> 
+ <Literal datatypeIRI="&xsd;String">Mother of Jesus, so that makes my quite old.</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#address"/>
+ <NamedIndividual IRI="#user_2"/> 
+ <Literal datatypeIRI="&xsd;String">Bethlehem</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#cnumber"/>
+ <NamedIndividual IRI="#user_2"/> 
+ <Literal datatypeIRI="&xsd;String"></Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#gender"/>
+ <NamedIndividual IRI="#user_2"/> 
+ <Literal datatypeIRI="&xsd;String">Female</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#profession"/>
+ <NamedIndividual IRI="#user_2"/> 
+ <Literal datatypeIRI="&xsd;String">Unoccupied</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#_id"/>
+ <NamedIndividual IRI="#user_3"/> 
+ <Literal datatypeIRI="&xsd;String">5a6cdca375778128889118b4</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#loginType"/>
+ <NamedIndividual IRI="#user_3"/> 
+ <Literal datatypeIRI="&xsd;String">local</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#confirmed"/>
+ <NamedIndividual IRI="#user_3"/> 
+ <Literal datatypeIRI="&xsd;String">true</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#type"/>
+ <NamedIndividual IRI="#user_3"/> 
+ <Literal datatypeIRI="&xsd;String">user</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#age"/>
+ <NamedIndividual IRI="#user_3"/> 
+ <Literal datatypeIRI="&xsd;String">51</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#name"/>
+ <NamedIndividual IRI="#user_3"/> 
+ <Literal datatypeIRI="&xsd;String">Gordon Ramsay</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#password"/>
+ <NamedIndividual IRI="#user_3"/> 
+ <Literal datatypeIRI="&xsd;String">$2a$08$HOT2D7bQO41Pb4kfoXqv9.lwyiQy1oJKzyguOfrY/U.kNjz4wc2YC</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#email"/>
+ <NamedIndividual IRI="#user_3"/> 
+ <Literal datatypeIRI="&xsd;String">gordon@gmail.com</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#aboutme"/>
+ <NamedIndividual IRI="#user_3"/> 
+ <Literal datatypeIRI="&xsd;String">Born in Scotland in 1966, Gordon Ramsay left behind an early athletic career to become a renowned chef in London. By the early 2000s he was making his mark on British TV as the temperamental host of Ramsay's Kitchen Nightmares and Hell’s Kitchen, shows that made a successful transition to American audiences. \r\nThe award-winning chef has since expanded his celebrity brand via such programs as MasterChef and Hotel Hell and opening more restaurants around the globe.</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#address"/>
+ <NamedIndividual IRI="#user_3"/> 
+ <Literal datatypeIRI="&xsd;String">California</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#cnumber"/>
+ <NamedIndividual IRI="#user_3"/> 
+ <Literal datatypeIRI="&xsd;String">919999999</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#gender"/>
+ <NamedIndividual IRI="#user_3"/> 
+ <Literal datatypeIRI="&xsd;String">Male</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#profession"/>
+ <NamedIndividual IRI="#user_3"/> 
+ <Literal datatypeIRI="&xsd;String">Professional Chef</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#_id"/>
+ <NamedIndividual IRI="#user_4"/> 
+ <Literal datatypeIRI="&xsd;String">5a6ce1eaffc8522e886f7dac</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#loginType"/>
+ <NamedIndividual IRI="#user_4"/> 
+ <Literal datatypeIRI="&xsd;String">local</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#confirmed"/>
+ <NamedIndividual IRI="#user_4"/> 
+ <Literal datatypeIRI="&xsd;String">true</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#type"/>
+ <NamedIndividual IRI="#user_4"/> 
+ <Literal datatypeIRI="&xsd;String">user</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#age"/>
+ <NamedIndividual IRI="#user_4"/> 
+ <Literal datatypeIRI="&xsd;String">36</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#name"/>
+ <NamedIndividual IRI="#user_4"/> 
+ <Literal datatypeIRI="&xsd;String">Fernando Pessoa</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#password"/>
+ <NamedIndividual IRI="#user_4"/> 
+ <Literal datatypeIRI="&xsd;String">$2a$08$l9pyn2ndFe/ij1E8rK0YteN042vsHgwHaVvZrKjBoiIcKCXCu4VDK</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#email"/>
+ <NamedIndividual IRI="#user_4"/> 
+ <Literal datatypeIRI="&xsd;String">fpessoa@gmail.com</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#aboutme"/>
+ <NamedIndividual IRI="#user_4"/> 
+ <Literal datatypeIRI="&xsd;String">Born and raised in Lisbon. I'm a prolific writer, and not only under my own name, for I dreamed up approximately seventy-five others. I did not call them pseudonyms because I felt that did not capture their true independent intellectual life and instead called them heteronyms. These imaginary figures sometimes held unpopular or extreme views.</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#address"/>
+ <NamedIndividual IRI="#user_4"/> 
+ <Literal datatypeIRI="&xsd;String">Lisboa</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#cnumber"/>
+ <NamedIndividual IRI="#user_4"/> 
+ <Literal datatypeIRI="&xsd;String"></Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#gender"/>
+ <NamedIndividual IRI="#user_4"/> 
+ <Literal datatypeIRI="&xsd;String">Male</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#profession"/>
+ <NamedIndividual IRI="#user_4"/> 
+ <Literal datatypeIRI="&xsd;String">Poet, Philosopher, Playwrighter</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#_id"/>
+ <NamedIndividual IRI="#user_5"/> 
+ <Literal datatypeIRI="&xsd;String">5a6ce4eeffc8522e886f7db0</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#loginType"/>
  <NamedIndividual IRI="#user_5"/> 
  <Literal datatypeIRI="&xsd;String">local</Literal> 
@@ -551,23 +688,47 @@
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#type"/>
  <NamedIndividual IRI="#user_5"/> 
- <Literal datatypeIRI="&xsd;String">user</Literal> 
+ <Literal datatypeIRI="&xsd;String">admin</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#age"/>
  <NamedIndividual IRI="#user_5"/> 
- <Literal datatypeIRI="&xsd;String">22</Literal> 
+ <Literal datatypeIRI="&xsd;String">69</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#name"/>
  <NamedIndividual IRI="#user_5"/> 
- <Literal datatypeIRI="&xsd;String">Madalena Castro</Literal> 
+ <Literal datatypeIRI="&xsd;String">Marcelo Rebelo de Sousa</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#password"/>
  <NamedIndividual IRI="#user_5"/> 
- <Literal datatypeIRI="&xsd;String">$2a$08$Z7qh4w0iJeAD.LmbZDGp7.de7JBUL2u..ROVvvTuB0uLF2RUqODmO</Literal> 
+ <Literal datatypeIRI="&xsd;String">$2a$08$Na4DiKrfTgyT11BZITvRxuwaSC5z9Hi0HSWR2u.OTvUXHRrEQDIMG</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#email"/>
  <NamedIndividual IRI="#user_5"/> 
- <Literal datatypeIRI="&xsd;String">madalenaa.castro@gmail.com</Literal> 
+ <Literal datatypeIRI="&xsd;String">marcelo@gmail.com</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#aboutme"/>
+ <NamedIndividual IRI="#user_5"/> 
+ <Literal datatypeIRI="&xsd;String">I currently have a Degree in Law from the Faculty of Law of the University of Lisbon, with a final mark of 19/20.\r\nI also completed a PhD in Legal and Political Sciences in 1985, with Distinction and Commendation awarded by unanimous decision.\r\nSince 9th of March of 2016 I've been the President of Portugal.</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#address"/>
+ <NamedIndividual IRI="#user_5"/> 
+ <Literal datatypeIRI="&xsd;String">Belém Palace</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#cnumber"/>
+ <NamedIndividual IRI="#user_5"/> 
+ <Literal datatypeIRI="&xsd;String"></Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#gender"/>
+ <NamedIndividual IRI="#user_5"/> 
+ <Literal datatypeIRI="&xsd;String">Male</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#profession"/>
+ <NamedIndividual IRI="#user_5"/> 
+ <Literal datatypeIRI="&xsd;String">President</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#_id"/>
+ <NamedIndividual IRI="#user_6"/> 
+ <Literal datatypeIRI="&xsd;String">5a6d01463d264a0014e3ffe0</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#loginType"/>
  <NamedIndividual IRI="#user_6"/> 
@@ -579,195 +740,51 @@
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#email"/>
  <NamedIndividual IRI="#user_6"/> 
- <Literal datatypeIRI="&xsd;String">marcosandresfreitas@gmail.com</Literal> 
+ <Literal datatypeIRI="&xsd;String">jonex205@gmail.com</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#name"/>
  <NamedIndividual IRI="#user_6"/> 
- <Literal datatypeIRI="&xsd;String">Marcos Freitas</Literal> 
+ <Literal datatypeIRI="&xsd;String">João Vieira</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#token"/>
  <NamedIndividual IRI="#user_6"/> 
- <Literal datatypeIRI="&xsd;String">ya29.GltMBS8CvV-kgRfND_D-S7TVOsTpcJkPEwPUBK02zmSEmihjSRJn2_w0Ll2sqOqwIQwICNIHUIs_ekHIPHtO8nU5NSuV3mtTz9YTZxaz93-uF3Qw7SPrgry0tRtU</Literal> 
+ <Literal datatypeIRI="&xsd;String">ya29.GlxPBfmI_f8S6qxCjbxfflBisSJvJQKleLL2stjumGSefoVv1bq-smft47XL8WbtZyYkoU9B8yROj4pggxF7amCmsD5KAGu5Kc2jgWEnBFSRwKOi__iF7L3pIoazag</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#id"/>
  <NamedIndividual IRI="#user_6"/> 
- <Literal datatypeIRI="&xsd;String">103848414872991971999</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#aboutme"/>
- <NamedIndividual IRI="#user_6"/> 
- <Literal datatypeIRI="&xsd;String">Oi</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#address"/>
- <NamedIndividual IRI="#user_6"/> 
- <Literal datatypeIRI="&xsd;String">Vila do Conde </Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#age"/>
- <NamedIndividual IRI="#user_6"/> 
- <Literal datatypeIRI="&xsd;String">22</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#cnumber"/>
- <NamedIndividual IRI="#user_6"/> 
- <Literal datatypeIRI="&xsd;String">919420666</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#gender"/>
- <NamedIndividual IRI="#user_6"/> 
- <Literal datatypeIRI="&xsd;String">Male</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#profession"/>
- <NamedIndividual IRI="#user_6"/> 
- <Literal datatypeIRI="&xsd;String">Student</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#loginType"/>
- <NamedIndividual IRI="#user_7"/> 
- <Literal datatypeIRI="&xsd;String">google</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#type"/>
- <NamedIndividual IRI="#user_7"/> 
- <Literal datatypeIRI="&xsd;String">user</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#email"/>
- <NamedIndividual IRI="#user_7"/> 
- <Literal datatypeIRI="&xsd;String">tabinhu95@gmail.com</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#name"/>
- <NamedIndividual IRI="#user_7"/> 
- <Literal datatypeIRI="&xsd;String">Octávio Maia</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#token"/>
- <NamedIndividual IRI="#user_7"/> 
- <Literal datatypeIRI="&xsd;String">ya29.GlxMBRs_BjpsbFQKgK7r0ZvBTjcw3BtQSlOdnceIkBxc1ef6NXH_3PE7yR9csm9yK-nObd-etn_xH10VmSONyVWX5hjFkNE8f-NmxF5F1eLbNCsb4X1hZvvpzH3ejA</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#id"/>
- <NamedIndividual IRI="#user_7"/> 
- <Literal datatypeIRI="&xsd;String">109768494313485757406</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#loginType"/>
- <NamedIndividual IRI="#user_8"/> 
- <Literal datatypeIRI="&xsd;String">local</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#confirmed"/>
- <NamedIndividual IRI="#user_8"/> 
- <Literal datatypeIRI="&xsd;String">true</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#type"/>
- <NamedIndividual IRI="#user_8"/> 
- <Literal datatypeIRI="&xsd;String">admin</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#age"/>
- <NamedIndividual IRI="#user_8"/> 
- <Literal datatypeIRI="&xsd;String">16</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#name"/>
- <NamedIndividual IRI="#user_8"/> 
- <Literal datatypeIRI="&xsd;String">Teste</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#password"/>
- <NamedIndividual IRI="#user_8"/> 
- <Literal datatypeIRI="&xsd;String">$2a$08$vN2bpoY2Fujlwe2XrMGEVOOVDCdMKadtg6XZaGHRhI5Ckn5Ew7tny</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#email"/>
- <NamedIndividual IRI="#user_8"/> 
- <Literal datatypeIRI="&xsd;String">tabinhu95@gmail.com</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#aboutme"/>
- <NamedIndividual IRI="#user_8"/> 
- <Literal datatypeIRI="&xsd;String">Ahsbdbsb</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#address"/>
- <NamedIndividual IRI="#user_8"/> 
- <Literal datatypeIRI="&xsd;String"></Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#cnumber"/>
- <NamedIndividual IRI="#user_8"/> 
- <Literal datatypeIRI="&xsd;String"></Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#gender"/>
- <NamedIndividual IRI="#user_8"/> 
- <Literal datatypeIRI="&xsd;String">Male</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#profession"/>
- <NamedIndividual IRI="#user_8"/> 
- <Literal datatypeIRI="&xsd;String"></Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#loginType"/>
- <NamedIndividual IRI="#user_9"/> 
- <Literal datatypeIRI="&xsd;String">facebook</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#type"/>
- <NamedIndividual IRI="#user_9"/> 
- <Literal datatypeIRI="&xsd;String">admin</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#email"/>
- <NamedIndividual IRI="#user_9"/> 
- <Literal datatypeIRI="&xsd;String">alfredomiguel2@hotmail.com</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#name"/>
- <NamedIndividual IRI="#user_9"/> 
- <Literal datatypeIRI="&xsd;String">Alfredo Gomes</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#token"/>
- <NamedIndividual IRI="#user_9"/> 
- <Literal datatypeIRI="&xsd;String">EAAKZCA6XraZBQBAFY5rY13rbFkUyH0QDB1LZBoqYf4WsmnaZAfnM2v6oDPzcf3WSoSBlGx5QSGvhvXjUY5G0v0d7n2FAC0qI7vl57SAgiBVpuNU8ZC7yyiqGttmfMW6ss6Ixx610RJxKIRuCUiEAHs3IrPVc9WvwSanQIIMko1wZDZD</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#id"/>
- <NamedIndividual IRI="#user_9"/> 
- <Literal datatypeIRI="&xsd;String">1731050193612250</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#aboutme"/>
- <NamedIndividual IRI="#user_9"/> 
- <Literal datatypeIRI="&xsd;String"></Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#address"/>
- <NamedIndividual IRI="#user_9"/> 
- <Literal datatypeIRI="&xsd;String"></Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#age"/>
- <NamedIndividual IRI="#user_9"/> 
- <Literal datatypeIRI="&xsd;String">18</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#cnumber"/>
- <NamedIndividual IRI="#user_9"/> 
- <Literal datatypeIRI="&xsd;String"></Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#gender"/>
- <NamedIndividual IRI="#user_9"/> 
- <Literal datatypeIRI="&xsd;String">Male</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#profession"/>
- <NamedIndividual IRI="#user_9"/> 
- <Literal datatypeIRI="&xsd;String"></Literal> 
+ <Literal datatypeIRI="&xsd;String">105383982774504496080</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#author"/>
  <NamedIndividual IRI="#post_1"/> 
- <Literal datatypeIRI="&xsd;String">Marcos Freitas</Literal> 
+ <Literal datatypeIRI="&xsd;String">Octávio Maia</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#comments"/>
  <NamedIndividual IRI="#post_1"/> 
- <Literal datatypeIRI="&xsd;String">Octávio Maia: Very nice</Literal> 
+ <Literal datatypeIRI="&xsd;String">Octávio Maia: A trip worth doing, looking forward for out next one! , Maria Albertina: This was such a fun trip. My age doesn't allow for many more sadly.</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#date"/>
  <NamedIndividual IRI="#post_1"/> 
- <Literal datatypeIRI="&xsd;String">2018-01-24T00:00:00.000Z</Literal> 
+ <Literal datatypeIRI="&xsd;String">2017-09-01T00:00:00.000Z</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#description"/>
  <NamedIndividual IRI="#post_1"/> 
- <Literal datatypeIRI="&xsd;String">Idea</Literal> 
+ <Literal datatypeIRI="&xsd;String">A trip to the famous Tahiti falls</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#file"/>
+ <NamedIndividual IRI="#post_1"/> 
+ <Literal datatypeIRI="&xsd;String">https://www.casasnogeresparaalugar.pt/wp-content/uploads/2017/06/cascata-lagoa-geres-tahiti.jpg</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#ident"/>
  <NamedIndividual IRI="#post_1"/> 
- <Literal datatypeIRI="&xsd;String">5a691d11032ca50014d5b815</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#keywords"/>
- <NamedIndividual IRI="#post_1"/> 
- <Literal datatypeIRI="&xsd;String">Microwave</Literal> 
+ <Literal datatypeIRI="&xsd;String">5a6cd0dedbf7043124342e0e</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#location"/>
  <NamedIndividual IRI="#post_1"/> 
- <Literal datatypeIRI="&xsd;String">Vila do Conde</Literal> 
+ <Literal datatypeIRI="&xsd;String">Tahiti falls</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#priority"/>
+ <DataProperty IRI="#people"/>
  <NamedIndividual IRI="#post_1"/> 
- <Literal datatypeIRI="&xsd;String">high</Literal> 
+ <Literal datatypeIRI="&xsd;String">Me, Maria and Manuel</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#privacy"/>
  <NamedIndividual IRI="#post_1"/> 
@@ -775,19 +792,15 @@
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#pubdate"/>
  <NamedIndividual IRI="#post_1"/> 
- <Literal datatypeIRI="&xsd;String">2018-01-24T23:59:29.741Z</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#text"/>
- <NamedIndividual IRI="#post_1"/> 
- <Literal datatypeIRI="&xsd;String">A reverse microwave, with the ability to instantly cool down something</Literal> 
+ <Literal datatypeIRI="&xsd;String">2018-01-27T19:48:15.620Z</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#title"/>
  <NamedIndividual IRI="#post_1"/> 
- <Literal datatypeIRI="&xsd;String">Million dollar idea</Literal> 
+ <Literal datatypeIRI="&xsd;String">Trip to Gerês</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#type"/>
  <NamedIndividual IRI="#post_1"/> 
- <Literal datatypeIRI="&xsd;String">Idea</Literal> 
+ <Literal datatypeIRI="&xsd;String">Photo</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#author"/>
  <NamedIndividual IRI="#post_2"/> 
@@ -799,27 +812,27 @@
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#date"/>
  <NamedIndividual IRI="#post_2"/> 
- <Literal datatypeIRI="&xsd;String">2018-01-01T00:00:00.000Z</Literal> 
+ <Literal datatypeIRI="&xsd;String">2018-01-27T00:00:00.000Z</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#description"/>
  <NamedIndividual IRI="#post_2"/> 
- <Literal datatypeIRI="&xsd;String">adasd</Literal> 
+ <Literal datatypeIRI="&xsd;String">Vitória FC and Sporting CP battle for the first place</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#duration"/>
  <NamedIndividual IRI="#post_2"/> 
- <Literal datatypeIRI="&xsd;String">dasdas</Literal> 
+ <Literal datatypeIRI="&xsd;String">90 minutes</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#ident"/>
  <NamedIndividual IRI="#post_2"/> 
- <Literal datatypeIRI="&xsd;String">5a691e18032ca50014d5b817</Literal> 
+ <Literal datatypeIRI="&xsd;String">5a6cd0dedbf7043124342e0e</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#location"/>
  <NamedIndividual IRI="#post_2"/> 
- <Literal datatypeIRI="&xsd;String">Casa do Octavio</Literal> 
+ <Literal datatypeIRI="&xsd;String">Braga Municipal Stadium</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#participants"/>
  <NamedIndividual IRI="#post_2"/> 
- <Literal datatypeIRI="&xsd;String">asddas</Literal> 
+ <Literal datatypeIRI="&xsd;String">Vitória FC, Sporting CP</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#privacy"/>
  <NamedIndividual IRI="#post_2"/> 
@@ -827,19 +840,19 @@
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#pubdate"/>
  <NamedIndividual IRI="#post_2"/> 
- <Literal datatypeIRI="&xsd;String">2018-01-25T18:36:00.433Z</Literal> 
+ <Literal datatypeIRI="&xsd;String">2018-01-27T20:31:05.163Z</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#results"/>
  <NamedIndividual IRI="#post_2"/> 
- <Literal datatypeIRI="&xsd;String">asdas</Literal> 
+ <Literal datatypeIRI="&xsd;String">Sporting 5 - 4 Vitória FC (Penalties)</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#sport"/>
  <NamedIndividual IRI="#post_2"/> 
- <Literal datatypeIRI="&xsd;String">asdas</Literal> 
+ <Literal datatypeIRI="&xsd;String">Football</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#title"/>
  <NamedIndividual IRI="#post_2"/> 
- <Literal datatypeIRI="&xsd;String">adasasd</Literal> 
+ <Literal datatypeIRI="&xsd;String">League Cup Final</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#type"/>
  <NamedIndividual IRI="#post_2"/> 
@@ -851,274 +864,301 @@
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#comments"/>
  <NamedIndividual IRI="#post_3"/> 
- <Literal datatypeIRI="&xsd;String">Octávio Maia: dasdas,Madalena Castro: ola gatos ,Octávio Maia: ola madalena,Madalena Castro: isto esta top ,Octávio Maia: mediocre,Alfredo Gomes: Gatas?</Literal> 
+ <Literal datatypeIRI="&xsd;String"></Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#date"/>
  <NamedIndividual IRI="#post_3"/> 
- <Literal datatypeIRI="&xsd;String">2018-01-19T00:00:00.000Z</Literal> 
+ <Literal datatypeIRI="&xsd;String">2018-02-02T00:00:00.000Z</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#description"/>
  <NamedIndividual IRI="#post_3"/> 
- <Literal datatypeIRI="&xsd;String">desc</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#gender"/>
- <NamedIndividual IRI="#post_3"/> 
- <Literal datatypeIRI="&xsd;String">Male</Literal> 
+ <Literal datatypeIRI="&xsd;String">I have an appointment at 2pm. DO NOT MISS</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#ident"/>
  <NamedIndividual IRI="#post_3"/> 
- <Literal datatypeIRI="&xsd;String">5a6913f45b382c30e8fccc31</Literal> 
+ <Literal datatypeIRI="&xsd;String">5a6cd0dedbf7043124342e0e</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#location"/>
  <NamedIndividual IRI="#post_3"/> 
- <Literal datatypeIRI="&xsd;String">Casa do Alfredo</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#name"/>
- <NamedIndividual IRI="#post_3"/> 
- <Literal datatypeIRI="&xsd;String">dasdas</Literal> 
-</DataPropertyAssertion><DataPropertyAssertion> 
- <DataProperty IRI="#parents"/>
- <NamedIndividual IRI="#post_3"/> 
- <Literal datatypeIRI="&xsd;String">dasdas</Literal> 
+ <Literal datatypeIRI="&xsd;String">Braga</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#privacy"/>
  <NamedIndividual IRI="#post_3"/> 
- <Literal datatypeIRI="&xsd;String">public</Literal> 
+ <Literal datatypeIRI="&xsd;String">private</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#pubdate"/>
  <NamedIndividual IRI="#post_3"/> 
- <Literal datatypeIRI="&xsd;String">2018-01-24T23:20:57.285Z</Literal> 
+ <Literal datatypeIRI="&xsd;String">2018-01-27T20:23:47.194Z</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#title"/>
  <NamedIndividual IRI="#post_3"/> 
- <Literal datatypeIRI="&xsd;String">dasdas</Literal> 
+ <Literal datatypeIRI="&xsd;String">Dentist </Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#type"/>
  <NamedIndividual IRI="#post_3"/> 
+ <Literal datatypeIRI="&xsd;String">Appointment</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#author"/>
+ <NamedIndividual IRI="#post_4"/> 
+ <Literal datatypeIRI="&xsd;String">Mary</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#comments"/>
+ <NamedIndividual IRI="#post_4"/> 
+ <Literal datatypeIRI="&xsd;String">Octávio Maia: Congratulations, looks like we just got a new religion. , Mary: Don't be overdramatic, I'm sure he'll just have a normal life.</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#date"/>
+ <NamedIndividual IRI="#post_4"/> 
+ <Literal datatypeIRI="&xsd;String">0001-01-01T00:00:00.000Z</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#description"/>
+ <NamedIndividual IRI="#post_4"/> 
+ <Literal datatypeIRI="&xsd;String">Born in a manger, not the best place.</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#gender"/>
+ <NamedIndividual IRI="#post_4"/> 
+ <Literal datatypeIRI="&xsd;String">Male</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#ident"/>
+ <NamedIndividual IRI="#post_4"/> 
+ <Literal datatypeIRI="&xsd;String">5a6cd81275778128889118ac</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#location"/>
+ <NamedIndividual IRI="#post_4"/> 
+ <Literal datatypeIRI="&xsd;String">Nazareth</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#name"/>
+ <NamedIndividual IRI="#post_4"/> 
+ <Literal datatypeIRI="&xsd;String">Jesus</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#parents"/>
+ <NamedIndividual IRI="#post_4"/> 
+ <Literal datatypeIRI="&xsd;String">Mary and Joseph</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#privacy"/>
+ <NamedIndividual IRI="#post_4"/> 
+ <Literal datatypeIRI="&xsd;String">public</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#pubdate"/>
+ <NamedIndividual IRI="#post_4"/> 
+ <Literal datatypeIRI="&xsd;String">2018-01-27T20:07:17.479Z</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#title"/>
+ <NamedIndividual IRI="#post_4"/> 
+ <Literal datatypeIRI="&xsd;String">Jesus is born! Hallelujah!</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#type"/>
+ <NamedIndividual IRI="#post_4"/> 
  <Literal datatypeIRI="&xsd;String">Birth</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#author"/>
+ <NamedIndividual IRI="#post_5"/> 
+ <Literal datatypeIRI="&xsd;String">Gordon Ramsay</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#comments"/>
+ <NamedIndividual IRI="#post_5"/> 
+ <Literal datatypeIRI="&xsd;String">Gordon Ramsay: You'll never go to McDonalds again after eating this. , Octávio Maia: You watch me.</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#date"/>
+ <NamedIndividual IRI="#post_5"/> 
+ <Literal datatypeIRI="&xsd;String">2017-07-19T00:00:00.000Z</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#description"/>
+ <NamedIndividual IRI="#post_5"/> 
+ <Literal datatypeIRI="&xsd;String">Best burguer, period.</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#file"/>
+ <NamedIndividual IRI="#post_5"/> 
+ <Literal datatypeIRI="&xsd;String">http://img.sndimg.com/food/image/upload/w_560,h_315,c_fill,fl_progressive,q_80/v1/img/recipes/26/57/82/picLpVZYb.jpg</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#ident"/>
+ <NamedIndividual IRI="#post_5"/> 
+ <Literal datatypeIRI="&xsd;String">5a6cdca375778128889118b4</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#ingredients"/>
+ <NamedIndividual IRI="#post_5"/> 
+ <Literal datatypeIRI="&xsd;String">Sirloin, onion, ketchup, garlic, tabasco, mustard.</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#instructions"/>
+ <NamedIndividual IRI="#post_5"/> 
+ <Literal datatypeIRI="&xsd;String">Combine all ingredients. Form into patties, cook as desired.</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#location"/>
+ <NamedIndividual IRI="#post_5"/> 
+ <Literal datatypeIRI="&xsd;String">Restaurant Gordon Ramsay</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#privacy"/>
+ <NamedIndividual IRI="#post_5"/> 
+ <Literal datatypeIRI="&xsd;String">public</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#pubdate"/>
+ <NamedIndividual IRI="#post_5"/> 
+ <Literal datatypeIRI="&xsd;String">2018-01-27T20:18:17.576Z</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#title"/>
+ <NamedIndividual IRI="#post_5"/> 
+ <Literal datatypeIRI="&xsd;String">Best hamburguer you'll ever have</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#type"/>
+ <NamedIndividual IRI="#post_5"/> 
+ <Literal datatypeIRI="&xsd;String">Recipe</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#author"/>
+ <NamedIndividual IRI="#post_6"/> 
+ <Literal datatypeIRI="&xsd;String">Fernando Pessoa</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#comments"/>
+ <NamedIndividual IRI="#post_6"/> 
+ <Literal datatypeIRI="&xsd;String">Fernando Pessoa: #deep</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#date"/>
+ <NamedIndividual IRI="#post_6"/> 
+ <Literal datatypeIRI="&xsd;String">1900-01-01T00:00:00.000Z</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#description"/>
+ <NamedIndividual IRI="#post_6"/> 
+ <Literal datatypeIRI="&xsd;String">A quick thought about the role wind plays in my life.</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#ident"/>
+ <NamedIndividual IRI="#post_6"/> 
+ <Literal datatypeIRI="&xsd;String">5a6ce1eaffc8522e886f7dac</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#keywords"/>
+ <NamedIndividual IRI="#post_6"/> 
+ <Literal datatypeIRI="&xsd;String">Wind, Hearing, Life</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#location"/>
+ <NamedIndividual IRI="#post_6"/> 
+ <Literal datatypeIRI="&xsd;String">Room</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#privacy"/>
+ <NamedIndividual IRI="#post_6"/> 
+ <Literal datatypeIRI="&xsd;String">public</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#pubdate"/>
+ <NamedIndividual IRI="#post_6"/> 
+ <Literal datatypeIRI="&xsd;String">2018-01-27T20:43:42.559Z</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#text"/>
+ <NamedIndividual IRI="#post_6"/> 
+ <Literal datatypeIRI="&xsd;String">Às vezes ouço passar o vento; e só de ouvir o vento passar, vale a pena ter nascido.</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#title"/>
+ <NamedIndividual IRI="#post_6"/> 
+ <Literal datatypeIRI="&xsd;String">Wind</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#type"/>
+ <NamedIndividual IRI="#post_6"/> 
+ <Literal datatypeIRI="&xsd;String">Thought</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#author"/>
+ <NamedIndividual IRI="#post_7"/> 
+ <Literal datatypeIRI="&xsd;String">Fernando Pessoa</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#comments"/>
+ <NamedIndividual IRI="#post_7"/> 
+ <Literal datatypeIRI="&xsd;String"></Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#date"/>
+ <NamedIndividual IRI="#post_7"/> 
+ <Literal datatypeIRI="&xsd;String">1910-04-30T00:00:00.000Z</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#description"/>
+ <NamedIndividual IRI="#post_7"/> 
+ <Literal datatypeIRI="&xsd;String">Had this while I was in the toilet, not bad.</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#ident"/>
+ <NamedIndividual IRI="#post_7"/> 
+ <Literal datatypeIRI="&xsd;String">5a6ce1eaffc8522e886f7dac</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#location"/>
+ <NamedIndividual IRI="#post_7"/> 
+ <Literal datatypeIRI="&xsd;String">Bathroom</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#privacy"/>
+ <NamedIndividual IRI="#post_7"/> 
+ <Literal datatypeIRI="&xsd;String">public</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#pubdate"/>
+ <NamedIndividual IRI="#post_7"/> 
+ <Literal datatypeIRI="&xsd;String">2018-01-27T20:41:37.448Z</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#text"/>
+ <NamedIndividual IRI="#post_7"/> 
+ <Literal datatypeIRI="&xsd;String">O poeta é um fingidor. Finge tão completamente Que chega a fingir que é dor A dor que deveras sente.</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#theme"/>
+ <NamedIndividual IRI="#post_7"/> 
+ <Literal datatypeIRI="&xsd;String">A autopsychography about me</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#title"/>
+ <NamedIndividual IRI="#post_7"/> 
+ <Literal datatypeIRI="&xsd;String">Autopsychography</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#type"/>
+ <NamedIndividual IRI="#post_7"/> 
+ <Literal datatypeIRI="&xsd;String">Chronicle</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#author"/>
+ <NamedIndividual IRI="#post_8"/> 
+ <Literal datatypeIRI="&xsd;String">Marcelo Rebelo de Sousa</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#comments"/>
+ <NamedIndividual IRI="#post_8"/> 
+ <Literal datatypeIRI="&xsd;String">Octávio Maia: Se for comida à discrição conta comigo!</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#date"/>
+ <NamedIndividual IRI="#post_8"/> 
+ <Literal datatypeIRI="&xsd;String">2018-03-09T00:00:00.000Z</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#description"/>
+ <NamedIndividual IRI="#post_8"/> 
+ <Literal datatypeIRI="&xsd;String">Dinner at the National Pantheon celebrating my 2nd year as President.</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#eventType"/>
+ <NamedIndividual IRI="#post_8"/> 
+ <Literal datatypeIRI="&xsd;String">Dinner</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#guests"/>
+ <NamedIndividual IRI="#post_8"/> 
+ <Literal datatypeIRI="&xsd;String">Everyone is invited.</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#hosts"/>
+ <NamedIndividual IRI="#post_8"/> 
+ <Literal datatypeIRI="&xsd;String">Marcelo Rebelo de Sousa</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#ident"/>
+ <NamedIndividual IRI="#post_8"/> 
+ <Literal datatypeIRI="&xsd;String">5a6ce4eeffc8522e886f7db0</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#location"/>
+ <NamedIndividual IRI="#post_8"/> 
+ <Literal datatypeIRI="&xsd;String"> National Pantheon</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#privacy"/>
+ <NamedIndividual IRI="#post_8"/> 
+ <Literal datatypeIRI="&xsd;String">public</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#pubdate"/>
+ <NamedIndividual IRI="#post_8"/> 
+ <Literal datatypeIRI="&xsd;String">2018-01-27T21:30:24.322Z</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#text"/>
+ <NamedIndividual IRI="#post_8"/> 
+ <Literal datatypeIRI="&xsd;String">Come have fun with us and enjoy a great meal!</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#title"/>
+ <NamedIndividual IRI="#post_8"/> 
+ <Literal datatypeIRI="&xsd;String">2 years as President!</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#type"/>
+ <NamedIndividual IRI="#post_8"/> 
+ <Literal datatypeIRI="&xsd;String">Event</Literal> 
 </DataPropertyAssertion><DataPropertyDomain> 
- <DataProperty IRI="#loginType"/>
+ <DataProperty IRI="#_id"/>
  <Class IRI="#User"/> 
  </DataPropertyDomain> 
  <DataPropertyRange> 
- <DataProperty IRI="#loginType"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#confirmed"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#confirmed"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#type"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#type"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#age"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#age"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#name"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#name"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#password"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#password"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#email"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#email"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#loginType"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#loginType"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#type"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#type"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#email"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#email"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#name"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#name"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#token"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#token"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#id"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#id"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#loginType"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#loginType"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#type"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#type"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#email"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#email"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#name"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#name"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#token"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#token"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#id"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#id"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#loginType"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#loginType"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#type"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#type"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#email"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#email"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#name"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#name"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#token"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#token"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#id"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#id"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#loginType"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#loginType"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#confirmed"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#confirmed"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#type"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#type"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#age"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#age"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#name"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#name"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#password"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#password"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#email"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#email"/> 
+ <DataProperty IRI="#_id"/> 
  <Datatype abbreviatedIRI="xsd:String"/> 
 </DataPropertyRange><DataPropertyDomain> 
  <DataProperty IRI="#loginType"/>
@@ -1205,46 +1245,11 @@
  <DataProperty IRI="#profession"/> 
  <Datatype abbreviatedIRI="xsd:String"/> 
 </DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#loginType"/>
+ <DataProperty IRI="#_id"/>
  <Class IRI="#User"/> 
  </DataPropertyDomain> 
  <DataPropertyRange> 
- <DataProperty IRI="#loginType"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#type"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#type"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#email"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#email"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#name"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#name"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#token"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#token"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#id"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#id"/> 
+ <DataProperty IRI="#_id"/> 
  <Datatype abbreviatedIRI="xsd:String"/> 
 </DataPropertyRange><DataPropertyDomain> 
  <DataProperty IRI="#loginType"/>
@@ -1331,6 +1336,286 @@
  <DataProperty IRI="#profession"/> 
  <Datatype abbreviatedIRI="xsd:String"/> 
 </DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#_id"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#_id"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#loginType"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#loginType"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#confirmed"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#confirmed"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#type"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#type"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#age"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#age"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#name"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#name"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#password"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#password"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#email"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#email"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#aboutme"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#aboutme"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#address"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#address"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#cnumber"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#cnumber"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#gender"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#gender"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#profession"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#profession"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#_id"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#_id"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#loginType"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#loginType"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#confirmed"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#confirmed"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#type"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#type"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#age"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#age"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#name"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#name"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#password"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#password"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#email"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#email"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#aboutme"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#aboutme"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#address"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#address"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#cnumber"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#cnumber"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#gender"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#gender"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#profession"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#profession"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#_id"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#_id"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#loginType"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#loginType"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#confirmed"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#confirmed"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#type"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#type"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#age"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#age"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#name"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#name"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#password"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#password"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#email"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#email"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#aboutme"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#aboutme"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#address"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#address"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#cnumber"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#cnumber"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#gender"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#gender"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#profession"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#profession"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#_id"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#_id"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
  <DataProperty IRI="#loginType"/>
  <Class IRI="#User"/> 
  </DataPropertyDomain> 
@@ -1371,136 +1656,87 @@
  </DataPropertyDomain> 
  <DataPropertyRange> 
  <DataProperty IRI="#id"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#aboutme"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#aboutme"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#address"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#address"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#age"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#age"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#cnumber"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#cnumber"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#gender"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#gender"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#profession"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#profession"/> 
  <Datatype abbreviatedIRI="xsd:String"/> 
 </DataPropertyRange><DataPropertyDomain> 
  <DataProperty IRI="#author"/>
- <Class IRI="#Idea"/> 
+ <Class IRI="#Photo"/> 
  </DataPropertyDomain> 
  <DataPropertyRange> 
  <DataProperty IRI="#author"/> 
  <Datatype abbreviatedIRI="xsd:String"/> 
 </DataPropertyRange><DataPropertyDomain> 
  <DataProperty IRI="#comments"/>
- <Class IRI="#Idea"/> 
+ <Class IRI="#Photo"/> 
  </DataPropertyDomain> 
  <DataPropertyRange> 
  <DataProperty IRI="#comments"/> 
  <Datatype abbreviatedIRI="xsd:String"/> 
 </DataPropertyRange><DataPropertyDomain> 
  <DataProperty IRI="#date"/>
- <Class IRI="#Idea"/> 
+ <Class IRI="#Photo"/> 
  </DataPropertyDomain> 
  <DataPropertyRange> 
  <DataProperty IRI="#date"/> 
  <Datatype abbreviatedIRI="xsd:String"/> 
 </DataPropertyRange><DataPropertyDomain> 
  <DataProperty IRI="#description"/>
- <Class IRI="#Idea"/> 
+ <Class IRI="#Photo"/> 
  </DataPropertyDomain> 
  <DataPropertyRange> 
  <DataProperty IRI="#description"/> 
  <Datatype abbreviatedIRI="xsd:String"/> 
 </DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#file"/>
+ <Class IRI="#Photo"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#file"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
  <DataProperty IRI="#ident"/>
- <Class IRI="#Idea"/> 
+ <Class IRI="#Photo"/> 
  </DataPropertyDomain> 
  <DataPropertyRange> 
  <DataProperty IRI="#ident"/> 
  <Datatype abbreviatedIRI="xsd:String"/> 
 </DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#keywords"/>
- <Class IRI="#Idea"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#keywords"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
  <DataProperty IRI="#location"/>
- <Class IRI="#Idea"/> 
+ <Class IRI="#Photo"/> 
  </DataPropertyDomain> 
  <DataPropertyRange> 
  <DataProperty IRI="#location"/> 
  <Datatype abbreviatedIRI="xsd:String"/> 
 </DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#priority"/>
- <Class IRI="#Idea"/> 
+ <DataProperty IRI="#people"/>
+ <Class IRI="#Photo"/> 
  </DataPropertyDomain> 
  <DataPropertyRange> 
- <DataProperty IRI="#priority"/> 
+ <DataProperty IRI="#people"/> 
  <Datatype abbreviatedIRI="xsd:String"/> 
 </DataPropertyRange><DataPropertyDomain> 
  <DataProperty IRI="#privacy"/>
- <Class IRI="#Idea"/> 
+ <Class IRI="#Photo"/> 
  </DataPropertyDomain> 
  <DataPropertyRange> 
  <DataProperty IRI="#privacy"/> 
  <Datatype abbreviatedIRI="xsd:String"/> 
 </DataPropertyRange><DataPropertyDomain> 
  <DataProperty IRI="#pubdate"/>
- <Class IRI="#Idea"/> 
+ <Class IRI="#Photo"/> 
  </DataPropertyDomain> 
  <DataPropertyRange> 
  <DataProperty IRI="#pubdate"/> 
  <Datatype abbreviatedIRI="xsd:String"/> 
 </DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#text"/>
- <Class IRI="#Idea"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#text"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
  <DataProperty IRI="#title"/>
- <Class IRI="#Idea"/> 
+ <Class IRI="#Photo"/> 
  </DataPropertyDomain> 
  <DataPropertyRange> 
  <DataProperty IRI="#title"/> 
  <Datatype abbreviatedIRI="xsd:String"/> 
 </DataPropertyRange><DataPropertyDomain> 
  <DataProperty IRI="#type"/>
- <Class IRI="#Idea"/> 
+ <Class IRI="#Photo"/> 
  </DataPropertyDomain> 
  <DataPropertyRange> 
  <DataProperty IRI="#type"/> 
@@ -1605,6 +1841,76 @@
  <Datatype abbreviatedIRI="xsd:String"/> 
 </DataPropertyRange><DataPropertyDomain> 
  <DataProperty IRI="#author"/>
+ <Class IRI="#Appointment"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#author"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#comments"/>
+ <Class IRI="#Appointment"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#comments"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#date"/>
+ <Class IRI="#Appointment"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#date"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#description"/>
+ <Class IRI="#Appointment"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#description"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#ident"/>
+ <Class IRI="#Appointment"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#ident"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#location"/>
+ <Class IRI="#Appointment"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#location"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#privacy"/>
+ <Class IRI="#Appointment"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#privacy"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#pubdate"/>
+ <Class IRI="#Appointment"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#pubdate"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#title"/>
+ <Class IRI="#Appointment"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#title"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#type"/>
+ <Class IRI="#Appointment"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#type"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#author"/>
  <Class IRI="#Birth"/> 
  </DataPropertyDomain> 
  <DataPropertyRange> 
@@ -1690,6 +1996,363 @@
 </DataPropertyRange><DataPropertyDomain> 
  <DataProperty IRI="#type"/>
  <Class IRI="#Birth"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#type"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#author"/>
+ <Class IRI="#Recipe"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#author"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#comments"/>
+ <Class IRI="#Recipe"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#comments"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#date"/>
+ <Class IRI="#Recipe"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#date"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#description"/>
+ <Class IRI="#Recipe"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#description"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#file"/>
+ <Class IRI="#Recipe"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#file"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#ident"/>
+ <Class IRI="#Recipe"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#ident"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#ingredients"/>
+ <Class IRI="#Recipe"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#ingredients"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#instructions"/>
+ <Class IRI="#Recipe"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#instructions"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#location"/>
+ <Class IRI="#Recipe"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#location"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#privacy"/>
+ <Class IRI="#Recipe"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#privacy"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#pubdate"/>
+ <Class IRI="#Recipe"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#pubdate"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#title"/>
+ <Class IRI="#Recipe"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#title"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#type"/>
+ <Class IRI="#Recipe"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#type"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#author"/>
+ <Class IRI="#Thought"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#author"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#comments"/>
+ <Class IRI="#Thought"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#comments"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#date"/>
+ <Class IRI="#Thought"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#date"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#description"/>
+ <Class IRI="#Thought"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#description"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#ident"/>
+ <Class IRI="#Thought"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#ident"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#keywords"/>
+ <Class IRI="#Thought"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#keywords"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#location"/>
+ <Class IRI="#Thought"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#location"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#privacy"/>
+ <Class IRI="#Thought"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#privacy"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#pubdate"/>
+ <Class IRI="#Thought"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#pubdate"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#text"/>
+ <Class IRI="#Thought"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#text"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#title"/>
+ <Class IRI="#Thought"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#title"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#type"/>
+ <Class IRI="#Thought"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#type"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#author"/>
+ <Class IRI="#Chronicle"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#author"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#comments"/>
+ <Class IRI="#Chronicle"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#comments"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#date"/>
+ <Class IRI="#Chronicle"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#date"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#description"/>
+ <Class IRI="#Chronicle"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#description"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#ident"/>
+ <Class IRI="#Chronicle"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#ident"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#location"/>
+ <Class IRI="#Chronicle"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#location"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#privacy"/>
+ <Class IRI="#Chronicle"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#privacy"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#pubdate"/>
+ <Class IRI="#Chronicle"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#pubdate"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#text"/>
+ <Class IRI="#Chronicle"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#text"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#theme"/>
+ <Class IRI="#Chronicle"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#theme"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#title"/>
+ <Class IRI="#Chronicle"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#title"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#type"/>
+ <Class IRI="#Chronicle"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#type"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#author"/>
+ <Class IRI="#Event"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#author"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#comments"/>
+ <Class IRI="#Event"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#comments"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#date"/>
+ <Class IRI="#Event"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#date"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#description"/>
+ <Class IRI="#Event"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#description"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#eventType"/>
+ <Class IRI="#Event"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#eventType"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#guests"/>
+ <Class IRI="#Event"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#guests"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#hosts"/>
+ <Class IRI="#Event"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#hosts"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#ident"/>
+ <Class IRI="#Event"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#ident"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#location"/>
+ <Class IRI="#Event"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#location"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#privacy"/>
+ <Class IRI="#Event"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#privacy"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#pubdate"/>
+ <Class IRI="#Event"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#pubdate"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#text"/>
+ <Class IRI="#Event"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#text"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#title"/>
+ <Class IRI="#Event"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#title"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#type"/>
+ <Class IRI="#Event"/> 
  </DataPropertyDomain> 
  <DataPropertyRange> 
  <DataProperty IRI="#type"/> 

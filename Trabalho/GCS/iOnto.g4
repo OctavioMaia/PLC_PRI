@@ -360,7 +360,6 @@ txtpal returns[String texto, String atrib, String tipo]
                                        
                                        
                                             if($texto.equals("User")){
-                                                        
                                                         if($atrib.equals("loginType")){
 
                                                             if($TXT.text.equals("\"local\"")){ usertype=0;}
@@ -369,8 +368,8 @@ txtpal returns[String texto, String atrib, String tipo]
 
                                                                                        }
                                                         else{
-                                                        if($atrib.equals("id")){
-                                                            System.out.println("ID");
+                                                        if($atrib.equals("_id")){
+                                                            
                                                             if(info.size()>1) info.add(",");
                                                             info.add("\"_id\":");
                                                             info.add($TXT.text); 
@@ -432,7 +431,15 @@ txtpal returns[String texto, String atrib, String tipo]
                                                                }
                                 else{
                                     if($texto.equals("User")){
-                                            if($atrib.equals("id")){
+                                            if($atrib.equals("loginType")){
+
+                                                            if($TXT.text.equals("\"local\"")){ usertype=0;}
+                                                            if($TXT.text.equals("\"facebook\"")){ usertype=1;}
+                                                            if($TXT.text.equals("\"google\"")){ usertype=2;}
+
+                                                                                       }                  
+                                            else{           
+                                            if($atrib.equals("_id")){
                                                                 if(info.size()>1) info.add(",");
                                                                 info.add("\"_id\":");
                                                                 info.add($TXT.text);                
@@ -443,6 +450,7 @@ txtpal returns[String texto, String atrib, String tipo]
                                                                 userinfo.add($TXT.text);
                                                             }
                                                     }
+                                            }
                                              else{
                                                   if(info.size()>1) info.add(",");
                                                   info.add("\""+$atrib+"\":");
@@ -453,7 +461,7 @@ txtpal returns[String texto, String atrib, String tipo]
                                     })* ']')?
        ;
 
-PAL: [a-zA-Z] [-a-zA-Z_0-9]*;
+PAL: [_]?[a-zA-Z] [-a-zA-Z_0-9]*;
 TXT: [\'] ~[\']* [\'] 
    | [\"] ~[\"]* [\"]
    ;
