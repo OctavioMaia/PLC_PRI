@@ -40,7 +40,7 @@ grammar jsToOnto;
 
 jsFile returns[String _id]
 @after{
-       ontologia.add("Ontologia IAm\n"+
+       ontologia.add("Ontologia iOnto\n"+
                         "\nconceitos {"+
 	"\nUser[_id: String, loginType: String, token: String, password: String, name: String, age: String, gender: String, id: String, email: String, address: String, profession: String, type: String, cnumber: String, confirmed: String, aboutme: String],\n"+
 	"Post,\n"+
