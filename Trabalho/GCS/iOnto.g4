@@ -289,7 +289,7 @@ ligacao
           inst_owl.add("<ClassAssertion> \n <Class IRI=\"#" + pal1 + "\"/>" + "\n <NamedIndividual IRI=\"#" + pal2 + "\"/>" + "\n</ClassAssertion>");
           }
        
-       if(rel1.equals("owns")| rel1.equals("has") | rel1.equals("pof")){
+       if(rel1.equals("owns")| rel1.equals("has") | rel1.equals("pof") | rel1.equals("published")){
           instTrip_owl.add("<ObjectPropertyAssertion> \n <ObjectProperty IRI=\"#" + rel1 + "\"/>" + "\n <NamedIndividual IRI=\"#" + pal1 + "\"/>" + "\n <NamedIndividual IRI=\"#" 
           + pal2 + "\"/>"+ "\n</ObjectPropertyAssertion>");
           triplos_owl.add("<ObjectPropertyDomain> \n <ObjectProperty IRI=\"#" + rel1 + "\"/>" + "\n <Class IRI=\"#" + pal1 + "\"/>" + "\n</ObjectPropertyDomain>");
@@ -412,8 +412,8 @@ txtpal returns[String texto, String atrib, String tipo]
                                                               
                                     String com = $TXT.text;
                                     
-                                    String[] coms = com.split(",");
-                                    info.add(",\""+$atrib+"\":[");
+                                    String[] coms = com.split(";");
+                                    info.add("\""+$atrib+"\":[");
                                     
                                     int size = coms.length;
                                    

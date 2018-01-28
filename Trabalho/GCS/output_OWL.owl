@@ -465,7 +465,39 @@
 </ClassAssertion><ClassAssertion> 
  <Class IRI="#post_8"/>
  <NamedIndividual IRI="#Event"/>
-</ClassAssertion><DataPropertyAssertion> 
+</ClassAssertion><ObjectPropertyAssertion> 
+ <ObjectProperty IRI="#published"/>
+ <NamedIndividual IRI="#user_1"/>
+ <NamedIndividual IRI="#post_1"/>
+</ObjectPropertyAssertion><ObjectPropertyAssertion> 
+ <ObjectProperty IRI="#published"/>
+ <NamedIndividual IRI="#user_1"/>
+ <NamedIndividual IRI="#post_2"/>
+</ObjectPropertyAssertion><ObjectPropertyAssertion> 
+ <ObjectProperty IRI="#published"/>
+ <NamedIndividual IRI="#user_1"/>
+ <NamedIndividual IRI="#post_3"/>
+</ObjectPropertyAssertion><ObjectPropertyAssertion> 
+ <ObjectProperty IRI="#published"/>
+ <NamedIndividual IRI="#user_2"/>
+ <NamedIndividual IRI="#post_4"/>
+</ObjectPropertyAssertion><ObjectPropertyAssertion> 
+ <ObjectProperty IRI="#published"/>
+ <NamedIndividual IRI="#user_3"/>
+ <NamedIndividual IRI="#post_5"/>
+</ObjectPropertyAssertion><ObjectPropertyAssertion> 
+ <ObjectProperty IRI="#published"/>
+ <NamedIndividual IRI="#user_4"/>
+ <NamedIndividual IRI="#post_6"/>
+</ObjectPropertyAssertion><ObjectPropertyAssertion> 
+ <ObjectProperty IRI="#published"/>
+ <NamedIndividual IRI="#user_4"/>
+ <NamedIndividual IRI="#post_7"/>
+</ObjectPropertyAssertion><ObjectPropertyAssertion> 
+ <ObjectProperty IRI="#published"/>
+ <NamedIndividual IRI="#user_5"/>
+ <NamedIndividual IRI="#post_8"/>
+</ObjectPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#_id"/>
  <NamedIndividual IRI="#user_1"/> 
  <Literal datatypeIRI="&xsd;String">5a6cd0dedbf7043124342e0e</Literal> 
@@ -760,7 +792,7 @@
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#comments"/>
  <NamedIndividual IRI="#post_1"/> 
- <Literal datatypeIRI="&xsd;String">Octávio Maia: A trip worth doing, looking forward for out next one! , Maria Albertina: This was such a fun trip. My age doesn't allow for many more sadly.</Literal> 
+ <Literal datatypeIRI="&xsd;String">Octávio Maia: A trip worth doing, looking forward for out next one!;Maria Albertina: This was such a fun trip. My age doesn't allow for many more sadly.</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#date"/>
  <NamedIndividual IRI="#post_1"/> 
@@ -904,7 +936,7 @@
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#comments"/>
  <NamedIndividual IRI="#post_4"/> 
- <Literal datatypeIRI="&xsd;String">Octávio Maia: Congratulations, looks like we just got a new religion. , Mary: Don't be overdramatic, I'm sure he'll just have a normal life.</Literal> 
+ <Literal datatypeIRI="&xsd;String">Octávio Maia: Congratulations, looks like we just got a new religion.;Mary: Don't be overdramatic, I'm sure he'll just have a normal life.</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#date"/>
  <NamedIndividual IRI="#post_4"/> 
@@ -956,7 +988,7 @@
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#comments"/>
  <NamedIndividual IRI="#post_5"/> 
- <Literal datatypeIRI="&xsd;String">Gordon Ramsay: You'll never go to McDonalds again after eating this. , Octávio Maia: You watch me.</Literal> 
+ <Literal datatypeIRI="&xsd;String">Gordon Ramsay: You'll never go to McDonalds again after eating this.;Octávio Maia: You watch me.</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#date"/>
  <NamedIndividual IRI="#post_5"/> 
@@ -1153,7 +1185,55 @@
  <DataProperty IRI="#type"/>
  <NamedIndividual IRI="#post_8"/> 
  <Literal datatypeIRI="&xsd;String">Event</Literal> 
-</DataPropertyAssertion><DataPropertyDomain> 
+</DataPropertyAssertion><ObjectPropertyDomain> 
+ <ObjectProperty IRI="#published"/>
+ <Class IRI="#user_1"/>
+</ObjectPropertyDomain><ObjectPropertyRange> 
+ <ObjectProperty IRI="#published"/>
+ <Class IRI="#post_1"/>
+</ObjectPropertyRange><ObjectPropertyDomain> 
+ <ObjectProperty IRI="#published"/>
+ <Class IRI="#user_1"/>
+</ObjectPropertyDomain><ObjectPropertyRange> 
+ <ObjectProperty IRI="#published"/>
+ <Class IRI="#post_2"/>
+</ObjectPropertyRange><ObjectPropertyDomain> 
+ <ObjectProperty IRI="#published"/>
+ <Class IRI="#user_1"/>
+</ObjectPropertyDomain><ObjectPropertyRange> 
+ <ObjectProperty IRI="#published"/>
+ <Class IRI="#post_3"/>
+</ObjectPropertyRange><ObjectPropertyDomain> 
+ <ObjectProperty IRI="#published"/>
+ <Class IRI="#user_2"/>
+</ObjectPropertyDomain><ObjectPropertyRange> 
+ <ObjectProperty IRI="#published"/>
+ <Class IRI="#post_4"/>
+</ObjectPropertyRange><ObjectPropertyDomain> 
+ <ObjectProperty IRI="#published"/>
+ <Class IRI="#user_3"/>
+</ObjectPropertyDomain><ObjectPropertyRange> 
+ <ObjectProperty IRI="#published"/>
+ <Class IRI="#post_5"/>
+</ObjectPropertyRange><ObjectPropertyDomain> 
+ <ObjectProperty IRI="#published"/>
+ <Class IRI="#user_4"/>
+</ObjectPropertyDomain><ObjectPropertyRange> 
+ <ObjectProperty IRI="#published"/>
+ <Class IRI="#post_6"/>
+</ObjectPropertyRange><ObjectPropertyDomain> 
+ <ObjectProperty IRI="#published"/>
+ <Class IRI="#user_4"/>
+</ObjectPropertyDomain><ObjectPropertyRange> 
+ <ObjectProperty IRI="#published"/>
+ <Class IRI="#post_7"/>
+</ObjectPropertyRange><ObjectPropertyDomain> 
+ <ObjectProperty IRI="#published"/>
+ <Class IRI="#user_5"/>
+</ObjectPropertyDomain><ObjectPropertyRange> 
+ <ObjectProperty IRI="#published"/>
+ <Class IRI="#post_8"/>
+</ObjectPropertyRange><DataPropertyDomain> 
  <DataProperty IRI="#_id"/>
  <Class IRI="#User"/> 
  </DataPropertyDomain> 

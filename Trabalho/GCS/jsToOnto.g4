@@ -52,7 +52,7 @@ jsFile returns[String _id]
 	"Event[eventType: String, hosts: String, guests: String, text: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String,comments: String],\n"+
 	"Idea[keywords: String, priority: String, text: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String,comments: String],\n"+
 	"Photo[file: String, people: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String,comments: String],\n"+ 
-	"Recipe[ingredients: String, instructions: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String,comments: String],\n"+
+	"Recipe[ingredients: String, file: String, instructions: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String,comments: String],\n"+
 	"SportsRegistry[sport: String, duration: String, results: String, participants: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String,comments: String],\n"+
 	"Thought[keywords: String, text: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String,comments: String],\n"+
 	"Wedding[couple: String, guests: String, menu: String, author: String, type: String, ident: String, title: String, location: String, privacy: String, date: String, description: String, pubdate: String,comments: String],\n"+
@@ -183,7 +183,7 @@ inst [ Map<String,String> mapAtribs]
 }}
            
     | TXT {$tipo=$TXT.text.replace("\"","");} 
-    ':[' {$comentarios="\"";}(TXT {$comentarios=$comentarios +$TXT.text.replace("\"","");} (',' TXT {$comentarios= $comentarios + " || " + $TXT.text.replace("\"","");})*)? {
+    ':[' {$comentarios="\"";}(TXT {$comentarios=$comentarios +$TXT.text.replace("\"","");} (',' TXT {$comentarios= $comentarios + ";" + $TXT.text.replace("\"","");})*)? {
                                                                                                         System.out.println($comentarios);
                                                                                                         $comentarios= $comentarios + "\"";
                                                                                                         if($comentarios != null && !$comentarios.isEmpty())
