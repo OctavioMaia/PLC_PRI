@@ -47,7 +47,7 @@ user_6= iof => User[_id ="5a6d01463d264a0014e3ffe0",loginType ="google",type="us
 
 
 user_1= published =>post_1;
-post_1= iof =>Photo[author="Octávio Maia",comments="Octávio Maia: A trip worth doing, looking forward for out next one! , Maria Albertina: This was such a fun trip. My age doesn't allow for many more sadly.",date="2017-09-01T00:00:00.000Z",description="A trip to the famous Tahiti falls",file="https://www.casasnogeresparaalugar.pt/wp-content/uploads/2017/06/cascata-lagoa-geres-tahiti.jpg",ident="5a6cd0dedbf7043124342e0e",location="Tahiti falls",people="Me, Maria and Manuel",privacy="public",pubdate="2018-01-27T19:48:15.620Z",title="Trip to Gerês",type="Photo"];
+post_1= iof =>Photo[author="Octávio Maia",comments="Octávio Maia: A trip worth doing, looking forward for out next one! || Maria Albertina: This was such a fun trip. My age doesn't allow for many more sadly.",date="2017-09-01T00:00:00.000Z",description="A trip to the famous Tahiti falls",file="https://www.casasnogeresparaalugar.pt/wp-content/uploads/2017/06/cascata-lagoa-geres-tahiti.jpg",ident="5a6cd0dedbf7043124342e0e",location="Tahiti falls",people="Me, Maria and Manuel",privacy="public",pubdate="2018-01-27T19:48:15.620Z",title="Trip to Gerês",type="Photo"];
 Photo= is-a => Post;
 
 user_1= published =>post_2;
@@ -59,11 +59,11 @@ post_3= iof =>Appointment[author="Octávio Maia",comments="",date="2018-02-02T00
 Appointment= is-a => Post;
 
 user_2= published =>post_4;
-post_4= iof =>Birth[author="Mary",comments="Octávio Maia: Congratulations, looks like we just got a new religion. , Mary: Don't be overdramatic, I'm sure he'll just have a normal life.",date="0001-01-01T00:00:00.000Z",description="Born in a manger, not the best place.",gender="Male",ident="5a6cd81275778128889118ac",location="Nazareth",name="Jesus",parents="Mary and Joseph",privacy="public",pubdate="2018-01-27T20:07:17.479Z",title="Jesus is born! Hallelujah!",type="Birth"];
+post_4= iof =>Birth[author="Mary",comments="Octávio Maia: Congratulations, looks like we just got a new religion. || Mary: Don't be overdramatic, I'm sure he'll just have a normal life.",date="0001-01-01T00:00:00.000Z",description="Born in a manger, not the best place.",gender="Male",ident="5a6cd81275778128889118ac",location="Nazareth",name="Jesus",parents="Mary and Joseph",privacy="public",pubdate="2018-01-27T20:07:17.479Z",title="Jesus is born! Hallelujah!",type="Birth"];
 Birth= is-a => Post;
 
 user_3= published =>post_5;
-post_5= iof =>Recipe[author="Gordon Ramsay",comments="Gordon Ramsay: You'll never go to McDonalds again after eating this. , Octávio Maia: You watch me.",date="2017-07-19T00:00:00.000Z",description="Best burguer, period.",file="http://img.sndimg.com/food/image/upload/w_560,h_315,c_fill,fl_progressive,q_80/v1/img/recipes/26/57/82/picLpVZYb.jpg",ident="5a6cdca375778128889118b4",ingredients="Sirloin, onion, ketchup, garlic, tabasco, mustard.",instructions="Combine all ingredients. Form into patties, cook as desired.",location="Restaurant Gordon Ramsay",privacy="public",pubdate="2018-01-27T20:18:17.576Z",title="Best hamburguer you'll ever have",type="Recipe"];
+post_5= iof =>Recipe[author="Gordon Ramsay",comments="Gordon Ramsay: You'll never go to McDonalds again after eating this. || Octávio Maia: You watch me.",date="2017-07-19T00:00:00.000Z",description="Best burguer, period.",file="http://img.sndimg.com/food/image/upload/w_560,h_315,c_fill,fl_progressive,q_80/v1/img/recipes/26/57/82/picLpVZYb.jpg",ident="5a6cdca375778128889118b4",ingredients="Sirloin, onion, ketchup, garlic, tabasco, mustard.",instructions="Combine all ingredients. Form into patties, cook as desired.",location="Restaurant Gordon Ramsay",privacy="public",pubdate="2018-01-27T20:18:17.576Z",title="Best hamburguer you'll ever have",type="Recipe"];
 Recipe= is-a => Post;
 
 user_4= published =>post_6;

@@ -183,7 +183,7 @@ inst [ Map<String,String> mapAtribs]
 }}
            
     | TXT {$tipo=$TXT.text.replace("\"","");} 
-    ':[' {$comentarios="\"";}(TXT {$comentarios=$comentarios +$TXT.text.replace("\"","");} (',' TXT {$comentarios= $comentarios + " , " + $TXT.text.replace("\"","");})*)? {
+    ':[' {$comentarios="\"";}(TXT {$comentarios=$comentarios +$TXT.text.replace("\"","");} (',' TXT {$comentarios= $comentarios + " || " + $TXT.text.replace("\"","");})*)? {
                                                                                                         System.out.println($comentarios);
                                                                                                         $comentarios= $comentarios + "\"";
                                                                                                         if($comentarios != null && !$comentarios.isEmpty())
