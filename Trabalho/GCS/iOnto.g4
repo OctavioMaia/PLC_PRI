@@ -28,6 +28,7 @@ grammar iOnto;
          List<String> atribCon_owl = new ArrayList <>();
          
          int usertype = -1;
+         int auxind;
          List<String> info = new ArrayList <>();
          List<String> userinfo = new ArrayList <>();
          List<String> users = new ArrayList <>();
@@ -356,26 +357,38 @@ txtpal returns[String texto, String atrib, String tipo]
                                         "\"/> \n </DataPropertyDomain> \n <DataPropertyRange> \n <DataProperty IRI=\"#" + $atrib+ "\"/> \n <Datatype abbreviatedIRI=\"xsd:" 
                                         +data.get($atrib) +  "\"/> \n</DataPropertyRange>");
                                        
-                                       if($atrib.equals("loginType")){
-                                            
-                                            if($TXT.text.equals("\"local\"")){ usertype=0;}
-                                            if($TXT.text.equals("\"facebook\"")){ usertype=1;}
-                                            if($TXT.text.equals("\"google\"")){ usertype=2;}
-                                            
-                                                                       }
-                                       else{
-                                            if(!$atrib.equals("id")&&$texto.equals("User")){
-                                                        if(userinfo.size()>1) userinfo.add(",");
-                                                        userinfo.add("\"_id\":");
-                                                        userinfo.add($TXT.text);                
-                                                                        }
+                                       
+                                       
+                                            if($texto.equals("User")){
+                                                        
+                                                        if($atrib.equals("loginType")){
+
+                                                            if($TXT.text.equals("\"local\"")){ usertype=0;}
+                                                            if($TXT.text.equals("\"facebook\"")){ usertype=1;}
+                                                            if($TXT.text.equals("\"google\"")){ usertype=2;}
+
+                                                                                       }
+                                                        else{
+                                                        if($atrib.equals("id")){
+                                                            System.out.println("ID");
+                                                            if(info.size()>1) info.add(",");
+                                                            info.add("\"_id\":");
+                                                            info.add($TXT.text); 
+                                                        }
+                                                        else{
+                                                            if(userinfo.size()>1) userinfo.add(",");
+                                                            userinfo.add("\""+$atrib+"\":");
+                                                            userinfo.add($TXT.text);
+                                                             }
+                                                          }
+                                                        }
                                             else{
                                                         if(info.size()>1) info.add(",");
                                                         info.add("\""+$atrib+"\":");
                                                         info.add($TXT.text);
                                                     }
                                         }
-                                        }
+                                        
 
 
                                 ( ',' +PAL {$atrib=$PAL.text;} '=' TXT{$tipo = $TXT.text;
@@ -394,22 +407,48 @@ txtpal returns[String texto, String atrib, String tipo]
                                 "\"/> \n </DataPropertyDomain> \n <DataPropertyRange> \n <DataProperty IRI=\"#" + $atrib+ "\"/> \n <Datatype abbreviatedIRI=\"xsd:" 
                                 +data.get($atrib) +  "\"/> \n</DataPropertyRange>");
                                 
-                                if($atrib.equals("loginType")){
-                                    if($TXT.text.equals("\"local\"")) {usertype = 0;}
-                                    if($TXT.text.equals("\"facebook\"")) {usertype = 1;}
-                                    if($TXT.text.equals("\"google\"")) {usertype = 2;}
+                                
+                                
+                                if($atrib.equals("comments")){
+                                                              
+                                    String com = $TXT.text;
+                                    
+                                    String[] coms = com.split(",");
+                                    info.add(",\""+$atrib+"\":[");
+                                    
+                                    int size = coms.length;
+                                   
+                                    if(coms[0].length()>2){
+                                    
+                                    for( String comment : coms){                                        
+                                        info.add(comment);
+                                        if(size>1)info.add("\",\"");
+                                        size--;
+                                        }
+                                    }
+                                    //info.remove(info.size() - 1);
+                                    
+                                    info.add("]");
                                                                }
                                 else{
-                                    if(!$atrib.equals("id")&&$texto.equals("User")){
-                                                        if(userinfo.size()>1) userinfo.add(",");
-                                                        userinfo.add("\"_id\":");
-                                                        userinfo.add($TXT.text);                
-                                                                        }
-                                            else{
-                                                        if(info.size()>1) info.add(",");
-                                                        info.add("\""+$atrib+"\":");
-                                                        info.add($TXT.text);
+                                    if($texto.equals("User")){
+                                            if($atrib.equals("id")){
+                                                                if(info.size()>1) info.add(",");
+                                                                info.add("\"_id\":");
+                                                                info.add($TXT.text);                
+                                                                                }
+                                                    else{
+                                                                if(userinfo.size()>1) userinfo.add(",");
+                                                                userinfo.add("\""+$atrib+"\":");
+                                                                userinfo.add($TXT.text);
+                                                            }
                                                     }
+                                             else{
+                                                  if(info.size()>1) info.add(",");
+                                                  info.add("\""+$atrib+"\":");
+                                                  info.add($TXT.text); 
+                                                  }
+                                             
                                 }
                                     })* ']')?
        ;
