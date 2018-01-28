@@ -74,8 +74,7 @@ router.get('/newEvent', function(req, res) {
                 {'type':'text','text':'Title','obligatory':true},
                 {'type':'date','text':'Date','obligatory':true},
                 {'type':'text','text':'Description','obligatory':true}];
-    var extras = [{'type':'file','text':'Files','obligatory':false},
-                  {'type':'text','text':'Guests','obligatory':false},
+    var extras = [{'type':'text','text':'Guests','obligatory':false},
                   {'type':'text','text':'Hosts','obligatory':false},
                   {'type':'text','text':'EventType','obligatory':true},
                   {'type':'text','text':'Text','obligatory':false}];

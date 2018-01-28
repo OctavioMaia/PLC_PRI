@@ -13,7 +13,6 @@ var eventSchema = new Schema({
     pubdate: {type: Date, default: Date.now},
     description: {type: String, required: true},
     type: {type: String, required: true},
-    files: {type: String, required: false},
     guests: {type: String, required: false},
     hosts: {type: String, required: false},
     eventType: {type: String, require: true},
