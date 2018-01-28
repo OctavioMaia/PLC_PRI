@@ -1,0 +1,190 @@
+doctype html(lang='en')
+head
+  meta(charset='utf-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+  meta(http-equiv='x-ua-compatible', content='ie=edge')
+  title DigitalMe | News Feed
+  link(rel='stylesheet', href='/stylesheets/bootstrap.min.css', crossorigin='anonymous')
+  link(rel='stylesheet', href='/stylesheets/icon.css')
+  link(rel='stylesheet', href='/stylesheets/font-awesome.css')
+  link(rel='stylesheet', href='/stylesheets/index.css')
+  link(rel='stylesheet', href='/stylesheets/social-share-kit.css')
+  script(type="text/javascript" src="/js/social-share-kit.js")
+
+  body
+    include navbar
+    block content
+    .main.container
+      .row
+        .col-md-8.col-md-offset-2
+          h3.display-4.m-b-2 NewsFeed
+      .row
+      .col-lg-2.col-sm-12.left
+        div(class="btn-group-vertical pull-right")
+          a(href="/newsfeed" class="btn btn-light") All
+          a(href="/newsfeed/AcademicWork" class="btn btn-light") Academic Works
+          a(href="/newsfeed/AcademicRegistry" class="btn btn-light") Academic Registries
+          a(href="/newsfeed/Appointment" class="btn btn-light") Appointments
+          a(href="/newsfeed/Birth" class="btn btn-light") Births
+          a(href="/newsfeed/Chronicle" class="btn btn-light") Chronicles
+          a(href="/newsfeed/Event" class="btn btn-light") Events
+          a(href="/newsfeed/Idea" class="btn btn-light") Ideas
+          a(href="/newsfeed/Photo" class="btn btn-light") Photos
+          a(href="/newsfeed/Recipe" class="btn btn-light") Recipes
+          a(href="/newsfeed/SportsRegistry" class="btn btn-light") Sport Registries
+          a(href="/newsfeed/Thought" class="btn btn-light") Thoughts
+          a(href="/newsfeed/Wedding" class="btn btn-light") Weddings
+      .col-lg-9.col-sm-12.right
+        each val in posts
+          if(val!=''&& (filter == 'all' || filter == val.type))
+            .social-feed-box
+              .social-avatar
+                h4 #{val.type}: #{val.title} 
+                a.pull-left(href="")
+                  img(alt="image" src='../uploads/' + val.ident + '.jpg')
+                .media-body
+                  a(href=("/profile/public/")+val.ident)
+                    | #{val.author}
+                  small.text-muted #{(val.pubdate).toString().substring(0, 24)}
+              .social-body
+                h6 Location: #{val.location}
+                h6 Description: #{val.description}
+                if (val.date) 
+                  h6 Date: #{(val.date).toString().substring(0, 15)}
+                case val.type
+                  when 'Chronicle'  
+                    if (val.theme!='') 
+                      h6 Theme: #{val.theme}
+                    if (val.text!='') 
+                      h6 Text: #{val.text}
+                  when 'Recipe'
+                    if (val.ingredients!='') 
+                      h6 Ingredients: #{val.ingredients}
+                    if (val.instructions!='') 
+                      h6 Instructions: #{val.instructions}
+                    if (val.file!='') 
+                      img(src=val.file style='display: inline-block;' class='img-fluid')
+                  when 'Wedding'
+                    if (val.couple!='') 
+                      h6 Couple: #{val.couple}
+                    if (val.guests!='') 
+                      h6 Guest List: #{val.guests}
+                    if (val.menu!='') 
+                      h6 Menu: #{val.menu}
+                  when 'Birth'
+                    if (val.name!='') 
+                      h6 Name: #{val.name}
+                    if (val.gender!='') 
+                      h6 Gender: #{val.gender}
+                    if (val.parents!='') 
+                      h6 Parents: #{val.parents}
+                  when 'Idea'
+                    if (val.keywords!='') 
+                      h6 Keywords: #{val.keywords}
+                    if (val.priority!='') 
+                      h6 Priority: #{val.priority}
+                    if (val.text!='') 
+                      h6 Text: #{val.text}
+                  when 'Thought'
+                    if (val.keywords!='') 
+                      h6 Keywords: #{val.keywords}
+                    if (val.text!='') 
+                      h6 Text: #{val.text}
+                  when 'SportsRegistry'
+                    if (val.sport!='') 
+                      h6 Sport: #{val.sport}
+                    if (val.duration!='') 
+                      h6 Duration: #{val.duration}
+                    if (val.participants!='') 
+                      h6 Participants: #{val.participants}
+                    if (val.results!='') 
+                      h6 Results: #{val.results}
+                  when 'Photo'
+                    if (val.people!='') 
+                      h6 People: #{val.people}
+                    if (val.file!='') 
+                      img(src=val.file style='display: inline-block;' class='img-fluid')
+                  when 'AcademicRegistry'
+                    if (val.duration!='') 
+                      h6 Duration: #{val.duration}
+                    if (val.credits!='') 
+                      h6 Credits: #{val.credits}
+                  when 'AcademicWork'
+                    if (val.course!='') 
+                      h6 Course: #{val.course}
+                    if (val.professor!='') 
+                      h6 Professor: #{val.professor}
+                    if (val.file!='') 
+                      h6 File: #{val.file}
+                    if (val.classification!='') 
+                      h6 Classification: #{val.classification}
+                  when 'Event'
+                    if (val.guests!='') 
+                      h6 Guests: #{val.guests}
+                    if (val.hosts!='') 
+                      h6 Hosts: #{val.hosts}
+                    if (val.eventType!='') 
+                      h6 Event Type: #{val.eventType}
+                    if (val.text!='') 
+                      h6 Text: #{val.text}
+              .social-footer
+                .ssk-group
+                  h4 Share this post
+                    br
+                    br
+                    div(class="pull-center")
+                      a.ssk.ssk-facebook(href='')
+                      a.ssk.ssk-twitter(href='')
+                      a.ssk.ssk-google-plus(href='')
+                      a.ssk.ssk-linkedin(href='')
+                      a.ssk.ssk-reddit2(href='')
+                      a.ssk.ssk-email(href='')
+                      a.ssk.ssk-github(href='')
+              .social-footer
+                h4 Comments:
+                .media-body
+                  each comment in val.comments
+                    h6 #{comment}
+                  .social-comment
+                    a.pull-left
+                      img(alt="image" src="https://i.imgur.com/uYq21Ou.png")
+                    .media-body
+                      form(method='POST' action='/posts/addcomment/' + val._id)
+                        input#name.form-control(type='text', name='comment' required)
+                        button.btn.btn-block.btn-light(type='submit') Add comment
+              //-   .social-comment
+              //-     a.pull-left(href="")
+              //-       img(alt="image" src="http://webapplayers.com/inspinia_admin-v2.5/img/a1.jpg")
+              //-     .media-body
+              //-       a(href="#")
+              //-         | Andrew Williams
+              //-       |                     Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words.
+              //-       br
+              //-       a.small(href="#")
+              //-         i.fa.fa-thumbs-up
+              //-         |  26 Like this!
+              //-       |  -
+              //-       small.text-muted 12.06.2014
+              //-   .social-comment
+              //-     a.pull-left(href="")
+              //-       img(alt="image" src="http://webapplayers.com/inspinia_admin-v2.5/img/a2.jpg")
+              //-     .media-body
+              //-       a(href="#")
+              //-         | Andrew Williams
+              //-       |                     Making this the first true generator on the Internet. It uses a dictionary of.
+              //-       br
+              //-       a.small(href="#")
+              //-         i.fa.fa-thumbs-up
+              //-         |  11 Like this!
+              //-       |  -
+              //-       small.text-muted 10.07.2014
+              //-   .social-comment
+              //-     a.pull-left(href="")
+              //-       img(alt="image" src="http://webapplayers.com/inspinia_admin-v2.5/img/a3.jpg")
+              //-     .media-body
+              //-       textarea.form-control(placeholder="Write comment...")
+    p.foot.text-xs-center DigitalMe - PRI 2017/2018
+  script(type='text/javascript').
+    SocialShareKit.init();
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js')
+  script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js', crossorigin='anonymous')

@@ -1,0 +1,143 @@
+extends layout
+
+block content
+  .main.container
+    .row
+      .col-md-6.col-md-offset-3
+        h1.display-4.m-b-2 Edit your post
+        
+        form(method='POST' action='/posts/editpost/' + post._id)
+          div.form-group
+            label(for='type') Type:
+            input#name.form-control(type='text', name='type' value=post.type readonly)
+          div.form-group
+            label(for='date') Date:
+            input#name.form-control(type='date', name='date' value=post.date required)
+          div.form-group
+            label(for='title') Title:
+            input#name.form-control(type='text', name='title' value=post.title)
+          div.form-group
+            label(for='location') Location:
+            input#name.form-control(type='text', name='location' value=post.location)
+          div.form-group
+            label(for='description') Description:
+            input#name.form-control(type='text', name='description' value=post.description)
+          div.form-group
+            label(for='privacy') Privacy:
+              select(type="text", class="form-control" name='privacy' required)
+                option(value="") Please select a privacy setting
+                option(value="private") Private
+                option(value="public") Public
+          case post.type
+            when 'Chronicle'
+              div.form-group
+                label(for='theme') Theme:
+                input#name.form-control(type='text', name='theme' value=post.theme)
+              div.form-group
+                label(for='text') Text:
+                input#name.form-control(type='text', name='text' value=post.text)
+            when 'Recipe'
+              div.form-group
+                label(for='ingredients') Ingredients:
+                input#name.form-control(type='text', name='ingredients' value=post.ingredients)
+              div.form-group
+                label(for='instructions') Instructions:
+                input#name.form-control(type='text', name='instructions' value=post.instructions)
+              div.form-group
+                label(for='file') File:
+                input#name.form-control(type='text', name='file' value=post.file)
+            when 'Wedding'
+              div.form-group
+                label(for='couple') Couple:
+                input#name.form-control(type='text', name='couple' value=post.couple)
+              div.form-group
+                label(for='guests') Guests:
+                input#name.form-control(type='text', name='guests' value=post.guests)
+              div.form-group
+                label(for='menu') Menu:
+                input#name.form-control(type='text', name='menu' value=post.menu)
+            when 'Birth'
+              div.form-group
+                label(for='name') Name:
+                input#name.form-control(type='text', name='name' value=post.name)
+              div.form-group 
+                label(for='gender') Gender:
+                  select(type="text", class="form-control" name="gender")
+                    option(value="Male") Male
+                    option(value="Female") Female
+              div.form-group
+                label(for='parents') Parents:
+                input#name.form-control(type='text', name='parents' value=post.parents)
+            when 'Idea'
+              div.form-group
+                label(for='keywords') Keywords:
+                input#name.form-control(type='text', name='keywords' value=post.keywords)
+              div.form-group
+                label(for='priority') Priority:
+                  select(type="text", class="form-control" name="priority")
+                    option(value="low") Low
+                    option(value="medium") Medium
+                    option(value="high") High
+              div.form-group
+                label(for='text') Text:
+                input#name.form-control(type='text', name='text' value=post.text)
+            when 'Thought'
+              div.form-group
+                label(for='keywords') Keywords:
+                input#name.form-control(type='text', name='keywords' value=post.keywords)
+              div.form-group
+                label(for='text') Text:
+                input#name.form-control(type='text', name='text' value=post.text)
+            when 'SportsRegistry'
+              div.form-group
+                label(for='sport') Sport:
+                input#name.form-control(type='text', name='sport' value=post.sport)
+              div.form-group
+                label(for='duration') Duration:
+                input#name.form-control(type='text', name='duration' value=post.duration)
+              div.form-group
+                label(for='participants') Participants:
+                input#name.form-control(type='text', name='participants' value=post.participants)
+              div.form-group
+                label(for='results') Results:
+                input#name.form-control(type='text', name='results' value=post.results)
+            when 'Photo'
+              div.form-group
+                label(for='file') File:
+                input#name.form-control(type='text', name='file' value=post.file)
+              div.form-group
+                label(for='people') People:
+                input#name.form-control(type='text', name='people' value=post.people)
+            when 'AcademicWork'
+              div.form-group
+                label(for='course') Course:
+                input#name.form-control(type='text', name='course' value=post.course)
+              div.form-group
+                label(for='professor') Professor:
+                input#name.form-control(type='text', name='professor' value=post.professor)
+              div.form-group
+                label(for='classification') Classification:
+                input#name.form-control(type='text', name='classification' value=post.classification)
+            when 'AcademicRegistry'
+              div.form-group
+                label(for='duration') Duration:
+                input#name.form-control(type='text', name='duration' value=post.duration)
+              div.form-group
+                label(for='credits') Credits:
+                input#name.form-control(type='text', name='credits' value=post.credits)
+            when 'Event'
+              div.form-group
+                label(for='eventType') Event Type:
+                input#name.form-control(type='text', name='eventType' value=post.eventType)
+              div.form-group
+                label(for='hosts') Hosts:
+                input#name.form-control(type='text', name='hosts' value=post.hosts)
+              div.form-group
+                label(for='guests') Guests:
+                input#name.form-control(type='text', name='guests' value=post.guests)
+              div.form-group
+                label(for='text') Text:
+                input#name.form-control(type='text', name='text' value=post.text)
+          button.btn.btn-primary(type='submit' class='btn-block btn-primary') Confirm changes
+        form(method='GET' action='/posts/myposts')
+          button.btn.btn-secondary(type='submit' class='btn-block btn-danger') Discard changes
