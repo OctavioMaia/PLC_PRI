@@ -34,6 +34,8 @@
 </Declaration><Declaration> 
  <Class IRI="#Wedding"/>
 </Declaration><Declaration> 
+ <DataProperty IRI="#loginType"/>
+</Declaration><Declaration> 
  <DataProperty IRI="#token"/>
 </Declaration><Declaration> 
  <DataProperty IRI="#password"/>
@@ -60,8 +62,6 @@
 </Declaration><Declaration> 
  <DataProperty IRI="#aboutme"/>
 </Declaration><Declaration> 
- <DataProperty IRI="#comments"/>
-</Declaration><Declaration> 
  <DataProperty IRI="#duration"/>
 </Declaration><Declaration> 
  <DataProperty IRI="#credits"/>
@@ -83,6 +83,8 @@
  <DataProperty IRI="#description"/>
 </Declaration><Declaration> 
  <DataProperty IRI="#pubdate"/>
+</Declaration><Declaration> 
+ <DataProperty IRI="#comments"/>
 </Declaration><Declaration> 
  <DataProperty IRI="#course"/>
 </Declaration><Declaration> 
@@ -110,6 +112,8 @@
 </Declaration><Declaration> 
  <DataProperty IRI="#pubdate"/>
 </Declaration><Declaration> 
+ <DataProperty IRI="#comments"/>
+</Declaration><Declaration> 
  <DataProperty IRI="#author"/>
 </Declaration><Declaration> 
  <DataProperty IRI="#type"/>
@@ -127,6 +131,8 @@
  <DataProperty IRI="#description"/>
 </Declaration><Declaration> 
  <DataProperty IRI="#pubdate"/>
+</Declaration><Declaration> 
+ <DataProperty IRI="#comments"/>
 </Declaration><Declaration> 
  <DataProperty IRI="#name"/>
 </Declaration><Declaration> 
@@ -152,6 +158,8 @@
 </Declaration><Declaration> 
  <DataProperty IRI="#pubdate"/>
 </Declaration><Declaration> 
+ <DataProperty IRI="#comments"/>
+</Declaration><Declaration> 
  <DataProperty IRI="#theme"/>
 </Declaration><Declaration> 
  <DataProperty IRI="#text"/>
@@ -173,6 +181,8 @@
  <DataProperty IRI="#description"/>
 </Declaration><Declaration> 
  <DataProperty IRI="#pubdate"/>
+</Declaration><Declaration> 
+ <DataProperty IRI="#comments"/>
 </Declaration><Declaration> 
  <DataProperty IRI="#eventType"/>
 </Declaration><Declaration> 
@@ -202,6 +212,8 @@
 </Declaration><Declaration> 
  <DataProperty IRI="#pubdate"/>
 </Declaration><Declaration> 
+ <DataProperty IRI="#comments"/>
+</Declaration><Declaration> 
  <DataProperty IRI="#keywords"/>
 </Declaration><Declaration> 
  <DataProperty IRI="#priority"/>
@@ -226,6 +238,8 @@
 </Declaration><Declaration> 
  <DataProperty IRI="#pubdate"/>
 </Declaration><Declaration> 
+ <DataProperty IRI="#comments"/>
+</Declaration><Declaration> 
  <DataProperty IRI="#file"/>
 </Declaration><Declaration> 
  <DataProperty IRI="#people"/>
@@ -248,6 +262,8 @@
 </Declaration><Declaration> 
  <DataProperty IRI="#pubdate"/>
 </Declaration><Declaration> 
+ <DataProperty IRI="#comments"/>
+</Declaration><Declaration> 
  <DataProperty IRI="#ingredients"/>
 </Declaration><Declaration> 
  <DataProperty IRI="#instructions"/>
@@ -269,6 +285,8 @@
  <DataProperty IRI="#description"/>
 </Declaration><Declaration> 
  <DataProperty IRI="#pubdate"/>
+</Declaration><Declaration> 
+ <DataProperty IRI="#comments"/>
 </Declaration><Declaration> 
  <DataProperty IRI="#sport"/>
 </Declaration><Declaration> 
@@ -296,6 +314,8 @@
 </Declaration><Declaration> 
  <DataProperty IRI="#pubdate"/>
 </Declaration><Declaration> 
+ <DataProperty IRI="#comments"/>
+</Declaration><Declaration> 
  <DataProperty IRI="#keywords"/>
 </Declaration><Declaration> 
  <DataProperty IRI="#text"/>
@@ -317,6 +337,8 @@
  <DataProperty IRI="#description"/>
 </Declaration><Declaration> 
  <DataProperty IRI="#pubdate"/>
+</Declaration><Declaration> 
+ <DataProperty IRI="#comments"/>
 </Declaration><Declaration> 
  <DataProperty IRI="#couple"/>
 </Declaration><Declaration> 
@@ -341,6 +363,8 @@
  <DataProperty IRI="#description"/>
 </Declaration><Declaration> 
  <DataProperty IRI="#pubdate"/>
+</Declaration><Declaration> 
+ <DataProperty IRI="#comments"/>
 </Declaration><Declaration> 
  <ObjectProperty IRI="#is-a"/>
 </Declaration><Declaration> 
@@ -417,6 +441,10 @@
  <Class IRI="#post_3"/>
  <NamedIndividual IRI="#Birth"/>
 </ClassAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#loginType"/>
+ <NamedIndividual IRI="#user_1"/> 
+ <Literal datatypeIRI="&xsd;String">local</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#confirmed"/>
  <NamedIndividual IRI="#user_1"/> 
  <Literal datatypeIRI="&xsd;String">true</Literal> 
@@ -441,6 +469,10 @@
  <NamedIndividual IRI="#user_1"/> 
  <Literal datatypeIRI="&xsd;String">octaviojmaia@gmail.com</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#loginType"/>
+ <NamedIndividual IRI="#user_2"/> 
+ <Literal datatypeIRI="&xsd;String">google</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#type"/>
  <NamedIndividual IRI="#user_2"/> 
  <Literal datatypeIRI="&xsd;String">user</Literal> 
@@ -460,6 +492,10 @@
  <DataProperty IRI="#id"/>
  <NamedIndividual IRI="#user_2"/> 
  <Literal datatypeIRI="&xsd;String">114440185746535622814</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#loginType"/>
+ <NamedIndividual IRI="#user_3"/> 
+ <Literal datatypeIRI="&xsd;String">google</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#type"/>
  <NamedIndividual IRI="#user_3"/> 
@@ -481,6 +517,10 @@
  <NamedIndividual IRI="#user_3"/> 
  <Literal datatypeIRI="&xsd;String">107600219698699965725</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#loginType"/>
+ <NamedIndividual IRI="#user_4"/> 
+ <Literal datatypeIRI="&xsd;String">facebook</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#type"/>
  <NamedIndividual IRI="#user_4"/> 
  <Literal datatypeIRI="&xsd;String">user</Literal> 
@@ -500,6 +540,10 @@
  <DataProperty IRI="#id"/>
  <NamedIndividual IRI="#user_4"/> 
  <Literal datatypeIRI="&xsd;String">1756521317725637</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#loginType"/>
+ <NamedIndividual IRI="#user_5"/> 
+ <Literal datatypeIRI="&xsd;String">local</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#confirmed"/>
  <NamedIndividual IRI="#user_5"/> 
@@ -524,6 +568,10 @@
  <DataProperty IRI="#email"/>
  <NamedIndividual IRI="#user_5"/> 
  <Literal datatypeIRI="&xsd;String">madalenaa.castro@gmail.com</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#loginType"/>
+ <NamedIndividual IRI="#user_6"/> 
+ <Literal datatypeIRI="&xsd;String">google</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#type"/>
  <NamedIndividual IRI="#user_6"/> 
@@ -569,6 +617,10 @@
  <NamedIndividual IRI="#user_6"/> 
  <Literal datatypeIRI="&xsd;String">Student</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#loginType"/>
+ <NamedIndividual IRI="#user_7"/> 
+ <Literal datatypeIRI="&xsd;String">google</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#type"/>
  <NamedIndividual IRI="#user_7"/> 
  <Literal datatypeIRI="&xsd;String">user</Literal> 
@@ -588,6 +640,10 @@
  <DataProperty IRI="#id"/>
  <NamedIndividual IRI="#user_7"/> 
  <Literal datatypeIRI="&xsd;String">109768494313485757406</Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#loginType"/>
+ <NamedIndividual IRI="#user_8"/> 
+ <Literal datatypeIRI="&xsd;String">local</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#confirmed"/>
  <NamedIndividual IRI="#user_8"/> 
@@ -632,6 +688,10 @@
  <DataProperty IRI="#profession"/>
  <NamedIndividual IRI="#user_8"/> 
  <Literal datatypeIRI="&xsd;String"></Literal> 
+</DataPropertyAssertion><DataPropertyAssertion> 
+ <DataProperty IRI="#loginType"/>
+ <NamedIndividual IRI="#user_9"/> 
+ <Literal datatypeIRI="&xsd;String">facebook</Literal> 
 </DataPropertyAssertion><DataPropertyAssertion> 
  <DataProperty IRI="#type"/>
  <NamedIndividual IRI="#user_9"/> 
@@ -837,151 +897,11 @@
  <NamedIndividual IRI="#post_3"/> 
  <Literal datatypeIRI="&xsd;String">Birth</Literal> 
 </DataPropertyAssertion><DataPropertyDomain> 
- <DataProperty IRI="#confirmed"/>
+ <DataProperty IRI="#loginType"/>
  <Class IRI="#User"/> 
  </DataPropertyDomain> 
  <DataPropertyRange> 
- <DataProperty IRI="#confirmed"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#type"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#type"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#age"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#age"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#name"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#name"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#password"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#password"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#email"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#email"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#type"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#type"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#email"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#email"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#name"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#name"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#token"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#token"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#id"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#id"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#type"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#type"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#email"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#email"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#name"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#name"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#token"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#token"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#id"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#id"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#type"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#type"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#email"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#email"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#name"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#name"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#token"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#token"/> 
- <Datatype abbreviatedIRI="xsd:String"/> 
-</DataPropertyRange><DataPropertyDomain> 
- <DataProperty IRI="#id"/>
- <Class IRI="#User"/> 
- </DataPropertyDomain> 
- <DataPropertyRange> 
- <DataProperty IRI="#id"/> 
+ <DataProperty IRI="#loginType"/> 
  <Datatype abbreviatedIRI="xsd:String"/> 
 </DataPropertyRange><DataPropertyDomain> 
  <DataProperty IRI="#confirmed"/>
@@ -1024,6 +944,188 @@
  </DataPropertyDomain> 
  <DataPropertyRange> 
  <DataProperty IRI="#email"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#loginType"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#loginType"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#type"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#type"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#email"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#email"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#name"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#name"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#token"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#token"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#id"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#id"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#loginType"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#loginType"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#type"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#type"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#email"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#email"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#name"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#name"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#token"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#token"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#id"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#id"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#loginType"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#loginType"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#type"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#type"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#email"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#email"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#name"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#name"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#token"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#token"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#id"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#id"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#loginType"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#loginType"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#confirmed"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#confirmed"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#type"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#type"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#age"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#age"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#name"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#name"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#password"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#password"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#email"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#email"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#loginType"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#loginType"/> 
  <Datatype abbreviatedIRI="xsd:String"/> 
 </DataPropertyRange><DataPropertyDomain> 
  <DataProperty IRI="#type"/>
@@ -1103,6 +1205,13 @@
  <DataProperty IRI="#profession"/> 
  <Datatype abbreviatedIRI="xsd:String"/> 
 </DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#loginType"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#loginType"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
  <DataProperty IRI="#type"/>
  <Class IRI="#User"/> 
  </DataPropertyDomain> 
@@ -1136,6 +1245,13 @@
  </DataPropertyDomain> 
  <DataPropertyRange> 
  <DataProperty IRI="#id"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#loginType"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#loginType"/> 
  <Datatype abbreviatedIRI="xsd:String"/> 
 </DataPropertyRange><DataPropertyDomain> 
  <DataProperty IRI="#confirmed"/>
@@ -1213,6 +1329,13 @@
  </DataPropertyDomain> 
  <DataPropertyRange> 
  <DataProperty IRI="#profession"/> 
+ <Datatype abbreviatedIRI="xsd:String"/> 
+</DataPropertyRange><DataPropertyDomain> 
+ <DataProperty IRI="#loginType"/>
+ <Class IRI="#User"/> 
+ </DataPropertyDomain> 
+ <DataPropertyRange> 
+ <DataProperty IRI="#loginType"/> 
  <Datatype abbreviatedIRI="xsd:String"/> 
 </DataPropertyRange><DataPropertyDomain> 
  <DataProperty IRI="#type"/>
